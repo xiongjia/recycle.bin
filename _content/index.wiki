@@ -1,0 +1,12 @@
+%title XiongJia's Recycling - HOME
+%toc
+
+这里主要用于资料整理分类。
+
+= TECH = 
+== General ==
+abcd
+
+== Misc ==
+def123
+
