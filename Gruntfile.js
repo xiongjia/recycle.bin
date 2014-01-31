@@ -10,8 +10,8 @@ module.exports = function (grunt) {
   }
 
   config = {
-    cssDest: 'dist/assets/css/main.css',
-    jsDest: 'dist/assets/js/main.js',
+    cssDest: 'dist/assets/css/main-v0.1.css',
+    jsDest: 'dist/assets/js/main-v0.1.js',
 
     cssBootstrap: bowerFile('bootstrap/dist/css/bootstrap.css'),
     jsJQuery: bowerFile('jquery/jquery.js'),

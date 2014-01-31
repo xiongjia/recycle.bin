@@ -1,6 +1,6 @@
 /* vimwiki.css */
 
-/* vimwiki toc style ======================== */
+/* { vimwiki toc style ======================== */
 .vw-toc {
   position: fixed;
   width: 200px;
@@ -48,5 +48,17 @@
 .toc a {
   color: #000000;
 }
-/* vimwiki toc style ======================== */
+/* } vimwiki toc style ======================== */
 
+/* { vimwiki util style ======================== */
+
+.vw-footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 100px;
+  color: #777;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* } vimwiki util style ======================== */
