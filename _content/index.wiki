@@ -1,4 +1,5 @@
 %title XiongJia's Recycling - HOME
+%template home
 %toc
 
 这里主要用于资料整理分类。

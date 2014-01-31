@@ -8,15 +8,15 @@
 
 <body>
   <!-- navigation bar -->
-  <div class="navbar navbar-inverse navbar-fixed-top" >
-  <div class="container">
-  <div class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li><a href="%root_path%index.html">Home</a></li>
-      <li><a href="%root_path%about.html">About</a></li>
-    </ul>
-  </div>
-  </div>
+  <div class="navbar navbar-default" >
+    <div class="container">
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="%root_path%about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="content">

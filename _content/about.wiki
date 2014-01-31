@@ -1,0 +1,5 @@
+%title XiongJia's Recycling - About 
+%template about
+%toc
+
+這裡是 about page
