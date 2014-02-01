@@ -13,17 +13,17 @@
 
 .content {
   padding-left: 15px;
-  width: 1000px;
+  width: 950px;
 }
 
 /* } general style ==================== */
 
 /* { toc style ======================== */
 .vw-toc {
-  position: fixed;
+  position: absolute;
   width: 200px;
   z-index: 100;
-  top: 18%;
+  top: 17%;
   right: 2%;
   display: none;
 }
