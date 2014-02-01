@@ -28,4 +28,4 @@ Grunt options:
 * ```grunt dist``` - Exports all the js, css, html and other files to 'dist' folder.
 
  NOTE: 
-  You must export the VimWiki content to the output folder before your run below grunt command.
+  You must export the VimWiki content to the output folder before your run this grunt command.
