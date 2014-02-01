@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="%root_path%assets/css/main-v0.1.css">
-  <title>%title%</title>
   <meta http-equiv="Content-Type" content="text/html; charset=%encoding%">
+  <title>%title%</title>
+  <link rel="stylesheet" type="text/css" href="%root_path%assets/css/main-v0.1.css">
 </head>
 
 <body>

@@ -20,6 +20,9 @@
     tocToggler.click(function() {
         $('div.toc').slideToggle(300);
       });
+
+    /* update syntax */
+    SyntaxHighlighter.all();
   });
 })();
 

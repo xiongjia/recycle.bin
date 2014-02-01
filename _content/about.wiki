@@ -1,5 +1,27 @@
-%title XiongJia's Recycling - About 
+%title About
 %template about
 %toc
 
-這裡是 about page
+= 俺 =
+
+{{{class="brush: js"
+  var self = {
+    mail: 'lexiongjia@gmail.com',
+    sites: {
+      github: 'https://github.com/xiongjia',
+      blog: 'http://xiongjia.github.io/',
+      google: 'https://google.com/+XiongJiaLe',
+      fb: 'http://www.facebook.com/xiongjia.le',
+      twitter: 'https://twitter.com/XiongJia',
+      douban: 'http://www.douban.com/people/lexiongjia/',
+      fanfou: 'http://fanfou.com/xiongjia_le'
+    },
+    tags: ['dev', 'animation-comic', 'gamer', 'Otaku' ]
+  };
+}}}
+
+= recycle.bin =
+* Recycle.bin is just my personal Wiki site.
+* This site is based on VimWiki + my templates: https://github.com/xiongjia/recycle.bin
+
+最后更新: Sun Feb  2 00:10:04 CST 2014

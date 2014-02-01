@@ -18,5 +18,5 @@
   "browser": true,
   "jquery": true,
 
-  "predef" : ["describe", "it"]
+  "predef" : ["SyntaxHighlighter"]
 }

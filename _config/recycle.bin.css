@@ -13,6 +13,7 @@
 
 .content {
   padding-left: 15px;
+  width: 1000px;
 }
 
 /* } general style ==================== */
@@ -22,7 +23,7 @@
   position: fixed;
   width: 200px;
   z-index: 100;
-  top: 16%;
+  top: 18%;
   right: 2%;
   display: none;
 }
