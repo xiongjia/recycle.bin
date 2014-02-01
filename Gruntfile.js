@@ -26,7 +26,11 @@ module.exports = function (grunt) {
     },
     concat: {
       css: {
-        src: [ config.cssBootstrap, '_config/vimwiki.css' ],
+        src: [
+          config.cssBootstrap,
+          '_config/vimwiki.css',
+          '_config/recycle.bin.css'
+        ],
         dest: config.cssDest
       },
       js: {
