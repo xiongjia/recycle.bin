@@ -1,4 +1,4 @@
-%title About
+%title About (Last update: Sun Feb  2 00:10:04 CST 2014)
 %template about
 %toc
 
@@ -24,4 +24,3 @@
 * Recycle.bin is just my personal Wiki site.
 * This site is based on VimWiki + my templates: https://github.com/xiongjia/recycle.bin
 
-最后更新: Sun Feb  2 00:10:04 CST 2014

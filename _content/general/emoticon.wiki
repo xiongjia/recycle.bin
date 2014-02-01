@@ -1,4 +1,4 @@
-%title 顏文字 Emoticon
+%title 顏文字 Emoticon (Last update: Sat Feb  1 18:51:06 CST 2014)
 %toc
 
 = 常用顏文字 =
@@ -12,5 +12,3 @@
 * cool-ascii-faces https://github.com/maxogden/cool-ascii-faces 
  - NODE 實現隨機返回寫在 JS 數組裏的顏文字。內容較少，不過實現簡單可以考慮自己 fork 并擴展。
 
-
-最后更新: Sat Feb  1 18:51:06 CST 2014

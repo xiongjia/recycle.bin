@@ -1,0 +1,11 @@
+%title MS Powershell (Last update: Sun Feb  2 01:25:26 CST 2014)
+%toc
+
+= Practice =
+* ps.uia - https://github.com/xiongjia/ps.uia <br>
+ 在 Powershell 里调用 MS UIAutomation 接口。基本上就是用反射调用 .Net 对象。
+
+= Resource =
+* powershell community extensions http://pscx.codeplex.com/ <br>
+ 一组 Opensource 的 Powershell 扩展。可以方便使用，也可以做为开发参考。
+

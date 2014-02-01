@@ -1,18 +1,16 @@
-%title XiongJia's Recycle Bin - Index
+%title Index (Last update: Sat Feb  1 18:51:52 CST 2014)
 %template home
 %toc
 
 資料整理 + 日常記錄的 Vimwiki: https://github.com/xiongjia/recycle.bin 
 
 = Technology =
-
-= Game =
+== DEV ==
+ * [[dev/ps1|PowerShell]] 
 
 = General =
 == 日常 ==
  * [[general/emoticon|顏文字]] 
  * [[general/txt|段子/轉載]]
- * 冷知識
 
 
-最后更新: Sat Feb  1 18:51:52 CST 2014
