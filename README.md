@@ -25,6 +25,7 @@ let g:vimwiki_list = [{'path':'$HOME/recycle.bin/_content',
 ```
 
 Grunt options:
-* ```grunt dist``` - export all the js, css, html and other files to 'dist' folder.
-NOTE:
+* ```grunt dist``` - Exports all the js, css, html and other files to 'dist' folder.
+
+NOTE: 
 You must export the VimWiki content to the output folder before your run below grunt command.
