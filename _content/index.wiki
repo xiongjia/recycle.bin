@@ -4,9 +4,15 @@
 
 資料整理 + 日常記錄的 Vimwiki: https://github.com/xiongjia/recycle.bin 
 
+-----
+
 = Technology =
 == DEV ==
  * [[dev/ps1|PowerShell]] 
+ * [[dev/jekyll|Jekyll]] 
+ * [[dev/node|Node]] 
+
+-----
 
 = General =
 == 日常 ==

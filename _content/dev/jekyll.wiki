@@ -1,0 +1,23 @@
+%title Jekyll (Sun Feb  2 17:38:52 CST 2014)
+%toc
+
+Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
+代碼可以從 https://github.com/jekyll/jekyll 上找到。<br>
+
+配置和安裝可以參考: http://jekyllbootstrap.com/ or https://github.com/plusjade/jekyll-bootstrap
+
+-----
+
+= 常用 =
+* 字符集問題 <br>
+ 在 Windows + Ruby 的環境下，如果對應的 post 裏有中文的話可能會造成
+ ` jekyll server` 不能正常啓動。<br>
+ 目前的 workaround 是設置 *RUBYOPT* 環境變量增加 _-Ku_ 的 option 。<br>
+ 比如 Windows: `set RUBYOPT=-Ku` , Unix: `export RUBYOPT=-Ku` <br>
+
+* create new post<br>
+ 對應的 rake task 是 `rake post title="Hello World"` 
+
+* 基本的 launch server<br>
+  `jekyll server  [--draft]`。加了 _--draft_ 會吧 draft 目錄下的 post 也生成靜態網頁。
+

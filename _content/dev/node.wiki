@@ -1,0 +1,35 @@
+%title Node (Last update: Mon Feb  3 02:58:16 CST 2014)
+%toc
+
+= Grunt =
+* Grunt Document: http://gruntjs.com/ <br>
+ 也可以再 Github 上的 grunt-docs 找到 https://github.com/gruntjs/grunt-docs
+
+* 常用 plugins
+ - 大部分 grunt contrib plugin 可以在 https://github.com/gruntjs search 到。
+ - 如何生成自己的 plugin 可以参考, Grunt document 里的 Creating plugins 章节。http://gruntjs.com/creating-plugins
+ - jshint https://github.com/gruntjs/grunt-contrib-jshint <br>
+ Description: 用于 jshint 检查。<br>
+ Install: `npm install grunt-contrib-jshint --save-dev` <br>
+ Load: `grunt.loadNpmTasks('grunt-contrib-jshint');`
+ - clean https://github.com/gruntjs/grunt-contrib-clean <br>
+ Description: 用于清理文件或目录。<br>
+ Install:  `npm install grunt-contrib-clean --save-dev` <br>
+ Load:  `grunt.loadNpmTasks('grunt-contrib-clean');`
+ - copy https://github.com/gruntjs/grunt-contrib-copy <br>
+ Description: copy 文件，目录。可以用于打包之类的。<br>
+ Install:  `npm install grunt-contrib-copy --save-dev` <br>
+ Load:  `grunt.loadNpmTasks('grunt-contrib-copy');`
+ - concat https://github.com/gruntjs/grunt-contrib-concat <br>
+ Description: 合并 js or css files。<br>
+ Install:  `npm install grunt-contrib-concat --save-dev` <br>
+ Load:  `grunt.loadNpmTasks('grunt-contrib-concat');`
+ - cssmin https://github.com/gruntjs/grunt-contrib-cssmin <br>
+ Description: 压缩css。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）<br> 
+ Install:  `npm install grunt-contrib-cssmin --save-dev` <br>
+ Load:  `grunt.loadNpmTasks('grunt-contrib-cssmin');`
+ - uglify https://github.com/gruntjs/grunt-contrib-uglify <br>
+ Description: 压缩/丑化 js。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）<br> 
+ Install:  `npm install grunt-contrib-uglify --save-dev` <br>
+ Load:  `grunt.loadNpmTasks('grunt-contrib-uglify');`
+
