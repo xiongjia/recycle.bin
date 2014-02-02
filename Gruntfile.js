@@ -44,11 +44,6 @@ module.exports = function (grunt) {
           '_config/vimwiki.js'
         ],
         dest: config.jsDest
-        // src: [
-        //   '/Users/lexj/datum/stuff/syntaxhighlighter_3.0.83/scripts/shCore.js',
-        //   '/Users/lexj/datum/stuff/syntaxhighlighter_3.0.83/scripts/shBrush*.js'
-        // ],
-        // dest: '/Users/lexj/datum/tmp/s2.js'
       }
     },
     cssmin: {

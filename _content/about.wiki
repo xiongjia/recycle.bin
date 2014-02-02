@@ -4,7 +4,7 @@
 
 = 俺 =
 
-{{{class="brush: js"
+{{{class="brush: js; gutter: false; toolbar: false;"
   var self = {
     mail: 'lexiongjia@gmail.com',
     sites: {
@@ -16,7 +16,7 @@
       douban: 'http://www.douban.com/people/lexiongjia/',
       fanfou: 'http://fanfou.com/xiongjia_le'
     },
-    tags: ['dev', 'animation-comic', 'gamer', 'Otaku' ]
+    tags: ['dev', 'animation-comic', 'gamer', 'Otaku']
   };
 }}}
 
