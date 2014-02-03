@@ -12,12 +12,14 @@
 }
 
 .content {
+  font-size:120%;
   padding-left: 15px;
-  width: 950px;
+  width: 80%;
   line-height: 120%
 }
 
 .syntaxhighlighter {
+  font-size:100%;
   padding: 0.3em;
   background: #39213E;
   background: rgba(255,30,120,0.12);

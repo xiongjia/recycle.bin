@@ -10,13 +10,11 @@
   <!-- navigation bar -->
   <div class="navbar navbar-default" >
     <div class="navbar-header"><a class="navbar-brand" href="%root_path%index.html">Recycle Bin</a></div>
-    <div class="container">
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="%root_path%index.html">Index</a></li>
-          <li class="active"><a href="#">About</a></li>
-        </ul>
-      </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="%root_path%index.html">Index</a></li>
+        <li class="active"><a href="#">About</a></li>
+      </ul>
     </div>
   </div>
 

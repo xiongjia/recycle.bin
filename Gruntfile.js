@@ -70,7 +70,7 @@ module.exports = function (grunt) {
     sitemap: {
       cwd: 'dist',
       dest: 'dist/sitemap.txt',
-      site: 'http://test.com',
+      site: 'http://www.xj-labs.net'
     },
     clean: ['dist']
   });
