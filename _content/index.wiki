@@ -2,7 +2,7 @@
 %template home
 %toc
 
-資料整理 + 日常記錄的 Vimwiki: https://github.com/xiongjia/recycle.bin 
+資料整理 + 日常記錄的 Vimwiki。
 
 -----
 
