@@ -14,17 +14,19 @@
 .content {
   padding-left: 15px;
   width: 950px;
+  line-height: 120%
 }
 
 .syntaxhighlighter {
-    background: #39213E;
-    background: rgba(255,30,120,0.12);
-    border: 1px solid #614;
-    position: relative;
-    z-index: 2;
-    font-family: 'Lucida Console', 'Courier New', Courier, monospace;
-    -webkit-transition: all 0.45s linear;
-       -moz-transition: all 0.45s linear;
+  padding: 0.3em;
+  background: #39213E;
+  background: rgba(255,30,120,0.12);
+  border: 1px solid #614;
+  position: relative;
+  z-index: 2;
+  font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+  -webkit-transition: all 0.45s linear;
+     -moz-transition: all 0.45s linear;
 }
 
 /* } general style ==================== */
