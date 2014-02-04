@@ -1,4 +1,4 @@
-%title Node (Last update: Mon Feb  3 02:58:16 CST 2014)
+%title Node (Last update: Tue Feb  4 19:18:10 CST 2014)
 %toc
 
 = Grunt =
@@ -6,40 +6,141 @@
 * http://gruntjs.com/ <br>
  也可以再 Github 上的 grunt-docs 找到 https://github.com/gruntjs/grunt-docs <br>
  至少有3部分: Plugins, Documentation, API。
- # 首先閱讀 Documentation 裏的 _getting started_  http://gruntjs.com/getting-started
- # 掌握基本的 Task 和 API (比如: Log, File, config, option ... etc.) 
+ # 閱讀 Documentation 裏的 _getting started_  http://gruntjs.com/getting-started
+ # 掌握基本 Task 概念
+ # 掌握基本的 API (比如: Log, File, config, option ... etc.) 
  # Async Task 的使用 
  # 掌握常用的 Plugins (安裝，加載，配置）
  # 知道 plugin 的製作過程 http://gruntjs.com/creating-plugins
 
 == Useful plugins ==
-* 如果是 grunt contrib plugin 可以在 https://github.com/gruntjs search 到。
+* 現有的 plugins 可以在 http://gruntjs.com/plugins 找。
+* 如果是 grunt contrib plugin 也可以在 https://github.com/gruntjs search 到。
+  (如果無特殊需要，最好優先選用 grunt contrib 的 plugin。)
 * 如何生成自己的 plugin 可以参考, Grunt document 里的 Creating plugins 章节。
   http://gruntjs.com/creating-plugins
-* 目前用过的一些 plugins:
- -  [[https://github.com/gruntjs/grunt-contrib-jshint|grunt-contrib-jshint]] <br>
-  jshint 检查
-  # Install: `npm install grunt-contrib-jshint --save-dev`
-  # Load: `grunt.loadNpmTasks('grunt-contrib-jshint');` 
- - [[https://github.com/gruntjs/grunt-contrib-clean|grunt-contrib-clean]] <br>
-  清理文件或目录
-  # Install:  `npm install grunt-contrib-clean --save-dev`
-  # Load:  `grunt.loadNpmTasks('grunt-contrib-clean');` 
- - [[https://github.com/gruntjs/grunt-contrib-copy|grunt-contrib-copy]] <br>
-  copy 文件，目录。可以用于打包之类的
-  # Install:  `npm install grunt-contrib-copy --save-dev` 
-  # Load:  `grunt.loadNpmTasks('grunt-contrib-copy');` 
- - [[https://github.com/gruntjs/grunt-contrib-concat|grunt-contrib-concat]] <br>
-  合并 js or css files。
-  # Install: `npm install grunt-contrib-concat --save-dev` 
-  # Load:  `grunt.loadNpmTasks('grunt-contrib-concat');`
- - [[https://github.com/gruntjs/grunt-contrib-cssmin|grunt-contrib-cssmin]] <br>
-  压缩css。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）
-  # Install:  `npm install grunt-contrib-cssmin --save-dev` 
-  # Load:  `grunt.loadNpmTasks('grunt-contrib-cssmin');`
- - [[https://github.com/gruntjs/grunt-contrib-uglify|grunt-contrib-uglify]] <br>
-  压缩/丑化 js。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）
-  # Install:  `npm install grunt-contrib-uglify --save-dev`
-  # Load:  `grunt.loadNpmTasks('grunt-contrib-uglify');`
-
+=== grunt-contrib-jshint ===
+*  [[https://github.com/gruntjs/grunt-contrib-jshint|grunt-contrib-jshint]] <br>
+ jshint 检查
+ # Install: `npm install grunt-contrib-jshint --save-dev`
+ # Load: `grunt.loadNpmTasks('grunt-contrib-jshint');` 
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    jshint: {
+      /* read the jshint option from .jshintrc  */
+      options: { jshintrc: '.jshintrc' },
+      /* target: { source files }  */
+      gruntfile: { src: 'Gruntfile.js' },
+      lib: { src: ['lib/**/*.js'] },
+      bin: { src: ['test1.js', 'test2.js'] }
+    }
+  };
+}}}
+=== grunt-contrib-clean ===
+* [[https://github.com/gruntjs/grunt-contrib-clean|grunt-contrib-clean]] <br>
+ 清理文件或目录
+ # Install:  `npm install grunt-contrib-clean --save-dev`
+ # Load:  `grunt.loadNpmTasks('grunt-contrib-clean');` 
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    /* remove ./dist */
+    clean: ['dist']
+  };
+}}}
+=== grunt-contrib-copy ===
+* [[https://github.com/gruntjs/grunt-contrib-copy|grunt-contrib-copy]] <br>
+ copy 文件，目录。可以用于打包之类的
+ # Install:  `npm install grunt-contrib-copy --save-dev` 
+ # Load:  `grunt.loadNpmTasks('grunt-contrib-copy');` 
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    /* copy all the .html files from output to dist */
+    copy: {
+      content: {
+        expand: true,
+        cwd: 'output/',
+        src: [ '**/*.html' ],
+        dest: 'dist/'
+      }
+    }
+  };
+}}}
+=== grunt-contrib-concat ===
+* [[https://github.com/gruntjs/grunt-contrib-concat|grunt-contrib-concat]] <br>
+ 合并 js or css files。
+ # Install: `npm install grunt-contrib-concat --save-dev` 
+ # Load:  `grunt.loadNpmTasks('grunt-contrib-concat');`
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    concat: {
+      css: { src: [ 'src1.css', 'src2.css' ], dest: 'dest.css' },
+      js: { src: [ 'src1.js', 'src2.js' ], dest: 'dest.js }
+    }
+  };
+}}}
+=== grunt-contrib-cssmin === 
+* [[https://github.com/gruntjs/grunt-contrib-cssmin|grunt-contrib-cssmin]] <br>
+ 压缩css。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）
+ # Install:  `npm install grunt-contrib-cssmin --save-dev` 
+ # Load:  `grunt.loadNpmTasks('grunt-contrib-cssmin');`
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    cssmin: {
+      minify: { src: [ 'src.css' ], dest: 'dest.css' }
+    }
+  };
+}}}
+=== grunt-contrib-uglify ===
+* [[https://github.com/gruntjs/grunt-contrib-uglify|grunt-contrib-uglify]] <br>
+ 压缩/丑化 js。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）
+ # Install:  `npm install grunt-contrib-uglify --save-dev`
+ # Load:  `grunt.loadNpmTasks('grunt-contrib-uglify');`
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    uglify: {
+      dist: { src: 'src.js', dest: 'dest.js' }
+    }
+  };
+}}}
+=== grunt-contrib-connect ===
+* [[https://github.com/gruntjs/grunt-contrib-connect|grunt-contrib-connect]] <br>
+ 創建一個靜態的 Web Server，一般用於自動測試或開發時本地看效果用一下。 
+ # Install:  `npm install grunt-contrib-connect --save-dev`
+ # Load:  `grunt.loadNpmTasks('grunt-contrib-connect');`
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    connect: {
+      dist: {
+        options: { port: 9000, base: 'dist', debug: true, keepalive: true }
+      }
+    }
+  };
+}}}
+=== grunt-contrib-watch ===
+* [[https://github.com/gruntjs/grunt-contrib-watch|grunt-contrib-watch]] <br>
+ 監視對應的文件系統，當發生變化時自動執行對應的 Task。 
+ # Install:  `npm install grunt-contrib-watch --save-dev`
+ # Load:  `grunt.loadNpmTasks('grunt-contrib-watch');`
+ # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  grunt.initConfig({
+    watch: {
+      /* 1. monitor the .html files in output folder
+       * 2. call the 'copy:content' task if the files changed
+       */
+      content: {
+        files: ['output/**/*.html'],
+        tasks: ['copy:content'],
+        options: { spawn: false }
+      }
+    },
+ };
+}}}
 

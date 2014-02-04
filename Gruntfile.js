@@ -1,14 +1,14 @@
 'use strict';
 
-var util = require('util'),
-  _ = require('underscore');
-
 module.exports = function (grunt) {
-  var config;
+  var config, optNoCompress;
 
   function bowerFile(file) {
-    return util.format('bower_components/%s', file || '');
+    return grunt.util._.str.sprintf('bower_components/%s', file || '');
   }
+
+  /* check cli options */
+  optNoCompress = grunt.option('no-compress');
 
   config = {
     cssDest: 'dist/assets/css/main-v0.1.css',
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     jshint: {
       options: { jshintrc: '.jshintrc' },
       gruntfile: { src: 'Gruntfile.js' },
-      config: { src: ['Gruntfile.js', '_config/vimwiki.js'] }
+      config: { src: ['_config/vimwiki.js'] }
     },
     concat: {
       css: {
@@ -67,10 +67,22 @@ module.exports = function (grunt) {
         dest: 'dist/'
       }
     },
+    connect: {
+      dist: {
+        options: { port: 9000, base: 'dist', debug: true }
+      }
+    },
     sitemap: {
       cwd: 'dist',
       dest: 'dist/sitemap.txt',
       site: 'http://www.xj-labs.net'
+    },
+    watch: {
+      content: {
+        files: ['output/**/*.html'],
+        tasks: ['copy:content'],
+        options: { spawn: false }
+      }
     },
     clean: ['dist']
   });
@@ -82,10 +94,14 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   /* sitemap task */
   grunt.registerTask('sitemap', 'create sitemap.txt', function () {
     var pages, pgCwd, dest, site, data;
+
+    /* check options */
     grunt.config.requires('sitemap', 'sitemap.cwd',
       'sitemap.dest', 'sitemap.site');
 
@@ -95,21 +111,27 @@ module.exports = function (grunt) {
     grunt.log.writeln('creating sitemap. { cwd:%s, dest: %s, site: %s }',
       pgCwd, dest, site);
 
+    /* save the sitemap to 'data' */
     pages = grunt.file.expand({cwd: pgCwd}, '**/*.html');
     data = '';
-    _.each(pages, function (pg) {
-      data = data + util.format('%s/%s\n', site, pg);
+    grunt.util._.each(pages, function (pg) {
+      data = data + grunt.util._.str.sprintf('%s/%s\n', site, pg);
     });
+    /* write sitemap to dest file */
     grunt.file.write(dest, data);
   });
 
   /* alias */
   grunt.registerTask('dist',
-    'Export all files to dist folder',
-    ['clean', 'jshint', 'concat', 'cssmin', 'uglify', 'copy', 'sitemap']);
-  grunt.registerTask('dist-debug',
-    'Export all files to dist folder (disable uglify)',
-    ['clean', 'jshint', 'concat', 'copy', 'sitemap']);
+    optNoCompress ?
+      'Export all files to dist folder (no compress)' :
+      'Export all files to dist folder',
+    optNoCompress ?
+      ['clean', 'jshint', 'concat', 'copy', 'sitemap'] :
+      ['clean', 'jshint', 'concat', 'cssmin', 'uglify', 'copy', 'sitemap']);
+
+  grunt.registerTask('serv', 'Build the dist folder and launch local serv',
+    ['dist', 'connect', 'watch']);
 
   /* default task */
   grunt.registerTask('default', ['dist']);
