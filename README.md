@@ -1,6 +1,6 @@
 recycle.bin
 ===========
-* Recycle.bin is just my personal Wiki site.
+* Recycle.bin is just my personal Wiki site. [http://xj-labs.net/](http://xj-labs.net/)
 * It's based on VimWiki + my templates.
 
 Usage
