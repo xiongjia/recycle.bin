@@ -1,26 +1,13 @@
 'use strict';
 
 module.exports = function (grunt) {
-  var config, optNoCompress;
-
-  function bowerFile(file) {
-    return grunt.util._.str.sprintf('bower_components/%s', file || '');
-  }
+  var cfg, optNoCompress;
 
   /* check cli options */
   optNoCompress = grunt.option('no-compress');
-
-  config = {
-    cssDest: 'dist/assets/css/main-v0.1.css',
-    jsDest: 'dist/assets/js/main-v0.1.js',
-
-    cssBootstrap: bowerFile('bootstrap/dist/css/bootstrap.css'),
-    jsJQuery: bowerFile('jquery/jquery.js'),
-    jsBootstrap: bowerFile('bootstrap/dist/js/bootstrap.js'),
-    jsSyntax: '_config/syntaxhighlighter.js',
-    cssSyntax: '_config/syntaxhighlighter.css'
-  };
-
+  /* load grunt config */
+  cfg = grunt.file.readYAML('_config.yml');
+ 
   grunt.initConfig({
     jshint: {
       options: { jshintrc: '.jshintrc' },
@@ -30,61 +17,59 @@ module.exports = function (grunt) {
     concat: {
       css: {
         src: [
-          config.cssBootstrap,
+          cfg.mod.cssBootstrap,
           '_config/vimwiki.css',
-          config.cssSyntax,
+          cfg.mod.cssSyntax,
           '_config/recycle.bin.css'
         ],
-        dest: config.cssDest
+        dest: cfg.dest.cssDest
       },
       js: {
         src: [
-          config.jsJQuery,
-          config.jsBootstrap,
-          config.jsSyntax,
+          cfg.mod.jsJQuery,
+          cfg.mod.jsBootstrap,
+          cfg.mod.jsSyntax,
           '_config/vimwiki.js'
         ],
-        dest: config.jsDest
+        dest: cfg.dest.jsDest
       }
     },
     cssmin: {
-      minify: {
-        src: [ config.cssDest ],
-        dest: config.cssDest
-      }
+      minify: { src: [ cfg.dest.cssDest ], dest: cfg.dest.cssDest }
     },
     uglify: {
-      dist: {
-        src: config.jsDest,
-        dest: config.jsDest
-      }
+      dist: { src: cfg.dest.jsDest, dest: cfg.dest.jsDest }
     },
     copy: {
       content: {
         expand: true,
-        cwd: 'output/',
+        cwd: cfg.dest.output + '/',
         src: [ '**/*.html' ],
-        dest: 'dist/'
+        dest: cfg.dest.base + '/'
       }
     },
     connect: {
       dist: {
-        options: { port: 9000, base: 'dist', debug: true }
+        options: {
+          port: cfg.util.servPort,
+          debug: cfg.util.servDbg,
+          base: cfg.dest.base
+        }
       }
     },
     sitemap: {
-      cwd: 'dist',
-      dest: 'dist/sitemap.txt',
-      site: 'http://www.xj-labs.net'
+      cwd: cfg.dest.base,
+      dest: cfg.dest.sitemap,
+      site: cfg.util.siteRoot
     },
     watch: {
       content: {
-        files: ['output/**/*.html'],
+        files: [cfg.dest.output + '/**/*.html'],
         tasks: ['copy:content'],
         options: { spawn: false }
       }
     },
-    clean: ['dist']
+    clean: [ cfg.dest.base ]
   });
 
   /* load plugins */

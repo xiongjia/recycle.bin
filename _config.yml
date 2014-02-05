@@ -1,0 +1,27 @@
+# YAML file for grunt
+
+# modules 
+mod:
+  # jQuery
+  jsJQuery: 'bower_components/jquery/jquery.js'
+  # syntaxhighlighter
+  jsSyntax: '_config/syntaxhighlighter.js'
+  cssSyntax: '_config/syntaxhighlighter.css'
+  # bootstrap
+  jsBootstrap: 'bower_components/bootstrap/dist/js/bootstrap.js'
+  cssBootstrap: 'bower_components/bootstrap/dist/css/bootstrap.css'
+
+# destination
+dest:
+  base: 'dist'
+  output: 'output'
+  cssDest: 'dist/assets/css/main-v0.1.css'
+  jsDest: 'dist/assets/js/main-v0.1.js'
+  sitemap: 'dist/sitemap.txt'
+
+# util
+util:
+  servPort: 9000
+  servDbg: true
+  siteRoot: 'http://www.xj-labs.net'
+
