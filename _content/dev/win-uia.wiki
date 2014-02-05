@@ -1,0 +1,38 @@
+%title Windows Automation (Last update: Tue Feb  5 19:18:10 CST 2014)
+%toc
+
+= MS Windows Automation API =
+== MSAA and UIA ==
+目前 MS Windows 提供了 MSAA 和 UIA :
+# Microsoft Active Accessibility (*MSAA*)
+ - 很早被引入，所以很多控件都支持。
+ - 引入的最初目的是辅助特殊人群使用电脑，所以 Automation 的功能不强。
+ - 可以通过，MSAA 提供的 COM Interface 。
+ - 自定义的 UI Control 也需要要实现对应的 MSAA 接口。
+# Microsoft UI Automation (*UIA*)
+ - 可以通过 .Net Interface 访问。
+ - MS 新的 UI Framework 基本都支持，比如 WPF, Windows Forms。
+ - UIA 内部会使用 MSAA bridge 来访问兼容比较老的 UI Control。
+ - 通过提供各种 UIA Pattern 的方式来方便 Test Automation 的访问，同样 UI Control 开发也只需要提供对应的实现。对于 UI 控件测试者和开发者都更友好、便利些。
+
+== Tools ==
+- /* XXX pending  (￣o￣) . z Z　*/
+
+== SDK ==
+- /* XXX pending  (￣o￣) . z Z　*/
+
+== My practice ==
+* ps.uia - https://github.com/xiongjia/ps.uia <br>
+ 在 Powershell 里调用 MS UIAutomation 接口。基本上就是用反射调用 .Net 对象。
+
+== Resource ==
+* Microsoft Windows UI Automation Blog
+ - http://blogs.msdn.com/b/winuiautomation/
+* Introduction to Microsoft Active Accessibility
+ - http://www.codeproject.com/Articles/18290/Introduction-to-Microsoft-Active-Accessibility
+* MSAA in Mozilla  Gecko  ( Firefox 提供的 MSAA 接口)
+ - http://www.mozilla.org/access/windows/msaa-server 
+ - http://www.mozilla.org/access/windows/at-apis 
+* Windows Automation API SDK Tools 
+ - http://blogs.msdn.com/b/winuiautomation/archive/2009/06/03/windows-automation-api-sdk-tools.aspx
+ 
