@@ -1,0 +1,14 @@
+%title Tips (Last update: Thu Feb  6 02:51:17 CST 2014)
+%toc
+
+
+= Rsync =
+* 日常操作:<br>
+ `rsync -e "/usr/bin/ssh"  --bwlimit=2000 -av local_directory username@server.dreamhost.com:remote_directory`<br>
+ # local_directory - 本地同步的目录。 <br>
+ 如果以 '/' 结尾表示同步此目录下的。不加则会上传这个目录。例如:<br>
+ './dist/' - 表示同步 dist 目录下<br>
+ 'dist' - 会吧 'dist' 这级也传上去。
+ # --bwlimit=KBPS - 带宽限制
+* NODE 中使用 Rsync - 参考 [[node|NODE]] 中的 _rsyncwrapper_
+ 

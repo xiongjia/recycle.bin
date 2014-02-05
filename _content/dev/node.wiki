@@ -1,6 +1,54 @@
 %title Node (Last update: Tue Feb  4 19:18:10 CST 2014)
 %toc
 
+= Install =
+== Windows ==
+- /* XXX pending  (￣o￣) . z Z　*/
+
+= Tips =
+* 一些基本的容器, copy/clone 之类的操作<br>
+ 选 Lo-Dash 或 underscore。俩者类似, Lo-Dash 后出来些，更新好像更频繁些，据说性能也好一点。
+ # [[https://github.com/lodash/lodash/|Lo-Dash]]  <br>
+ Document: http://lodash.com/docs
+ # [[https://github.com/jashkenas/underscore|underscore]] <br>  
+ Document: http://underscorejs.org/
+
+* string 操作<br>
+ Node 自带的 `util` 有一部分。不过很不够用。
+ 目前找到的功能比较丰富的包是 
+ [[https://github.com/epeli/underscore.string|underscore.string]]
+
+* 异步操作<br>
+ Async 或者 Q。<br> 
+ 自己一般使用 Async 。主要要是看实现上 Async 似乎更简单些。
+ 为了 KISS 原则也应该轻量级的东西。<br>
+ 这两者更新都不是很频繁，估计会有新的代替者出现吧?
+ # Async: https://github.com/caolan/async
+ # Q: https://github.com/kriskowal/q
+
+= 冷门 Modules =
+== rsyncwrapper  ==
+* [[https://github.com/jedrichards/rsyncwrapper|rsyncwrapper]] <br>
+ - Rsync 的封装，之前自己用于网站的自动发布。<br>
+ (Windows 上没有用过，估计是需要特殊配置的 ssh 和 rsync windows client 的。)
+ - Sample: (具體的 options 在他的 github readme 裏有) <br>
+{{{class="brush: js; gutter: false; toolbar: false;"
+  var rsync, rsyncOpt;
+  /* rsync options */
+  rsyncOpt = {
+    src: './dist/',
+    dest: 'username@server.dreamhost.com:remote_directory',
+    recursive: true
+  };
+  /* execute rsync upload */
+  rsync = require("rsyncwrapper").rsync;
+  rsync(rsyncOpt, function (err, stdout, stderr, cmd) {
+    if (err) {
+      /* XXX Rsync error */        
+    }
+  });
+}}}
+
 = Grunt =
 == Documentation ==
 * http://gruntjs.com/ <br>
