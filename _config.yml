@@ -24,4 +24,6 @@ util:
   servPort: 9000
   servDbg: true
   siteRoot: 'http://www.xj-labs.net'
+  rsyncSrc: './dist/'
+  rsyncDest: 'lexj@xj-labs.net:xj-labs.net'
 

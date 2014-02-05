@@ -8,9 +8,9 @@
 
 = Technology =
 == DEV ==
- * [[dev/ps1|PowerShell]] 
  * [[dev/jekyll|Jekyll]] 
  * [[dev/node|Node]] 
+ * [[dev/ps1|PowerShell]] 
 
 -----
 

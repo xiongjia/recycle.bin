@@ -17,6 +17,7 @@
     "grunt-contrib-uglify": "~0.3.2",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-connect": "~0.6.0",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-contrib-watch": "~0.5.3",
+    "rsyncwrapper": "0.0.19"
   }
 }
