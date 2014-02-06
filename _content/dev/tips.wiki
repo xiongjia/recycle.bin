@@ -1,4 +1,4 @@
-%title Tips (Last update: Thu Feb  6 02:51:17 CST 2014)
+%title Tips (Last update: Thu Feb  6 22:40:20 CST 2014)
 %toc
 
 
@@ -11,4 +11,24 @@
  'dist' - 会吧 'dist' 这级也传上去。
  # --bwlimit=KBPS - 带宽限制
 * NODE 中使用 Rsync - 参考 [[node|NODE]] 中的 _rsyncwrapper_
- 
+
+= scp =
+* 日常操作:<br>
+ # source 放在前面，target 放在后面。
+ # -r - (Recursively) 表示递归 srouce。
+
+ | Upload file     | `scp SourceFile user@host:directory/TargetFile`        |
+ | Upload folder   | `scp -r SourceFolder user@host:directory/TargetFolder` |
+ | Download file   | `scp user@host:directory/SourceFile TargetFile`        |
+ | Download folder | `scp -r user@host:directory/SourceFolder TargetFolder` |
+
+* Windows <br>
+ # [[http://www.chiark.greenend.org.uk/~sgtatham/putty/|Putty]] 提供了  Windows 版 SSH client 的实现。`pscp.exe` 可以实现与 scp 一样的功能。
+ # 安装 Cygwin or Mingw 并选上对应的 ssh 组件。
+* Auto login <br>
+ 有时在 scp 写在脚本里自动执行不希望，每次输入口令。
+ # 使用 ssh 证书认证。 在 scp 命令里加入 `-i 'private key file'` (应该是最佳选择)
+ # 使用 sshpass 如:
+ `sshpass -p "password" scp -r user@host:directory/SourceFolder TargetFolder` <br>
+ 缺点很多：1.需要把 password 写在脚本里 2. 不是所有平台都有 sshpass, 比如：osx 上目前版本的 brew 便无法安装 sshpass。
+

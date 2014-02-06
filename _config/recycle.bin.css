@@ -14,7 +14,7 @@
 .content {
   font-size:120%;
   padding-left: 15px;
-  width: 80%;
+  width: 75%;
   line-height: 120%
 }
 
@@ -36,7 +36,7 @@
 /* { toc style ======================== */
 .vw-toc {
   position: absolute;
-  width: 200px;
+  width: 180px;
   z-index: 100;
   top: 17%;
   right: 2%;

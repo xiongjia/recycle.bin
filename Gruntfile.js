@@ -147,6 +147,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serv', 'Build the dist folder and launch local serv',
     ['dist', 'connect', 'watch']);
+  grunt.registerTask('server', ['serv']);
 
   /* default task */
   grunt.registerTask('default', ['dist']);

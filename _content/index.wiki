@@ -14,7 +14,7 @@
  * [[dev/jekyll|Jekyll]] 
 
 == MISC ==
- * [[dev/tips|Tip]] 
+ * [[dev/tips|Tips]] 
 
 -----
 

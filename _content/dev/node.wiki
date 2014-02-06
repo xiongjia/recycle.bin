@@ -2,15 +2,18 @@
 %toc
 
 = Install =
+== Unix ==
+- /* XXX pending  (￣o￣) . z Z　*/
+
 == Windows ==
 - /* XXX pending  (￣o￣) . z Z　*/
 
 = Tips =
 * 一些基本的容器, copy/clone 之类的操作<br>
  选 Lo-Dash 或 underscore。俩者类似, Lo-Dash 后出来些，更新好像更频繁些，据说性能也好一点。
- # [[https://github.com/lodash/lodash/|Lo-Dash]]  <br>
+ # [[https://github.com/lodash/lodash/|Lo-Dash]] -  
  Document: http://lodash.com/docs
- # [[https://github.com/jashkenas/underscore|underscore]] <br>  
+ # [[https://github.com/jashkenas/underscore|underscore]] -  
  Document: http://underscorejs.org/
 
 * string 操作<br>
@@ -19,8 +22,7 @@
  [[https://github.com/epeli/underscore.string|underscore.string]]
 
 * 异步操作<br>
- Async 或者 Q。<br> 
- 自己一般使用 Async 。主要要是看实现上 Async 似乎更简单些。
+ Async 或者 Q。自己一般使用 Async 。主要要是看实现上 Async 似乎更简单些。
  为了 KISS 原则也应该轻量级的东西。<br>
  这两者更新都不是很频繁，估计会有新的代替者出现吧?
  # Async: https://github.com/caolan/async

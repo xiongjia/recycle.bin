@@ -2,24 +2,30 @@
 (function vimwiki() {
   'use strict';
   $(document).ready(function() {
-    var toc, tocToggler;
 
     /* TOC menu */
-    tocToggler = $('<div class="toggler" title="TOC">Table of contents</div>');
-    toc = $('.toc');
-    toc.wrap('<div class="vw-toc">');
-    $('.vw-toc').prepend(tocToggler)
-      .delay(100)
-      .fadeTo(500, '0.5')
-      .hover(function() {
-        $(this).stop().fadeTo(300, '0.9');
-      }, function() {
-        $(this).stop().fadeTo(300, '0.5');
-      });
-    $('div.toc').slideToggle(300);
-    tocToggler.click(function() {
-        $('div.toc').slideToggle(300);
-      });
+    function showTOC() {
+      var toc, tocToggler;
+      tocToggler = $('<div class="toggler" title="TOC">Table of contents</div>');
+      toc = $('.toc');
+      toc.wrap('<div class="vw-toc">');
+      $('.vw-toc').prepend(tocToggler)
+        .delay(100)
+        .fadeTo(500, '0.5')
+        .hover(function() {
+          $(this).stop().fadeTo(300, '0.9');
+        }, function() {
+          $(this).stop().fadeTo(300, '0.5');
+        });
+      $('div.toc').slideToggle(300);
+      tocToggler.click(function() {
+          $('div.toc').slideToggle(300);
+        });
+    }
+
+    if (window.innerWidth >= 450) {
+      showTOC();
+    }
 
     /* update external links */
     $('a[href]').each(function() {
