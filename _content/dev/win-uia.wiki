@@ -26,7 +26,6 @@
  |The UI Spy tool is obsolete and no longer available. Developers should use other tools such as Inspect.exe that are available in the Windows Software Development Kit (SDK). For more info, see Testing Tools.|
  
  現在 MS 提供的 Testing tools 能在 http://msdn.microsoft.com/en-us/library/dd373661.aspx 上找到詳細情況。<br>
-
  我自己保留了一份舊版本的 binary 在我的 DropBox 共享目錄裡:  
  [[https://www.dropbox.com/sh/8tpu53m88cskvmp/Zn1gWNfZ1C/dev-tools/ms.uia|ms.uia-tools in my DropBox]] <br>
 | uispy.zip          | UISpy         |
@@ -38,6 +37,9 @@
  * UIA Verify - UI Automation Verify (UIA Verify) Test Automation Framework 
   # 可以在 http://uiautomationverify.codeplex.com/ 上找到代碼和 Release 的版本。
   # 功能類似於 MS 的 UISpy
+ * AccChecker - UI Accessibility Checker
+  # 可以在 http://acccheck.codeplex.com/ 上找到代碼和 Release 的版本。
+  # 功能類似於 MS 的 AccExplorer
 
 == SDK ==
 - /* XXX pending  (￣o￣) . z Z　*/
