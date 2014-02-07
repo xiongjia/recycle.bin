@@ -15,8 +15,29 @@
  - UIA 内部会使用 MSAA bridge 来访问兼容比较老的 UI Control。
  - 通过提供各种 UIA Pattern 的方式来方便 Test Automation 的访问，同样 UI Control 开发也只需要提供对应的实现。对于 UI 控件测试者和开发者都更友好、便利些。
 
-== Tools ==
-- /* XXX pending  (￣o￣) . z Z　*/
+==  Assistant Tools ==
+有開源的工具和 MS 提供的工具。<br>
+可以幫助開發或這測試者查看、監視或者調用 UI Control 上的 屬性和方法。
+
+=== MS Tools ===
+ 時間發展，好幾個 MS 提供的工具都已經被放棄了。<br>
+ 比如很好用的 UISpy 被放棄了(可能性能差了點)。http://msdn.microsoft.com/en-us/library/ms727247.aspx 
+ 官方說法是: <br>
+ |The UI Spy tool is obsolete and no longer available. Developers should use other tools such as Inspect.exe that are available in the Windows Software Development Kit (SDK). For more info, see Testing Tools.|
+ 
+ 現在 MS 提供的 Testing tools 能在 http://msdn.microsoft.com/en-us/library/dd373661.aspx 上找到詳細情況。<br>
+
+ 我自己保留了一份舊版本的 binary 在我的 DropBox 共享目錄裡:  
+ [[https://www.dropbox.com/sh/8tpu53m88cskvmp/Zn1gWNfZ1C/dev-tools/ms.uia|ms.uia-tools in my DropBox]] <br>
+| uispy.zip          | UISpy         |
+| inspect.zip        | Inspect       |
+| acc.explorer32.zip | AccExplorer32 |
+| acc.event.zip      | AccEvent      |
+
+=== Open source tools ===
+ * UIA Verify - UI Automation Verify (UIA Verify) Test Automation Framework 
+  # 可以在 http://uiautomationverify.codeplex.com/ 上找到代碼和 Release 的版本。
+  # 功能類似於 MS 的 UISpy
 
 == SDK ==
 - /* XXX pending  (￣o￣) . z Z　*/
