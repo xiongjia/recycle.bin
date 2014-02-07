@@ -17,10 +17,10 @@
 
 ==  Assistant Tools ==
 有開源的工具和 MS 提供的工具。<br>
-可以幫助開發或這測試者查看、監視或者調用 UI Control 上的 屬性和方法。
+通過輔助工具可以幫助開發或這測試者查看、監視或者調用 UI Control 上的 UIA/MSAA 屬性和方法。
 
 === MS Tools ===
- 時間發展，好幾個 MS 提供的工具都已經被放棄了。<br>
+ 時間推移，好幾個 MS 提供的工具都已經被放棄了。<br>
  比如很好用的 UISpy 被放棄了(可能性能差了點)。http://msdn.microsoft.com/en-us/library/ms727247.aspx 
  官方說法是: <br>
  |The UI Spy tool is obsolete and no longer available. Developers should use other tools such as Inspect.exe that are available in the Windows Software Development Kit (SDK). For more info, see Testing Tools.|

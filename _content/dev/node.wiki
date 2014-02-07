@@ -26,6 +26,7 @@
    prefix = D:\usr\misc\node\npm-packages
    cache = D:\usr\misc\node\npm-cache
 }}}
+  # 把 prefix 所指定的路徑放入 $PATH 環境變量裏，這樣 NPM 的 global package 就可以直接使用了。
 
 * 从 NODE 源代码编译
  # 从 github clone 代码 https://github.com/joyent/node
@@ -66,7 +67,7 @@
  # 运行 `./configure --prefix=~/.node; make; make install` 
    这 3 条 command 后，node 和 npm 就被安装到了 ~/.node 下。
    (不同版本编译可能会有变化，如遇问题参考 README.md )
- # 最后像之前"包管理安装“那样更新对应的 .npmrc 即可。
+ # 最后像之前"包管理安装“那样更新对应的 .npmrc 和 $PATH 即可。
 
 = Tips =
 * 一些基本的容器, copy/clone 之类的操作<br>
