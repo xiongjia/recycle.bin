@@ -12,8 +12,10 @@ Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
 == 字符集問題 ==
  在 Windows + Ruby 的環境下，如果對應的 post 裏有中文的話可能會造成
  ` jekyll server` 不能正常啓動。<br>
- 目前的 workaround 是設置 *RUBYOPT* 環境變量增加 _-Ku_ 的 option 。<br>
- 比如 Windows: `set RUBYOPT=-Ku` , Unix: `export RUBYOPT=-Ku` <br>
+ 目前的 workaround 是設置 *RUBYOPT* 環境變量增加 _-Ku_ 的 option 。
+ 比如:<br>
+ Windows console: `set RUBYOPT=-Ku` , Windows Powershell: `$env:RUBYOPT="-Ku"` <br>
+ Unix ( Unix 上應該不需要,從來沒有在 Linux 或 os x 上遇到過這個問題): `export RUBYOPT=-Ku` <br>
 
 == create new post ==
  對應的 rake task 是 `rake post title="Hello World"` 
