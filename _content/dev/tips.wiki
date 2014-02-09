@@ -21,6 +21,8 @@
  `sshpass -p "password" scp -r user@host:directory/SourceFolder TargetFolder` <br>
  缺点很多：1.需要把 password 写在脚本里 2. 不是所有平台都有 sshpass, 比如：osx 上目前版本的 brew 便无法安装 sshpass。
 
+-----
+
 = Rsync =
 * 日常操作:<br>
  `rsync -e "/usr/bin/ssh"  --bwlimit=2000 -av local_dir user@host:remote_dir`<br>

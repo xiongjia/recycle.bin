@@ -69,6 +69,8 @@
    (不同版本编译可能会有变化，如遇问题参考 README.md )
  # 最后像之前"包管理安装“那样更新对应的 .npmrc 和 $PATH 即可。
 
+-----
+
 = Tips =
 * 一些基本的容器, copy/clone 之类的操作<br>
  选 Lo-Dash 或 underscore。俩者类似, Lo-Dash 后出来些，更新好像更频繁些，据说性能也好一点。
@@ -89,6 +91,8 @@
  # Async: https://github.com/caolan/async
  # Q: https://github.com/kriskowal/q
 
+-----
+
 = 冷门 Modules =
 == rsyncwrapper  ==
 * [[https://github.com/jedrichards/rsyncwrapper|rsyncwrapper]] <br>
@@ -100,7 +104,7 @@
   /* rsync options */
   rsyncOpt = {
     src: './dist/',
-    dest: 'username@server.dreamhost.com:remote_directory',
+    dest: 'username@host:remote_directory',
     recursive: true
   };
   /* execute rsync upload */
@@ -111,6 +115,8 @@
     }
   });
 }}}
+
+-----
 
 = Grunt =
 == Documentation ==

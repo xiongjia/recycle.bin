@@ -1,9 +1,9 @@
 %title Jekyll (Sun Feb  2 17:38:52 CST 2014)
 %toc
 
+= Setup environment =
 Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
 代碼可以從 https://github.com/jekyll/jekyll 上找到。<br>
-
 配置和安裝可以參考: http://jekyllbootstrap.com/ or https://github.com/plusjade/jekyll-bootstrap
 
 -----
