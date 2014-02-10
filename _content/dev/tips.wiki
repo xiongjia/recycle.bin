@@ -36,12 +36,12 @@
 -----
 
 = GIT =
-* GIT-pro
+* Pro GIT
  - 下載的github: https://github.com/progit/progit
  - online book en: http://git-scm.com/book/en/
  - online book 中文簡體: http://git-scm.com/book/zh
 * GIT internals
- - 內容比 git pro 簡潔一些
+ - 內容比 Pro GIT 簡潔一些
  - 下載的github: https://github.com/pluralsight/git-internals-pdf
 * 備忘(有時自己會忘記的 commands ): 
  - 刪除 remote branch <br>
