@@ -37,15 +37,15 @@
 
 = GIT =
 * GIT-pro
- - github: https://github.com/progit/progit
+ - 下載的github: https://github.com/progit/progit
  - online book en: http://git-scm.com/book/en/
  - online book 中文簡體: http://git-scm.com/book/zh
 * GIT internals
- - 比 git pro 簡潔一些
- - github: https://github.com/pluralsight/git-internals-pdf
+ - 內容比 git pro 簡潔一些
+ - 下載的github: https://github.com/pluralsight/git-internals-pdf
 * 備忘(有時自己會忘記的 commands ): 
  - 刪除 remote branch <br>
-   git push origin --delete <branchName>
- - 清除本地無效的 remote branch 
-   git remote prune origin
+   `git push origin --delete <branchName>`
+ - 清除本地無效的 remote branch <br>
+   `git remote prune origin`
 
