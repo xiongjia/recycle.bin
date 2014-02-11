@@ -29,7 +29,7 @@
   # 把 prefix 所指定的路徑放入 $PATH 環境變量裏，這樣 NPM 的 global package 就可以直接使用了。
 
 * 从 NODE 源代码编译
- # 从 github clone 代码 https://github.com/joyent/node
+ # 从 github 上 clone 代码, 地址 https://github.com/joyent/node
  # 在 branch list 里找到自己需要的 release 版本,并且 checkout 这个 branch。(比如: v0.11.11-release) 
  # 打开 README.md 查看  Windows 编译步骤 。(目前版本的编译需要预先准备 Python 2.6/2.7 和 VS 2010 or 2012) 
  # 编译后会得到对应的 node.exe
@@ -62,7 +62,7 @@
  # 其余步骤类似于 windows 的 下载安装，更新 对应的 $PATH 和 ".npmrc" 即可
 * Install from Source <br>
  在 Unix 上 install from soruce 可能是最常用的 (如果是开发环境的话)
- # 从 github clone 代码 https://github.com/joyent/node
+ # 从 github 上 clone 代码,地址: https://github.com/joyent/node
  # 在 branch list 里找到自己需要的 release 版本,并且 checkout 这个 branch。(比如: v0.11.11-release) 
  # 运行 `./configure --prefix=~/.node; make; make install` 
    这 3 条 command 后，node 和 npm 就被安装到了 ~/.node 下。
