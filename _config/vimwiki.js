@@ -8,7 +8,8 @@
       var toc, tocToggler;
 
       /* create the TOC Menu */
-      tocToggler = $('<div class="toggler" title="TOC">Table of contents</div>');
+      tocToggler = $('<div class="vw-tocHdr"/>' +
+        '<div class="toggler" title="TOC">Table of contents</div>');
       toc = $('.toc');
       toc.wrap('<div class="vw-right">');
       $('.vw-right').prepend(tocToggler)
@@ -25,8 +26,9 @@
         });
 
       /* create google cse */
-      $('.toc').after('<br><div style="width: 100%;">' +
-        '<gcse:search></gcse:search></div>');
+      $('.vw-tocHdr').before('<div style="width: 100%;">' +
+        '<gcse:search></gcse:search></div><br>');
+      /* update gcse */
       (function() {
         var cx = '008101672356870034238:sapwemkcsbs';
         var gcse = document.createElement('script');
