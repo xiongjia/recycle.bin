@@ -18,7 +18,7 @@
     <div class="navbar-header"><a class="navbar-brand" href="%root_path%index.html">Recycle Bin</a></div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="%root_path%index.html">Index</a></li>
+        <li><a href="%root_path%index.html">Home</a></li>
         <li><a href="%root_path%about.html">About</a></li>
       </ul>
     </div>

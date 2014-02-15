@@ -1,4 +1,4 @@
-%title Tips (Last update: Thu Feb  6 22:40:20 CST 2014)
+%title Tips
 %toc
 
 = scp =

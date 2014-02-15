@@ -1,4 +1,4 @@
-%title Windows Automation (Last update: Tue Feb  5 19:18:10 CST 2014)
+%title Windows Automation
 %toc
 
 = MS Windows Automation API =

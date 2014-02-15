@@ -1,4 +1,4 @@
-%title MS Powershell (Last update: Sun Feb  2 01:25:26 CST 2014)
+%title MS Powershell
 %toc
 
 = Practice =

@@ -10,6 +10,7 @@ mod:
   # bootstrap
   jsBootstrap: 'bower_components/bootstrap/dist/js/bootstrap.js'
   cssBootstrap: 'bower_components/bootstrap/dist/css/bootstrap.css'
+  dirBootstrap: 'bower_components/bootstrap/dist'
 
 # destination
 dest:

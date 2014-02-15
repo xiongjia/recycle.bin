@@ -1,4 +1,4 @@
-%title Node (Last update: Tue Feb  4 19:18:10 CST 2014)
+%title Node
 %toc
 
 = Setup environment =

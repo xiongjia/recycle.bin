@@ -1,4 +1,4 @@
-%title Index (Last update: Sat Feb  1 18:51:52 CST 2014)
+%title Home
 %template home
 %toc
 

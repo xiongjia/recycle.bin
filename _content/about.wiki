@@ -1,4 +1,4 @@
-%title About (Last update: Sun Feb  2 00:10:04 CST 2014)
+%title About
 %template about
 %toc
 

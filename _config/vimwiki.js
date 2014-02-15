@@ -3,13 +3,15 @@
   'use strict';
   $(document).ready(function() {
 
-    /* TOC menu */
-    function showTOC() {
+    /* right bar */
+    function showRightBar() {
       var toc, tocToggler;
+
+      /* create the TOC Menu */
       tocToggler = $('<div class="toggler" title="TOC">Table of contents</div>');
       toc = $('.toc');
-      toc.wrap('<div class="vw-toc">');
-      $('.vw-toc').prepend(tocToggler)
+      toc.wrap('<div class="vw-right">');
+      $('.vw-right').prepend(tocToggler)
         .delay(100)
         .fadeTo(500, '0.5')
         .hover(function() {
@@ -21,10 +23,23 @@
       tocToggler.click(function() {
           $('div.toc').slideToggle(300);
         });
+
+      /* create google cse */
+      $('.toc').after('<br><div style="width: 100%;">' +
+        '<gcse:search></gcse:search></div>');
+      (function() {
+        var cx = '008101672356870034238:sapwemkcsbs';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
     }
 
     if (window.innerWidth >= 450) {
-      showTOC();
+      showRightBar();
     }
 
     /* update external links */

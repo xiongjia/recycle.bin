@@ -47,6 +47,12 @@ module.exports = function (grunt) {
         cwd: cfg.dest.output + '/',
         src: [ '**/*.html' ],
         dest: cfg.dest.base + '/'
+      },
+      fonts: {
+        expand: true,
+        cwd: cfg.mod.dirBootstrap,
+        src: [ '**/*' ],
+        dest: cfg.dest.base + '/assets'
       }
     },
     connect: {

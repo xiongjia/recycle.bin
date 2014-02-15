@@ -14,7 +14,7 @@
 .content {
   font-size:120%;
   padding-left: 15px;
-  width: 75%;
+  width: 72%;
   line-height: 120%
 }
 
@@ -33,17 +33,17 @@
 
 /* } general style ==================== */
 
-/* { toc style ======================== */
-.vw-toc {
+/* { right bar style ======================== */
+.vw-right {
   position: absolute;
-  width: 180px;
+  width: 208px;
   z-index: 100;
   top: 17%;
   right: 2%;
   display: none;
 }
 
-.vw-toc .toggler {
+.vw-right .toggler {
   text-align: center;
   font-size: 12px;
   background: #808080;
@@ -81,5 +81,14 @@
 .toc a {
   color: #000000;
 }
-/* } toc style ======================== */
+
+td.gsc-clear-button {
+  display: none !important;
+}
+
+div.gsc-control-cse {
+  padding: 1px 1px 1px 1px !important;
+}
+
+/* } right bar style ======================== */
 
