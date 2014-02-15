@@ -1,0 +1,41 @@
+%title Database
+%toc
+
+= PostgreSQL =
+== Setup environment ==
+* Install Database server
+ - OS X 
+  * 官网上得介绍: http://www.postgresql.org/download/macosx/
+  * 通过 Homebew <br>
+    查看 PG 的依赖和特殊安装参数: `brew info postgres` <br>
+    安装 : `brew install postgres` ( 可增加 --enable-dtrace 启用 dtrace )
+ - Linux
+  * /* XXX pending  (￣o￣) . z Z　*/
+ - Windows
+  * /* XXX pending  (￣o￣) . z Z　*/
+* Initialize a database
+ - Create a db cluster <br>
+  * `initdb -U <admin username> directory`  创建一个新的 db cluster 在指定的目录. 可以用 -U 指定 dba 用户名.
+    详细的 `initdb` 参数可以用 `initdb --help` 查看. 也可以在在线手册查看帮助 (每个版本的地址不一样,所以可以
+    上 http://www.postgresql.org/docs/ search )
+  * 可以通过修改 _<directory>/postgresql.conf_ 来修改一些参数
+ - Start db server <br>
+  * 后台启动方式: `pg_ctl -D <db directory> -l <logfile name> -w start`,
+    可选参数 _-w_ 会等待 server 真正启动再完成命令 <br>
+    停止后台运行中的 db server:`pg_ctl -D <db directory> -w stop`
+  * 直接启动: `postgres -D <db directory>`, 会直接启动并把 log 输出到 stdout/stderr 里.<br>
+    需要停止数据库时直接按 CTL + C
+  * Service 启动方式<br>
+    /* XXX pending  (￣o￣) . z Z　*/
+* Clients
+ - psql <br> 
+   安装 database server 时会包括 command line 工具 _psql_ .  <br>
+   `psql <dbname> <username>` 就可以连上数据库. 具体 psql 命令可以在进入 psql 后用 `\?` 查看.
+ - pgAdmin <br>
+   pg 提供的 GUI 管理环境. 
+  * OS X 上需要另外安装, 从 http://www.pgadmin.org/download/macosx.php 找需要的版本, 下载  .dmg 文件.
+    安装到 Application 后启动
+  * Windows  /* XXX pending  (￣o￣) . z Z　*/
+  * Linux 上我一般不开 X 所以从来没有用过.
+
+
