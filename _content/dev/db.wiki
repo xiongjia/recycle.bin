@@ -4,6 +4,9 @@
 = PostgreSQL =
 == Documentation ==
 * 在線手冊: http://www.postgresql.org/docs/ (每個版本的 pg 有對應的入口)
+* 本地手册,在安装 Database server 時會附帶有使用手冊. 缺點是目前沒有找到好的 search 方法。具體位置各操作系統會有區別。
+  (比如: osx 用 Homebew 裝的 version 9.3.2, 在 `/usr/local/Cellar/postgresql/9.3.2/share/doc/postgresql/html`,
+  下可以找到; Windows 上則可以在安裝目錄的下找 `doc\postgresql\html` )
 
 == Setup environment ==
 === Install Database server ===
@@ -19,7 +22,7 @@
 === Initialize a database ===
 * Create a db cluster <br>
  - `initdb -U <admin username> directory`  创建一个新的 db cluster 在指定的目录. 可以用 -U 指定 dba 用户名.
-    详细的 `initdb` 参数可以用 `initdb --help` 查看. 也可以在在线手册查看帮助。
+    详细的 `initdb` 参数可以用 `initdb --help` 查看, 也可以在在线手册搜索一下.
  - 可以通过修改 _<directory>/postgresql.conf_ 来修改一些参数
 * Start db server <br>
  - 后台启动方式: `pg_ctl -D <db directory> -l <logfile name> -w start`,
