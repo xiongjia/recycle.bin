@@ -9,11 +9,14 @@
   <meta http-equiv="pragma" content="no-cache" />
   <meta name="google-site-verification" content="mL05cIfp_zVfUUDm1uf8dj2RjvVWg9lG0QqEde-4r8Y" />
   <title>%title%</title>
-  <link rel="stylesheet" type="text/css" href="%root_path%assets/css/main-v0.1.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main-v0.1.css">
+  <script type="text/javascript">
+    var vimwikiCtx = { enableRightBar: false, enableSyntax: false };
+  </script>
 </head>
 
 <body>
-
+  <!-- content -->
   <div class="content vmwiki404">
     <div class="span8">%content%</div>
   </div> 
@@ -24,7 +27,7 @@
   </div></footer>
 
   <!-- script files -->
-  <script type="text/javascript" src="%root_path%assets/js/main-v0.1.js"></script>
+  <script type="text/javascript" src="/assets/js/main-v0.1.js"></script>
 </body>
 </html>
 

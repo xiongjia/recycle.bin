@@ -18,5 +18,5 @@
   "browser": true,
   "jquery": true,
 
-  "predef" : ["SyntaxHighlighter"]
+  "predef" : ["SyntaxHighlighter", "vimwikiCtx"]
 }

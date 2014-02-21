@@ -1,8 +1,13 @@
 /* vimwik.js */
-(function vimwiki() {
+(function () {
   'use strict';
   $(document).ready(function() {
-
+    var ctx;
+   
+    /* vim wiki context */
+    ctx = (typeof vimwikiCtx !== 'undefined') ? vimwikiCtx :
+      { enableRightBar: true, enableSyntax: true };
+ 
     /* right bar */
     function showRightBar() {
       var toc, tocToggler;
@@ -40,7 +45,8 @@
       })();
     }
 
-    if (window.innerWidth >= 450) {
+    if (ctx.enableRightBar && window.innerWidth >= 450) {
+      /* show right bar */
       showRightBar();
     }
 
@@ -51,8 +57,10 @@
       }
     });
 
-    /* update syntax */
-    SyntaxHighlighter.all();
+    if (ctx.enableSyntax) {
+      /* update syntax */
+      SyntaxHighlighter.all();
+    }
   });
 })();
 
