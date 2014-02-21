@@ -2,7 +2,8 @@
 %toc
 
 = scp =
-* 日常操作:<br>
+secure copy (remote file copy program) 
+* 日常操作:
  - source 放在前面，target 放在后面。
  - `-r` - (Recursively) 表示递归 srouce。
 
@@ -24,6 +25,7 @@
 -----
 
 = Rsync =
+增量同步工具
 * 日常操作:<br>
  `rsync -e "/usr/bin/ssh"  --bwlimit=2000 -av local_dir user@host:remote_dir`<br>
  # local_directory - 本地同步的目录。 <br>
@@ -36,11 +38,12 @@
 -----
 
 = GIT =
-* Pro GIT
+The stupid content tracker 
+* Pro GIT (文档)
  - 下載的github: https://github.com/progit/progit
  - online book en: http://git-scm.com/book/en/
  - online book 中文簡體: http://git-scm.com/book/zh
-* GIT internals
+* GIT internals (文档)
  - 內容比 Pro GIT 簡潔一些
  - 下載的github: https://github.com/pluralsight/git-internals-pdf
 * 備忘(有時自己會忘記的 commands ): 
@@ -48,4 +51,26 @@
    `git push origin --delete <branchName>`
  - 清除本地無效的 remote branch <br>
    `git remote prune origin`
+
+-----
+
+= Jekyll =
+Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
+* Setup environment <br>
+ 代碼可以從 https://github.com/jekyll/jekyll 上找到。<br>
+ 配置和安裝可以參考: http://jekyllbootstrap.com/ or https://github.com/plusjade/jekyll-bootstrap
+* 字符集問題<br>
+ 在 Windows + Ruby 的環境下，如果對應的 post 裏有中文的話可能會造成
+ ` jekyll server` 不能正常啓動。<br>
+ 目前的 workaround 是設置 *RUBYOPT* 環境變量增加 _-Ku_ 的 option 。
+ 比如:<br>
+ Windows console: `set RUBYOPT=-Ku` , Windows Powershell: `$env:RUBYOPT="-Ku"` <br>
+ Unix ( Unix 上應該不需要,從來沒有在 Linux 或 os x 上遇到過這個問題): `export RUBYOPT=-Ku` <br>
+* 日常使用
+ - create new post <br>
+   對應的 rake task 是 `rake post title="Hello World"` 
+ - launch server <br>
+   `jekyll server  [--draft]`。加了 _--draft_ 會吧 draft 目錄下的 post 也生成靜態網頁。
+
+-----
 

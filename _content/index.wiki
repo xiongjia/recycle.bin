@@ -12,7 +12,6 @@
  * [[dev/node|Node]] 
  * [[dev/ps1|PowerShell]] 
  * [[dev/win-uia|Windows UI Automation]] 
- * [[dev/jekyll|Jekyll]] 
 
 == MISC ==
  * [[dev/tips|Tips]] 
