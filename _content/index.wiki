@@ -8,19 +8,23 @@
 
 = Technology =
 == DEV ==
- * [[dev/util|Utility]] 
- * [[dev/node|Node]] 
- * [[dev/ps1|PowerShell]] 
- * [[dev/win-uia|Windows UI Automation]] 
-
+此分類用於記錄開發用到的基礎知識或者 Framework; Open Source 的總結或備忘:
+ * [[dev/util|Utility]] - 基礎知識，以及日常开发任务的備忘
+ * [[dev/node|Node]] - Node.js 日常備忘或總結
+ * [[dev/ps1|PowerShell]] - MS Windows PowerShell 的備忘或總結 
+ * [[dev/win-uia|Windows UI Automation]] - MS UIA ( MS 提供的 GUI 測試接口) 的備忘或總結
+ * [[dev/jmeter|Apache JMeter]] - Apache 開發的用於 Load testing 的性能測試工具 
+ 
 == MISC ==
- * [[dev/tips|Tips]] 
- * [[dev/db|Database]] 
+此分類用於記錄一些輔助工具的用法和其他一些無法分類的東西:
+ * [[dev/tips|Tips]] - 日常工具的使用方法
+ * [[dev/db|Database]]  - 用到過的數據庫
 
 -----
 
 = General =
 == 日常 ==
- * [[general/emoticon|顏文字]] 
- * [[general/txt|段子/轉載]]
+用於記錄三次元的生活:
+ * [[general/emoticon|顏文字]] - 日常顏文字備用，以及一些工具
+ * [[general/txt|段子/轉載]] - 杂七杂八得文字
 

@@ -72,5 +72,4 @@ Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
  - launch server <br>
    `jekyll server  [--draft]`。加了 _--draft_ 會吧 draft 目錄下的 post 也生成靜態網頁。
 
------
 
