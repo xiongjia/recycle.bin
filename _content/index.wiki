@@ -13,7 +13,7 @@
  * [[dev/node|Node]] - Node.js 日常備忘或總結
  * [[dev/ps1|PowerShell]] - MS Windows PowerShell 的備忘或總結 
  * [[dev/win-uia|Windows UI Automation]] - MS UIA ( MS 提供的 GUI 測試接口) 的備忘或總結
- * [[dev/jmeter|Apache JMeter]] - Apache 開發的用於 Load testing 的性能測試工具 
+ * [[dev/jmeter|JMeter]] - 由Apache 組織維護并開發的用於 Load testing 的性能測試工具 
  
 == MISC ==
 此分類用於記錄一些輔助工具的用法和其他一些無法分類的東西:

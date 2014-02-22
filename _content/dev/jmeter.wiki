@@ -1,12 +1,68 @@
 %title JMeter 
 %toc
 
+[[https://jmeter.apache.org/|Apache JMeter]] 用於 Load testing 的性能測試工具。
+官方描述: <br>
+The Apache JMeter™ desktop application is open source software, a 100% pure Java application designed to load test functional behavior and measure performance. It was originally designed for testing Web Applications but has since expanded to other test functions.
 = Setup environment =
+== Preparation ==
+* JMeter 是一個 pure Java application 所以在一切之前，一定要先準備好 Java Runtime。
+  目前JMeter 2.11 的要求是 Java 6 or later。
+* 對於其他環境基本沒太大要求，應該是 Java runtime 可以工作的地方基本就可以運行 JMeter。
+  官方 Wiki 有列出過所有測試過的系統: 
+  http://wiki.apache.org/jmeter/JMeterAndOperatingSystemsTested
+* 根據實際測試的類型，可能會需要一些特殊的依賴或配置。<br>
+  比如: JDBC Driver 需要被配置,如果是測試 Database; SSL 環境需要被配置,如果用到了 SSL。<br>
+  具體的可以讀一下 JMeter User manual 第二章 Getting Started 中 "Requirements" 一小節的描述。
+  https://jmeter.apache.org/usermanual/get-started.html
 
-= Documentation & Resources =
+-----
 
-= Usage =
+== Installation ==
+可以有至少兩種安裝方式: 從 Binaries Release 安裝; 或者從源代碼安裝。<br>
+如果是開發腳本或者學習時，可以從源代碼安裝。如果是實際部署應該直接從 Binaries Release 安裝。
 
+=== Install from Binaries ===
+* 從 http://jmeter.apache.org/download_jmeter.cgi 下載最新的 Binaries 包。
+* 解壓到目錄就可以使用。(最好在目錄名裏保留 version number 以便升級)
+* 如果以 GUI 方式啓動,則只需要運行 bin\jmeter ( windows 上是 bin\jmeter.bat ) <br>
+  這個腳本會組裝參數隨後啓動 bin\ApacheJMeter.jar。
+  運行前要保證 Java 環境正確,比如: JAVA_HOME
 
-= Source code =
+=== Install from source code ===
+* 需要準備 Java 開發環境，以及 ANT 
+  (目前 JMeter 2.11 還是用 ANT 做的 build，可見他不太更新不太活躍)
+* 可以從 github 的 Apache mirror 去 clone https://github.com/apache/jmeter
+* 在 source code 目錄，可以看到 ANT 的 build.xml 。
+  可以用 `ant -projecthelp` 看到相关 ant tasks 的描述。
+* 第一次 build 需要先運行: `ant download_jars` 這個 Task 會去下載需要的 3rd party 包。
+* build JMeter 的 Task 是 `ant [inatll]`
+* 建議把文檔也編譯出來，可以方便自己查看。對應的 Task: `ant docs-all` <br>
+  如果不想編譯所有則至少把 printable 和 api 這兩個 build 出來。
+  (因為 JMeter GUI 上按 help button 時會使用到這些文檔)
+
+-----
+
+= Documents and Resources =
+== Apache Documents ==
+* 在線文檔: http://jmeter.apache.org/usermanual/
+* 本地文檔: 'printable_docs' 目錄下有完整的 user manual (在目錄裏還包含一些 demo 的 .jmx 和幾個 .pdf 文檔，都有相當的參考意義); 'docs' 目錄下有 api 文檔; 
+* Apache Wiki http://wiki.apache.org/jmeter/
+
+== Other ==
+* [[http://blazemeter.com/|BlazeMeter]] (JMeter 雲服務的供應商),
+  在他們的 knowledge base 裏有不少 JMeter 文檔和使用經驗。
+  其中還包括了一些非常適合初學者的視頻教程.具體可以參考: <br>
+  BlazeMeter JMeter Tutorials:
+  http://community.blazemeter.com/knowledgebase/topics/10018-jmeter-tutorials
+
+== Plugins ==
+一些第三方開發的 plugins:
+* http://jmeter-plugins.org/  <br>
+  這個裏面包括了很多個,代碼可以在 Github 上找到:  https://github.com/undera/jmeter-plugins
+  (大部份我還沒有用過，等我用過後再總結一下)
+* JMeter Maven Plugin: http://jmeter.lazerycode.com/ <br>
+  可以讓你運行 JMeter tests 在你做 build 時.
+  官方 wiki 對這 3rd party plugin 有介紹: http://wiki.apache.org/jmeter/JMeterMavenPlugin <br>
+  Github 上也可以找到: https://github.com/Ronnie76er/jmeter-maven-plugin
 
