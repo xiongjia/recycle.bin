@@ -13,18 +13,19 @@
  * [[dev/node|Node]] - Node.js 日常備忘或總結
  * [[dev/ps1|PowerShell]] - MS Windows PowerShell 的備忘或總結 
  * [[dev/win-uia|Windows UI Automation]] - MS UIA ( MS 提供的 GUI 測試接口) 的備忘或總結
- * [[dev/jmeter|JMeter]] - 由Apache 組織維護并開發的用於 Load testing 的性能測試工具 
+ * [[dev/jmeter|JMeter]] - JMeter 相關得整理匯總
  
 == MISC ==
 此分類用於記錄一些輔助工具的用法和其他一些無法分類的東西:
  * [[dev/tips|Tips]] - 日常工具的使用方法
- * [[dev/db|Database]]  - 用到過的數據庫
+ * [[dev/db|Database]]  - 數據庫操作備忘
+ * [[dev/edit|Editors]]  - 編輯器使用備忘
 
 -----
 
 = General =
 == 日常 ==
-用於記錄三次元的生活:
+此分類用於記錄三次元的生活:
  * [[general/emoticon|顏文字]] - 日常顏文字備用，以及一些工具
  * [[general/txt|段子/轉載]] - 杂七杂八得文字
 
