@@ -53,6 +53,10 @@ module.exports = function (grunt) {
         cwd: cfg.mod.dirBootstrap,
         src: [ '**/*' ],
         dest: cfg.dest.base + '/assets'
+      },
+      conf: {
+        src: [ '_config/_htaccess' ],
+        dest: cfg.dest.base + '/.htaccess'
       }
     },
     connect: {
