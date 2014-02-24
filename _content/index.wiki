@@ -25,11 +25,11 @@
 
 = General =
 == 日常 ==
-此分類用於記錄 3 次元的数据:
+此分類用於記錄 3 次元的數據:
  * [[general/emoticon|顏文字]] - 日常顏文字備用，以及一些工具
  * [[general/txt|段子/轉載]] - 杂七杂八得文字
 
 == Games ==
-此分類用於記錄 2.5 次元的数据:
+此分類用於記錄 2.5 次元的數據:
  * [[game/minecraft|Minecraft]] - Minecraft 資料收集 
 
