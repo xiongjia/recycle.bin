@@ -34,6 +34,8 @@ pre
   font-family: 'Lucida Console', 'Courier New', Courier, monospace;
   -webkit-transition: all 0.45s linear;
      -moz-transition: all 0.45s linear;
+  -moz-border-radius: 5px;
+       border-radius: 5px;
 }
 
 /* } general style ==================== */
@@ -65,8 +67,8 @@ pre
   overflow-x: hidden;
   border: 1px solid #0;
   color: #0;
-  -moz-border-radius: 0 0 1px 1px;
-       border-radius: 0 0 1px 1px;
+  -moz-border-radius: 0 0 5px 5px;
+       border-radius: 0 0 5px 5px;
   background: #c0c0c0;
   padding: 12px;
   -webkit-box-shadow: 0 1px 8px #000;
