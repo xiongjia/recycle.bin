@@ -70,6 +70,7 @@ Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
  - create new post <br>
    對應的 rake task 是 `rake post title="Hello World"` 
  - launch server <br>
-   `jekyll server  [--draft]`。加了 _--draft_ 會吧 draft 目錄下的 post 也生成靜態網頁。
-
+   `jekyll server [--watch] [--draft]`。<br>
+   _--draft_ 會吧 draft 目錄下的 post 也生成靜態網頁。<br>
+   _--watch_ 會吧監視 post 的改動並自動更新到網站。
 
