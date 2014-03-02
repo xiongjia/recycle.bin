@@ -45,9 +45,9 @@
       })();
     }
 
-    if (ctx.enableRightBar && window.innerWidth >= 450) {
-      /* show right bar */
-      showRightBar();
+    if (ctx.enableSyntax) {
+      /* update syntax */
+      SyntaxHighlighter.all();
     }
 
     /* update external links */
@@ -57,9 +57,9 @@
       }
     });
 
-    if (ctx.enableSyntax) {
-      /* update syntax */
-      SyntaxHighlighter.all();
+    if (ctx.enableRightBar && window.innerWidth >= 450) {
+      /* show right bar */
+      showRightBar();
     }
   });
 })();
