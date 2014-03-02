@@ -19,7 +19,7 @@ vim 和 emacs 在使用前，最好先閱讀一些書籍或手冊。<br>
 * Online VIM wiki http://vim.wikia.com/
 
 == My vimrc ==
-正在用的 vimrc 基本上很基礎, 也沒有用到像 Vundle 這種插件管理。
+正在用的 vimrc 基本上很基礎, 也沒有用到像[[https://github.com/gmarik/Vundle.vim|Vundle]] 這種插件管理。
 * my vimrc on github https://github.com/xiongjia/dotfiles/tree/master/vim 
   - 安裝時可以通過上一级目录的 Rakefile 
   - 目前可能不能工作於 MS Windows 環境。<br>
@@ -28,9 +28,19 @@ vim 和 emacs 在使用前，最好先閱讀一些書籍或手冊。<br>
     另外還有些 Python, nodejs 等的依賴)
 
 == Tips ==
-* /* XXX pending  (￣o￣) . z Z　*/
-
-== Useful Plugins ==
-=== Vimwiki ===
-* /* XXX pending  (￣o￣) . z Z　*/
+=== swap file ===
+swap file 是 vim 用来存储你修改中的内容的一个文件。
+* 常看帮助 `:help swap`  
+* 常看当前文件的 swap file name `:swapname` 或者 `:sw`
+* 关闭 swap file `:set noswapfile`; 再次开启 swap file `:set noswapfile!` 。 <br>
+  关闭 swap 会导致 vim 只把改动存放在内存中。此期间如果 vim crash 了,可能会导致修改丢失。<br>
+  大多数时候应该开启 swap 少数特别需求时可以临时关闭。
+* swap file 位置:
+ - 默认设置中, swap 文件会和被编辑文件放在同一个目录。并且 vim 会增加 "." 前缀和 ".swp" 后缀。<br>
+   例如:  `~/test.c` 它的默认 swap file 时 `~/.test.c.swp`
+ - 很多时候不想在工作目录中产生临时文件 (如:在 git/svn 目录中不希望不小心提交临时文件).<br>
+   这种情况下,可以配置 vim 让其在固定路径生成 swap。<br>
+   如: `:set directory=$HOME/.vim/swap-files//` 此 set 命令会使所有 swap 文件生
+   成到 `~/.vim/swap-files` 目录下，并以被编辑文件的 full filename 作为命名依据。
+   可以将 `set directory=$HOME/.vim/swap-files//` 加入 vimrc 使其默认生效。
 
