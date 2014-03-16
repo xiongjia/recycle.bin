@@ -19,7 +19,7 @@ vim 和 emacs 在使用前，最好先閱讀一些書籍或手冊。<br>
 * Online VIM wiki http://vim.wikia.com/
 
 == My vimrc ==
-正在用的 vimrc 基本上很基礎, 也沒有用到像[[https://github.com/gmarik/Vundle.vim|Vundle]] 這種插件管理。
+正在用的 vimrc,  也沒有用到像[[https://github.com/gmarik/Vundle.vim|Vundle]] 這種插件管理(因為覺得那樣不好維護)。
 * my vimrc on github https://github.com/xiongjia/dotfiles/tree/master/vim 
   - 安裝時可以通過上一级目录的 Rakefile 
   - 目前可能不能工作於 MS Windows 環境。<br>
@@ -30,17 +30,47 @@ vim 和 emacs 在使用前，最好先閱讀一些書籍或手冊。<br>
 == Tips ==
 === swap file ===
 swap file 是 vim 用来存储你修改中的内容的一个文件。
-* 常看帮助 `:help swap`  
-* 常看当前文件的 swap file name `:swapname` 或者 `:sw`
-* 关闭 swap file `:set noswapfile`; 再次开启 swap file `:set noswapfile!` 。 <br>
-  关闭 swap 会导致 vim 只把改动存放在内存中。此期间如果 vim crash 了,可能会导致修改丢失。<br>
-  大多数时候应该开启 swap 少数特别需求时可以临时关闭。
+* 查看幫助 `:help swap`  
+* 查看當前的 swap file name `:swapname` 或者 `:sw`
+* 關閉 swap file `:set noswapfile`; 再次啟用 swap file `:set noswapfile!` 。 <br>
+  關閉 swap 會導致 vim 把改動放在內存中。此期間如果 vim crash ,會導致修改丟失。<br>
+  平時應該啟用 swap, 特殊需要時可以零時關閉。
 * swap file 位置:
- - 默认设置中, swap 文件会和被编辑文件放在同一个目录。并且 vim 会增加 "." 前缀和 ".swp" 后缀。<br>
-   例如:  `~/test.c` 它的默认 swap file 时 `~/.test.c.swp`
- - 很多时候不想在工作目录中产生临时文件 (如:在 git/svn 目录中不希望不小心提交临时文件).<br>
-   这种情况下,可以配置 vim 让其在固定路径生成 swap。<br>
-   如: `:set directory=$HOME/.vim/swap-files//` 此 set 命令会使所有 swap 文件生
-   成到 `~/.vim/swap-files` 目录下，并以被编辑文件的 full filename 作为命名依据。
-   可以将 `set directory=$HOME/.vim/swap-files//` 加入 vimrc 使其默认生效。
+ - 默認設置中, swap file 會和被編輯文件放在同一個目錄。並且 vim 會增加 "." 前綴和 ".swp" 後綴。<br>
+   如:  `~/test.c` 的默認 swap file 是 `~/.test.c.swp`
+ - 很多時候不想在工作目錄中產生臨時文件(如:在 git/svn 目錄中不希望有臨時文件被不小心提交).<br>
+   有這種需求的話,可以配置 vim 讓其在固定目錄生成 swap。<br>
+   如: `:set directory=$HOME/.vim/swap-files//` 此 set 會使所有 swap 文件生成到 `~/.vim/swap-files` 下，
+   并以被編輯文件的 full filename 作為命名依據。
+   可以將 `set directory=$HOME/.vim/swap-files//` 加入 vimrc 使其默認生效。
+
+=== Search and replace ===
+vim 中可以通過 `:substitute` 命令來查找替換。
+(如果是 GUI 版本的 vim 也可以使用 `:promptrepl`,來調用 GUI 提供的 Search/Replace dialog )
+* 查看幫助 `:help :substitute` , `:help :promptrepl`
+* Online vim wiki: http://vim.wikia.com/wiki/Search_and_replace
+* 基本使用: 
+ - 如 vim document 中列出的, substitute 語法: `:[range]s[ubstitute]/{pattern}/{string}/[flags] [count]`
+ - `[range]` 代表，查找替換的範圍
+  # `.` 或者沒有 range ，代表當前行。如: `:s/{pattern}/{string}/[flags]`  or `:.s/{pattern}/{string}/[flags]`
+  # 同理 `$` 表示最後一行.
+  # `%` 代表全文即當前 buffer。`:%s/{pattern}/{string}/[flags]` 
+  # 一個數字,代表範圍的具體行。如: 僅限第三行 `:3s/{pattern}/{string}/[flags]` 
+  # 可以用 `,` 表示某個範圍。如: 第一行至第三行 `:1,3s/{pattern}/{string}/[flags]`
+  # range 本身也可以是一個 pattern, 代表 匹配 pattern 的行。
+    如: 所有 'baz' 開頭的行 `:g/^baz/s/{pattern}/{string}/[flags]`
+  # 實用的組合, 比如: 
+   - 當前行往下的3行:  `:.+3s/{pattern}/{string}/[flags]` (同理 `.-3` 是往上的3行)
+   - 從第一行至當前行: `:0,.s/{pattern}/{string}/[flags]` (同理 `.,$` 當前行至最後行) 
+  # 更多的說明，請參看 vim 手冊 `:help cmdline-ranges`
+ - {pattern} 代表要替換的字符
+  # 這個可以參看 vim 手冊 `:help pattern`. 
+  # TODO 等下次有空在整理些例子  m( __　__ )m　
+ - {string} 要替換成的字符串
+  # 基本使用,如: `%s/abc/123/gci` 把所有的 "abc" 替換成 "123"
+  # 如果是刪除則直接不填寫，如: `%s/abc//gci` 相當于把所有的 "abc" 刪除.
+ - [flags] 代表替換的參數
+  # 這個可以參看 vim 手冊 `:help :s_flags` 
+  # 常用组合 'gci' , 比如: `%s/abc/123/gci` 這裡的 'g' 代表替換所有匹配到地方, 
+    'c' 代表每次替換需要用戶確認, 'i' 代表匹配时忽略大小写。
 
