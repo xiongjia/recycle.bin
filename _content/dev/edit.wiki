@@ -64,13 +64,17 @@ vim 中可以通過 `:substitute` 命令來查找替換。
    - 從第一行至當前行: `:0,.s/{pattern}/{string}/[flags]` (同理 `.,$` 當前行至最後行) 
   # 更多的說明，請參看 vim 手冊 `:help cmdline-ranges`
  - {pattern} 代表要替換的字符
-  # 這個可以參看 vim 手冊 `:help pattern`. 
-  # TODO 等下次有空在整理些例子  m( __　__ )m　
+  # 关于這個可以參看 vim 手冊 `:help pattern`. 
  - {string} 要替換成的字符串
-  # 基本使用,如: `%s/abc/123/gci` 把所有的 "abc" 替換成 "123"
-  # 如果是刪除則直接不填寫，如: `%s/abc//gci` 相當于把所有的 "abc" 刪除.
+  # 基本使用,如: `%s/123/123/gci` 把所有的 "123" 替換成 "123"
+  # 如果是刪除則直接不填寫，如: `%s/123//gci` 相當于把所有的 "123" 刪除.
  - [flags] 代表替換的參數
   # 這個可以參看 vim 手冊 `:help :s_flags` 
-  # 常用组合 'gci' , 比如: `%s/abc/123/gci` 這裡的 'g' 代表替換所有匹配到地方, 
+  # 常用组合 'gci' , 比如: `%s/123/123/gci` 這裡的 'g' 代表替換所有匹配到地方, 
     'c' 代表每次替換需要用戶確認, 'i' 代表匹配时忽略大小写。
+
+* 在多個 buffer 中做替換.
+ - 可以參考 vim online wiki : http://vim.wikia.com/wiki/Search_and_replace_in_multiple_buffers
+ - 基本方法是使用 `bufdo` 在多個 buffer 中執行 substitute 。
+   如: `:bufdo! %s/pattern/replace/gec` <br>
 
