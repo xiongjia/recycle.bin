@@ -78,3 +78,22 @@ vim 中可以通過 `:substitute` 命令來查找替換。
  - 基本方法是使用 `bufdo` 在多個 buffer 中執行 substitute 。
    如: `:bufdo! %s/pattern/replace/gec` <br>
 
+
+=== Copy, cut and Past ===
+* 基礎的 Copy, cut and past，應該是所有人都會的日常操作。可以參考：
+ - Online wiki: http://vim.wikia.com/wiki/Copy,_cut_and_paste
+* Command-line mode 下的 copy past ( Vim 下方輸入命令的小窗口)
+ - 首先說明一下 vim 的 Command-line mode.
+  * 可以參考手冊 `:help Command-line-mode` , 在 command line mode 下可以輸入 vim 命令或者 search patterns。
+    輸入命令時用 `:` 進入; 輸入 search pattern  時用 `/` 。
+ - Copy 內容到 command-line mode
+  * 首先把要複製的內容放入 vim register。比如: 選中 content; 按 'y'。 
+    這樣 選中內容就被放入了默認 register '*' 中。可以用 `:reg` 命令來確認這一點。
+  * 進入 command-line-mode。 再按  `CTL + r`; `*` 。
+    表示將 '*' register 中的內容複製到 command line 
+ - 反之從 command-line mode 中的內容 copy 到 buffer 
+  * 基本時利用 command-line-window 來做的 `:help command-line-window`,
+    在 command-line-window 中可以像普通 buffer 一樣操作。
+  * `q:` 或者 `q/` 可以進入 command-line-window。前者是用來進入執行命令的 command,
+    或者是進入 search 的 command。之後和普通 buffer 一樣操作就可以了。
+
