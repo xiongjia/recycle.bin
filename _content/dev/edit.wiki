@@ -95,5 +95,5 @@ vim 中可以通過 `:substitute` 命令來查找替換。
   * 基本時利用 command-line-window 來做的 `:help command-line-window`,
     在 command-line-window 中可以像普通 buffer 一樣操作。
   * `q:` 或者 `q/` 可以進入 command-line-window。前者是用來進入執行命令的 command,
-    或者是進入 search 的 command。之後和普通 buffer 一樣操作就可以了。
+   後者是進入 search 的 command。之後和普通 buffer 一樣操作就可以了。
 
