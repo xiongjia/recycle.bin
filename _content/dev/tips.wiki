@@ -6,7 +6,7 @@ secure copy (remote file copy program)
 * 日常操作:
  - source 放在前面，target 放在后面。
  - `-r` - (Recursively) 表示递归 srouce。
-
+ 
  | Upload file     | `scp SourceFile user@host:directory/TargetFile`        |
  | Upload folder   | `scp -r SourceFolder user@host:directory/TargetFolder` |
  | Download file   | `scp user@host:directory/SourceFile TargetFile`        |
