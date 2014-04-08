@@ -33,7 +33,7 @@ secure copy (remote file copy program)
     #!/usr/bin/expect -f
     
     # connect via scp
-    spawn scp "user@host:directory/SourceFile" TargetFile
+    spawn  scp "user@host:directory/SourceFile" TargetFile
     #######################
     expect {
       -re ".*es.*o.*" {
@@ -45,7 +45,6 @@ secure copy (remote file copy program)
       }
     }
 }}}
-
 
 -----
 
