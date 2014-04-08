@@ -36,12 +36,12 @@ secure copy (remote file copy program)
     spawn  scp "user@host:directory/SourceFile" TargetFile
     #######################
     expect {
-      -re ".*es.*o.*" {
-        exp_send "yes\r"
+      -re  ".*es.*o.*" {
+        exp_send  "yes\r"
         exp_continue
       }
-      -re ".*sword.*" {
-        exp_send "Your PASSWORD\r"
+      -re  ".*sword.*" {
+        exp_send  "Your PASSWORD\r"
       }
     }
 }}}
