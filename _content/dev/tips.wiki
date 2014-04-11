@@ -23,28 +23,29 @@ secure copy (remote file copy program)
  缺点很多：1.需要把 password 写在脚本里 2. 不是所有平台都有 sshpass, 比如：osx 上目前版本的 brew 便无法安装 sshpass。
  - 通过 Expect 自动登录。Expect 是一个经典的 Unix Shell automation tool。<br>
    如果系統是 Unix (e.g. Linux, OS X) 又不想使用证书登录方式,系统又不能使用 sshpass (比如: OS X)。
-   可以考虑用这种方式。举例来说可以创建一下 `scp_auto.sh` 以达到自动上传的目的。 <br>
-   简单说明一下，下面的脚本:
-   - `spawn scp "user@host:directory/SourceFile" TargetFile` 根据需要创建一个 scp process
-   - `-re ".*sword.*"` 表示匹配到屏幕上出现 "Password:" 之类的输入提示，
+   可以考虑用这种方式。举例来说可以一个下面这个 sample 为内容的 `scp_auto.sh` 以达到自动上传的目的。
+   先简单说明:
+    - `spawn scp "user@host:directory/SourceFile" TargetFile` 根据需要创建一个 scp process
+    - `-re ".*sword.*"` 表示匹配到屏幕上出现 "Password:" 之类的输入提示，
      这是用 exp_send 把你的 password 加\r 发送到屏幕去。
-   - `-re ".*es.*o.*"` 表示匹配到 "YES or NO" 之类的提示时，自动输入 yes。
-{{{class="brush: shell; gutter: false; toolbar: false;"
-    #!/usr/bin/expect -f
-    
-    # connect via scp
-    spawn  scp "user@host:directory/SourceFile" TargetFile
-    #######################
-    expect {
-      -re  ".*es.*o.*" {
-        exp_send  "yes\r"
-        exp_continue
-      }
-      -re  ".*sword.*" {
-        exp_send  "Your PASSWORD\r"
-      }
-    }
-}}}
+    - `-re ".*es.*o.*"` 表示匹配到 "YES or NO" 之类的提示时，自动输入 yes。
+    {{{class="brush: shell; gutter: false; toolbar: false;"
+        #!/usr/bin/expect -f
+        
+        # launch the scp process
+        spawn  scp "user@host:directory/SourceFile" TargetFile
+
+        # expect settings
+        expect {
+          -re  ".*es.*o.*" {
+            exp_send  "yes\r"
+            exp_continue
+          }
+          -re  ".*sword.*" {
+            exp_send  "Your PASSWORD\r"
+          }
+        }
+    }}}
 
 -----
 
