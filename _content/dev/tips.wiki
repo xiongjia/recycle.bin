@@ -16,7 +16,7 @@ secure copy (remote file copy program)
  - [[http://www.chiark.greenend.org.uk/~sgtatham/putty/|Putty]] 提供了  Windows 版 SSH client 的实现。`pscp.exe` 可以实现与 scp 一样的功能。
  - 安装 Cygwin or Mingw 并选上对应的 ssh 组件。
 * Auto login <br>
- 有时會把 scp 写在 script 里自动执行。不希望每次输入口令。多種解決辦法:
+ 有时會把 scp 写在 script 里自动执行。不希望每次输入口令, 希望能夠自動登錄。有多種解決辦法:
  - 使用 ssh 证书认证。 在 scp 命令里加入 `-i 'private key file'` (应该是最佳选择)
  - 使用 sshpass 如:
  `sshpass -p "password" scp -r user@host:directory/SourceFolder TargetFolder` <br>
@@ -91,6 +91,38 @@ Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
  比如:<br>
  Windows console: `set RUBYOPT=-Ku` , Windows Powershell: `$env:RUBYOPT="-Ku"` <br>
  Unix ( Unix 上應該不需要,從來沒有在 Linux 或 os x 上遇到過這個問題): `export RUBYOPT=-Ku` <br>
+* 基本配置
+ - 安裝 Theme <br>
+   Jekyll 的 rake 文件提供了安裝&切換 Theme 的功能。基本用法:
+   - Install: `rake theme:install git="https://github.com/jekyllbootstrap/theme-the-program.git"`
+   - Switch: `rake theme:switch name="the-program"`
+   - 可以上 http://jekyllthemes.org/  找到更多 Theme
+   - jekyllbootstrap 上也有一份 Theme 的使用說明 http://jekyllbootstrap.com/usage/jekyll-theming.html
+ - Syntax Highlighter <br>
+   支持語法高亮的方法應該不至一種。最方便的是使用 [[http://pygments.org/|pygments]] 。啟用它需要做以下改動:
+   # _config.yml 中啟用 pygments (默認狀態應該就是啟用的). 
+     可以增加 `pygments: true` 在 _config.yml 裏來啟用它。
+   # 安裝 [[http://pygments.org/|pygments]] , 需要先安裝 python 再用 pip 去安裝 Pygments 包就可以了。
+   # 用 pygments 生成 Syntax Highlighter 的 css 文件. pygments 提供了多種 style, 可以先上 http://pygments.org/demo/ 找一個自己中意的。
+     比如: `pygmentize -S emacs -f html > pygments.css` 表生成 _emacs_ 風格的 pygments.css。 
+   # 再 Jekyll 的 layouts 裏引用對應得 pygments.css:
+    - copy pygments.css 到 Jekyll 得 _assets_ 目錄
+    - 在對因得 default page 裏加入 css 引用，這可能牽涉到當前所用得 Theme。比如:我在用 twitter theme 則對應得文件是:
+      `_includes/JB/themes/twitter/default.html`. 在這個文件 css 引用得最後增加`<link href="{{ ASSET_PATH }}/css/pygments.css" rel="stylesheet" type="text/css">`
+   # 在對應得 md 文件中增加 Syntax 設置.比如下面這個 sample 表示新增 JavaScript 語法高亮。
+{{{
+{% highlight javascript %}
+  NativeModule.wrap = function(script) {
+    return NativeModule.wrapper[0] + script + NativeModule.wrapper[1];
+  };
+
+  NativeModule.wrapper = [
+    '(function (exports, require, module, __filename, __dirname) { ',
+    '\n});'
+  ];
+{% endhighlight %}
+}}}
+
 * 日常使用
  - create new post <br>
    對應的 rake task 是 `rake post title="Hello World"` 
@@ -98,4 +130,4 @@ Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
    `jekyll server [--watch] [--draft]`。<br>
    _--draft_ 會把 draft 目錄下的 post 也生成靜態網頁。<br>
    _--watch_ 會監視 post 的改動並自動更新到網站。
- 
+
