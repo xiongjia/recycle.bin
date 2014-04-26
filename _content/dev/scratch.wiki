@@ -1,0 +1,42 @@
+%title Scratch
+%toc
+
+日常的一些草稿，代碼片段。
+ * 基本上把代碼共享在了我的 gist 上: https://gist.github.com/xiongjia
+ * 如果是需要編譯的，一般會寫一個 CMakeLists.txt ; clone 下來後可以用 cmake 直接編譯
+
+= General =
+== Singly linked list ==
+ * 一些基本的單向鏈表測試
+  - gist: https://gist.github.com/xiongjia/11311784
+  - `list_get_middle_node`: <br>
+    得到 linked list 得中間點參看, function `list_get_middle_node`。<br>
+    應該是一個比較基本得方法，用一個 `fast_prt` 和一個 `slow_ptr`，
+    fast_prt 每次推進 2 格, slow_ptr 一次推進一格。等 fast_ptr 到頂時，
+    slow_ptr 就是中間。( 同樣得方法也可以用於取 1/3 點, 1/4 點等等)
+
+= Boost =
+== property_tree ==
+property_tree 有很多作用，可以解析各種類型的格式的輸入，比如: xml, json, ini 等。
+ * 一個簡單的 .ini 讀取, 解析。
+  - gist: https://gist.github.com/xiongjia/6045153
+  - 代碼上需要注意的就是 utf8 的處理: 用到了 `std::wifstream`;`std::wstring` 等。
+  - CMake 中需要注意的是,增加了基本的Boost 外還增加了`program_options` 。
+    只是因為用到了`boost::program_options::detail::utf8_codecvt_facet()`。
+
+= Node =
+== Dump node v8 heap ==
+通過 node-heapdump 來 dump 當前得 v8 狀態，隨後可以通過 Chrome developer tool 來檢測這個 dump 文件。
+ * gist: https://gist.github.com/xiongjia/7688374
+ * 需要在用前裝 node-heapdump: `npm install node-heapdump`
+== node stream ==
+通過從 require('stream').Transform 繼承得方式實現，stream 式樣得協議解析。
+ * gist: https://gist.github.com/xiongjia/6867670
+ * protocol 得格式和一些注意事項已經被寫在代碼註解裏了。
+
+= PowerShell =
+== MS UIAutomation ==
+一個簡單得 powershell script, 通過 .Net 接口調用 MS UI Automation 來操作啟動得 calc.exe
+ * gist: https://gist.github.com/xiongjia/6749035
+ * 這個 script 我只在 Windows 7 上測試過。
+

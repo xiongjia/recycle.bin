@@ -12,6 +12,7 @@
  * [[dev/tips|Tips]] - 日常工具的使用方法
  * [[dev/db|Database]]  - 數據庫操作備忘
  * [[dev/edit|Editors]]  - 編輯器使用備忘
+ * [[dev/scratch|Scratch]]  - 一些草稿，代碼片段。
 
 == DEV ==
 此分類用於記錄開發用到的基礎知識或者 Framework; Open Source 的總結或備忘:
