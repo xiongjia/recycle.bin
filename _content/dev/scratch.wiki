@@ -11,9 +11,10 @@
   - gist: https://gist.github.com/xiongjia/11311784
   - `list_get_middle_node`: <br>
     得到 linked list 得中間點參看, function `list_get_middle_node`。<br>
-    應該是一個比較基本得方法，用一個 `fast_prt` 和一個 `slow_ptr`，
+    應該是一個比較基本雙指針方法，用一個 `fast_prt` 和一個 `slow_ptr`，
     fast_prt 每次推進 2 格, slow_ptr 一次推進一格。等 fast_ptr 到頂時，
-    slow_ptr 就是中間。( 同樣得方法也可以用於取 1/3 點, 1/4 點等等)
+    slow_ptr 就是中間。( 同樣得方法也可以用於取 1/3 點, 1/4 點等等, 
+    也可以用於得到倒數第 N 個節點，比如 fast_ptr 前進 N 格, slow_ptr 前进一格)
 
 = Boost =
 == property_tree ==
