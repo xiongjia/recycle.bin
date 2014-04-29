@@ -17,6 +17,10 @@
     也可以用於得到倒數第 N 個節點，比如 fast_ptr 前進 N 格, slow_ptr 前进一格)
 
 = Boost =
+Boost 的 sample 都寫了一個 CMakeList.txt, clone 後應該可以直接編譯。
+ * Windows 平台需要注意，為了減少依賴, CMake 中指定的都是 static runtime link。
+   所以編譯 boost 時要用 bjam link=static runtime-link=static。<br>
+   (目前測試過的Windows 開發環境: MS VS 2013 + Boost 1.55) 
 == property_tree ==
 property_tree 有很多作用，可以解析各種類型的格式的輸入，比如: xml, json, ini 等。
  * 一個簡單的 .ini 讀取, 解析。
@@ -24,6 +28,13 @@ property_tree 有很多作用，可以解析各種類型的格式的輸入，比
   - 代碼上需要注意的就是 utf8 的處理: 用到了 `std::wifstream`;`std::wstring` 等。
   - CMake 中需要注意的是,增加了基本的Boost 外還增加了`program_options` 。
     只是因為用到了`boost::program_options::detail::utf8_codecvt_facet()`。
+== program_options ==
+program_options 是一個專爲程序读取配置、参数准备的。
+ * 一個簡單得從 argv 读取參數的 sample:
+  - gist: https://gist.github.com/xiongjia/11399415
+  - 基本的 usage 参考注解。
+  - 比较复杂的时 std::vector<std::string> 的数组情况，需要告诉 boost 怎么解析。
+    这里用的是 multitoken() 
 
 = Node =
 == Dump node v8 heap ==
