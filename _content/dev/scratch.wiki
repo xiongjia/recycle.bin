@@ -26,8 +26,14 @@ property_tree 有很多作用，可以解析各種類型的格式的輸入，比
  * 一個簡單的 .ini 讀取, 解析。
   - gist: https://gist.github.com/xiongjia/6045153
   - 代碼上需要注意的就是 utf8 的處理: 用到了 `std::wifstream`;`std::wstring` 等。
+  - 默認讀取當前目錄的 test.ini ,可以通過 -f 指定對應的 .ini 文件
   - CMake 中需要注意的是,增加了基本的Boost 外還增加了`program_options` 。
     只是因為用到了`boost::program_options::detail::utf8_codecvt_facet()`。
+  - UTF8 string 在 terminate 的輸出，各個平台處理有點不一樣，
+    - 在 OSX 上直接使用了 `wstring_convert`。我測試中這個方式好像只有 OSX 上的 gcc/clang 才工作。 
+      (可能是和 locale/lang 設置有一定關聯)
+    - 其他平台需要設置對正確的 locale 才能輸出，比如要輸出中文，則要把 locale 更新到 zh-CN。
+      這個 example 會讀取 -l 參數來自動更新語言集。比如: `read-ini -l zh-CN` 表示以中文輸出。
 == program_options ==
 program_options 是一個專爲程序读取配置、参数准备的。
  * 一個簡單得從 argv 读取參數的 sample:
