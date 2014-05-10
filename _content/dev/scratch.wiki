@@ -70,6 +70,8 @@ program_options 是一個專爲程序读取配置、参数准备的。
    可以通過 `vim --version` 檢查有麼有 python 支持。
    如果有 python 支持 vesrion 中會列出: +python or +python/dyn or +python3 or +python3/dyn。
    具體區別請參考`:help vesrion`
- * vim 輸出了 "vim" module 到 python 與起交互，
-   有關細節的 "vim" module 可參閱 vim document `:help if_pyth.txt`
+ * vim 為了和 python 交互，輸出了"vim" module 。
+   在 VIM  process 中，這是一個 C 實現的 Python module。
+   有關"vim" module 使用的細節可參閱 vim document `:help if_pyth.txt`。
+   它實現的細節在 vim source code: if_py_both.h, if_python.c, if_python3.c 等文件中看到。
 
