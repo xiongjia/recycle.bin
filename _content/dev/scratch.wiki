@@ -58,3 +58,18 @@ program_options 是一個專爲程序读取配置、参数准备的。
  * gist: https://gist.github.com/xiongjia/6749035
  * 這個 script 我只在 Windows 7 上測試過。
 
+= VIM =
+== VIM plugin with python ==
+一個簡單的 vim plugin, 通過 python 忘當前 vim buffer 增加一些字符串。
+主要是為了嘗試 vim 和 python 的交互性。
+ * gist: https://gist.github.com/xiongjia/64e1353afb9415e85479
+ * 手動加載的方法: copy  my_vim_plugin.py 和 my_vim_plugin.vim 到同一個目錄; 
+   用 vim 打開 my_vim_plugin.vim; 執行 `so %`
+ * 這裡要求 vim 提供 python runtime，這個和 vim 的編譯參數有關。
+   大多的 vim 應都有 python runtime 支持。(我用過的各個系統中的 vim 好像都有) <br>
+   可以通過 `vim --version` 檢查有麼有 python 支持。
+   如果有 python 支持 vesrion 中會列出: +python or +python/dyn or +python3 or +python3/dyn。
+   具體區別請參考`:help vesrion`
+ * vim 輸出了 "vim" module 到 python 與起交互，
+   有關細節的 "vim" module 可參閱 vim document `:help if_pyth.txt`
+
