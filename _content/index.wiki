@@ -10,12 +10,13 @@
 == DEV ==
 此分類用於記錄開發用到的基礎知識或者 Framework; Open Source 的總結或備忘:
  * [[dev/scratch|Scratch]]  - 一些草稿，代碼片段。
- * [[dev/util|Utility]] - 基礎知識，以及日常开发任务的備忘
  * [[dev/node|Node]] - Node.js 日常備忘或總結
  * [[dev/ps1|PowerShell]] - MS Windows PowerShell 的備忘或總結 
  * [[dev/win-uia|Windows UI Automation]] - MS UIA ( MS 提供的 GUI 測試接口) 的備忘或總結
+ * [[dev/util|Utility]] - 基礎知識，以及日常开发任务的備忘
  * [[dev/jmeter|JMeter]] - JMeter 相關得整理匯總
- 
+ * [[dev/ab|Ab]] - Apache Ab 相關
+
 == MISC ==
 此分類用於記錄一些輔助工具的用法和其他一些無法分類的東西:
  * [[dev/tips|Tips]] - 日常工具的使用方法
