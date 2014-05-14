@@ -27,12 +27,13 @@ ab 的 Documentation 是 "manual/programs/ab.html.en"。 <br>
  * HTTP Content-type, 這個是 HTTP 請求 Header 的一個字段，
    用來指定協議 Content , 比如 "text/plain" 。Post method 
    測試時很有可能需要特殊設置這個字段。用 `-T` 可以指定。
+ * 啟用 HTTP KeepAlive ,默認是不啟用的。用 `-k` 啟用。
  * Proxy 设置。用来指定连接 Target URL 时用的 Proxy。用 `-P` 设置。
  * SSL 设置，指定特殊的 SSL 配置当需要测试某些 HTTPs 请求时。用 `-z` 设置。
 
 - 測試的策略
-ab 测试的单个单位时 request。用2中策略：time limit, requests limit,
-
+ab 测试的最小单位是一个 request，即一個 HTTP(s) 請求發起到結束的過程。
+用2 种策略：timelimit 和 requests limit 。
 
 - 报告设置
 html or text output,
@@ -55,4 +56,3 @@ gnupolt
 = 优/缺点 =
 等等
 
- * HTTP Content-type, 這個是 H請求  
