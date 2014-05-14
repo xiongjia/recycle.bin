@@ -15,7 +15,7 @@
  * [[dev/win-uia|Windows UI Automation]] - MS UIA ( MS 提供的 GUI 測試接口) 的備忘或總結
  * [[dev/util|Utility]] - 基礎知識，以及日常开发任务的備忘
  * [[dev/jmeter|JMeter]] - JMeter 相關得整理匯總
- * [[dev/ab|Ab]] - Apache Ab 相關
+ * [[dev/ab|ab]] - Apache HTTP server benchmarking tool
 
 == MISC ==
 此分類用於記錄一些輔助工具的用法和其他一些無法分類的東西:
