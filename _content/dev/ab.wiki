@@ -2,17 +2,18 @@
 %toc
 
 ab -  Apache HTTP server benchmarking tool 是一個 Apache HTTP Server 自帶的壓力測試工具。<br>
-一般用該工具做簡單的 HTTP(s) server 負載測試。
+該工具可以用來做簡單的 HTTP(s) server 負載測試。
 
 = 安裝 =
-ab 不用單獨安裝，他是 Apache HTTP server 的一部分。
+ab 不需要單獨安裝，他是 Apache HTTP server 的一部分。
 所以只需要在 http://httpd.apache.org/  中找到需要版本的
-Apache Httpd 的下載安裝方式就可以了。很多系統上都已經自帶
-Apache 了，所以可以直接使用，比如: OSX。<br>
+Apache Httpd 的安裝方式就可以了。一些系統上也都已經自帶
+Apache 了，所以可以直接使用，比如: OS X ，
+大部份 Linux 的發行版本也可以直接用包管理安裝。<br>
 
-ab 的可執行文件可以在 Apache httpd 的 "bin" folder 中找到。<br>
+ab 的可執行文件可以在 Apache httpd 的 "bin" folder 中找到。
 比較特殊的情況是 Windows。在 Windows 上, Apache 提供了 `ab.exe` 和 `abs.exe`。<br>
-其中 `abs.exe` 表示編譯時鏈接了 SSL 庫，可以用於 HTTP(s) 的測試。
+其中 `abs.exe` 表示編譯時鏈接了 SSL 庫，可以用於 HTTPS/HTTP 的測試。
 
 = 基本使用 =
 ab 是一個 Command-line 工具。用戶通過 Command-line 參數來指定測試參數。 <br>
@@ -23,7 +24,7 @@ ab 的 Documentation 是 "manual/programs/ab.html.en"。 <br>
 - 指定測試的 server 和 HTTP 請求設置
  * Target URL, 放在 Command-line 的最後一個參數
  * HTTP Method( POST/PUT or GET。默認情況會使用 GET 請求。
-   如果需要測試 POST 則需要用 `-p` 指定 POST 的內容文件。
+   如果需要測試 POST 則需要用 `-p` or `-u` 指定 POST 的內容文件。
  * HTTP Content-type, 這個是 HTTP 請求 Header 的一個字段，
    用來指定協議 Content , 比如 "text/plain" 。Post method 
    測試時很有可能需要特殊設置這個字段。用 `-T` 可以指定。
@@ -31,14 +32,14 @@ ab 的 Documentation 是 "manual/programs/ab.html.en"。 <br>
  * Proxy 设置。用来指定连接 Target URL 时用的 Proxy。用 `-P` 设置。
  * SSL 设置，指定特殊的 SSL 配置当需要测试某些 HTTPs 请求时。用 `-z` 设置。
 
+- 报告设置
+ html or text output, csv file, gnupolt
+
+
 - 測試的策略
 ab 测试的最小单位是一个 request，即一個 HTTP(s) 請求發起到結束的過程。
 用2 种策略：timelimit 和 requests limit 。
 
-- 报告设置
-html or text output,
-csv file,
-gnupolt
 
 = 輸出報告 =
 输出报告 (3 部分) (2格式) (csv & gnupolt)
