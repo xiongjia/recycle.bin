@@ -51,6 +51,16 @@ program_options 是一個專爲程序读取配置、参数准备的。
 通過從 require('stream').Transform 繼承得方式實現，stream 式樣得協議解析。
  * gist: https://gist.github.com/xiongjia/6867670
  * protocol 得格式和一些注意事項已經被寫在代碼註解裏了。
+== Mock Server ==
+一個 HTTP Server 可以按照指定的要求來返回測試數據。
+主要用來模擬測試環境，比如 HTTP 的 client 代碼的單元測試中使用。
+還可以用在學習一些壓力測試工具時當作 Target Server，比如: Apache Ab, JMeter 等。
+ * gist:https://gist.github.com/xiongjia/428402521312456ceccf
+ * _README.md 中有具体的說明。
+ * 啟動時用 `--cluster` 會使用 Node 的 Cluster 來創建多個工作進程。
+   可以使得 Server 有更加高的并發處理能力。
+ * "/get-data" 測試，比如: http://localhost:2333/get-data?len=2048&delay=500
+   表示 Server 延迟 500 毫秒返回 2048 bytes 的数据。
 
 = PowerShell =
 == MS UIAutomation ==
