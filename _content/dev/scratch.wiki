@@ -55,7 +55,7 @@ program_options 是一個專爲程序读取配置、参数准备的。
 一個 HTTP Server 可以按照指定的要求來返回測試數據。
 主要用來模擬測試環境，比如 HTTP 的 client 代碼的單元測試中使用。
 還可以用在學習一些壓力測試工具時當作 Target Server，比如: Apache Ab, JMeter 等。
- * gist:https://gist.github.com/xiongjia/428402521312456ceccf
+ * gist: https://gist.github.com/xiongjia/428402521312456ceccf
  * _README.md 中有具体的說明。
  * 啟動時用 `--cluster` 會使用 Node 的 Cluster 來創建多個工作進程。
    可以使得 Server 有更加高的并發處理能力。
