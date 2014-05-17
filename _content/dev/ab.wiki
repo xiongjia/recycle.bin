@@ -33,18 +33,53 @@ ab 的 Documentation 是 "manual/programs/ab.html.en"。 <br>
  * SSL 设置，指定特殊的 SSL 配置当需要测试某些 HTTP(s) 请求时。用 `-z` 设置。
 
 - 报告设置<br>
- html or text output, csv file, gnupolt
+ ab 的測試報告有三種:
+ * 總結報告，會被輸出到 stdout 去。用戶可以自己把結果輸出到文件去。
+   格式可以是純文本的 text 或是 html (用 `-w` 指定 html 格式輸出) 。<br>
+   在這部分報告中可以看到，測試的總的情況，比如: 測試的時間; target server;
+   requests 的個數，流量;以及所有 requests 的匯總報告。
+ * Connection times <br>
+   用 `-g gnuplot-file` 來設置。它是一個 csv 文件。這個文件可以被用來 gnuplot 來繪製圖表。
+   (實際上所有 csv 文件都可以被 gnupolt 拿來繪圖。) 其中包含了每一個 requests 的具體完成情況。
+   可以比較充分的反應 Server 在壓力測試情況下的響應狀況。
+ * requests 耗時的統計文件<br>
+   用 `-e csv-filename` 來設置。它是一個 csv 文件。這個文件所含有的內容比較簡單、清晰。
+   他是所有測試中的 requests 耗時排序後的結果。爲來減小報告的長度，這個報告沒有列出每一個
+   requests 而只是列出百分比形式的結果序列。
 
 - 測試的策略<br>
  ab 测试的最小单位是一个 request，即一個 HTTP(s) 請求發起到結束的過程。
- 用2 种策略：time limit 和 requests limit 。
- * time limit <br>
-   `-t`
+ 有2 种測試策略：time limit 和 requests limit 。
+ * time limit
+   - 用 `-t` 指定測試運行的時間，以秒爲單位。需要注意的是，ab 內部的預設 50000 
+     個 requests 爲極限。默認情況超過 50000 個 requests 發起後，即使是測試時間還沒有達到也會結束測試。<br>
+     這個 50000 的 limit 是編譯時決定的。原因是為了生成最後的 report，
+     ab 會根據 requests 個數在測試開始時生成一個固定大小的 buffer。所以 requests 個
+     數是需要在測試開始時決定的。<br>
+   - 有一種方式可以在使用 `-t` 的情況下指定 requests 個數: 把 `-n` 參數放在 `-t` 後面。
+     ab 在解析到 `-n` 參數時，會把 requests limit 重新覆蓋。<br>
+     比如: `ab -t 3000 -n 10 http://127.0.0.1:2333/` - 設置最大的 requests 數爲 10，
+     所以即使時沒有到 3000 秒測試也會結束。同樣如果真的想測試超過 50000 個的 requests 也
+     可以用這個方式自己設置次數。但如果用 `-n 10 -t 3000` 這個順序，就不會只發 10 個 requests，因
+     為 ab 解析 `-t` 時，會把 requests limit 設置到 50000。
+ * requests limit 
+   - `-n` 指定測試發起 requests 的個數。<br>
+     比如: `ab -n 10 http://127.0.0.1:2333/` 表示這次測試向 server 發送 10 個 requests。
+ * 另外一個比較重要的指標是 "concurrency level"。用 `-c` 指定這個指標。
+   表示併發的 requests 個數。注意：
+   - concurrency 至少要大於 1，並且小於 20000。
+     比如: `-c 1` 合法參數, `-c -1` 是無效的, `-c 40000` 也是無效的。
+   - 如果用 `-n` 指定了 requests limit，那麼 concurrency 必須小於 requests limit。
+     比如: `-c 10 -n 100` 是合法的，`-c 10 -n 5`則不合法。
 
 = 輸出報告 =
-输出报告 (3 部分) (2格式) (csv & gnupolt)
- * 摘要
- * 鏈接時間
+要看懂 ab 的輸出報告，首先應該需要知道 ab 的測試指標，即 request 的定義和它的指標。
+其次是 request 結果指標在報告中的表示方式。
+
+== request ==
+
+== 樣例 ==
+
 
 = 更多使用方式 =
  * mock http server
@@ -55,5 +90,5 @@ ab 的 Documentation 是 "manual/programs/ab.html.en"。 <br>
  * gnuplot
  
 = 优/缺点 =
-等等
+TODO
 
