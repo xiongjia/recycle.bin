@@ -255,7 +255,46 @@ node index.js
    `http://127.0.0.1:2333/get-data?len=2048&delay=500` 表示 server 在 500 毫秒後，返回 2048 bytes 的數據。
  - "/basic-auth"，是基本的 HTTP 認證測試: `http://127.0.0.1:2333/basic-auth`
 
+== 測試 Node Cluster 特性 ==
+Node 提供 Cluster 特性，讓多進程協同工作。以達到充分利用 Server CPU 的目的。用 ab 來測試一下啟用 Cluster
+前後 Server 處理時間的變化。
+ * 測試 *沒有* 啟用 Cluster 情況下的 Server
+   - 用 `node index.js` 啟動之前提到的 Mock Server。(這種狀態下，Node 只開啓一個進程來提供服務。)
+   - ab 測試策略: `ab -n 20000 -c 200 -g disable-cluster.tsv http://127.0.0.1:2333/get-data?len=8192&delay=500` <br>
+     以 200 爲併發數，總共發送 20000 個請求，並且讓 server 在 500 ms 後返回 8192 bytes 數據回來。
+     報告放入 "disable-csv.tsv" 文件中。
+ * 測試啟用 Cluster 情況下的 Server
+   - 用 `node index.js --cluster` 啟動之前提到的 Mock Server。
+     這種狀態下，Node 會用開多個進程來提供服務。併發性應該更高。併發數取決與 CPU 個數，我是在 8 cpu 的機器上測試的。
+   - 用同樣的 ab 測試策略，只是改一下輸出報告的文件名:  
+     `ab -n 20000 -c 200 -g cluster.tsv http://127.0.0.1:2333/get-data?len=8192&delay=500` <br>
+ * 用 gnupolt 來比較一下2種測試報告。
+   在下面這個報告中，綠線代表 "Disable Cluster" 的情況，紅星代表 "Enable Cluster" 的情況。<br>
+   X 軸代表耗時(越小越好)，測試中設置了 "delay=500" 所有 X 軸是從 500 開始的。<br>
+   Y 軸代表 Request 的個數所有是從 0 到 20000 。<br>
+   雖然不是很明顯，不過可以看出紅線更加平滑一些。也就是說啟用 Cluster 後 Node Server 的處理速度更快一些。
+{{../data/img/ab-cluster-test.png}} <br>
+ 生成上面這個報告圖片所使用的 gnuplot 腳本:
+  * 第一部分用來設置輸出格式到 .png 。
+  * 第二部分用來設置圖片的 title 和 X,Y 軸信息。
+  * 最後一部分把 "cluster.tsv" 和 "disable-cluster.tsv" 的第 5 列 (ttime) 放入 gnuplot 的數據輸入。
+{{{
+# set output format
+set terminal png
+set output "cluster.png"
+set size 1,0.7
 
+# set graph format
+set title "Node Cluster Test"
+set grid y
+set xlabel "Request"
+set ylabel "Response time (ms)"
+
+# set output data
+set datafile separator "\t"
+plot "cluster.tsv" using 5 smooth sbezier with lines title "Enable Cluster", \
+    "disable-cluster.tsv" using 5 smooth sbezier with lines title "Disable Cluster"
+}}}
  
 = 優缺點 =
 - 優點：

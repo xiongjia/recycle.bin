@@ -48,6 +48,12 @@ module.exports = function (grunt) {
         src: [ '**/*.html' ],
         dest: cfg.dest.base + '/'
       },
+      data: {
+        expand: true,
+        cwd: '_content/data',
+        src: [ '**/*.*' ],
+        dest: cfg.dest.base + '/data/'
+      },
       fonts: {
         expand: true,
         cwd: cfg.mod.dirBootstrap,
@@ -76,7 +82,12 @@ module.exports = function (grunt) {
     watch: {
       content: {
         files: [cfg.dest.output + '/**/*.html'],
-        tasks: ['copy:content'],
+        tasks: [ 'copy:content' ],
+        options: { spawn: false }
+      },
+      data: {
+        files: [ '_content/data/**/*.*' ],
+        tasks: [ 'copy:data' ],
         options: { spawn: false }
       }
     },
