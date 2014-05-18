@@ -54,7 +54,7 @@ ab 的 Documentation 是 "manual/programs/ab.html.en"。 <br>
 
 - 測試的策略<br>
  ab 测试的最小单位是一个 request，即一個 HTTP(s) 請求發起到結束的過程。
- 有2 种測試策略：time limit 和 requests limit 。
+ 有 2 种測試策略：time limit 和 requests limit 。
  * requests limit 
    - `-n` 指定測試發起 requests 的個數。<br>
      比如: `ab -n 10 http://127.0.0.1:2333/` 表示這次測試向 server 發送 10 個 requests。
@@ -127,8 +127,8 @@ ab 的 request 統計指標: ctime, dtime, ttime, wait。
  * ctime: <br>
    ctime = [Connected] - [Begin Connection] 它表示連接建立所花費的時間。
    它等於 [Connected] 的時間點減去 [Begin Connection] 的時間點。<br>
-   這個值很多程度上和網路環境有關，Server 越"近"可能就越小。也和部分測試參數有關,
-   比如: "concurrency level" 越大越會增大 ctime; Target URL 是 HTTPS 用於連接的時間也會增大。<br>
+   這個值很大程度上和網路環境有關，Server 越"近"可能就越小。也和部分測試參數有關,
+   比如: "concurrency level" 增大也會增大 ctime; Target URL 是 HTTPS 用於連接的時間也會增大。<br>
    這個值更多說明的是網路環境或者 OS Socket 設置上的問題，對 Server 的實現意義不是很明顯。
  * ttime: <br>
    ttime = [Close Connection] - [Begin Connection] 它表示整個 request 花費的時間。
@@ -139,7 +139,7 @@ ab 的 request 統計指標: ctime, dtime, ttime, wait。
  * wait: <br>
    wait = [Begin receive response] - [End write request] 它表示 Client 在發送完所有請求數據後，
    等待 Server 回應的時間。<br>
-   這個值的意義重大，很多程度上說明了 Server 本身的處理能力。
+   這個值非常有意義，很多程度上說明了 Server 本身的處理能力。
 
 == 報告樣例 ==
 一個簡單測試和其報告的內容，運行測試 `ab -n 10 -g report.tsv -e report.csv http://127.0.0.1:2333/get-data` <br>
@@ -204,7 +204,7 @@ Percentage of the requests served within a certain time (ms)
  ab 在結束測試後會吧所有 request 結果用 ttime 排序。比如測試用了 -n 10。<br>
  報告中 "50% = 1" 表示排名 10 * 50% 也就是第5名 的 request ttime 的毫秒數。<br>
  報告中 "100% = 1 (longest request)" 表示最後一名的也就耗時最長的一個 request 的毫秒數。<br>
- 注意: 如果用 `-n 1` 來測,ab 不再輸出這部分。因為 1 個 request 不存在百分比的意義。
+ 注意: 如果用 `-n 1` 來測試，ab 會不再輸出這部分。因為 1 個 request 時,百分比的意義不存在。
  * report.csv 
 {{{
 Percentage served,Time in ms
@@ -229,7 +229,7 @@ Sun May 18 01:39:44 2014	1400348384	0	1	1	1
 Sun May 18 01:39:44 2014	1400348384	0	1	1	1
 Sun May 18 01:39:44 2014	1400348384	0	1	1	1
 }}}
- 可以看出總共10行，也正好是 10 個 requests 的完成指標。這個是一個 Tab 分割的 csv 文件。
+ 可以看出總共10行，也正好是 10 個 requests 的完成指標。這個是一個 Tab 分割的 tsv 文件。
  (這文件行的排序是以 ttime 爲關鍵字的升序排列。) <br>
  所有的列: 
   - "starttime" 就是 [Begin Connection] 的時間點的 c runtime 庫返回的字符串。
@@ -253,10 +253,10 @@ node index.js
  - 用 `node index.js` 或 `node index.js --cluster` 後者會啟用 Node 的 Cluster feature。
  - "/get-data" 測試， Server 會按照客戶端要求來返回 response。比如:
    `http://127.0.0.1:2333/get-data?len=2048&delay=500` 表示 server 在 500 毫秒後，返回 2048 bytes 的數據。
- - "/basic-auth"，是基本的 HTTP 認證測試: `http://127.0.0.1:2333/basic-auth`
+ - "/basic-auth"，是基本的 HTTP authorization 測試: `http://127.0.0.1:2333/basic-auth`
 
 == 測試 Node Cluster 特性 ==
-Node 提供 Cluster 特性，讓多進程協同工作。以達到充分利用 Server CPU 的目的。用 ab 來測試一下啟用 Cluster
+Node 提供 Cluster 特性，讓多進程協同工作。以達到充分利用 Server CPU 的目的。這裡的目的是用 ab 來測試一下啟用 Cluster
 前後 Server 處理時間的變化。
  * 測試 *沒有* 啟用 Cluster 情況下的 Server
    - 用 `node index.js` 啟動之前提到的 Mock Server。(這種狀態下，Node 只開啓一個進程來提供服務。)
@@ -301,11 +301,9 @@ plot "cluster.tsv" using 5 smooth sbezier with lines title "Enable Cluster", \
  * 使用/操作上簡單；易理解。
  * 輸出報告簡單、清晰。
 - 缺點: <br>
- 個人覺得這些缺點在使用 JMeter 時時可以避免，只是 JMeter 學起來比 ab 麻煩許多。
+ 個人覺得這些缺點在使用 Apache JMeter 時是可以避免，只是 JMeter 學習起來比 ab 麻煩許多。
  * HTTP(s) 之外的沒有支持；HTTP(s) 本身如果 request 很複雜也比較難用。
- * 不能對每一個 request 做額外的設置。
- * 測試流程上無法控制每個 requests 間的行為。
+ * 不能對每一個具體 request 做額外的設置。每一個 request 的行為必須一樣，不能在參數上做出改動。
+ * 測試流程上無法控制，比如:每個 request 都是連續的，有是會讓 Server 誤認有人在攻擊 Server。
  * 測試以一台機器爲單位，不能把測試分佈到多台機器上。
-
-
 
