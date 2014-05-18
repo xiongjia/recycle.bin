@@ -269,7 +269,7 @@ Node 提供 Cluster 特性，讓多進程協同工作。以達到充分利用 Se
    - 用同樣的 ab 測試策略，只是改一下輸出報告的文件名:  
      `ab -n 20000 -c 200 -g cluster.tsv http://127.0.0.1:2333/get-data?len=8192&delay=500` <br>
  * 用 gnupolt 來比較一下2種測試報告。
-   在下面這個報告中，綠線代表 "Disable Cluster" 的情況，紅星代表 "Enable Cluster" 的情況。<br>
+   在下面這個報告中，綠線代表 "Disable Cluster" 的情況，紅線代表 "Enable Cluster" 的情況。<br>
    X 軸代表耗時(越小越好)，測試中設置了 "delay=500" 所有 X 軸是從 500 開始的。<br>
    Y 軸代表 Request 的個數所有是從 0 到 20000 。<br>
    雖然不是很明顯，不過可以看出紅線更加平滑一些。也就是說啟用 Cluster 後 Node Server 的處理速度更快一些。
@@ -301,7 +301,7 @@ plot "cluster.tsv" using 5 smooth sbezier with lines title "Enable Cluster", \
  * 使用/操作上簡單；易理解。
  * 輸出報告簡單、清晰。
 - 缺點: <br>
- 個人覺得這些缺點在使用 Apache JMeter 時是可以避免，只是 JMeter 學習起來比 ab 麻煩許多。
+ 個人覺得這些缺點在使用 Apache JMeter 時是可以避免的，只是 JMeter 學習起來比 ab 麻煩許多。
  * HTTP(s) 之外的沒有支持；HTTP(s) 本身如果 request 很複雜也比較難用。
  * 不能對每一個具體 request 做額外的設置。每一個 request 的行為必須一樣，不能在參數上做出改動。
  * 測試流程上無法控制，比如:每個 request 都是連續的，有是會讓 Server 誤認有人在攻擊 Server。
