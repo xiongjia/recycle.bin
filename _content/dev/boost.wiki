@@ -1,0 +1,46 @@
+%title boost
+%toc
+
+記錄/備忘一些 Boost 使用實例。
+
+= Environment =
+在實際工程中使用，Boost 的第一個基本問題應該是就是環境。主要是指編譯/開發環境。
+ * 一般使用 Boost 的工程都是可以跨平台的。所以需要考慮平台統一性。
+   目前我使用的方案是 cmake 。通過 cmake script 來保證各個平台的可兼容的統一性。<br>
+   比如: 我的 gist 實例 https://gist.github.com/xiongjia/11399415 其中 
+   "CMakeLists.txt" 文件就是一個可以在各個平台使用的 cmake 配置腳本。<br>
+   就我的體驗使用 cmake 最大的缺點之一，無法和 Windows 上的 .NET Managed 工程很好的結合。<br>
+   _(目前只是記錄一下，等有空把 CMake 的 Boost 配置仔細整理一下)_
+ * Boost 本身的編譯配置也很大程度影響了開發環境。尤其在 Windows 上。比如：32bit or 64bit  編譯；
+   多線程靜態庫 or 多線程動態庫 (/MT or /MD ); 是否啟用 Debug 等等。
+   比如: 我的 gist 實例 https://gist.github.com/xiongjia/11399415 其中 "CMakeLists.txt" 
+   為 Windows 特殊配置了: `set(Boost_USE_STATIC ON)` 並且啟用了 `/MT`
+   _(目前只是記錄一下，等有空把 CMake 的 Boost 配置仔細整理一下)_
+
+= Samples = 
+== property_tree ==
+property_tree 有很多作用，可以解析各種類型的格式的輸入，比如: xml, json, ini 等。
+ * 一個簡單的 .ini 讀取, 解析。
+  - gist: https://gist.github.com/xiongjia/6045153
+  - 代碼上需要注意的就是 utf8 的處理: 用到了 `std::wifstream`;`std::wstring` 等。
+  - 默認讀取當前目錄的 test.ini ,可以通過 -f 指定對應的 .ini 文件
+  - CMake 中需要注意的是,增加了基本的Boost 外還增加了`program_options` 。
+    只是因為用到了`boost::program_options::detail::utf8_codecvt_facet()`。
+  - UTF8 string 在 terminate 的輸出，各個平台處理有點不一樣，
+    - 在 OSX 上直接使用了 `wstring_convert`。我測試中這個方式好像只有 OSX 上的 gcc/clang 才工作。 
+      (可能是和 locale/lang 設置有一定關聯)
+    - 其他平台需要設置對正確的 locale 才能輸出，比如要輸出中文，則要把 locale 更新到 zh-CN。
+      這個 example 會讀取 -l 參數來自動更新語言集。比如: `read-ini -l zh-CN` 表示以中文輸出。
+== program_options ==
+program_options 是一個專爲程序读取配置、参数准备的。
+ * 一個簡單得從 argv 读取參數的 sample:
+  - gist: https://gist.github.com/xiongjia/11399415
+  - 基本的 usage 参考注解。
+  - 比较复杂的时 std::vector<std::string> 的数组情况，需要告诉 boost 怎么解析。
+    这里用的是 multitoken() 
+
+= Reference =
+* Boost.org: http://www.boost.org/
+* Boost Document (All versions): http://www.boost.org/doc/
+* highscore: http://en.highscore.de/cpp/boost/frontpage.html
+

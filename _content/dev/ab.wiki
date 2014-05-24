@@ -307,3 +307,7 @@ plot "cluster.tsv" using 5 smooth sbezier with lines title "Enable Cluster", \
  * 測試流程上無法控制，比如:每個 request 都是連續的，有是會讓 Server 誤認有人在攻擊 Server。
  * 測試以一台機器爲單位，不能把測試分佈到多台機器上。
 
+= 參考 =
+- ab 手冊 "manual/programs/ab.html.en" 或者 Apache (2.2) 在線手冊 http://httpd.apache.org/docs/2.2/programs/ab.html
+- ab 的源代碼。可以上 http://httpd.apache.org/ 找到或者 github 的 mirror https://github.com/apache/httpd/blob/trunk/support/ab.c
+
