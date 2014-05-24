@@ -92,6 +92,10 @@ module.exports = function (grunt) {
       }
     },
     rsync: { src: cfg.util.rsyncSrc, dest: cfg.util.rsyncDest },
+    checkSiteLinks: {
+      cwd: cfg.dest.base,
+      site: cfg.util.siteRoot
+    },
     clean: [ cfg.dest.base ]
   });
 
@@ -127,6 +131,47 @@ module.exports = function (grunt) {
     });
     /* write sitemap to dest file */
     grunt.file.write(dest, data);
+  });
+
+  /* check sitemap */
+  grunt.registerTask('checkSiteLinks', 'check siteamp', function () {
+    var pages, links, pgCwd, site, done, request;
+
+    request = require('request');
+    pgCwd = grunt.config.get('checkSiteLinks.cwd');
+    site =  grunt.config.get('checkSiteLinks.site');
+    grunt.log.writeln('check site links. { cwd: %s, site: %s }', pgCwd, site);
+
+    /* site links */
+    pages = grunt.file.expand({cwd: pgCwd}, '**/*.html');
+    links = [];
+    grunt.util._.each(pages, function (pg) {
+      links.push(function (callback) {
+        var req;
+        req = {
+          url: grunt.util._.str.sprintf('%s/%s', site, pg),
+          proxy: process.env.http_proxy
+        };
+        grunt.log.writeln('Check Site link %j', req);
+        request(req, function (err) {
+          if (err) {
+            grunt.log.error('Cannot access %s', req.url);
+            grunt.fail.warn(err);
+          }
+          else {
+            grunt.log.writeln('Site link %s OK', req.url);
+          }
+          callback(err);
+        });
+      });
+    });
+
+    /* start check links */
+    done = this.async();
+    require('async').parallel(links, function (err) {
+      grunt.log.writeln('All sit links have been checked');
+      done(err);
+    });
   });
 
   /* rsync upload task */
@@ -169,6 +214,8 @@ module.exports = function (grunt) {
   grunt.registerTask('serv', 'Build the dist folder and launch local serv',
     ['dist', 'connect', 'watch']);
   grunt.registerTask('server', ['serv']);
+
+  grunt.registerTask('check', 'Check Site links', ['dist', 'checkSiteLinks']);
 
   /* default task */
   grunt.registerTask('default', ['dist']);
