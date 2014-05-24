@@ -153,13 +153,21 @@ module.exports = function (grunt) {
           proxy: process.env.http_proxy
         };
         grunt.log.writeln('Check Site link %j', req);
-        request(req, function (err) {
+        request(req, function (err, res) {
           if (err) {
             grunt.log.error('Cannot access %s', req.url);
             grunt.fail.warn(err);
           }
           else {
-            grunt.log.writeln('Site link %s OK', req.url);
+            if (res.statusCode !== 200) {
+              grunt.log.error('Cannot access %s, status [%s]',
+                req.url, res.statusCode);
+              grunt.fail.warn(new Error('Cannot access site link'));
+            }
+            else {
+              grunt.log.writeln('Site link %s OK, res [%s]',
+                req.url, res.statusCode);
+            }
           }
           callback(err);
         });
