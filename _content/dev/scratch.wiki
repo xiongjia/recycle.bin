@@ -41,6 +41,15 @@ program_options 是一個專爲程序读取配置、参数准备的。
   - 基本的 usage 参考注解。
   - 比较复杂的时 std::vector<std::string> 的数组情况，需要告诉 boost 怎么解析。
     这里用的是 multitoken() 
+== unit test framework ==
+unit_test_framework 是 boost 自帶的一套 c/c++ unit test framework.
+* 一個簡單的 cmake 和 boost unit test framework 配合的例子。
+  - gist:  https://gist.github.com/xiongjia/72f3734f0e60a4d2a681
+  - 把單元測試實現在 "0_my_lib_test.cxx" ( 加一個 “0_" prefix 是為了讓他在 gist 中居於 top
+  - 對應 CMakeList.txt 會把要測試的 my_lib.cxx build 成為一個 static library 供單元測試使用
+  - 對應的單元測試會被 build 成一個可執行文件。
+  - 最後只需要執行對應的文件，就可以得到單元測試結果。
+  - 詳細的 Boost test framework 參見 boost 文檔: http://www.boost.org/doc/libs/ ("Test" 章節)
 
 = Node =
 == Dump node v8 heap ==
