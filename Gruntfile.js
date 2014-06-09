@@ -5,16 +5,25 @@ module.exports = function (grunt) {
 
   /* check cli options */
   optNoCompress = grunt.option('no-compress');
-  /* load grunt config */
+  /* load site configuration */
   cfg = grunt.file.readYAML('_config.yml');
- 
+
+  /* init grunt config */
   grunt.initConfig({
+    /* JSHint task - check the JS file by .jshintrc. 
+     * (only check our code, skip all 3rd party JS files)
+     */
     jshint: {
       options: { jshintrc: '.jshintrc' },
       gruntfile: { src: 'Gruntfile.js' },
       config: { src: ['_config/vimwiki.js'] }
     },
+    /* Concat task - 
+     * 1. Merge all the CSS files and save it to cfg.dest.cssDest
+     * 2. Merge all the JS files and save it to cfg.dest.jsDest
+     */
     concat: {
+      /* merge all css */
       css: {
         src: [
           cfg.mod.cssBootstrap,
@@ -24,6 +33,7 @@ module.exports = function (grunt) {
         ],
         dest: cfg.dest.cssDest
       },
+      /* merge all js */
       js: {
         src: [
           cfg.mod.jsJQuery,
@@ -35,12 +45,11 @@ module.exports = function (grunt) {
         dest: cfg.dest.jsDest
       }
     },
-    cssmin: {
-      minify: { src: [ cfg.dest.cssDest ], dest: cfg.dest.cssDest }
-    },
-    uglify: {
-      dist: { src: cfg.dest.jsDest, dest: cfg.dest.jsDest }
-    },
+    /* cssmin - compress css files */
+    cssmin: { minify: { src: [ cfg.dest.cssDest ], dest: cfg.dest.cssDest } },
+    /* uglify - compress js files */
+    uglify: { dist: { src: cfg.dest.jsDest, dest: cfg.dest.jsDest } },
+    /* copy - copy all the files to dist folder */
     copy: {
       content: {
         expand: true,
@@ -65,6 +74,7 @@ module.exports = function (grunt) {
         dest: cfg.dest.base + '/.htaccess'
       }
     },
+    /* connect - start the local test HTTP server */
     connect: {
       dist: {
         options: {
@@ -74,11 +84,15 @@ module.exports = function (grunt) {
         }
       }
     },
+    /* create site map */
     sitemap: {
       cwd: cfg.dest.base,
       dest: cfg.dest.sitemap,
       site: cfg.util.siteRoot
     },
+    /* watch - monitor the content folders and 
+     * automatical update changed content to dist folder
+     */
     watch: {
       content: {
         files: [cfg.dest.output + '/**/*.html'],
@@ -91,11 +105,14 @@ module.exports = function (grunt) {
         options: { spawn: false }
       }
     },
+    /* rsync - update dist folder to remote */
     rsync: { src: cfg.util.rsyncSrc, dest: cfg.util.rsyncDest },
+    /* checkSiteLinks - check all the site links are avliable */
     checkSiteLinks: {
       cwd: cfg.dest.base,
       site: cfg.util.siteRoot
     },
+    /* clean - remove dest files */
     clean: [ cfg.dest.base ]
   });
 
