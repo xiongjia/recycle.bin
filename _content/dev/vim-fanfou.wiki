@@ -1,0 +1,128 @@
+%title vim-fanfou
+%toc
+
+= 簡介 =
+如同 Fanfoun 是 Twitter 的山寨， 
+[[https://github.com/xiongjia/vim-fanfou|vim-fanfou]] 也只是我對
+[[https://github.com/vim-scripts/TwitVim|TwitVim]]一次初級山寨。
+
+= 代碼 =
+ - github repository: https://github.com/xiongjia/vim-fanfou
+ - 在 VIM.org 上: http://www.vim.org/scripts/script.php?script_id=4972
+ - Releases: https://github.com/xiongjia/vim-fanfou/releases
+
+= 安裝、使用 =
+== 安裝 ==
+* 確認 Vim (7+) 和 Python 2.7(+) ,被 VIM 支持。
+* 複製 plugin 目錄到對應的 Vim plugin 目錄。
+
+== 使用 ==
+* Proxy 設置
+ - 如果需要設置 http proxy 則仙
+   把 `let g:fanfou_http_proxy = "http://<proxy-host>:<proxy-port>"` 加到 vimrc 裡。
+* Login
+ - Login 的過程就是一次 OAuth 的認證過程，使用 `:FanfouSetAccount` 進行登錄。
+   過程中會打開默認瀏覽器，進行授權。得到 PIN code 後。把他輸入到 VIM 裡就完成了。  
+   NOTE: 默認情況下 OAuth 的 Token 最終會被保存于文件 "$HOME/.fanfou_auth_cache" 中。
+* 目前輸出的 Vim commands:
+ - FanfouSetAccount - 用來設置 OAuth 認證 。
+ - FanfouSwitchAccount - 用來切換到另一個 account。
+ - FanfouHomeTimeline - 顯示 Fanfou Timeline 到 Vim buffer 。
+ - FanfouRefresh - 刷新 Fanfou  Vim Buffer。
+ - FanfouPostStatus - 發送一條新的狀態到 Fanfou。
+
+= 目前的 TODO List =
+目前的版本沒能支持的:
+* Syntax:
+ - "@username" 沒有做 match
+ - "#topic#" 沒有做 match
+* Network:
+ - HTTP Proxy authorization 沒有支持
+   ( 目前可以用沒有 authorization 的 http proxy )
+* 使用方面:
+ - 支持更多 Fanfou API 的操作.
+   ( 目前只有 View HOME Timeline 和 Post status ）
+ - 支持大於 60 條的 home timeline
+ - 支持 Web browser 種類設定 ( 目前只能是當前 OS default browser )
+ - 支持直接從 VIM buffer 打開一個 url 
+* 開發流程上:
+ - 需要增加 Python unit tests
+
+= 涉及的知識 =
+主要使用了 Python, Vim Script 涉及到了 HTTP, OAuth, Fanfou API 和 VIM 的一些基本知識。
+* Python 與 Vim 的交互
+ - Vim 通過輸出一個 Python module 的方式來達到與 Python 交互的目的。 <br> 
+   主要可以參考 VIM Documentation `:help if_pyth`  
+ - 我的 gist 中有個簡單的、基本的 Python 與 VIM 交互的 Sample, 
+   參考: https://gist.github.com/xiongjia/64e1353afb9415e85479
+* Fanfou API<br>
+ - 主要參考 Fanfou API 的 Wiki: https://github.com/FanfouAPI/FanFouAPIDoc
+ - 我的 gist 中有我以前用純 Python 實現的一份試驗性 Fanfou client, 
+   參考: https://gist.github.com/xiongjia/b8893dc5eb5bbb04cfbc <br>
+   (注:這份我早先的實現存在諸多 bugs)
+
+= 代碼結構 =
+* source tree
+{{{
+~vim-fanfou/
+ |~doc/
+ | `-vim-fanfou.txt
+ |~plugin/
+ | |~vim_fanfou/
+ | | |-__init__.py
+ | | |-fanfou.py
+ | | |-fanfou_base.py
+ | | |-fanfou_oauth.py
+ | | |-fanfou_oauth_base.py
+ | | |-misc.py
+ | | |-pylintrc
+ | | |-vim_fanfou.py
+ | | |-vim_fanfou_base.py
+ | | `-vim_util.py
+ | `-vim_fanfou.vim
+ `-README.md
+}}}
+
+* Documentation & utility
+ - "vim-fanfou/README.md" - 爲 Github 寫的一份 readme。
+ - “vim-fanfou/doc" - 爲 vim 寫的 readme。
+ - "vim_fanfou/plugin/vim_fanfou/pylintrc" - pylint 的配置文件, disable 掉部分過於嚴格的檢查。
+
+* VIM interfaces
+ - "vim_fanfou/vim_fanfou.vim" - 用於連接 VIM 和 之後的 Python modules。主要作用:
+  * 檢查運行環境 (VIM & Python version),並加載 "vim_fanfou/plugin/vim_fanfou" 中的 Python module。
+  * 讀取用戶配置 (如: "g:fanfou_http_proxy" ) 并創建 VimFanfou python object。
+    參見該文件中的: "s:init()"
+  * 輸出對應的 commands
+
+* Python module
+ - Fanfou OAuth
+  * fanfou_oauth_base.py & fanfou_oauth.py
+   - Fanfou OAuth 的實現，網絡操作用了 Python urllib2 。還使用了部分 Python modules
+    （如: hmac, hashlib, random 等) 目的是為了 OAuth 中的 signature 。
+   - 其中 fanfou_oauth_base 是 OAuth 的邏輯和算法。 <br>
+     fanfou_oauth 是最終 interface 和一些相關的配置管理(如: API Urls; consumer key 等)
+ - Fanfou API Wrapper 
+  * fanfou_base.py & fanfou.py
+   對 Fanfou API 的封裝。 fanfou_base.py 用於實現基本邏輯。 fanfou.py 用於定義接口和管理配置。 
+ - Misc
+  * misc.py - 工具函數和 Log 機制的實現。
+ - Vim utility
+  * 對 vim python module 的簡單封裝，更方便的使用 python vim module。
+ - Vim Fanfou
+  * vim_fanfou.py 
+    python module 於 vim_fanfou.vim 的接口實現。
+  * vim_fanfou_base.py
+    實現了 python vim module 的邏輯，如: 管理 Fanfou Vim buffer; 輸出 Fanfou API 結果等。
+
+= 問題和解決方式 =
+* Lazy Initialization <br>
+ 由於主要邏輯都用 Python 寫， Vim 在使用 Plugin 的時候可能需要動態加載 Python core。
+ 這個可能造成 Vim 額外負擔。<br>
+ 目前的解決方式: 爲了減少這一個負擔， vim-fanfou 只在需要時才加載 python modules。
+ 參考, "vim_fanfou/plugin/vim_fanfou.vim" 中的 "s:init()" function 。
+* 字符集問題 <br>
+ 由於 VIM 輸入是 UTF8 形式，如涉及中文字符將會導致在 Python 中不能正確計算 string length。<br>
+ 目前的解決方式: 相關的計算使用 `vim_fanfou.misc.mbstrlen()` ，
+ 此方法會對 string 做 utf8 decode 隨後再計算長度。
+

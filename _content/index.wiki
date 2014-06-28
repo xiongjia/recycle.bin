@@ -24,6 +24,13 @@
  * [[dev/db|Database]]  - 數據庫操作備忘
  * [[dev/edit|Editors]]  - 編輯器使用備忘
 
+== Practices ==
+此分類用於記錄自己實現的一些小工具的過程:
+ * [[dev/vim-fanfou|vim-fanfou]]  -
+  一個 VIM Plugin + Fanfou client，
+  代碼 (Python + Vim Script) 所在的
+  github repository: [[https://github.com/xiongjia/vim-fanfou|github]]  
+
 -----
 
 = General =

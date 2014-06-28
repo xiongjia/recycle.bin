@@ -1,4 +1,4 @@
-%title 顏文字 Emoticon
+%title 顏文字 Emoticon Emoji
 %toc
 
 = 常用顏文字 =
