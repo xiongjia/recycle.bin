@@ -11,7 +11,11 @@
   <title>%title%</title>
   <link rel="stylesheet" type="text/css" href="/assets/css/main-v0.1.css">
   <script type="text/javascript">
-    var vimwikiCtx = { enableRightBar: false, enableSyntax: false };
+    var vimwikiCtx = {
+        enableRightBar: false,
+        enableSyntax: false,
+        disableImgLazyLoad: false
+    };
   </script>
 </head>
 
