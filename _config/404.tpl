@@ -13,8 +13,7 @@
   <script type="text/javascript">
     var vimwikiCtx = {
         enableRightBar: false,
-        enableSyntax: false,
-        disableImgLazyLoad: false
+        enableSyntax: false
     };
   </script>
 </head>

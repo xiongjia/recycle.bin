@@ -7,8 +7,7 @@
     /* vim wiki context */
     ctx = (typeof vimwikiCtx !== 'undefined') ? vimwikiCtx : {
       enableRightBar: true,
-      enableSyntax: true,
-      disableImgLazyLoad: false
+      enableSyntax: true
     };
  
     /* right bar */
@@ -48,14 +47,12 @@
       })();
     }
 
+    /* image lazy load */
+    $('img.lazy').lazyload();
+
     if (ctx.enableSyntax) {
       /* update syntax */
       SyntaxHighlighter.all();
-    }
-
-    if (!ctx.disableImgLazyLoad) {
-      /* image lazy load */
-      $('img.lazy').lazyload();
     }
 
     /* update external links */

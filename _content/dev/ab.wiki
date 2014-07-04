@@ -273,7 +273,9 @@ Node 提供 Cluster 特性，讓多進程協同工作。以達到充分利用 Se
    Y 軸代表耗時(越小越好)，測試中設置了 "delay=500" 所有 Y 軸是從 500 開始的。<br>
    X 軸代表 Request 的個數所有是從 0 到 20000 。<br>
    雖然不是很明顯，不過可以看出紅線更加平滑一些。也就是說啟用 Cluster 後 Node Server 的處理速度更快一些。
-{{../data/img/ab-cluster-test.png}} <br>
+
+<br><img class="lazy" data-original="../data/img/ab-cluster-test.png" width="640" height="325"><br>
+
  生成上面這個報告圖片所使用的 gnuplot 腳本:
   * 第一部分用來設置輸出格式到 .png 。
   * 第二部分用來設置圖片的 title 和 X,Y 軸信息。
