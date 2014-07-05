@@ -52,7 +52,7 @@
 
     if (ctx.enableSyntax) {
       /* update syntax */
-      SyntaxHighlighter.all();
+      SyntaxHighlighter.highlight();
     }
 
     /* update external links */

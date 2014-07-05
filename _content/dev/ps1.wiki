@@ -1,6 +1,54 @@
 %title MS Powershell
 %toc
 
+= 日常知识 =
+== 获取 Help ==
+* Get-Help <br>
+比如需要获得 _Cmdlet_ `Write-Debug` 的使用方法 `Get-Help Write-Debug` 。<br>
+`Get-Help` 本身的帮助信息也可以通过 `Get-Help Get-Help` 得到。
+
+== 调试信息 ==
+* 调试信息一般可以用 `Write-Verbose` 或 `Write-Debug` 输出。比如:
+{{{class="brush: ps; gutter: false; toolbar: false;"
+Write-Verbose "This is a verbose message"
+Write-Debug "This is a debug message"
+}}}
+* 默认设置下，PowerShell 不会输出 Debug 和 Verbose messages。
+  需要更新 "DebugPreference"  和  "VerbosePreference"。比如: 
+  - 启用/关闭 debug 输出 ("SilentlyContinue" 是默认设置)
+{{{class="brush: ps; gutter: false; toolbar: false;"
+# enable debug log
+$DebugPreference = "Continue" 
+Write-Debug "Debug message"
+# disable debug log
+$DebugPreference = "SilentlyContinue" 
+Write-Debug "Debug message"
+}}}
+  - 启用/关闭 verbose 输出 ("SilentlyContinue" 是默认设置)
+{{{class="brush: ps; gutter: false; toolbar: false;"
+# enable verbose log
+$VerbosePreference = "Continue"
+Write-Verbose "Verbose message"
+# disable verbose log
+$VerbosePreference = "SilentlyContinue" 
+Write-Debug "Verbose message"
+}}}
+
+== Modules ==
+Module 是包含一组 Cmdlets 和 Functions 等的一组集合。有 Script Module 和 Binary Module 的分布。
+Binary Module 是有部分 .DLL 组成的。Script Module 一般是纯 PS 脚本。
+- Powershell 是根据环境变量 "PSModulePath" 来查找 modules 的路径的。
+ 可以把自己要加载的 module copy 到 "PSModulePath" 里列出来的路径，
+ 也可以把自己需要的路径加入这个环境变量，比如: <br>
+{{{class="brush: ps; gutter: false; toolbar: false;"
+$env:PSModulePath = $env:PSModulePath + ";<Full path of your module>"
+}}}
+- 查看 Modules 
+ 用 `Get-Module` 列出 Modules 的基本信息。(可以加 "-List" 进一步列出 "Exported Commands")
+- 加载/移除 Module
+  用 `Import-Module <module name>` 来加载 Module。Module name 可以在 `Get-Module` 里得到。<br>
+  同样 `Remove-Module <module name>` 来移出一个 Module。
+
 = Practice =
 * ps.uia - https://github.com/xiongjia/ps.uia <br>
  在 Powershell 里调用 MS UIAutomation 接口。基本上就是用反射调用 .Net 对象。
