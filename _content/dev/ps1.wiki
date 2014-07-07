@@ -44,7 +44,7 @@ Binary Module 是有部分 .DLL 组成的。Script Module 一般是纯 PS 脚本
 $env:PSModulePath = $env:PSModulePath + ";<Full path of your module>"
 }}}
 - 查看 Modules 
- 用 `Get-Module` 列出 Modules 的基本信息。(可以加 "-List" 进一步列出 "Exported Commands")
+ 用 `Get-Module -List` 列出 Modules 的基本信息。
 - 加载/移除 Module
   用 `Import-Module <module name>` 来加载 Module。Module name 可以在 `Get-Module` 里得到。<br>
   同样 `Remove-Module <module name>` 来移出一个 Module。
