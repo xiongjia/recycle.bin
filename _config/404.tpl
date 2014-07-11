@@ -13,7 +13,9 @@
   <script type="text/javascript">
     var vimwikiCtx = {
         enableRightBar: false,
-        enableSyntax: false
+        enableSyntax: false,
+        enableDisqus: false
+        
     };
   </script>
 </head>
