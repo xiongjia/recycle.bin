@@ -83,6 +83,10 @@ module.exports = function (grunt) {
       conf: {
         src: [ '_config/_htaccess' ],
         dest: cfg.dest.base + '/.htaccess'
+      },
+      icon: {
+        src: [ '_config/favicon.ico' ],
+        dest: cfg.dest.base + '/favicon.ico'
       }
     },
     /* connect - start the local test HTTP server */

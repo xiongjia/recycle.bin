@@ -7,6 +7,7 @@
   <meta http-equiv="expires" content="0" />
   <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
   <meta http-equiv="pragma" content="no-cache" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
   <meta name="google-site-verification" content="mL05cIfp_zVfUUDm1uf8dj2RjvVWg9lG0QqEde-4r8Y" />
   <title>%title%</title>
   <link rel="stylesheet" type="text/css" href="/assets/css/main-v0.1.css">
