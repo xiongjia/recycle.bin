@@ -50,6 +50,16 @@ module.exports = function (grunt) {
     cssmin: { minify: { src: [ cfg.dest.cssDest ], dest: cfg.dest.cssDest } },
     /* uglify - compress js files */
     uglify: { dist: { src: cfg.dest.jsDest, dest: cfg.dest.jsDest } },
+    /* html min - compress html files */
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [{ expand: true, cwd: 'dist', src: '**/*.html', dest: 'dist' }]
+      }
+    },
     /* copy - copy all the files to dist folder */
     copy: {
       content: {
@@ -97,7 +107,7 @@ module.exports = function (grunt) {
     watch: {
       content: {
         files: [cfg.dest.output + '/**/*.html'],
-        tasks: [ 'copy:content' ],
+        tasks: [ 'copy:content', 'htmlmin' ],
         options: { spawn: false }
       },
       data: {
@@ -126,6 +136,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   /* sitemap task */
   grunt.registerTask('sitemap', 'create sitemap.txt', function () {
@@ -235,7 +246,8 @@ module.exports = function (grunt) {
       'Export all files to dist folder',
     optNoCompress ?
       ['clean', 'jshint', 'concat', 'copy', 'sitemap'] :
-      ['clean', 'jshint', 'concat', 'cssmin', 'uglify', 'copy', 'sitemap']);
+      ['clean', 'jshint', 'concat',
+       'cssmin', 'uglify', 'copy', 'htmlmin', 'sitemap']);
 
   grunt.registerTask('serv', 'Build the dist folder and launch local serv',
     ['dist', 'connect', 'watch']);

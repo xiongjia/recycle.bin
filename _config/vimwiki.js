@@ -63,7 +63,7 @@
       if (ctx.enableDisqus && comments && comments.length) {
         installDisqus(comments);
         $('.toc').after('<br><br>' +
-          '<a href="#vw-disqus">&gt; 留言(Post Your Comments)</a>');
+          '<a href="#vw-disqus">&gt; Post Your Comments</a>');
       }
 
       /* create google cse */
