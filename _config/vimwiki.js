@@ -30,7 +30,7 @@
         '<noscript>Please enable JavaScript to view the ' +
         '<a href="http://disqus.com/?ref_noscript">' +
         'comments powered by Disqus.</a></noscript>' +
-        '<a href="http://disqus.com" class="dsq-brlink">' +
+        '<a href="http://disqus.com" class="dsq-brlink" target="_blank">' +
         'comments powered by <span class="logo-disqus">Disqus</span></a>' +
         '</div>';
       commentsElement.prepend(disqus);
@@ -89,17 +89,20 @@
       SyntaxHighlighter.highlight();
     }
 
-    /* update external links */
-    $('a[href]').each(function() {
-      if (this.href.indexOf(window.location.host) === -1) {
-        $(this).attr({ target: '_blank', title: this.href });
-      }
-    });
-
     if (ctx.enableRightBar && window.innerWidth >= 450) {
       /* show right bar */
       showRightBar();
     }
+ 
+    /* update external links */
+    function updateExtLinks() {
+      $('a[href]').each(function() {
+        if (this.href.indexOf(window.location.host) === -1) {
+          $(this).attr({ target: '_blank', title: this.href });
+        }
+      });
+    }
+    updateExtLinks();
   });
 })();
 
