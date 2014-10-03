@@ -3,7 +3,7 @@
 # modules 
 mod:
   # jQuery
-  jsJQuery: 'bower_components/jquery/jquery.js'
+  jsJQuery: 'bower_components/jquery/dist/jquery.js'
   # syntaxhighlighter
   jsSyntax: '_config/syntaxhighlighter.js'
   cssSyntax: '_config/syntaxhighlighter.css'
