@@ -1,6 +1,23 @@
 %title Node
 %toc
 
+= Documentation =
+* Node & NPM
+ * NODEJS API: http://nodejs.org/api/
+ * NPM: https://www.npmjs.org/doc/
+ * NODE wiki: https://github.com/joyent/node/wiki
+* awesome 系列
+ * awesome-nodejs: https://github.com/sindresorhus/awesome-nodejs  
+ * awesome-nodejs: https://github.com/vndmtrx/awesome-nodejs 
+* 3rd Party Packages:
+ * underscorejs: http://underscorejs.org/
+ * lodash: http://lodash.com/docs
+ * grunt: http://gruntjs.com/
+ * bower: http://bower.io/
+ * mocha: http://visionmedia.github.io/mocha/
+
+-----
+
 = Environment =
 Node 環境主要有兩部分組成: 
 * Node 是 JS 腳本的執行者。
@@ -40,196 +57,50 @@ Node 環境主要有兩部分組成:
   # 運行 `configure --prefix=<node & npm install path>` 
   # build & install: `make` & `make install`
   # 把 prefix folder 加入 `PATH` 環境變量中。
+* Notes:
+  * 通過 binary 或 source code 安裝時，如無特殊目的則應該選擇已經 release 的版本。
+    如果選擇 alpha, beta, pre release 可能會造成某些 npm package 在檢查 node version 時抱錯。
+  * 不同 OS 的 Package Manager 也可以直接安裝(比如: OSX 的 Homebrew, ArchLinux 的 Pacman等),
+    參考: [[Installing Node.js via package manager|https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager]]
+
+== Configuration ==
+ * `$HOME/.npmrc` 是 npm 的配置。https://www.npmjs.org/doc/files/npmrc.html <br>
+   下面這個 Sample, 重新設置 prefix, cache 目錄，並把 registry 設置為 https://registry.npmjs.org :
+{{{
+
+  prefix = ~/.node/.npm
+  cache = ~/.node/.npm-cache
+  registry = https://registry.npmjs.org
+
+}}}
+   npm prefix 目錄就是 node global package 的安裝目錄，默認情況是和 npm 在一起的。 <br>
+   修改這個設置很有必要因為 npm 目錄往往是 root 權限的目錄。把這個目錄放到 $HOME 
+   下這樣無需 root 權限就可以安裝 global package 了。 <br>
+   (注意: 這個目錄需要被加到 $PATH 中，否則 global package 不能被使用)
 
 -----
 
-= Tips =
-* 一些基本的容器, copy/clone 之类的操作<br>
- 选 Lo-Dash 或 underscore。俩者类似, Lo-Dash 后出来些，更新好像更频繁些，据说性能也好一点。
- # [[https://github.com/lodash/lodash/|Lo-Dash]] -  
- Document: http://lodash.com/docs
- # [[https://github.com/jashkenas/underscore|underscore]] -  
- Document: http://underscorejs.org/
+= Development environment = 
+主要用到的開發環境 = VIM + VIM syntastic + JSHint + node-inspector + Grunt + Mocha。<br>
+VIM 編輯, JSHint + VIM syntastic  靜態語法檢查, node-inspector 調試, Grunt build task, Mocha unit test。
+* VIM: http://www.vim.org/
+* VIM syntastic: https://github.com/scrooloose/syntastic
+* JSHint: http://jshint.com/docs/
+* node-inspector: https://github.com/node-inspector/node-inspector
+* Grunt: http://gruntjs.com/
+* Mocha: http://visionmedia.github.io/mocha/
 
-* string 操作<br>
- Node 自带的 `util` 有一部分。不过很不够用。
- 目前找到的功能比较丰富的包是 
- [[https://github.com/epeli/underscore.string|underscore.string]]
+----
 
-* 异步操作<br>
- Async 或者 Q。自己一般使用 Async 。主要要是看实现上 Async 似乎更简单些。
- 为了 KISS 原则也应该轻量级的东西。<br>
- 这两者更新都不是很频繁，估计会有新的代替者出现吧?
- # Async: https://github.com/caolan/async
- # Q: https://github.com/kriskowal/q
+= Practice =
+== Web Server ==
+* Mock Server
+ 主要是測試 HTTP server 的一個簡單 Server。具體參考 Gist 裏的 readme。
+ - gist: https://gist.github.com/xiongjia/428402521312456ceccf
 
------
-
-= 冷门 Modules =
-== rsyncwrapper  ==
-* [[https://github.com/jedrichards/rsyncwrapper|rsyncwrapper]] <br>
- - Rsync 的封装，之前自己用于网站的自动发布。<br>
- (Windows 上没有用过，估计是需要特殊配置的 ssh 和 rsync windows client 的。)
- - Sample: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  var rsync, rsyncOpt;
-  /* rsync options */
-  rsyncOpt = {
-    src: './dist/',
-    dest: 'username@host:remote_directory',
-    recursive: true
-  };
-  /* execute rsync upload */
-  rsync = require("rsyncwrapper").rsync;
-  rsync(rsyncOpt, function (err, stdout, stderr, cmd) {
-    if (err) {
-      /* XXX Rsync error */        
-    }
-  });
-}}}
-
------
-
-= Grunt =
-== Documentation ==
-* http://gruntjs.com/ <br>
- 也可以再 Github 上的 grunt-docs 找到 https://github.com/gruntjs/grunt-docs <br>
- 至少有3部分: Plugins, Documentation, API。
- # 閱讀 Documentation 裏的 _getting started_  http://gruntjs.com/getting-started
- # 掌握基本 Task 概念
- # 掌握基本的 API (比如: Log, File, config, option ... etc.) 
- # Async Task 的使用 
- # 掌握常用的 Plugins (安裝，加載，配置）
- # 知道 plugin 的製作過程 http://gruntjs.com/creating-plugins
-
-== Useful plugins ==
-* 現有的 plugins 可以在 http://gruntjs.com/plugins 找。
-* 如果是 grunt contrib plugin 也可以在 https://github.com/gruntjs search 到。
-  (如果無特殊需要，最好優先選用 grunt contrib 的 plugin。)
-* 如何生成自己的 plugin 可以参考, Grunt document 里的 Creating plugins 章节。
-  http://gruntjs.com/creating-plugins
-=== grunt-contrib-jshint ===
-*  [[https://github.com/gruntjs/grunt-contrib-jshint|grunt-contrib-jshint]] <br>
- jshint 检查
- # Install: `npm install grunt-contrib-jshint --save-dev`
- # Load: `grunt.loadNpmTasks('grunt-contrib-jshint');` 
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    jshint: {
-      /* read the jshint option from .jshintrc  */
-      options: { jshintrc: '.jshintrc' },
-      /* target: { source files }  */
-      gruntfile: { src: 'Gruntfile.js' },
-      lib: { src: ['lib/**/*.js'] },
-      bin: { src: ['test1.js', 'test2.js'] }
-    }
-  };
-}}}
-=== grunt-contrib-clean ===
-* [[https://github.com/gruntjs/grunt-contrib-clean|grunt-contrib-clean]] <br>
- 清理文件或目录
- # Install:  `npm install grunt-contrib-clean --save-dev`
- # Load:  `grunt.loadNpmTasks('grunt-contrib-clean');` 
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    /* remove ./dist */
-    clean: ['dist']
-  };
-}}}
-=== grunt-contrib-copy ===
-* [[https://github.com/gruntjs/grunt-contrib-copy|grunt-contrib-copy]] <br>
- copy 文件，目录。可以用于打包之类的
- # Install:  `npm install grunt-contrib-copy --save-dev` 
- # Load:  `grunt.loadNpmTasks('grunt-contrib-copy');` 
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    /* copy all the .html files from output to dist */
-    copy: {
-      content: {
-        expand: true,
-        cwd: 'output/',
-        src: [ '**/*.html' ],
-        dest: 'dist/'
-      }
-    }
-  };
-}}}
-=== grunt-contrib-concat ===
-* [[https://github.com/gruntjs/grunt-contrib-concat|grunt-contrib-concat]] <br>
- 合并 js or css files。
- # Install: `npm install grunt-contrib-concat --save-dev` 
- # Load:  `grunt.loadNpmTasks('grunt-contrib-concat');`
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    concat: {
-      css: { src: [ 'src1.css', 'src2.css' ], dest: 'dest.css' },
-      js: { src: [ 'src1.js', 'src2.js' ], dest: 'dest.js }
-    }
-  };
-}}}
-=== grunt-contrib-cssmin === 
-* [[https://github.com/gruntjs/grunt-contrib-cssmin|grunt-contrib-cssmin]] <br>
- 压缩css。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）
- # Install:  `npm install grunt-contrib-cssmin --save-dev` 
- # Load:  `grunt.loadNpmTasks('grunt-contrib-cssmin');`
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    cssmin: {
-      minify: { src: [ 'src.css' ], dest: 'dest.css' }
-    }
-  };
-}}}
-=== grunt-contrib-uglify ===
-* [[https://github.com/gruntjs/grunt-contrib-uglify|grunt-contrib-uglify]] <br>
- 压缩/丑化 js。( 也可以考虑用 grunt-yui-compressor。提醒: 目前的 YUI 依赖 Java。）
- # Install:  `npm install grunt-contrib-uglify --save-dev`
- # Load:  `grunt.loadNpmTasks('grunt-contrib-uglify');`
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    uglify: {
-      dist: { src: 'src.js', dest: 'dest.js' }
-    }
-  };
-}}}
-=== grunt-contrib-connect ===
-* [[https://github.com/gruntjs/grunt-contrib-connect|grunt-contrib-connect]] <br>
- 創建一個靜態的 Web Server，一般用於自動測試或開發時本地看效果用一下。 
- # Install:  `npm install grunt-contrib-connect --save-dev`
- # Load:  `grunt.loadNpmTasks('grunt-contrib-connect');`
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    connect: {
-      dist: {
-        options: { port: 9000, base: 'dist', debug: true, keepalive: true }
-      }
-    }
-  };
-}}}
-=== grunt-contrib-watch ===
-* [[https://github.com/gruntjs/grunt-contrib-watch|grunt-contrib-watch]] <br>
- 監視對應的文件系統，當發生變化時自動執行對應的 Task。 
- # Install:  `npm install grunt-contrib-watch --save-dev`
- # Load:  `grunt.loadNpmTasks('grunt-contrib-watch');`
- # Sample configuration: (具體的 options 在他的 github readme 裏有) <br>
-{{{class="brush: js; gutter: false; toolbar: false;"
-  grunt.initConfig({
-    watch: {
-      /* 1. monitor the .html files in output folder
-       * 2. call the 'copy:content' task if the files changed
-       */
-      content: {
-        files: ['output/**/*.html'],
-        tasks: ['copy:content'],
-        options: { spawn: false }
-      }
-    },
- };
-}}}
+== Database ==
+* Knex Sample <br>
+ Knex 是一個 database query builder 通過 Knex 的封裝，可以使同一份代碼工作與不同種類的數據庫。
+ 具體參考 Gist 裏的 readme。
+ - gist:  https://gist.github.com/xiongjia/85df587ce3535d1c6151
 
