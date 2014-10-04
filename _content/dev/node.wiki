@@ -1,73 +1,45 @@
 %title Node
 %toc
 
-= Setup environment =
-开发环境可以使用最新版本的 Node。如果是生产环境，首先到 http://nodejs.org/ 
-找到最后的 *stable* release version，再根据需要决定要装的版本。<br>
-== Windows ==
-多种选择:
-* 用 .msi 安装包安装，只要看清楚 32 or 64 bit version 
-* 在 http://nodejs.org/dist/ 下找到自己需要 node & npm binary 下载并解压。比如安装最新的 64 bit Node: <br>
-  # 下载 http://nodejs.org/dist/latest/x64/node.exe 
-  # 如需要 Debug Node 本身则需要对应的 .pdb http://nodejs.org/dist/latest/x64/node.pdb
-  # 下载需要的 npm 版本 http://nodejs.org/dist/npm/ ( Windows 版下载 .zip, 会提供对应的 .bat or .cmd 文件)
-  # 建立安装目录,加入版本名方便以后升级。 比如: 
-{{{class="brush: ps; gutter: false; toolbar: false;"
-    mkdir  $HOME/node
-    mkdir  $HOME/node/npm-1.3.9
-    mkdir  $HOME/node/node-v0.10.22
+= Environment =
+Node 環境主要有兩部分組成: 
+* Node 是 JS 腳本的執行者。
+  他封裝了 [[http://code.google.com/p/v8/|JavaScript Engine V8]] 
+  內置了一套類似與 CommonJS 的 JavaScript Module system,
+  並且封裝了一套 API 比如： http, process (參考 http://nodejs.org/api/ )。 
+{{{
+ +---------------------------------------+      +--------------------------------+
+ | NODE                                  |<---->| +----------------------------+ |
+ |=======================================|      | | Your .JS Scripts or Modules| |
+ | +-----------------------------------+ |      | +----------------------------+ |
+ | | Node engine                       | |      |                                |
+ | |===================================| |      | +-------------------------+    |
+ | | Node modules (e.g. http, process) | |      | | 3rd party Node Packages |    |
+ | +-----------------------------------+ |      | +-------------------------+    |
+ |---------------------------------------|      +--------------------------------+
+ | +----+ +---------+                    |
+ | | v8 | | libuv   |                    |
+ | +----+ | zlib    |                    |
+ |        | openssl |                    |
+ |        | cares   |                    |
+ |        | ...     |                    |
+ |        +---------+                    |
+ +---------------------------------------+
 }}}
-  # copy node.exe & .pdb to "$HOME/node/node-v0.10.22"
-  # Unzip the npm-1.3.9.zip to "$HOME/node/npm-1.3.9"
-  # 在 $PATH 里增加, 这2个路径
-  # 创建 "$HOME/.npmrc" 指定对应的 prefix 和 cache，以方便管理 NPM 包。(目录根据需要自己指定)
-  详细 npmrc 参数可以参考文档 https://npmjs.org/doc/files/npmrc.html
-{{{class="brush: ps; gutter: false; toolbar: false;"
-   prefix = D:\usr\misc\node\npm-packages
-   cache = D:\usr\misc\node\npm-cache
-}}}
-  # 把 prefix 所指定的路徑放入 $PATH 環境變量裏，這樣 NPM 的 global package 就可以直接使用了。
+* Node 的 Package Manager 。目前主要的 Package Manager 是 [[https://www.npmjs.org/|NPM]] 。
 
-* 从 NODE 源代码编译
- # 从 github 上 clone 代码, 地址 https://github.com/joyent/node
- # 在 branch list 里找到自己需要的 release 版本,并且 checkout 这个 branch。(比如: v0.11.11-release) 
- # 打开 README.md 查看  Windows 编译步骤 。(目前版本的编译需要预先准备 Python 2.6/2.7 和 VS 2010 or 2012) 
- # 编译后会得到对应的 node.exe
- # 目前版本 的 NODE 会把 NPM 会放在 "deps" 目录下。(可以通过搜索 npm.cmd 来找到他)
- # 重复上面下载安装的步骤，即可得到自己编译的 Windows 版本 node 环境。
-
-== Unix ==
-多种选择:
-* 包管理安装
- # 各个 unix 不同。
-   如: ArchLinux 用 `pacman -S nodejs`, gentoo 用 `emerge nodejs`, 
-   osx 有多种选择,我自己是用 `brew install node` <br>
-   Node 官方 Wiki 有个很全的介绍 [[https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager|Installing Node.js via package manager]] <br>
- # 创建 $HOME/.npmrc, 比如:
-  详细 npmrc 参数可以参考文档 https://npmjs.org/doc/files/npmrc.html
-{{{class="brush: ps; gutter: false; toolbar: false;"
-   prefix = ~./.node/npm-packages
-   cache = ~/.node/npm-cache
-}}}
-  根据自己需要来指定 npm package 的路径。如果把路径放在 "~/" 之下:
-  - 优点: 可以避免 NPM 在 install global package 时的 root 权限需求。
-  - 缺点: 不同 user 间不能共享  global package。<br>
-  我自己觉得 Node 在大多数情况下不需要 global package。所以放在 HOME 下比较好。
-  至于 'cache' 路径，是可以考虑用一个公用的目录来避免反复下载的。
-* 下载安装
- # 可以在 http://nodejs.org/dist/ 找到自己需要的 node & npm 的 tar.gz 包。
-   但是需要根据自己的 unix 版本,来找对应的 version。<br>
-   比如: linux-x86, linux-x64 对应 linux ; darwin-x86, darwin-x64 对应 osx <br>
- # npm 一般会被包含在 tar.gz 
- # 其余步骤类似于 windows 的 下载安装，更新 对应的 $PATH 和 ".npmrc" 即可
-* Install from Source <br>
- 在 Unix 上 install from soruce 可能是最常用的 (如果是开发环境的话)
- # 从 github 上 clone 代码,地址: https://github.com/joyent/node
- # 在 branch list 里找到自己需要的 release 版本,并且 checkout 这个 branch。(比如: v0.11.11-release) 
- # 运行 `./configure --prefix=~/.node; make; make install` 
-   这 3 条 command 后，node 和 npm 就被安装到了 ~/.node 下。
-   (不同版本编译可能会有变化，如遇问题参考 README.md )
- # 最后像之前"包管理安装“那样更新对应的 .npmrc 和 $PATH 即可。
+== Installation ==
+* 從安裝包安裝。http://nodejs.org/download/ 下載安裝包。(注意：操作系統和 32/64 bit ) 
+* 通過 binary 安裝。 http://nodejs.org/dist/ 下找到自己需要 node & npm version 。 注意:
+  # 操作系統和 32/64 bit 版本在不同的目錄中。
+  # 在 http://nodejs.org/dist/npm-versions.txt 中有 node 和 npm 版本的對應關係。
+  # 下載後把 node 和 npm 的所在目錄加入 `PATH`  環境變量中。
+* 通過 source code 安裝:
+  # 從 https://github.com/joyent/node clone node 代碼
+  # Checkout 自己需要的 branch 。比如: `git checkout v0.10.3-release` 代表 node v0.10.3 版本。
+  # 運行 `configure --prefix=<node & npm install path>` 
+  # build & install: `make` & `make install`
+  # 把 prefix folder 加入 `PATH` 環境變量中。
 
 -----
 
