@@ -98,6 +98,10 @@ unit_test_framework 是 boost 自帶的一套 c/c++ unit test framework.
    可以使得 Server 有更加高的并發處理能力。
  * "/get-data" 測試，比如: http://localhost:2333/get-data?len=2048&delay=500
    表示 Server 延迟 500 毫秒返回 2048 bytes 的数据。
+== Knex sample ==
+Knex 是一個 database query builder 通過 Knex 的封裝，可以使同一份代碼工作與不同種類的數據庫。
+ * gist:  https://gist.github.com/xiongjia/85df587ce3535d1c6151
+ * 具體參考 gist 中的 readme
 
 = PowerShell =
 == MS UIAutomation ==

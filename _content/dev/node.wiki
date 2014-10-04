@@ -1,6 +1,8 @@
 %title Node
 %toc
 
+記錄/備忘一些 Nodejs 使用實例。
+
 = Documentation =
 * Node & NPM
  * NODEJS API: http://nodejs.org/api/
@@ -22,31 +24,33 @@
 Node 環境主要有兩部分組成: 
 * Node 是 JS 腳本的執行者。
   他封裝了 [[http://code.google.com/p/v8/|JavaScript Engine V8]] 
-  內置了一套類似與 CommonJS 的 JavaScript Module system,
+  內置了一套類似 CommonJS 的 JavaScript Module system 。
   並且封裝了一套 API 比如： http, process (參考 http://nodejs.org/api/ )。 
 {{{
- +---------------------------------------+      +--------------------------------+
- | NODE                                  |<---->| +----------------------------+ |
- |=======================================|      | | Your .JS Scripts or Modules| |
- | +-----------------------------------+ |      | +----------------------------+ |
- | | Node engine                       | |      |                                |
- | |===================================| |      | +-------------------------+    |
- | | Node modules (e.g. http, process) | |      | | 3rd party Node Packages |    |
- | +-----------------------------------+ |      | +-------------------------+    |
- |---------------------------------------|      +--------------------------------+
- | +----+ +---------+                    |
- | | v8 | | libuv   |                    |
- | +----+ | zlib    |                    |
- |        | openssl |                    |
- |        | cares   |                    |
- |        | ...     |                    |
- |        +---------+                    |
- +---------------------------------------+
++---------------------------------------+     +--------------------------------+
+| NODE                                  |<--->| +----------------------------+ |
+|=======================================|     | | Your .JS Scripts or Modules| |
+| +-----------------------------------+ |     | +----------------------------+ |
+| | Node engine                       | |     |                                |
+| |===================================| |     | +-------------------------+    |
+| | Node modules (e.g. http, process) | |     | | 3rd party Node Packages |    |
+| +-----------------------------------+ |     | +-------------------------+    |
+|---------------------------------------|     +--------------------------------+
+| +----+ +---------+                    |
+| | v8 | | libuv   |                    |
+| +----+ | zlib    |                    |
+|        | openssl |                    |
+|        | cares   |                    |
+|        | ...     |                    |
+|        +---------+                    |
++---------------------------------------+
 }}}
 * Node 的 Package Manager 。目前主要的 Package Manager 是 [[https://www.npmjs.org/|NPM]] 。
 
+----
+
 == Installation ==
-* 從安裝包安裝。http://nodejs.org/download/ 下載安裝包。(注意：操作系統和 32/64 bit ) 
+* 從安裝包安裝。http://nodejs.org/download/ 下載安裝包。(注意：OS 種類和32/64 bit ) 
 * 通過 binary 安裝。 http://nodejs.org/dist/ 下找到自己需要 node & npm version 。 注意:
   # 操作系統和 32/64 bit 版本在不同的目錄中。
   # 在 http://nodejs.org/dist/npm-versions.txt 中有 node 和 npm 版本的對應關係。
@@ -62,6 +66,8 @@ Node 環境主要有兩部分組成:
     如果選擇 alpha, beta, pre release 可能會造成某些 npm package 在檢查 node version 時抱錯。
   * 不同 OS 的 Package Manager 也可以直接安裝(比如: OSX 的 Homebrew, ArchLinux 的 Pacman等),
     參考: [[Installing Node.js via package manager|https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager]]
+
+----
 
 == Configuration ==
  * `$HOME/.npmrc` 是 npm 的配置。https://www.npmjs.org/doc/files/npmrc.html <br>
@@ -94,7 +100,7 @@ VIM 編輯, JSHint + VIM syntastic  靜態語法檢查, node-inspector 調試, G
 
 = Practice =
 == Web Server ==
-* Mock Server
+* Mock Server <br>
  主要是測試 HTTP server 的一個簡單 Server。具體參考 Gist 裏的 readme。
  - gist: https://gist.github.com/xiongjia/428402521312456ceccf
 
@@ -103,4 +109,14 @@ VIM 編輯, JSHint + VIM syntastic  靜態語法檢查, node-inspector 調試, G
  Knex 是一個 database query builder 通過 Knex 的封裝，可以使同一份代碼工作與不同種類的數據庫。
  具體參考 Gist 裏的 readme。
  - gist:  https://gist.github.com/xiongjia/85df587ce3535d1c6151
+
+== Misc ==
+* Node Stream example <br>
+ 通過從 require('stream').Transform 繼承得方式實現，stream 式樣得協議解析。
+ - gist: https://gist.github.com/xiongjia/6867670
+ - protocol 得格式和一些注意事項已經被寫在代碼註解裏了。
+* Node heapdump example<br>
+ 通過 node-heapdump 來 dump 當前得 v8 狀態，隨後可以通過 Chrome developer tool 來檢測這個 dump 文件。
+ - gist: https://gist.github.com/xiongjia/7688374
+ - 需要在用前裝 node-heapdump: `npm install node-heapdump`
 
