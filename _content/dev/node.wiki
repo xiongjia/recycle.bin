@@ -109,6 +109,10 @@ VIM 編輯, JSHint + VIM syntastic  靜態語法檢查, node-inspector 調試, G
  Knex 是一個 database query builder 通過 Knex 的封裝，可以使同一份代碼工作與不同種類的數據庫。
  具體參考 Gist 裏的 readme。
  - gist:  https://gist.github.com/xiongjia/85df587ce3535d1c6151
+* Bookshelfjs sample <br>
+ Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Knex 的query builder 。
+ 具體參考 gist 中的 readme
+ - gist: https://gist.github.com/xiongjia/eeaf9d0d7571b4d15f3f
 
 == Misc ==
 * Node Stream example <br>
