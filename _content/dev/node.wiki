@@ -47,8 +47,6 @@ Node 環境主要有兩部分組成:
 }}}
 * Node 的 Package Manager 。目前主要的 Package Manager 是 [[https://www.npmjs.org/|NPM]] 。
 
-----
-
 == Installation ==
 * 從安裝包安裝。http://nodejs.org/download/ 下載安裝包。(注意：OS 種類和32/64 bit ) 
 * 通過 binary 安裝。 http://nodejs.org/dist/ 下找到自己需要 node & npm version 。 注意:
@@ -66,8 +64,6 @@ Node 環境主要有兩部分組成:
     如果選擇 alpha, beta, pre release 可能會造成某些 npm package 在檢查 node version 時抱錯。
   * 不同 OS 的 Package Manager 也可以直接安裝(比如: OSX 的 Homebrew, ArchLinux 的 Pacman等),
     參考: [[Installing Node.js via package manager|https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager]]
-
-----
 
 == Configuration ==
  * `$HOME/.npmrc` 是 npm 的配置。https://www.npmjs.org/doc/files/npmrc.html <br>
