@@ -5,6 +5,7 @@
 == Lint ==
 * JSON Lint: http://jsonlint.org/ or https://github.com/arc90/jsonlintdotcom
 * YAML Lint: http://yamllint.com/ or https://github.com/gilltots/yamllint
+* JS-YAML parser (Lint):  http://nodeca.github.io/js-yaml/ or https://github.com/nodeca/js-yaml
 
 == JS ==
 * JS Fiddle: http://jsfiddle.net/
