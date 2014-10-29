@@ -120,3 +120,8 @@ VIM 編輯, JSHint + VIM syntastic  靜態語法檢查, node-inspector 調試, G
  - gist: https://gist.github.com/xiongjia/7688374
  - 需要在用前裝 node-heapdump: `npm install node-heapdump`
 
+== npm packages ==
+* [[https://www.npmjs.org/package/nspider|nspider]] 
+  一個 Node.js 實現的  Web Spider 封裝。可以通過 `npm install nspider` 從 npm 安裝。
+  github repository: [[https://github.com/xiongjia/nspider|github]]  
+
