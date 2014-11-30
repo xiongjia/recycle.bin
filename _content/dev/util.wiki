@@ -5,18 +5,52 @@
  * /* XXX pending  (￣o￣) . z Z　*/
 
 = Java =
+== Documentation ==
+* Gradle: http://www.gradle.org/documentation
+* Design pattern samples: https://github.com/iluwatar/java-design-patterns  <br>
+  常用的 design pattern 的實現，代碼簡潔且可以編譯、運行。比看書有趣多了。 
+* awesome 系列: 
+ - awesome-java: https://github.com/akullpp/awesome-java
+
+== Gradle ==
+[[http://www.gradle.org/|Gradle]] 和 Ant; Maven 類似。
+Gradle 採用了 Groovy 來做為開發語言，比較精煉、短小。(個人覺得比 Maven 要簡潔許多)
+另外不少 Android 工程也採用了 Gradle 。
+* 具體需要閱讀 Gradle 的文檔: http://www.gradle.org/documentation
+* 我自己的一些實驗代碼中幾乎都用了 Gradle:
+ - [[https://github.com/xiongjia/scratch/tree/master/jscratch|jscratch]] : 算是一個簡單的 Gradle Java Application 模板
+ - [[https://github.com/xiongjia/scratch/tree/master/jwebsocket|jwebsocket]] : 一個簡單的 WebSocket Echo server 
+ - [[https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler|JMeter Example Sampler]] : 一個簡單的 JMeter plugin 
+
 == Remote debugging ==
- * 可用于调试本地程序. 当作 localhost 即可. (俺作為一名 IDE 反對者, Build 用 ANT, 编辑用 Vim , 这样基本就可以避免使用任何 IDE 了)
- * 基本步骤:
-  # 编译 Java Application 时启用 _debug_ 参数, 比如 ANT Build.xml 中 javac task: <br>
-    `<javac srcdir="src" destdir="build/classes" debug="true" debuglevel="lines,vars,source"/>` <br>
-    _debug="true"_ 和 _debuglevel="lines,vars,source"_ 表示 javac 編譯時啟用指定 Level 的 debug 
-  # 带上 Debug 参数启动 Java Application , 比如: <br>
-    `java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=y -jar MyApp.jar` <br>
-    _'suspend=y'_ 表示掛起 app 等待 debug attach. 也可以用 _'_suspend=n'_ 表示不等待。<br>
-    _'address=8000'_ 表示對應的端口號.最好選數字大一點的(因為小的端口號, unix 上需要 root 權限).
-  # 打开 Eclipse 配置 _'Debug Configurations'_ , 增加對應的 _'Remote Java Application'_ .<br>
-    在 Connect 中填上對應的 Host 和 Port; Source 中增加對應的 source code directory. <br>
-    可以在 attach 前先在對應的 method 上設置 breakpoint 以免錯過.<br>
-    準備就緒後在 Debug 裏選擇自己配置的 Remote debug 選項就可以 attach 到對應的進程上.
+很多時候，是用這個辦法來 Debug 一個第三方編譯的工程。
+比如: 我有 [[https://jmeter.apache.org/|Apache JMeter]] 的代碼和 Binary .jar ，
+但是沒有把他加入 Eclipse 工程裏，如果想 Debug 這個 JMeter 就可以用以下步骤。
+* 基本步骤:
+ - 编译 Java Application 时启用 _debug_ 参数 (否則可能會在 Debug 過程中看不清一些變量之類的)。比如:
+   * ANT Build.xml 中 javac task: <br>
+     `<javac srcdir="src" destdir="build/classes" debug="true" debuglevel="lines,vars,source"/>` <br>
+     _debug="true"_ 和 _debuglevel="lines,vars,source"_ 表示 javac 編譯時啟用指定 Level 的 debug 
+ - 用 Debug 参数启动 Java Application , 比如: <br>
+   `java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=y -jar MyApp.jar` <br>
+   * _'suspend=y'_ 表示掛起 app 等待 debug attach. 也可以用 _'_suspend=n'_ 表示不等待。<br>
+   * _'address=8000'_ 表示對應的端口號.最好選數字大一點的(因為小的端口號, unix 上需要 root 權限).
+ - 打开 Eclipse 配置 _'Debug Configurations'_ , 增加對應的 _'Remote Java Application'_ .
+   * 在 Connect 中填上對應的 Host 和 Port;
+   * Source 中增加對應的 source code directory. 
+   * 可以在 attach 前先在對應的 method 上設置 breakpoint 以免錯過.
+     準備就緒後在 Debug 裏選擇自己配置的 Remote debug 選項就可以 attach 到對應的進程上.
+
+== JDK Tools ==
+=== jsadebugd ===
+可以 Attach 到一個已經啟動了的 Java process 來幫助 debug。 <br>
+(JDK 的幫助文件和 Oracle 的 online documentation 都有具體的說明。)
+* 基本步驟:
+ - `jsadebugd <pid>` : attach 到要 debug 的 Java process，這個過程可能比較慢需要多等一下。
+ - `jdb -connect sun.jvm.hotspot.jdi.SADebugServerAttachingConnector:debugServerName=localhost` <br>
+   運行 jdb 並且連結到 Debugger server 上。 
+   - 可以用 `jdb -listconnectors` 查看 debugger server
+   - 用 `-sourcepath` 把 source code 的 path 告訴 gdb 否則可能會看不到 debug 代碼.
+ - jdb 連上之後用 `threads` 命令查看當前所有的 Threads ; 用 `thread` 命令跳到自己想看的 Thread;
+   用 `where`, `up`, `down` 來查看/切換 Thread stacktrace （具體參看 jdb 文檔或者在 jdb 中使用 `help` 命令)
 
