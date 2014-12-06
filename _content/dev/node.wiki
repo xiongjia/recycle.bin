@@ -1,7 +1,7 @@
 %title Node
 %toc
 
-記錄/備忘一些 Nodejs 使用實例。
+記錄/備忘一些 [[http://nodejs.org/|Node.js]] 的知識和實例。
 
 = Documentation =
 * Node & NPM
