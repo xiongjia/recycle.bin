@@ -21,17 +21,28 @@ JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
 * 對於其他環境基本沒太大要求，應該是 Java runtime 可以工作的地方基本就可以運行 JMeter。
   官方 Wiki 有列出過所有測試過的系統: 
   http://wiki.apache.org/jmeter/JMeterAndOperatingSystemsTested
-* 根據實際測試的類型，可能會需要一些特殊的依賴或配置。<br>
+* 根據實際所做的測試，可能會需要一些特殊的依賴或配置。<br>
   比如: JDBC Driver 需要被配置,如果是測試 Database; SSL 環境需要被配置,如果用到了 SSL。<br>
-  具體的可以讀一下 JMeter User manual 第二章 Getting Started 中 "Requirements" 一小節的描述。
+  具體的可以讀一下 JMeter User manual 的 Getting Started 中 "Requirements" 一小節的描述。
   https://jmeter.apache.org/usermanual/get-started.html
 
 == Installation ==
 * 從 http://jmeter.apache.org/download_jmeter.cgi 下載最新的 Binaries 包。
-* 解壓到目錄就可以使用。(最好在目錄名裏保留 version number 以便升級)
+* 解壓到目錄就可以使用。
 * 如果以 GUI 方式啓動,則只需要運行 bin\jmeter ( windows 上是 bin\jmeter.bat ) <br>
   這個腳本會組裝參數隨後啓動 bin\ApacheJMeter.jar。
   運行前要保證 Java 環境正確,比如: JAVA_HOME
 
+= Custom Extension / Plugin =
+可以通過擴展 JMeter 來運行一些特殊的測試，
+比如在 JMeter 的 Script 中運行自己或第三方的 JAR 文件中的程序;
+或者支持測試一些特殊的 Protocol。
+* 通過JMeter 的 BSF / BeanShell Sampler 中使用 Script 加載自己的 .jar 文件。
+  比如: 使用 BenShell Script import 自己的 .jar 文件中的 Java Package。
+  (這個 jar 文件要放在 JMeter classpath 裏，或者也可以放在 `lib` 目錄，
+  這個目錄是默認的 classpath)。<br>
+  具體的細節可以參考手冊中 BSF Sampler 的描述。
+* 通過實現 JMeter component 的方式擴展 JMeter 。比如實現一個 JMeter 的 Sampler 。
+  一個我簡化實現: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
 
 
