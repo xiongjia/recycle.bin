@@ -43,6 +43,5 @@ JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
   這個目錄是默認的 classpath)。<br>
   具體的細節可以參考手冊中 BSF Sampler 的描述。
 * 通過實現 JMeter component 的方式擴展 JMeter 。比如實現一個 JMeter 的 Sampler 。
-  一個我簡化實現: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
-
+  一個我簡化過的實現: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
 
