@@ -33,6 +33,15 @@ JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
   這個腳本會組裝參數隨後啓動 bin\ApacheJMeter.jar。
   運行前要保證 Java 環境正確,比如: JAVA_HOME
 
+= Internals =
+== Thread Group ==
+Thread Group 是 JMeter 的基本執行單位,
+通過對 Thread Group 參數(比如: Number of Threads; Loop Count )的設置來改變 Test 的所產生的壓力。
+* 在 JMeter 中有 3 種 Thread Group:
+ # Thread Group - 標準 Thread Group
+ # setUp Thread Group - 會在 Test 開始是限被執行的 Thread Group  (方便用戶做 Testing 的初始化)
+ # tearDown Thread Group - 會在所有其它類型的 Thread Group 結束後執行的 Thread Group (方便做 cleanup 的工作)
+
 = Custom Extension / Plugin =
 可以通過擴展 JMeter 來運行一些特殊的測試，
 比如在 JMeter 的 Script 中運行自己或第三方的 JAR 文件中的程序;
