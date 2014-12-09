@@ -35,12 +35,31 @@ JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
 
 = Internals =
 == Thread Group ==
-Thread Group 是 JMeter 的基本執行單位,
+Thread Group 是 JMeter 的基本調度單位,
 通過對 Thread Group 參數(比如: Number of Threads; Loop Count )的設置來改變 Test 的所產生的壓力。
-* 在 JMeter 中有 3 種 Thread Group:
+* 在 JMeter 中有 3 種 Thread Group, 一個 Test 中可以包含多個同類型的 Thread Group:
  # Thread Group - 標準 Thread Group
  # setUp Thread Group - 會在 Test 開始是限被執行的 Thread Group  (方便用戶做 Testing 的初始化)
  # tearDown Thread Group - 會在所有其它類型的 Thread Group 結束後執行的 Thread Group (方便做 cleanup 的工作)
+* JMeter 關於 Thread Group 調度的實現相關的主要代碼在: [[https://github.com/apache/jmeter/blob/trunk/src/core/org/apache/jmeter/engine/StandardJMeterEngine.java|src/core/org/apache/jmeter/engine/StandardJMeterEngine.java]] 中。 
+ - 在 `StandardJMeterEngine` 的 `public void run()` 這個方法中，
+   可以看到  JMeter Engine 是如何調度 Test 中的所有 Thread Groups 。 <br>
+   這個一個 `run()` 方法也是 JMeter Engine 從 `Runnable` Override 掉的調度 Thread 入口。
+ - 在調度 Thread 中, Engine 將 Test 中同類型的 Thread Group 分別放到 3 個 Lists 裏。<br>
+   隨後依照 Setup Thread Groups -> Thread Groups -> Teardown Thread Groups 的順序，
+   依次執行這些 Thread Groups。<br>
+   (注意: 在 JMeter 的代碼中,把 Teardown Thread Groups 命名為 `PostThreadGroup`. 
+   UI 和手冊中的名字是 "tearDown Thread Group"。)
+{{{
++-----------------------+    +----------------+    +-------------------------+
+| Setup Thread Groups   |--->| Thread Groups  |--->| Teardown Thread Groups  |
+|-----------------------|    |----------------|    |-------------------------|
+| Setup Thread Group 1  |    | Thread Group 1 |    | Teardown Thread Group 1 |
+| Setup Thread Group 2  |    | Thread Group 2 |    | Teardown Thread Group 2 |
+| ...                   |    | ...            |    | ...                     |
+| Setup Thread Group N  |    | Thread Group N |    | Teardown Thread Group N |
++-----------------------+    +----------------+    +-------------------------+
+}}}
 
 = Custom Extension / Plugin =
 可以通過擴展 JMeter 來運行一些特殊的測試，
