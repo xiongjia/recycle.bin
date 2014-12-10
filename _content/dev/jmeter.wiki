@@ -60,26 +60,28 @@ Thread Group 是 JMeter 的基本調度單位,
 | Setup Thread Group N  |    | Thread Group N |    | Teardown Thread Group N |
 +-----------------------+    +----------------+    +-------------------------+
 }}}
- - Thread Group 中的 Error 處理。在 Thread Group 設置中，有針對 Error 發生時的行為設置。這些行為如下: 
-   "Continue"; "Start next thread loop"; "Stop Thread"; "Stop Test"; "Stop Test Now"。 
-    - 這些行為從字字面上基本已經能理解，詳細解釋在手冊的 "component reference" 的 "Thread Group" 中有說明。
-    - "Stop Test" 與 "Stop Test Now" 的區別: 
-      # 不同的停止方式 <br>
-        從實現上看, "Stop Test" 相當於調用了 `StandardJMeterEngine` 中的
-        `stopEngine()` 而 "Stop Test Now" 則相當於調用了 `stopEngineNow()`。 <br>
-        這兩種停止方法者會通過不同的方式來終止 Thread Group : `tellThreadsToStop()` 和 `stop()` 。 
-        其中 `tellThreadsToStop()` 會通過調用 `interrupt()` 更快的結束 Thread Group , 
-        如果某個 Sampler 在終止時仍在運行並且它支持 interrupt, 則這個運行到一半的 Sampler 會被停止。
-      # 對 Teardown Thread Group 的影響 <br>
-        *情況1*: Test 在準備階段就出錯了，即 Setup Thread Groups 出錯。<br>
-        這時如果發生 "Stop Test" 或者 "Stop Test Now" , Teardown Thread Groups 不會被執行。
-        (從實現上看是因為, `StandardJMeterEngine` 中的 `mainGroups` 還沒有開始。) <br>
-        *情況2*: Test 已經開始執行, 在 Thread Group 中發生了錯誤。 <br>
-        "Stop Test Now" 發生,則這後所有的 Teardown Thread Groups 不會運行。
-        (因為 `stopEngineNow()` 會將 `StandardJMeterEngine` 中的 `shutdown` flag 標記掉) <br>
-        "Stop Test" 發生, 則 Teardown Thread Groups 執行條件依賴於 
-        Test Plan 的配置 "Run tearDown Thread Groups after shutdown of main threads"。
-        如果 Enable 此設置，則 Teardown Thread Groups 會被執行。
+* Thread Group 中的 Error 處理。 <br>
+ 在 Thread Group 設置中，有針對 Error 發生時的行為設置。這些行為有: 
+ "Continue"; "Start next thread loop"; "Stop Thread"; "Stop Test"; "Stop Test Now"。 
+ - 這些行為從字字面上基本已經能理解，詳細解釋在手冊的 "component reference" 的 "Thread Group" 中有說明。
+ - "Stop Test" 與 "Stop Test Now" 的區別: 
+   # 不同的停止方式 <br>
+     從實現上看, "Stop Test" 相當於調用了 `StandardJMeterEngine` 中的
+     `stopEngine()` 而 "Stop Test Now" 則相當於調用了 `stopEngineNow()`。 <br>
+     這兩種停止方法者會通過不同的方式來終止 Thread Group, 即 `stop()` 和 `tellThreadsToStop()` 。 <br>
+     其中 `tellThreadsToStop()` 會通過調用 `interrupt()` 更快的結束 Thread Group , 
+     如果某個 Sampler 在終止時仍在運行並且它支持 interrupt, 則這個運行到一半的 Sampler 會被停止。<br>
+     所以 "Stop Test Now" 可能更快的結束 Test 但也有可能使某些 Sampler 中途被停止。
+   # 對 Teardown Thread Group 的影響 <br>
+     *情況1*: Test 在準備階段就出錯了，即 Setup Thread Groups 運行時出錯。
+     這時如果發生 "Stop Test" 或者 "Stop Test Now" , Teardown Thread Groups 不會被執行。<br>
+     (從實現上看是因為, `StandardJMeterEngine` 中的 `mainGroups` 還沒有開始。) <br>
+     *情況2*: Test 已經開始執行, 在 Thread Group 中發生了錯誤。 <br>
+     "Stop Test Now" 發生,則這後所有的 Teardown Thread Groups 不會運行。
+     (因為 `stopEngineNow()` 會將 `StandardJMeterEngine` 中的 `shutdown` flag 標記掉) <br>
+     "Stop Test" 發生, 則 Teardown Thread Groups 執行條件依賴於 
+     Test Plan 的配置 "Run tearDown Thread Groups after shutdown of main threads"。
+     如果 Enable 此設置，則 Teardown Thread Groups 會被執行。
 
 = Custom Extension / Plugin =
 可以通過擴展 JMeter 來運行一些特殊的測試，
