@@ -86,13 +86,16 @@ secure copy (remote file copy program)
 
 = GIT =
 The stupid content tracker 
-* Pro GIT (文档)
+* Pro GIT (文檔)
  - 下載的github: https://github.com/progit/progit
  - online book en: http://git-scm.com/book/en/
  - online book 中文簡體: http://git-scm.com/book/zh
-* GIT internals (文档)
+* GIT internals (文檔)
  - 內容比 Pro GIT 簡潔一些
  - 下載的github: https://github.com/pluralsight/git-internals-pdf
+* Pro GIT 2 (文檔)
+ - Progit 的第二版本 https://github.com/progit/progit2 
+ - Online book: http://git-scm.com/book/en/v2
 * 備忘(有時自己會忘記的 commands ): 
  - 刪除 remote branch <br>
    `git push origin --delete <branchName>`
