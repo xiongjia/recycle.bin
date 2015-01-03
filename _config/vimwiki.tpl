@@ -8,6 +8,7 @@
   <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
   <meta http-equiv="pragma" content="no-cache" />
   <meta name="google-site-verification" content="mL05cIfp_zVfUUDm1uf8dj2RjvVWg9lG0QqEde-4r8Y" />
+  <meta name="baidu-site-verification" content="5L9ysxYYHu" />
   <link rel="stylesheet" type="text/css" href="%root_path%assets/css/main-v0.1.css">
   <title>%title%</title>
 </head>
