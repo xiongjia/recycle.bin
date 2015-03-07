@@ -23,7 +23,8 @@
 
 ----
 
-= scp =
+= General Tools =
+== scp ==
 secure copy (remote file copy program) 
 * 日常操作:
  - source 放在前面，target 放在后面。
@@ -34,10 +35,10 @@ secure copy (remote file copy program)
  | Download file   | `scp user@host:directory/SourceFile TargetFile`        |
  | Download folder | `scp -r user@host:directory/SourceFolder TargetFolder` |
 
-* Windows 上的選擇:<br>
- - [[http://www.chiark.greenend.org.uk/~sgtatham/putty/|Putty]] 提供了  Windows 版 SSH client 的实现。`pscp.exe` 可以实现与 scp 一样的功能。
+* Windows:<br>
+ - [[http://www.chiark.greenend.org.uk/~sgtatham/putty/|Putty]] 提供了  Windows 版 SSH client 的实现。`pscp.exe` 可以实现与 scp 的功能。
  - 安装 Cygwin or Mingw 并选上对应的 ssh 组件。
-* Auto login <br>
+* Auto-login <br>
  有时會把 scp 写在 script 里自动执行。不希望每次输入口令, 希望能夠自動登錄。有多種解決辦法:
  - 使用 ssh 证书认证。 在 scp 命令里加入 `-i 'private key file'` (应该是最佳选择)
  - 使用 sshpass 如:
@@ -69,9 +70,7 @@ secure copy (remote file copy program)
         }
     }}}
 
------
-
-= Rsync =
+== Rsync ==
 增量同步工具
 * 日常操作:<br>
  `rsync -e "/usr/bin/ssh"  --bwlimit=2000 -av local_dir user@host:remote_dir`<br>
@@ -82,9 +81,10 @@ secure copy (remote file copy program)
  # --bwlimit=KBPS - 带宽限制
 * NODE 中使用 Rsync - 参考 [[node|NODE]] 中的 _rsyncwrapper_
 
------
+----
 
-= GIT =
+= Developer Tools =
+== GIT ==
 The stupid content tracker 
 * Pro GIT (文檔)
  - 下載的github: https://github.com/progit/progit
@@ -102,9 +102,29 @@ The stupid content tracker
  - 清除本地無效的 remote branch <br>
    `git remote prune origin`
 
------
+== Ack ==
+ack is a tool like grep, optimized for programmers. 
+相對於 grep 來說, Ack 更加適合開發者使用。
+# 提供多種 type sets 可以方便的選擇文件，比如: `ack --js PATTERN` 表示 search .js 文件。 <br>
+  還有很多 default 設置的 type sets 可以在 ack documentation 中找到。
+# 方便的 ignore-dir，開發中很多臨時 (或是第三方生成) 的文件,目錄需要被跳過。<br>
+  比如: nodejs 開發中，需要跳過 "node_modules" 。
+  ack 的默認設置就會 ignore 這些。<br>
+  ( 可以用 `ack --create-ackrc` 看一下默認規則 ) 
+  如果默認規則不夠，還可以通過自己的 "$HOME/.ackrc" 來增加。
+# 相對 grep 來說 ack 的輸出結果更便於閱讀。
+# 可配置，可以自己在 `.ackrc` 中增加需要的設置。
 
-= Jekyll =
+以下是 ack 的相關資料:
+* ack: http://beyondgrep.com/
+* ack documentation: http://beyondgrep.com/documentation/
+* 查看 ack 的默認設置:  `ack --create-ackrc`
+* Vim 中使用 ack: https://github.com/mileszs/ack.vim <br>
+  相對與 vimgrep 來說在 ack.vim 的方便處在於可以方便的指定 file types 和 ignore folders 
+* ackrc: 用戶可以自己添加 "$HOME/.ackrc" 文件來增加設置。
+  我自己用的一份: https://github.com/xiongjia/dotfiles/blob/master/misc/ackrc
+
+== Jekyll ==
 Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
 * Setup environment <br>
  代碼可以從 https://github.com/jekyll/jekyll 上找到。<br>
@@ -158,7 +178,8 @@ Jekyll http://jekyllrb.com/ 是一個 Ruby 實現的靜態站點生成工具。
 
 -----
 
-= Pixiv =
+= Others =
+== Pixiv ==
 * Pixiv 動圖 <br>
   - Pixiv 又很多好的動圖資源。只是 Pixiv 並不是使用普通的 GIF 格式，而且是一組靜態圖的打包。
     (其實是將多張 .jpg / .png 文件打包在一個 .zip 文件中) 分為下載和轉換 2 個步驟:
