@@ -92,7 +92,7 @@ unit_test_framework 是 boost 自帶的一套 c/c++ unit test framework.
   - 最後只需要執行對應的文件，就可以得到單元測試結果。
   - 詳細的 Boost test framework 參見 boost 文檔: http://www.boost.org/doc/libs/ ("Test" 章節)
 
-= Node =
+= Node.js =
 == Dump node v8 heap ==
 通過 node-heapdump 來 dump 當前得 v8 狀態，隨後可以通過 Chrome developer tool 來檢測這個 dump 文件。
  * gist: https://gist.github.com/xiongjia/7688374
@@ -119,6 +119,9 @@ Knex 是一個 database query builder 通過 Knex 的封裝，可以使同一份
 Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Knex 的query builder 。
  * gist: https://gist.github.com/xiongjia/eeaf9d0d7571b4d15f3f
  * 具體參考 gist 中的 readme
+== NContext ==
+利用 node.js 的 'vm' module 為 script 創建一個獨特的 context
+ * gist: https://gist.github.com/xiongjia/b70406b710b3c19573f6
 
 = PowerShell =
 == MS UIAutomation ==
