@@ -3,43 +3,38 @@
 
 = PostgreSQL =
 == Documentation ==
-* 在線手冊: http://www.postgresql.org/docs/ (每個版本的 pg 有對應的入口)
-* 本地手册,在安装 Database server 時會附帶有使用手冊. 缺點是目前沒有找到好的 search 方法。具體位置各操作系統會有區別。
+* 在線手冊: http://www.postgresql.org/docs/ 
+* 本地手册,在安装 Database server 時會附帶有使用手冊. 具體位置各操作系統會有區別。
   (比如: osx 用 Homebew 裝的 version 9.3.2, 在 `/usr/local/Cellar/postgresql/9.3.2/share/doc/postgresql/html`,
   下可以找到; Windows 上則可以在安裝目錄的下找 `doc\postgresql\html` )
 
-== Setup environment ==
-=== Install Database server ===
-* OS X 
- - 官网上得介绍: http://www.postgresql.org/download/macosx/
- - 通过 Homebew <br>
-    查看 PG 的依赖和特殊安装参数: `brew info postgres` <br>
-    安装 : `brew install postgres` ( 可增加 --enable-dtrace 启用 dtrace )
-* Linux
- - /* XXX pending  (￣o￣) . z Z　*/
-* Windows
- - /* XXX pending  (￣o￣) . z Z　*/
-=== Initialize a database ===
-* Create a db cluster <br>
- - `initdb -U <admin username> directory`  创建一个新的 db cluster 在指定的目录. 可以用 -U 指定 dba 用户名.
-    详细的 `initdb` 参数可以用 `initdb --help` 查看, 也可以在在线手册搜索一下.
- - 可以通过修改 _<directory>/postgresql.conf_ 来修改一些参数
-* Start db server <br>
- - 后台启动方式: `pg_ctl -D <db directory> -l <logfile name> -w start`,
-   可选参数 _-w_ 会等待 server 真正启动再完成命令 <br>
-   停止后台运行中的 db server:`pg_ctl -D <db directory> -w stop`
- - 直接启动: `postgres -D <db directory>`, 会直接启动并把 log 输出到 stdout/stderr 里.<br>
-   需要停止数据库时直接按 CTL + C
- - Service 启动方式<br>
-   /* XXX pending  (￣o￣) . z Z　*/
-=== Clients ===
-* psql <br> 
- 安装 database server 时会包括 command line 工具 _psql_ .  <br>
- `psql <dbname> <username>` 就可以连上数据库. 具体 psql 命令可以在进入 psql 后用 `\?` 查看.
-* pgAdmin <br>
- pg 提供的 GUI 管理环境. 
- - OS X 上需要另外安装, 从 http://www.pgadmin.org/download/macosx.php 找需要的版本, 下载  .dmg 文件.
-   安装到 Application 后启动
- - Windows  /* XXX pending  (￣o￣) . z Z　*/
- - Linux 上我一般不开 X ，故至今無緣使用.
+== 日常操作 ==
+=== 創建數據庫 ===
+* initdb <br>
+  - 創建 database cluster . database cluster 是 postgres 的 instance。
+  有 2 種方式創建: `initdb` 或者 `pg_ctl` 的 init 操作。
+  比如用 `initdb` 來創建: <br>
+  `initdb -D <data dir> -U <superuser name> -W` <br>
+   * -D 用來指定 database 數據文件位置
+   * -U 用來指定管理員帳戶
+   * -W 表示創建過程中詢問管理員的 password 
+  - 創建完後，默認會有 3 個 databases。 
+    2 個互為備份的 template  database: template0; template1。另一個為默認 database: postgres。
+* 啟動/停止 database cluster <br>
+  可以通過 `pg_ctl` 的 start/stop 操作來啟動或停止一個 database cluster。
+  - 啟動: `pg_ctl -D <data dir> -l <log file name> start` 
+  - 停止: `pg_ctl -D <data dir> stop`
+* 創建 database <br>
+  創建一個 database 實際上就是把 template database 複製一份，
+  改名成用戶 database 並更新相關數據到 postgres 的系統表。<br>
+  如果有需要用戶是可以指定自己的 template database 的, 用 `-T` 參數告訴 `createdb` 模板名。
+  默認不指定 `createdb` 會用系統的 template1/template0 來做模板。<br>
+  比如 (注意創建 database 前, database cluster 必須已啟動): <br>
+  `createdb -U <superuser name> <database name> [database description]`
+  - -U 是管理員帳號
+  - database name 是新建的 database 名字
+  - database description 可選，是數據庫的描述。
+* 查看 databases
+  database cluster 啟動後可以用 `psql` 默認的 postgres client 去查看。(也可以用 GUI 工具 pgAdmin )
+  比如: `psql -U <username> <database name>` .進入 `psql` 後可用 `\l` 命令，來列出所有 database. 
 
