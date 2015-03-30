@@ -23,7 +23,7 @@
 * 啟動/停止 database cluster <br>
   可以通過 `pg_ctl` 的 start/stop 操作來啟動或停止一個 database cluster。
   - 啟動: `pg_ctl -D <data dir> -l <log file name> start` 
-  - 停止: `pg_ctl -D <data dir> stop`
+  - 停止: `pg_ctl -D <data dir> stop` <br>
     停止 database 時有 3 種 modes: "smart", "fast", or "immediate" <br>
     * 用 -m 參數指定 shutdown mode, 默認的 shutdown mode 為 smart.
     * 3 種 shutdown mode 會影響正在工作的 client, 正在處理的事務以及正在進行的備份。
@@ -45,7 +45,7 @@
   - -U 是管理員帳號
   - database name 是新建的 database 名字
   - database description 可選，是數據庫的描述。
-* 查看 databases
+* 查看 databases <br>
   database cluster 啟動後可以用 `psql` 默認的 postgres client 去查看。(也可以用 GUI 工具 pgAdmin )
   比如: `psql -U <username> <database name>` .進入 `psql` 後可用 `\l` 命令，來列出所有 database. 
 
