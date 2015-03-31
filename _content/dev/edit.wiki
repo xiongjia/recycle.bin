@@ -8,7 +8,7 @@
 = VIM =
 == Documents or Resources ==
 === Books ===
-* `:help` ( vim 自帶的文檔已經很好了 )
+* `:help` ( vim 自帶的文檔非常全面，至今沒有能讀完 )
 * <Learning the vi and Vim Editors> http://book.douban.com/subject/3767413/
 * <Practical Vim> http://book.douban.com/subject/10599776/
 * Online VIM wiki http://vim.wikia.com/
@@ -30,7 +30,7 @@ swap file 是 vim 用来存储你修改中的内容的一个文件。
 * 查看當前的 swap file name `:swapname` 或者 `:sw`
 * 關閉 swap file `:set noswapfile`; 再次啟用 swap file `:set noswapfile!` 。 <br>
   關閉 swap 會導致 vim 把改動放在內存中。此期間如果 vim crash ,會導致修改丟失。<br>
-  平時應該啟用 swap, 特殊需要時可以零時關閉。
+  平時應該啟用 swap, 特殊需要時可以臨時關閉。
 * swap file 位置:
  - 默認設置中, swap file 會和被編輯文件放在同一個目錄。並且 vim 會增加 "." 前綴和 ".swp" 後綴。<br>
    如:  `~/test.c` 的默認 swap file 是 `~/.test.c.swp`

@@ -58,7 +58,8 @@
 - 刪除 schema, 用 SQL 來操作: `DROP SCHEMA IF EXISTS  <schema name> CASCADE;` <br>
 - 查詢 database 的 Schemas, 用 `psql` 命令 `\dn+` 來操作。<br>
   (注意: 如果需要查詢 postgres 系統 schema ( "pg_" 開頭的那些 schema ) 可以用 `\dnS+` 來查看)
-- {panding} update user search path;
+- {TBD} search path;
+
 ==== roles/users ====
 - 創建數據庫用戶 <br>
   可以用 SQL `CREATE ROLE` 或者 `CREATE USER` 來操作。
@@ -120,7 +121,6 @@ rolename=xxxx -- privileges granted to a role
     GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA <schema name> TO <user name>;
     GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA <schema name> TO <user name>;
 }}}
-
-- 撤銷授權
- {panding} REVOKE 
+- 撤銷授權 <br>
+ {TBD} REVOKE 
 
