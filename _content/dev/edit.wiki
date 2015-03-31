@@ -1,26 +1,22 @@
 %title Editors
 %toc
 
-俺作為一個實用主義的碼農: vim 作為日常工作;  emacs  + gdb 應付調試。<br>
+俺作為一個實用主義的碼農: vim 作為日常工作; emacs + gdb 應付調試。<br>
 这两种情况大概能包含我所用到的 Editor 的 9 成了吧?
 (就連本 wiki 也是 Vimwiki 所構建的)
 
 = VIM =
 == Documents or Resources ==
-不同於 Sublime, Notepad++ 之流的 Editor。
-vim 和 emacs 在使用前，最好先閱讀一些書籍或手冊。<br>
-(個人覺得相對於 emacs 的學習曲線, vim 還是簡單了很多的吧?)
-
 === Books ===
+* `:help` ( vim 自帶的文檔已經很好了 )
 * <Learning the vi and Vim Editors> http://book.douban.com/subject/3767413/
 * <Practical Vim> http://book.douban.com/subject/10599776/
-
-=== Resources ===
 * Online VIM wiki http://vim.wikia.com/
 
-== My vimrc ==
-正在用的 vimrc,  也沒有用到像[[https://github.com/gmarik/Vundle.vim|Vundle]] 這種插件管理(因為覺得那樣不好維護)。
-* my vimrc on github https://github.com/xiongjia/dotfiles/tree/master/vim 
+== My .vimrc ==
+正在用的 .vimrc, 沒有用到 [[https://github.com/gmarik/Vundle.vim|Vundle]] 這種插件管理
+(因為覺得那樣不好維護)。
+* my .vimrc on github https://github.com/xiongjia/dotfiles/tree/master/vim 
   - 安裝時可以通過上一级目录的 Rakefile 
   - 目前可能不能工作於 MS Windows 環境。<br>
     (主要是 Windows 可能需要手動安裝一些依賴，目前自動化沒實現。比如: 
@@ -44,7 +40,7 @@ swap file 是 vim 用来存储你修改中的内容的一个文件。
    并以被編輯文件的 full filename 作為命名依據。
    可以將 `set directory=$HOME/.vim/swap-files//` 加入 vimrc 使其默認生效。
 
-=== Search and replace ===
+=== Substitute ===
 vim 中可以通過 `:substitute` 命令來查找替換。
 (如果是 GUI 版本的 vim 也可以使用 `:promptrepl`,來調用 GUI 提供的 Search/Replace dialog )
 * 查看幫助 `:help :substitute` , `:help :promptrepl`
