@@ -14,9 +14,13 @@
   - 創建 database cluster . database cluster 是 PostgreSQL 的 instance。
   有 2 種方式創建: `initdb` 或者 `pg_ctl` 的 init 操作。
   比如用 `initdb` 來創建: <br>
-  `initdb -D <data dir> -U <superuser name> -W` <br>
+  `initdb -D <data dir> -U <superuser name> -E <ENCODING e.g.: utf8> --locale=<locale e.g. "C"> -W` <br>
    * -D 用來指定 database 數據文件位置
    * -U 用來指定管理員帳戶
+   * -E 用來指定以後創建 Database 的默認字符集,
+       可以寫成 utf8 以支持 unicode 也可以選擇其它參考手冊中 "Character Set Support" 章節.
+   * --locale 以後數據庫的 default locale (默認地區). 比如美國是 "en_US". 
+     可以設置成 "C" 表示使用 standard ISO C.
    * -W 表示創建過程中詢問管理員的 password 
   - 創建完後，默認會有 3 個 databases。 
     2 個互為備份的 template  database: template0; template1。另一個為默認 database: postgres。
@@ -45,6 +49,8 @@
   - -U 是管理員帳號
   - database name 是新建的 database 名字
   - database description 可選，是數據庫的描述。
+  - 新建的 database 的 Character Set 和 locale 設置是 initdb 時默認的. (是從 template0 繼承得來)
+    如果有不同需要可以用 `-E`  和 `--locale` 更改,具體看手冊.
 * 查看 databases <br>
   database cluster 啟動後可以用 `psql` 默認的 PostgreSQL client 去查看。(也可以用 GUI 工具 pgAdmin )
   比如: `psql -U <username> <database name>` .進入 `psql` 後可用 `\l` 命令，來列出所有 database. 
@@ -91,11 +97,11 @@
 {{{
 testdb=# \l testdb
                                             List of databases
-  Name  | Owner | Encoding |          Collate           |           Ctype            | Access privileges
---------+-------+----------+----------------------------+----------------------------+-------------------
- testdb | root  | WIN1252  | English_United States.1252 | English_United States.1252 | =Tc/root         +
-        |       |          |                            |                            | root=CTc/root    +
-        |       |          |                            |                            | user1=CTc/root
+  Name  | Owner | Encoding | Collate | Ctype | Access privileges
+--------+-------+----------+---------+-------+-------------------
+ testdb | root  | UTF8     | C       | C     | =Tc/root         +
+        |       |          |         |       | root=CTc/root    +
+        |       |          |         |       | user1=CTc/root
 (1 row)
 }}}
    這裡在 'testdb' 這個 database 裏用 `\l testdb` 查看 'testdb' 的具體信息。<br>
