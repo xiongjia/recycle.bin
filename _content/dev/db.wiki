@@ -8,8 +8,8 @@
   (比如: osx 用 Homebew 裝的 version 9.3.2, 在 `/usr/local/Cellar/postgresql/9.3.2/share/doc/postgresql/html`,
   下可以找到; Windows 上則可以在安裝目錄的下找 `doc\postgresql\html` )
 
-== 日常操作 ==
-=== 創建數據庫 ===
+== 日常工作 ==
+=== database cluster; database ===
 * initdb <br>
   - 創建 database cluster . database cluster 是 PostgreSQL 的 instance。
   有 2 種方式創建: `initdb` 或者 `pg_ctl` 的 init 操作。
@@ -156,4 +156,48 @@ rolename=xxxx -- privileges granted to a role
     * 刪除用戶關聯的數據 <br>
     `DROP OWNED BY <user names> CASCADE;`
   - 處理完 user 關聯的數據后可以用 `DROP ROLE IF EXISTS <user names>;` 來刪除 user/role.
+
+== 其它 ==
+- 查看當前 PostgreSQL 的 activity.  當前連接數和具體連接的狀態.<br>
+  可以通過 PostgreSQL view `pg_stat_activity` 來查看. 
+  比如用下面的 SQL 查看所有對 'postgres' database 的操作狀態.
+{{{
+postgres=# SELECT application_name, datname, pid, client_addr, client_port, waiting, state FROM pg_stat_activity where datname='postgres';
+   application_name    | datname  | pid  | client_addr | client_port | waiting | state
+-----------------------+----------+------+-------------+-------------+---------+--------
+ pgAdmin III - Browser | postgres | 1528 | 127.0.0.1   |        2037 | f       | idle
+ psql                  | postgres | 2180 | 127.0.0.1   |        2045 | f       | active
+(2 rows)
+}}}
+  從 results 中可以看出,目前有 2 個連接在操作  'postgres' database, 一個是 pgAdmin 另一個是 psql.
+  - datname: 在操作的 database name
+  - pid: PostgreSQL Backend 分配對應于該連接的 Process ID. 
+    如果只需要知道當前連接的 Backend Process ID 可以直接用 function `pg_backend_pid();` 來得到.
+    比如: `SELECT pg_backend_pid();` 
+  - client_addr; client_port: 訪問者地址和端口.
+  - waiting: True/False 表示 backend 是否等在某個 lock 上.
+  - state: 當前 backend 的狀態.
+  - 還有更多 Columns 的意義,可以參考手冊中對 `pg_stat_activity` 的説明.(在 "Monitoring Database Activity" 章節中)
+- 停止某個 database 連接
+  可以用 `pg_terminate_backend(pid int)` 或 `pg_cancel_backend(pid int)` 來停止對應的 database backend process. 
+  在這個 backend process 停止后對應的連接會被終止, client 也會收到相應錯誤.
+  - `pg_terminate_backend(pid)` 與 `pg_cancel_backend(pid int)`  
+    區別在於會發送不同的 signal 給 backend process (SIGINT or SIGTERM)
+  - 通過 `pg_stat_activity` 可以找到對應的, backend process id 即 `pg_stat_activity.pid`
+  - 用 `SELECT pg_terminate_backend(<pid>)` 來終止該 backend process (需要管理員權限)
+  - 一些常用的例子:
+   * 停止除當前連接外所有 pgAdmin client 發起的連接<br>
+{{{ 
+SELECT pg_terminate_backend(pg_stat_activity.pid) 
+        FROM pg_stat_activity 
+        WHERE pg_stat_activity.pid <> pg_backend_pid() AND 
+              pg_stat_activity.application_name LIKE '%pgAdmin%';
+}}}
+   * 停止除當前連接外所有對 postgres database 的連接<br>
+{{{ 
+SELECT pg_terminate_backend(pg_stat_activity.pid) 
+        FROM pg_stat_activity 
+        WHERE pg_stat_activity.pid <> pg_backend_pid() AND 
+              pg_stat_activity.datname = 'postgres';
+}}}
 
