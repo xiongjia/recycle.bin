@@ -7,7 +7,7 @@
 
 = VIM =
 == Documents or Resources ==
-=== Books ===
+=== Documents ===
 * `:help` ( vim 自帶的文檔非常全面，至今沒有能讀完 )
 * <Learning the vi and Vim Editors> http://book.douban.com/subject/3767413/
 * <Practical Vim> http://book.douban.com/subject/10599776/
@@ -64,6 +64,13 @@ vim 中可以通過 `:substitute` 命令來查找替換。
  - {string} 要替換成的字符串
   # 基本使用,如: `%s/123/123/gci` 把所有的 "123" 替換成 "123"
   # 如果是刪除則直接不填寫，如: `%s/123//gci` 相當于把所有的 "123" 刪除.
+  # 在替換字符串中有些有特殊意義的表達式:
+    - \r is newline,
+    - \n is a null byte (0x00).
+    - \& is ampersand (& is the text that matches the search pattern).
+    - \0 inserts the text matched by the entire pattern
+    - \1 inserts the text of the first backreference.
+    - \2 inserts the second backreference, and so on. 
  - [flags] 代表替換的參數
   # 這個可以參看 vim 手冊 `:help :s_flags` 
   # 常用组合 'gci' , 比如: `%s/123/123/gci` 這裡的 'g' 代表替換所有匹配到地方, 

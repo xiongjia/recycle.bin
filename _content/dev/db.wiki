@@ -9,7 +9,7 @@
   下可以找到; Windows 上則可以在安裝目錄的下找 `doc\postgresql\html` )
 
 == 日常工作 ==
-=== database cluster; database ===
+=== database cluster ===
 * initdb <br>
   - 創建 database cluster . database cluster 是 PostgreSQL 的 instance。
   有 2 種方式創建: `initdb` 或者 `pg_ctl` 的 init 操作。
@@ -39,6 +39,7 @@
       All active transactions are rolled back and clients are forcibly disconnected, 
       then the server is shut down. "Immediate" mode will abort all server processes immediately, 
       without a clean shutdown. This will lead to a crash-recovery run on the next restart.
+=== database ===
 * 創建 database <br>
   創建一個 database 實際上就是把 template database 複製一份，
   改名成用戶 database 並更新相關數據到 PostgreSQL 的系統表。<br>
@@ -57,8 +58,7 @@
 * 刪除 database <br>
   - 可以用 `DROP DATABASE` SQL 操作,來刪除數據庫.比如: `DROP DATABASE IF EXISTS <database name>;`
   - 注意:不能刪除當前登錄數據庫; 如果有其他 client 正在使用該 database 則該操作會失敗.
-=== schemas; roles/users and others ===
-==== schemas ====
+=== schemas ===
 - 創建 schema, 用 SQL 來操作: `CREATE SCHEMA IF NOT EXISTS <schema name>;` <br>
   (注意: 所有 "pg_" 開頭的 schema 都是別系統保留的 schema 。)
 - 刪除 schema, 用 SQL 來操作: `DROP SCHEMA IF EXISTS  <schema name> CASCADE;`.
@@ -83,7 +83,7 @@
   - 修改 用戶的 Default search_path: <br>
     `ALTER USER <user name> SET search_path= <scheam1> [, <scheam2>, ...];` . 
     改變用戶的默認 search_path 后,會在下一次用戶連接時生效.
-==== roles/users ====
+=== roles/users ===
 - 創建數據庫用戶 <br>
   可以用 SQL `CREATE ROLE` 或者 `CREATE USER` 來操作。
   (CREATE USER is now an alias for CREATE ROLE). <br>
@@ -158,9 +158,10 @@ rolename=xxxx -- privileges granted to a role
   - 處理完 user 關聯的數據后可以用 `DROP ROLE IF EXISTS <user names>;` 來刪除 user/role.
 
 == 其它 ==
-- 查看當前 PostgreSQL 的 activity.  當前連接數和具體連接的狀態.<br>
-  可以通過 PostgreSQL view `pg_stat_activity` 來查看. 
-  比如用下面的 SQL 查看所有對 'postgres' database 的操作狀態.
+=== 查看當前連接狀態 ===
+查看當前 PostgreSQL 的 activity.  當前連接數和具體連接的狀態.<br>
+可以通過 PostgreSQL view `pg_stat_activity` 來查看. 
+比如用下面的 SQL 查看所有對 'postgres' database 的操作狀態.
 {{{
 postgres=# SELECT application_name, datname, pid, client_addr, client_port, waiting, state FROM pg_stat_activity where datname='postgres';
    application_name    | datname  | pid  | client_addr | client_port | waiting | state
@@ -178,22 +179,23 @@ postgres=# SELECT application_name, datname, pid, client_addr, client_port, wait
   - waiting: True/False 表示 backend 是否等在某個 lock 上.
   - state: 當前 backend 的狀態.
   - 還有更多 Columns 的意義,可以參考手冊中對 `pg_stat_activity` 的説明.(在 "Monitoring Database Activity" 章節中)
-- 停止某個 database 連接
-  可以用 `pg_terminate_backend(pid int)` 或 `pg_cancel_backend(pid int)` 來停止對應的 database backend process. 
-  在這個 backend process 停止后對應的連接會被終止, client 也會收到相應錯誤.
-  - `pg_terminate_backend(pid)` 與 `pg_cancel_backend(pid int)`  
-    區別在於會發送不同的 signal 給 backend process (SIGINT or SIGTERM)
-  - 通過 `pg_stat_activity` 可以找到對應的, backend process id 即 `pg_stat_activity.pid`
-  - 用 `SELECT pg_terminate_backend(<pid>)` 來終止該 backend process (需要管理員權限)
-  - 一些常用的例子:
-   * 停止除當前連接外所有 pgAdmin client 發起的連接<br>
+=== 終止指定的連接 ===
+停止某個 database 連接可以用 `pg_terminate_backend(pid int)` 
+或 `pg_cancel_backend(pid int)` 來停止對應的 database backend process. 
+在這個 backend process 停止后對應的連接會被終止, client 也會收到相應錯誤.
+ - `pg_terminate_backend(pid)` 與 `pg_cancel_backend(pid int)`  
+   區別在於會發送不同的 signal 給 backend process (SIGINT or SIGTERM)
+ - 通過 `pg_stat_activity` 可以找到對應的, backend process id 即 `pg_stat_activity.pid`
+ - 用 `SELECT pg_terminate_backend(<pid>)` 來終止該 backend process (需要管理員權限)
+ - 一些常用的例子:
+  * 停止除當前連接外所有 pgAdmin client 發起的連接<br>
 {{{ 
 SELECT pg_terminate_backend(pg_stat_activity.pid) 
         FROM pg_stat_activity 
         WHERE pg_stat_activity.pid <> pg_backend_pid() AND 
               pg_stat_activity.application_name LIKE '%pgAdmin%';
 }}}
-   * 停止除當前連接外所有對 postgres database 的連接<br>
+  * 停止除當前連接外所有對 postgres database 的連接<br>
 {{{ 
 SELECT pg_terminate_backend(pg_stat_activity.pid) 
         FROM pg_stat_activity 
