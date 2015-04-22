@@ -1,6 +1,33 @@
 %title Database
 %toc
 
+= Database Tools =
+== Schema Spy ==
+用來分析 database 的 Schema. 可以導出所有 Schema (表結構,字段,關係圖和各種具體信息).
+便於平時查看 / 理解 database 的 Schema. 
+* 日常使用: 
+ - 基於 Java . 下載使用參考: http://schemaspy.sourceforge.net/
+ - Schema Spy  使用 Graphviz ( http://www.graphviz.org/ ) 來生成 database 圖表.
+   需要安裝 Graphviz , 安裝方法參看 ( http://www.graphviz.org/ )
+ - 使用 JDBC 訪問 database, 支持多種常用 database. 
+   (在 http://schemaspy.sourceforge.net/ 可以找到所有支持的 database 類型 )
+ - JDBC Driver 需要自己下載. 比如: 
+   * JDBC for PostgreSQL: https://jdbc.postgresql.org/
+   * JDBC for SQLite: https://bitbucket.org/xerial/sqlite-jdbc 
+ - 一個從 PostgreSQL 導出的實例:
+{{{
+java -jar schemaSpy_5.0.0.jar -t pgsql -dp postgresql-9.4-1201.jdbc41.jar 
+    -db <db name> -host <db host> -u <db user> -p <db password> -s <schema name>
+    -o <output folder> 
+}}}
+  這裡用的是 Schema Spy v5.0:
+  - `-t` : 表示 Database Type
+  - `-dp` : 指定 JDBC Driver
+  - `-host`, `-u`, `-p`: 為 database 的地址, 用戶名, 口令
+  - `-s` : 表示 database Schema (可選,在不支持 Schema 的 database 中可以用 `-noschema`.
+         同時導出多個 Schemas 時可以用 `-schemas "schema1,schema2"` 的形式表示
+  - `-o` : 是結果輸出 folder 名,默認會生成 HTML 結果. 
+ 
 = PostgreSQL =
 == Documentation ==
 * 在線手冊: http://www.postgresql.org/docs/ 
