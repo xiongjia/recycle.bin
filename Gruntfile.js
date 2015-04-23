@@ -3,6 +3,10 @@
 module.exports = function (grunt) {
   var cfg, optNoCompress;
 
+  /* load grunt plugins */
+  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
+
   /* check cli options */
   optNoCompress = grunt.option('no-compress');
   /* load site configuration */
@@ -15,6 +19,7 @@ module.exports = function (grunt) {
      */
     jshint: {
       options: { jshintrc: '.jshintrc' },
+      reporter: require('jshint-stylish'),
       gruntfile: { src: 'Gruntfile.js' },
       config: { src: ['_config/vimwiki.js'] }
     },
@@ -130,17 +135,6 @@ module.exports = function (grunt) {
     /* clean - remove dest files */
     clean: [ cfg.dest.base ]
   });
-
-  /* load plugins */
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   /* sitemap task */
   grunt.registerTask('sitemap', 'create sitemap.txt', function () {
