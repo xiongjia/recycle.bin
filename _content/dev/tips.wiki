@@ -80,6 +80,14 @@ secure copy (remote file copy program)
  # --bwlimit=KBPS - 带宽限制
 * NODE 中使用 Rsync - 参考 [[node|NODE]] 中的 _rsyncwrapper_
 
+== nssm ==
+Non-Sucking Service Manager。是一個簡易的 Windows services Manager。
+可以方便的把任何可執行文件，變成 Service 運行。<br>
+比如: 把某個 java 的 .jar 用 Service 運行。
+`nssm install ServiceName java.exe  -jar test.jar` <br>
+可以通過 'install'; 'set'; 'start'; 'stop'; 'get' 等 command 來操作 Service。
+具體參考官網上的 usage: https://nssm.cc/usage
+
 ----
 
 = Developer Tools =
@@ -95,11 +103,6 @@ The stupid content tracker
 * Pro GIT 2 (文檔)
  - Progit 的第二版本 https://github.com/progit/progit2 
  - Online book: http://git-scm.com/book/en/v2
-* 備忘(有時自己會忘記的 commands ): 
- - 刪除 remote branch <br>
-   `git push origin --delete <branchName>`
- - 清除本地無效的 remote branch <br>
-   `git remote prune origin`
 
 == Ack ==
 ack is a tool like grep, optimized for programmers. 
