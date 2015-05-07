@@ -6,8 +6,8 @@
 (就連本 wiki 也是 Vimwiki 所構建的)
 
 = VIM =
-== Documents or Resources ==
-=== Documents ===
+== Documentation & Resources ==
+=== Documentation ===
 * `:help` ( vim 自帶的文檔非常全面，至今沒有能讀完 )
 * <Learning the vi and Vim Editors> http://book.douban.com/subject/3767413/
 * <Practical Vim> http://book.douban.com/subject/10599776/
@@ -99,4 +99,30 @@ vim 中可以通過 `:substitute` 命令來查找替換。
     在 command-line-window 中可以像普通 buffer 一樣操作。
   * `q:` 或者 `q/` 可以進入 command-line-window。前者是用來進入執行命令的 command,
    後者是進入 search 的 command。之後和普通 buffer 一樣操作就可以了。
+
+
+== Search ==
+=== File name search ===
+ - VIM 自帶的 Filename search  <br>
+   有很多 VIM plugins 可以做 File name fuzzy search .
+   不過很多生産綫上的 Server 一般都是不裝這些 plugins 的,
+   所以在無 plugins 幫助下基本的功能也是應該掌握的.
+   * `:Explore` <br>
+     VIM 的 Explore 會把目錄結構顯示在一個 VIM Buffer 中,並可以用樹型結構管理查找文件.
+     使用比較方便,只是效率不高 (只能一層層的找). <br>
+     同樣還用 `:Vexplore` , `:Hexplore` 可以在新 split 的 buffer 中打開 Explore.
+     具體參看 `:help :Explor`.
+   * Completion mode <br>
+     VIM 自帶的補全,可以幫助尋找文件. 
+     比如: 當前目錄有文件名為 "testfile.txt" 這時用 `:edit ./test*.txt<Tab>` 
+     (有多層目錄時可用 `**` 表示比如 `./**/test*.txt` 表示下一級目錄的 testfile.txt).  
+     按下 <Tab> 時 VIM 會按表達式 search 文件名並補齊.
+     - 如果有多個文件符合條件,可以用 <Tab> / <Shift - Tab> 來切換匹配到的文件.
+     - 如果有大量符合條件,可以考慮改變 vim 默認的提示方式可以
+       比如用 `:set wildmode=list:full` (會把所有符合條件的文件都列出來).
+       還可以用 `:set wildmenu`, 啓用后可以用 <CTL-n> / <CTL-p> 在 vim 列出的匹配列表中切換.
+ - 常見 Filename Search Plugins <br>
+   目前比較常見的 Fuzzy Search Plugins 有: `Ctrlp.vim`; `Command-T`; `FuzzyFinder`.<br>
+   自己常用的是 Ctrlp.vim: https://github.com/kien/ctrlp.vim .
+   具體用法可以參看 CtrlP.vim 的 readme.
 
