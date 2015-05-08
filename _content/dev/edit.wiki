@@ -145,7 +145,7 @@ vim 中可以通過 `:substitute` 命令來查找替換。
      (有多層目錄時可用 `**` 表示比如 `./**/test*.txt` 表示下一級目錄的 testfile.txt).  
      按下 <Tab> 時 VIM 會按表達式 search 文件名並補齊.
      - 如果有多個文件符合條件,可以用 <Tab> / <Shift - Tab> 來切換匹配到的文件.
-     - 如果有大量符合條件,可以考慮改變 vim 默認的提示方式可以
+     - 如果有大量符合條件,可以考慮改變 vim 默認的提示方式. 
        比如用 `:set wildmode=list:full` (會把所有符合條件的文件都列出來).
        還可以用 `:set wildmenu`, 啓用后可以用 <CTL-n> / <CTL-p> 在 vim 列出的匹配列表中切換.
  - 常見 Filename Search Plugins <br>
