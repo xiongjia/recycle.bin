@@ -45,11 +45,11 @@
   - `set {option}+={value}` or `set {option}-={value}` : 
     * option 是 number 代表 value 數字加減. 比如: `set tabstop+=2` 表示比原來的 tabstop 增加 2.
     * option 是 string 代表在 string 列表列增/刪.
-      比如: 原來 wildignore=*.swp 用 `set wildignore+=*.so` 后變成 `wildignore=*.swp,*.so` . 
+      比如: 原來 `wildignore=*.swp` 用 `set wildignore+=*.so` 后變成 `wildignore=*.swp,*.so` . 
       再運行 `set set wildignore-=*.so` 又會把 wildignore 變回 `wildignore=*.swp`
   - `setlocal {...}` : `{...}` 部分和上面 `set` 一樣.
     區別在於 `setlocal` 只針對當前 buffer .
-  - `help option-list` 查看 vim 的 option list .
+  - `help option-list` 查看 vim 的 options list .
 
 === swap file ===
 swap file 是 vim 用来存储你修改中的内容的一个文件。
