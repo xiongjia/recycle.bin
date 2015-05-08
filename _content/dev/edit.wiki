@@ -24,6 +24,33 @@
     另外還有些 Python, nodejs 等的依賴)
 
 == Tips ==
+=== options ===
+日常使用中很多用 options 的地方. 算是基本中的基本.
+比如: `set tabstop=4` 這裡 `tabstop` 就是一個 option.
+* VIM Option types:
+  - Number: 數字類型. 比如: `set tabstop=4` 中的 `tabstop` . 
+  - String: 字符串類型. 比如: `set wildignore+=*/tmp/*,*.swp` 中的 `wildignore` .
+  - Boolean toggle: 開關類型,該類型只可以有 on / off 兩個狀態. <br>
+    比如: `set autochdir` 表示啓用 `autochdir` ( `autochdir` = on ); 
+    相反 `set noautochdir` 表示關閉 (`autochdir` = off)
+* 常用操作:
+  - `set` & `set all`:  `set` 顯示所有與默認設置不同的 options. `set all` 顯示所有 options.
+  - `set {option}?` 顯示當前 option 的值. 比如 `set tabstop?`; `set autochdir?`
+  - `set {option}` 如果 option 是 Boolean toggle 表示啓用該 option. 其它代表顯示當前值. 
+  - `set no{option}` 關閉 Boolean toggle option.
+  - `set inv{option}` or `set {option}!`: 反選某個 Boolean Toggle option. 
+    比如 `set autochdir!` 如果原來 `autochdir` 是 on 則此操作會把它改成 off, 反之則改成 on.
+  - `set {option}&` 重置 option 到 vim 默認值
+  - `set {option}={value}`: 設置 option 的值比如: `set tabstop=4`
+  - `set {option}+={value}` or `set {option}-={value}` : 
+    * option 是 number 代表 value 數字加減. 比如: `set tabstop+=2` 表示比原來的 tabstop 增加 2.
+    * option 是 string 代表在 string 列表列增/刪.
+      比如: 原來 wildignore=*.swp 用 `set wildignore+=*.so` 后變成 `wildignore=*.swp,*.so` . 
+      再運行 `set set wildignore-=*.so` 又會把 wildignore 變回 `wildignore=*.swp`
+  - `setlocal {...}` : `{...}` 部分和上面 `set` 一樣.
+    區別在於 `setlocal` 只針對當前 buffer .
+  - `help option-list` 查看 vim 的 option list .
+
 === swap file ===
 swap file 是 vim 用来存储你修改中的内容的一个文件。
 * 查看幫助 `:help swap`  
