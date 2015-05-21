@@ -97,18 +97,19 @@ module.exports = function (grunt) {
     /* connect - start the local test HTTP server */
     connect: {
       dist: {
-        options: {
-          port: cfg.util.servPort,
-          debug: cfg.util.servDbg,
-          base: cfg.dest.base
-        }
+        port: cfg.util.servPort,
+        debug: cfg.util.servDbg,
+        base: cfg.dest.base
       }
     },
     /* create site map */
     sitemap: {
-      cwd: cfg.dest.base,
-      dest: cfg.dest.sitemap,
-      site: cfg.util.siteRoot
+      dist: {
+        pattern: [ cfg.dest.base + '/**/*.html' ],
+        siteRoot: cfg.dest.base,
+        homepage: cfg.util.siteRoot,
+        changefreq: 'weekly'
+      }
     },
     /* watch - monitor the content folders and 
      * automatical update changed content to dist folder
@@ -134,30 +135,6 @@ module.exports = function (grunt) {
     },
     /* clean - remove dest files */
     clean: [ cfg.dest.base ]
-  });
-
-  /* sitemap task */
-  grunt.registerTask('sitemap', 'create sitemap.txt', function () {
-    var pages, pgCwd, dest, site, data;
-
-    /* check options */
-    grunt.config.requires('sitemap', 'sitemap.cwd',
-      'sitemap.dest', 'sitemap.site');
-
-    pgCwd = grunt.config.get('sitemap.cwd');
-    dest = grunt.config.get('sitemap.dest');
-    site = grunt.config.get('sitemap.site');
-    grunt.log.writeln('creating sitemap. { cwd:%s, dest: %s, site: %s }',
-      pgCwd, dest, site);
-
-    /* save the sitemap to 'data' */
-    pages = grunt.file.expand({cwd: pgCwd}, '**/*.html');
-    data = '';
-    grunt.util._.each(pages, function (pg) {
-      data = data + grunt.util._.str.sprintf('%s/%s\n', site, pg);
-    });
-    /* write sitemap to dest file */
-    grunt.file.write(dest, data);
   });
 
   /* check sitemap */
