@@ -96,10 +96,12 @@ module.exports = function (grunt) {
     },
     /* connect - start the local test HTTP server */
     connect: {
-      dist: {
-        port: cfg.util.servPort,
-        debug: cfg.util.servDbg,
-        base: cfg.dest.base
+      server: {
+        options: {
+          port: cfg.util.servPort,
+          debug: cfg.util.servDbg,
+          base: cfg.dest.base
+        }
       }
     },
     /* create site map */
