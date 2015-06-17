@@ -42,9 +42,11 @@ module.exports = function (grunt) {
       js: {
         src: [
           cfg.mod.jsJQuery,
+          cfg.mod.jsUnderscore,
           cfg.mod.jsBootstrap,
           cfg.mod.jsSyntax,
           cfg.mod.jsLazyLoad,
+          cfg.mod.jsQRCode,
           '_config/vimwiki.js',
           '_config/ganalytics.js'
         ],

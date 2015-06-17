@@ -4,6 +4,8 @@
 mod:
   # jQuery
   jsJQuery: 'bower_components/jquery/dist/jquery.js'
+  # underscore
+  jsUnderscore: 'bower_components/underscore/underscore.js'
   # syntaxhighlighter
   jsSyntax: '_config/syntaxhighlighter.js'
   cssSyntax: '_config/syntaxhighlighter.css'
@@ -13,6 +15,8 @@ mod:
   dirBootstrap: 'bower_components/bootstrap/dist'
   # lazy load
   jsLazyLoad: 'bower_components/jquery.lazyLoad/jquery.lazyLoad.js'
+  # qrcode.js
+  jsQRCode: 'bower_components/qrcodejs/qrcode.js'
 
 # destination
 dest:

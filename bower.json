@@ -14,6 +14,8 @@
   "dependencies": {
     "jquery": "~2.1.0",
     "bootstrap": "~3.0.3",
-    "jquery.lazyload": "~1.9.3"
+    "jquery.lazyload": "~1.9.3",
+    "qrcodejs": "~0.1.0",
+    "underscore": "~1.8.3"
   }
 }
