@@ -92,7 +92,7 @@ module.exports = function (grunt) {
       fonts: {
         expand: true,
         cwd: cfg.mod.dirBootstrap,
-        src: [ '**/*' ],
+        src: [ '**/*.{eot,svg,ttf,woff}' ],
         dest: cfg.dest.base + '/assets'
       },
       conf: {
