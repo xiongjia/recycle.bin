@@ -4,8 +4,8 @@
 mod:
   # jQuery
   jsJQuery: 'bower_components/jquery/dist/jquery.js'
-  # underscore
-  jsUnderscore: 'bower_components/underscore/underscore.js'
+  # lodash
+  jsLodash: 'bower_components/lodash/lodash.js'
   # syntaxhighlighter
   jsSyntax: '_config/syntaxhighlighter.js'
   cssSyntax: '_config/syntaxhighlighter.css'

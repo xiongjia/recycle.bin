@@ -14,6 +14,14 @@ module.exports = function (grunt) {
 
   /* init grunt config */
   grunt.initConfig({
+    /* bower install task */
+    bower: {
+      install: {
+        options: {
+          targetDir: './bower_components'
+        }
+      }
+    },
     /* JSHint task - check the JS file by .jshintrc. 
      * (only check our code, skip all 3rd party JS files)
      */
@@ -42,7 +50,7 @@ module.exports = function (grunt) {
       js: {
         src: [
           cfg.mod.jsJQuery,
-          cfg.mod.jsUnderscore,
+          cfg.mod.jsLodash,
           cfg.mod.jsBootstrap,
           cfg.mod.jsSyntax,
           cfg.mod.jsLazyLoad,
@@ -224,8 +232,8 @@ module.exports = function (grunt) {
       'Export all files to dist folder (no compress)' :
       'Export all files to dist folder',
     optNoCompress ?
-      ['clean', 'jshint', 'concat', 'copy', 'sitemap'] :
-      ['clean', 'jshint', 'concat',
+      ['clean', 'bower', 'jshint', 'concat', 'copy', 'sitemap'] :
+      ['clean', 'bower', 'jshint', 'concat',
        'cssmin', 'uglify', 'copy', 'htmlmin', 'sitemap']);
 
   grunt.registerTask('serv', 'Build the dist folder and launch local serv',

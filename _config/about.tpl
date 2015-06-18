@@ -11,6 +11,9 @@
   <meta name="baidu-site-verification" content="5L9ysxYYHu" />
   <title>%title%</title>
   <link rel="stylesheet" type="text/css" href="%root_path%assets/css/main-v0.1.css">
+  <script type="text/javascript">
+    var vimwikiCtx = { enableQRCode: true };
+  </script>
 </head>
 
 <body>

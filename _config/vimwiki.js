@@ -5,12 +5,14 @@
     var ctx;
    
     /* vim wiki context */
-    ctx = (typeof vimwikiCtx !== 'undefined') ? vimwikiCtx : {
+    ctx = (typeof vimwikiCtx !== 'undefined') ? vimwikiCtx : {};
+    ctx = _.extend({
       enableRightBar: true,
       enableSyntax: true,
-      enableDisqus: true
-    };
-
+      enableDisqus: true,
+      enableQRCode: false
+    }, ctx);
+    
     /* install disqus */
     function installDisqus(commentsElement) {
       var disqus;

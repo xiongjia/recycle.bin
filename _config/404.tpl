@@ -16,7 +16,6 @@
         enableRightBar: false,
         enableSyntax: false,
         enableDisqus: false
-        
     };
   </script>
 </head>
