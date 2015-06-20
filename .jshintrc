@@ -18,5 +18,10 @@
   "browser": true,
   "jquery": true,
 
-  "predef" : ["SyntaxHighlighter", "vimwikiCtx", "_"]
+  "predef" : [
+    "SyntaxHighlighter",
+    "vimwikiCtx",
+    "_",
+    "QRCode"
+  ]
 }

@@ -40,7 +40,7 @@
 
     /* right bar */
     function showRightBar() {
-      var toc, tocToggler, comments;
+      var toc, tocToggler, comments, qrCodeElement;
 
       /* create the TOC Menu */
       tocToggler = $('<div class="vw-tocHdr"/>' +
@@ -63,16 +63,28 @@
       /* install disqus */
       comments = $('#vw-comments');
       if (ctx.enableDisqus && comments && comments.length) {
-        installDisqus(comments);
-        $('.toc').after('<br><br>' +
-          '<a href="#vw-disqus">&gt; Post Your Comments</a>');
+        setTimeout(function () {
+          installDisqus(comments);
+          $('.toc').after('<br><br>' +
+            '<a href="#vw-disqus">&gt; Post Your Comments</a>');
+        }, 50);
+      }
+
+      /* make site qr code */
+      qrCodeElement = document.getElementById('site-qrcode');
+      if (qrCodeElement && ctx.enableQRCode) {
+        (new QRCode('site-qrcode', {
+          text: 'http://xj-labs.net/',
+          width: 128,
+          height: 128
+        }));
       }
 
       /* create google cse */
       $('.vw-tocHdr').before('<div style="width: 100%;">' +
         '<gcse:search></gcse:search></div><br>');
       /* update gcse */
-      (function() {
+      setTimeout(function() {
         var cx = '008101672356870034238:sapwemkcsbs';
         var gcse = document.createElement('script');
         gcse.type = 'text/javascript';
@@ -80,7 +92,7 @@
         gcse.src = 'https://www.google.com/cse/cse.js?cx=' + cx;
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
-      })();
+      }, 50);
     }
 
     /* image lazy load */

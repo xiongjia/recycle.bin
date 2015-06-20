@@ -20,6 +20,9 @@
   };
 }}}
 
+= QR Code =
+<div id="site-qrcode"></div>
+
 = recycle.bin =
 * Recycle.bin is just my personal Wiki site.
 * This site is based on VimWiki + my templates: https://github.com/xiongjia/recycle.bin
