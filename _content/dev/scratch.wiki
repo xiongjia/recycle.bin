@@ -5,6 +5,8 @@
  * 基本上把代碼共享在了我的 gist 上: https://gist.github.com/xiongjia
  * 如果是需要編譯的，一般會寫一個 CMakeLists.txt ; clone 下來後可以用 cmake 直接編譯
 
+-----
+
 = Python =
 == Fanfou API Test ==
  * 我在寫這個測試時，是為了後一步自己的一個 Fanfou client 做一些試驗/準備的工作。
@@ -15,6 +17,8 @@
    - 使用時需要先配置 fanfou.cfg ，格式參考 gist 中的 fanfou.sample.cfg
      (注意: consumer_key & consumer_secret 請自己申請, 參考文檔: https://github.com/FanfouAPI/FanFouAPIDoc/wiki/Oauth )
    - gist 裡有一個 +README.md 裏面記錄了一些可參考信息。
+
+-----
 
 = Java =
 這些 Java Scratch 代碼,都是用 Gradle 做管理。
@@ -29,6 +33,8 @@
  * 使用和 Gradle Tasks 參考 Git 中的 Readme 
  * 這個代碼總體和 JMeter 的 Example  是類似的。主要是用 Gradle building 更方便點。
  
+-----
+
 = Boost =
 Boost 的 sample 都寫了一個 CMakeList.txt, clone 後應該可以直接編譯。
  * Windows 平台需要注意，為了減少依賴, CMake 中指定的都是 static runtime link。(其他 OS 應該沒有這些問題)
@@ -92,6 +98,8 @@ unit_test_framework 是 boost 自帶的一套 c/c++ unit test framework.
   - 最後只需要執行對應的文件，就可以得到單元測試結果。
   - 詳細的 Boost test framework 參見 boost 文檔: http://www.boost.org/doc/libs/ ("Test" 章節)
 
+-----
+
 = Database =
 == SQL Joins ==
 一個簡單的測試,比較 SQL 各種 
@@ -107,10 +115,15 @@ Joins (INNER; LEFT; RIGHT; OUTER; LEFT EXCLUDING; RIGHT EXCLUDING; OUTER EXCLUDI
  * 本地用 SQLite 建立，測試環境。
  * 註釋中有 leetcode 問題説明和我的解法。
 
+-----
+
 = Shell =
 == leetcode SH problems ==
 [[https://leetcode.com|leetcode]] 上的 SHELL 題目，和我目前的解法。
  * 寫在了我的 github page 裏: http://xiongjia.github.io/dev/2015/06/23/shell-problems/
+
+
+-----
 
 = Node.js =
 == Dump node v8 heap ==
@@ -143,11 +156,15 @@ Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Kne
 利用 node.js 的 'vm' module 為 script 創建一個獨特的 context
  * gist: https://gist.github.com/xiongjia/b70406b710b3c19573f6
 
+-----
+
 = PowerShell =
 == MS UIAutomation ==
 一個簡單得 powershell script, 通過 .Net 接口調用 MS UI Automation 來操作啟動得 calc.exe
  * gist: https://gist.github.com/xiongjia/6749035
  * 這個 script 我只在 Windows 7 上測試過。
+
+-----
 
 = VIM =
 == VIM plugin with python ==
@@ -166,6 +183,8 @@ Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Kne
    有關"vim" module 使用的細節可參閱 vim document `:help if_pyth.txt`。
    它實現的細節在 vim source code: if_py_both.h, if_python.c, if_python3.c 等文件中看到。
 
+-----
+
 = General =
 == Singly linked list ==
 一些基本的單向鏈表測試
@@ -180,4 +199,6 @@ Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Kne
 一個基本的 liquibase 使用。
  * gist: https://gist.github.com/xiongjia/455c27bb728325542f66
  * 注意: 需要配置正確的 JDBC Driver， Sample 中用的是 SQLite3。具體參看 gist 中的 readme。
+
+-----
 
