@@ -5,16 +5,22 @@
 == Documentation ==
  * Windbg help documentation <br>
    - MSDN: https://msdn.microsoft.com/en-us/library/windows/hardware/ff551063%28v=vs.85%29.aspx
-   - The .CHM file: 在 windbg 的安裝目錄裏。windbg 中按 F1 可直接打開該幫助文件.
- * Windbg A to Z ( .pdf file on my dropbox) <br>
-   https://dl.dropboxusercontent.com/u/41890507/dev-docs/ms/windbg-a2z.pdf 
- * Getting started with windbg - part I & II
-   - http://blogs.msdn.com/b/johan/archive/2007/11/13/getting-started-with-windbg-part-i.aspx 
-   - http://blogs.msdn.com/b/johan/archive/2007/11/26/getting-started-with-windbg-part-ii.aspx 
- * How to install Windbg and get your first memory dump
-   - http://blogs.msdn.com/b/johan/archive/2007/01/11/how-to-install-windbg-and-get-your-first-memory-dump.aspx
- * How to troubleshoot OutOfMemoryExceptions
-   - http://blogs.msdn.com/b/johan/archive/2007/01/11/i-am-getting-outofmemoryexceptions-how-can-i-troubleshoot-this.aspx
+   - 本地的 windbg help documentation。
+     * 在 windbg 目錄中的 .chm file。windbg 中按 F1 可直接打開該幫助文件.
+     * 用 `.hh` Meta-Command 來打開或查找幫助。比如: 想查看 `x` command 可以用 `.hh x`
+ * 書籍:
+   - <Advanced Windows Debugging> : http://book.douban.com/subject/2357194/
+   - <Advanced .NET Debugging> : http://book.douban.com/subject/4030483/
+ * 在綫短文: 
+   - Windbg A to Z ( .pdf file on my dropbox) <br>
+     https://dl.dropboxusercontent.com/u/41890507/dev-docs/ms/windbg-a2z.pdf 
+   - Getting started with windbg - part I & II
+     * http://blogs.msdn.com/b/johan/archive/2007/11/13/getting-started-with-windbg-part-i.aspx 
+     * http://blogs.msdn.com/b/johan/archive/2007/11/26/getting-started-with-windbg-part-ii.aspx 
+   - How to install Windbg and get your first memory dump
+     * http://blogs.msdn.com/b/johan/archive/2007/01/11/how-to-install-windbg-and-get-your-first-memory-dump.aspx
+   - How to troubleshoot OutOfMemoryExceptions
+     * http://blogs.msdn.com/b/johan/archive/2007/01/11/i-am-getting-outofmemoryexceptions-how-can-i-troubleshoot-this.aspx
 
 == Tips ==
 入門級日常使用。
