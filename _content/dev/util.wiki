@@ -5,9 +5,9 @@
 == Documentation ==
  * Windbg help documentation <br>
    - MSDN: https://msdn.microsoft.com/en-us/library/windows/hardware/ff551063%28v=vs.85%29.aspx
-   - 本地的 windbg help documentation。
-     * 在 windbg 目錄中的 .chm file。windbg 中按 F1 可直接打開該幫助文件.
-     * 用 `.hh` Meta-Command 來打開或查找幫助。比如: 想查看 `x` command 可以用 `.hh x`
+   - 本地的 windbg help documentation:
+     * 在 windbg 所在目錄中的 .chm file。windbg 中按 F1 可直接打開該幫助文件.
+     * 用 `.hh [Text]` Meta-Command 來打開或查找幫助。比如: 想查看 `x` command 可以用 `.hh x`
  * 書籍:
    - <Advanced Windows Debugging> : http://book.douban.com/subject/2357194/
    - <Advanced .NET Debugging> : http://book.douban.com/subject/4030483/
@@ -22,9 +22,38 @@
    - How to troubleshoot OutOfMemoryExceptions
      * http://blogs.msdn.com/b/johan/archive/2007/01/11/i-am-getting-outofmemoryexceptions-how-can-i-troubleshoot-this.aspx
 
-== Tips ==
-入門級日常使用。
-/* XXX TODO pending */
+== Tips (日常簡單使用) ==
+=== 其他 ===
+- x (Examine Symbols) <br>
+  `x` 命令用來查詢 Symbols。找到對應的 Symbols 名字可以幫助設置 Breakpoint。
+  調試沒有代碼的程序時特別有用。
+  - 查找時對應的 .pdb 應該已經被加載。
+  - 基本命令 `x [Options] Module!Symbol`
+  - 所有的 `[Options]` 參考 `.hh x`
+  - `Module!Symbols` 可以使一個 pattern 。比如 `ModuleA!*` 表示 ModuleA 的所有 Symbols。
+    ( Module 部分也可以用 pattern , 只是顯示的結果比較多。
+      個人覺得應該用 `lm m *Module pattern*` 先找到對應的 module。可以減少不必要的輸出)
+  - 舉例:
+    * 用 `lm m *test*` 找到對用的 module name. 
+    * 用 `x /v /t dbg_test!*test*` 來查看 dbg_test module 中所有帶有 "test" 的 Symbols。
+      - `/v /t` 表示顯示 Symbol 類型比如 local, global, parameter, function, or unknown
+    * 下面的 windbg 輸出, 對應列出了所有的 Symbols。
+      - 有了這些名字后就可以在 function 上設置 breakpoint 比如 `bp dbg_test!TestFunc` 
+      - 也可以用 `dt` 來查看,比如 `dt dbg_test!g_test_number` 或 `dt dbg_test!TestFunc`
+{{{
+0:000> lm m *test*
+start             end                 module name
+00000001`3f740000 00000001`3f74e000   dbg_test C (private pdb symbols)  E:\dev\scratch\dbg-test\x64\Debug\dbg-test.pdb
+0:000> x /v /t dbg_test!*test*
+prv global 00000001`3f749030    4 int dbg_test!g_test_number = 0n1
+prv func   00000001`3f741030   28 <function> dbg_test!TestFunc (void)
+prv func   00000001`3f741150   31 <function> dbg_test!TestClz::~TestClz (void)
+prv func   00000001`3f741190   31 <function> dbg_test!TestClz::Print (void)
+prv func   00000001`3f741100   36 <function> dbg_test!TestClz::TestClz (void)
+}}}
+
+=== Breakpoint ===
+XXX (待續, 整理中 2015 年 7 月 7 日 )
 
 = Java =
 == Documentation ==
