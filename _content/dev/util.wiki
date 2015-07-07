@@ -34,16 +34,10 @@
     ( Module 部分也可以用 pattern , 只是顯示的結果比較多。
       個人覺得應該用 `lm m *Module pattern*` 先找到對應的 module。可以減少不必要的輸出)
   - 舉例:
-    * 用 `lm m *test*` 找到對用的 module name. 
-    * 用 `x /v /t dbg_test!*test*` 來查看 dbg_test module 中所有帶有 "test" 的 Symbols。
-      - `/v /t` 表示顯示 Symbol 類型比如 local, global, parameter, function, or unknown
-    * 下面的 windbg 輸出, 對應列出了所有的 Symbols。
-      - 有了這些名字后就可以在 function 上設置 breakpoint 比如 `bp dbg_test!TestFunc` 
-      - 也可以用 `dt` 來查看,比如 `dt dbg_test!g_test_number` 或 `dt dbg_test!TestFunc`
 {{{
 0:000> lm m *test*
 start             end                 module name
-00000001`3f740000 00000001`3f74e000   dbg_test C (private pdb symbols)  E:\dev\scratch\dbg-test\x64\Debug\dbg-test.pdb
+00000001`3f740000 00000001`3f74e000   dbg_test C (private pdb symbols)  E:\dbg-test.pdb
 0:000> x /v /t dbg_test!*test*
 prv global 00000001`3f749030    4 int dbg_test!g_test_number = 0n1
 prv func   00000001`3f741030   28 <function> dbg_test!TestFunc (void)
@@ -51,6 +45,12 @@ prv func   00000001`3f741150   31 <function> dbg_test!TestClz::~TestClz (void)
 prv func   00000001`3f741190   31 <function> dbg_test!TestClz::Print (void)
 prv func   00000001`3f741100   36 <function> dbg_test!TestClz::TestClz (void)
 }}}
+    * 用 `lm m *test*` 找到對用的 module name. 
+    * 用 `x /v /t dbg_test!*test*` 來查看 dbg_test module 中所有帶有 "test" 的 Symbols。
+      - `/v /t` 表示顯示 Symbol 類型比如 local, global, parameter, function, or unknown
+    * 下面的 windbg 輸出, 對應列出了所有的 Symbols。
+      - 有了這些名字后就可以在 function 上設置 breakpoint 比如 `bp dbg_test!TestFunc` 
+      - 也可以用 `dt` 來查看,比如 `dt dbg_test!g_test_number` 或 `dt dbg_test!TestFunc`
 
 === Breakpoint ===
 XXX (待續, 整理中 2015 年 7 月 7 日 )

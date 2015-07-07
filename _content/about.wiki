@@ -11,10 +11,11 @@
       github: 'https://github.com/xiongjia',
       blog: 'http://xiongjia.github.io/',
       google: 'https://google.com/+XiongJiaLe',
-      fb: 'http://www.facebook.com/xiongjia.le',
+      facebook: 'http://www.facebook.com/xiongjia.le',
       twitter: 'https://twitter.com/XiongJia',
-      douban: 'http://www.douban.com/people/lexiongjia/',
-      fanfou: 'http://fanfou.com/xiongjia_le'
+      douban: 'http://www.douban.com/people/lexiongjia',
+      fanfou: 'http://fanfou.com/xiongjia_le',
+      zhihu: 'http://www.zhihu.com/people/xiongjia'
     },
     tags: ['dev', 'animation-comic', 'gamer', 'Otaku']
   };
