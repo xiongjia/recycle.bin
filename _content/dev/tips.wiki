@@ -104,30 +104,37 @@ The stupid content tracker
  - Progit 的第二版本 https://github.com/progit/progit2 
  - Online book: http://git-scm.com/book/en/v2
 
-== Ack ==
-ack is a tool like grep, optimized for programmers. 
-相對於 grep 來說, Ack 更加適合開發者使用。
-# 提供多種 type sets 可以方便的選擇文件，比如: `ack --js PATTERN` 表示 search .js 文件。 <br>
-  還有很多 default 設置的 type sets 可以在 ack documentation 中找到。
-# 方便的 ignore-dir，開發中很多臨時 (或是第三方生成) 的文件,目錄需要被跳過。<br>
-  比如: nodejs 開發中，需要跳過 "node_modules" 。
-  ack 的默認設置就會 ignore 這些。<br>
-  ( 可以用 `ack --create-ackrc` 看一下默認規則 ) 
-  如果默認規則不夠，還可以通過自己的 "$HOME/.ackrc" 來增加。
-# 相對 grep 來說 ack 的輸出結果更便於閱讀。
-# 可配置，可以自己在 `.ackrc` 中增加需要的設置。
-
-以下是 ack 的相關資料:
-* ack: http://beyondgrep.com/
-* ack documentation: http://beyondgrep.com/documentation/
-* 查看 ack 的默認設置:  `ack --create-ackrc`
-* Vim 中使用 ack: https://github.com/mileszs/ack.vim <br>
-  相對與 vimgrep 來說在 ack.vim 的方便處在於可以方便的指定 file types 和 ignore folders 
-* ackrc: 用戶可以自己添加 "$HOME/.ackrc" 文件來增加設置。
-  我自己用的一份: https://github.com/xiongjia/dotfiles/blob/master/misc/ackrc
-* Installation: <br>
-  ack 依賴一些 Perl 的環境具體看一下 http://beyondgrep.com/install/ <br>
-  Linux 上比較簡單, OS X 上最好用 Homebrew, Windows 上則最好用 Chocolatey 。
+== Ack / Ag ==
+* ack is a tool like grep, optimized for programmers. 
+  相對於 grep 來說, Ack 更加適合開發者使用。
+  - 提供多種 type sets 可以方便的選擇文件，比如: `ack --js PATTERN` 表示 search .js 文件。 <br>
+    還有很多 default 設置的 type sets 可以在 ack documentation 中找到。
+  - 方便的 ignore-dir，開發中很多臨時 (或是第三方生成) 的文件,目錄需要被跳過。<br>
+    比如: nodejs 開發中，需要跳過 "node_modules" 。
+    ack 的默認設置就會 ignore 這些。<br>
+    ( 可以用 `ack --create-ackrc` 看一下默認規則 ) 
+    如果默認規則不夠，還可以通過自己的 "$HOME/.ackrc" 來增加。
+  - 相對 grep 來說 ack 的輸出結果更便於閱讀。
+  - 可配置，可以自己在 `.ackrc` 中增加需要的設置。
+* 以下是 ack 的相關資料:
+  - ack: http://beyondgrep.com/
+  - ack documentation: http://beyondgrep.com/documentation/
+  - 查看 ack 的默認設置:  `ack --create-ackrc`
+  - Vim 中使用 ack: https://github.com/mileszs/ack.vim <br>
+    相對與 vimgrep 來說在 ack.vim 的方便處在於可以方便的指定 file types 和 ignore folders 
+  - ackrc: 用戶可以自己添加 "$HOME/.ackrc" 文件來增加設置。
+    我自己用的一份: https://github.com/xiongjia/dotfiles/blob/master/misc/ackrc
+  - Installation: <br>
+    ack 依賴一些 Perl 的環境具體看一下 http://beyondgrep.com/install/ <br>
+    Linux 上比較簡單, OS X 上最好用 Homebrew, Windows 上則最好用 Chocolatey 。
+* Ag ( The Silver Searcher )   
+  Ag 是 ack 的改進版本，用法與 Ack 類似。但是其性能好過 ack 很多。
+  因為用了 C 來實現所以也不依賴於 Perl。
+  - ag: https://github.com/ggreer/the_silver_searcher
+* 在 windows 上安裝 ack / ag   
+  - 推薦使用 Chocolatey ( https://chocolatey.org/ Windows package manager) 來安裝/管理。
+  - ag:  https://chocolatey.org/packages/ag
+  - ack: https://chocolatey.org/packages/ack
 
 == gnuplot ==
 gnuplot ( http://www.gnuplot.info/ ), 作為日常數據可視化的工具。
