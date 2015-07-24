@@ -2,24 +2,20 @@
 %toc
 
 = Online Tools =
-== Lint ==
-* JSON Lint: http://jsonlint.org/ or https://github.com/arc90/jsonlintdotcom
-* YAML Lint: http://yamllint.com/ or https://github.com/gilltots/yamllint
-* JS-YAML parser (Lint):  http://nodeca.github.io/js-yaml/ or https://github.com/nodeca/js-yaml
-
-== JS ==
-* JS Fiddle: http://jsfiddle.net/
-* JS performance playground: http://jsperf.com/
-
-== Database ==
-* SQL Filddle: http://sqlfiddle.com/
-
-== Editor ==
-* Markdown Editor: http://dillinger.io/ or  https://github.com/joemccann/dillinger
-
-== Misc ==
-* Runnable: (Online Vitrual Environment) http://runnable.com/
-* Source code search engine: https://searchcode.com/
+- Lint
+  * JSON Lint: http://jsonlint.org/ or https://github.com/arc90/jsonlintdotcom
+  * YAML Lint: http://yamllint.com/ or https://github.com/gilltots/yamllint
+  * JS-YAML parser (Lint):  http://nodeca.github.io/js-yaml/ or https://github.com/nodeca/js-yaml
+- JS
+  * JS Fiddle: http://jsfiddle.net/
+  * JS performance playground: http://jsperf.com/
+- Database
+  * SQL Filddle: http://sqlfiddle.com/
+- Editor
+  * Markdown Editor: http://dillinger.io/ or  https://github.com/joemccann/dillinger
+- Misc
+  * Runnable: (Online Vitrual Environment) http://runnable.com/
+  * Source code search engine: https://searchcode.com/
 
 ----
 
@@ -81,12 +77,12 @@ secure copy (remote file copy program)
 * NODE 中使用 Rsync - 参考 [[node|NODE]] 中的 _rsyncwrapper_
 
 == nssm ==
-Non-Sucking Service Manager。是一個簡易的 Windows services Manager。
-可以方便的把任何可執行文件，變成 Service 運行。<br>
-比如: 把某個 java 的 .jar 用 Service 運行。
-`nssm install ServiceName java.exe  -jar test.jar` <br>
-可以通過 'install'; 'set'; 'start'; 'stop'; 'get' 等 command 來操作 Service。
-具體參考官網上的 usage: https://nssm.cc/usage
+Non-Sucking Service Manager - 是一個簡易的 Windows services Manager。   
+- 可以方便的把任何可執行文件，變成 Service 運行。<br>
+  比如: 把某個 java 的 .jar 用 Service 運行。
+  `nssm install ServiceName java.exe  -jar test.jar` <br>
+- 可以通過 'install'; 'set'; 'start'; 'stop'; 'get' 等 command 來操作 Service。
+  具體參考官網上的 usage: https://nssm.cc/usage
 
 ----
 
