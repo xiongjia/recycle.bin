@@ -10,7 +10,8 @@
   "license": "MIT",
   "scripts": {
     "build": "npm prune & npm install & grunt",
-    "serv": "grunt serv"
+    "serv": "grunt serv",
+    "server": "grunt serv"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

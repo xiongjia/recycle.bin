@@ -25,11 +25,10 @@ secure copy (remote file copy program)
 * 常用操作, 上傳／下載 文件或目錄: <br>
  - source 放在前面，target 放在后面。
  - `-r` - (Recursively) 表示递归 srouce。
-
- | Upload file     | `scp SourceFile user@host:directory/TargetFile`        |
- | Upload folder   | `scp -r SourceFolder user@host:directory/TargetFolder` |
- | Download file   | `scp user@host:directory/SourceFile TargetFile`        |
- | Download folder | `scp -r user@host:directory/SourceFolder TargetFolder` |
+| Upload file     | `scp SourceFile user@host:directory/TargetFile`        |
+| Upload folder   | `scp -r SourceFolder user@host:directory/TargetFolder` |
+| Download file   | `scp user@host:directory/SourceFile TargetFile`        |
+| Download folder | `scp -r user@host:directory/SourceFolder TargetFolder` |
 
 * Windows<br>
  - [[http://www.chiark.greenend.org.uk/~sgtatham/putty/|Putty]] 提供了  Windows 版 SSH client 的实现。`pscp.exe` 可以实现与 scp 的功能。
@@ -75,6 +74,10 @@ secure copy (remote file copy program)
  'dist' - 会吧 'dist' 这级也传上去。
  # --bwlimit=KBPS - 带宽限制
 * NODE 中使用 Rsync - 参考 [[node|NODE]] 中的 _rsyncwrapper_
+* Windows 上安裝 Rsync 推薦使用 
+  Chocolatey ( https://chocolatey.org/ Windows package manager) 來安裝/管理。
+  - RSync for Windows: https://chocolatey.org/packages/rsync ( 我目前 windows 上用的是這個 )
+  - cwRsync Free edition: https://chocolatey.org/packages/cwrsync (沒有測試過,應該也是可以的吧)
 
 == nssm ==
 Non-Sucking Service Manager - 是一個簡易的 Windows services Manager。   
