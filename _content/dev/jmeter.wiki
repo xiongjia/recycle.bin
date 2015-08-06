@@ -15,7 +15,7 @@
   http://community.blazemeter.com/knowledgebase/topics/10018-jmeter-tutorials
 
 = Environment =
-== Dependences ==
+== Preparation ==
 JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
 目前JMeter 2.12 的要求是 Java 6+
 * 對於其他環境基本沒太大要求，應該是 Java runtime 可以工作的地方基本就可以運行 JMeter。
@@ -27,14 +27,50 @@ JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
   https://jmeter.apache.org/usermanual/get-started.html
 
 == Installation ==
-* 從 http://jmeter.apache.org/download_jmeter.cgi 下載最新的 Binaries 包。
-* 解壓到目錄就可以使用。
+* 從 http://jmeter.apache.org/download_jmeter.cgi 找到 release 
 * 如果以 GUI 方式啓動,則只需要運行 bin\jmeter ( windows 上是 bin\jmeter.bat ) <br>
   這個腳本會組裝參數隨後啓動 bin\ApacheJMeter.jar。
   運行前要保證 Java 環境正確,比如: JAVA_HOME
 
-= Internals =
-== Thread Group ==
+= Custom Extension / Plugin =
+可以通過擴展 JMeter 來運行一些特殊的測試，
+比如在 JMeter 的 Script 中運行自己或第三方的 JAR 文件中的程序;
+或者支持測試一些特殊的 Protocol。
+* 通過JMeter 的 BSF / BeanShell Sampler 中使用 Script 加載自己的 .jar 文件。
+  比如: 使用 BenShell Script import 自己的 .jar 文件中的 Java Package。
+  (這個 jar 文件要放在 JMeter classpath 裏，或者也可以放在 `lib` 目錄，
+  這個目錄是默認的 classpath)。<br>
+  具體的細節可以參考手冊中 BSF Sampler 的描述。
+* 通過實現 JMeter component 的方式擴展 JMeter 。比如實現一個 JMeter 的 Sampler 。
+  一個我簡化過的實現: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
+
+= Internal =
+== Utilities ==
+=== Building ===
+在 JMeter 下 "README" 中有對如何 build 的説明。JMeter 的 building 是依賴于 `ant` 的。
+* 第一運行 Build 時需要把需要的 3rd party .jar 下載過來，需要運行: `ant download_jars` 
+* Build JMeter Core 和其他  Modules 運行 `ant` 
+* 注意: `ant` 需要從網上下載需要的 3rd part .jar 。所以就網絡情況而定可能需要設置 proxy。
+  可以通過修改 `ANT_OPTS` 來較爲方便的達到這個目的，比如在 Windows PowerShell 上:
+{{{class="brush: ps; gutter: false; toolbar: false;"
+$env:ANT_OPTS ="-Dhttp.proxyHost=<host> -Dhttp.proxyPort=<port> "
+$env:ANT_OPTS+="-Dhttps.proxyHost=<host> -Dhttps.proxyPort=<port> "
+}}}
+
+=== Debugging ===
+* 調整 Log Levels   <br>
+   - 默認會生成一個 "jmeter.log" 的文件。可以通過 `-j` 去改變這個文件名，
+     比如 `bin/jmeter -j test.log` 會生成 `test.log` 文件。
+   - 在 `bin/jmeter.properties` 中的 "Logging Configuration" 部分可以修改對應的 Java Class 的 Log Level，
+     比如: `log_level.jmeter.engine=DEBUG` 表示 JMeter Engine 的 Log level 為 `DEBUG`
+* Java remote debugging
+  - 以 remote 調試方式啓動 JMeter。可以修改 `JVM_ARGS` 環境變量。比如:
+    `set JVM_ARGS=-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=y` , 
+    JMeter 啓動時會把 `JVM_ARGS` 傳給 JVM，進入 suspend 狀態等待調試。
+  - 用 Eclipse 設置正確的 Debug address 和 source folders ，隨後就能進入單步調試狀態。
+
+== Core ==
+=== Thread Group ===
 Thread Group 是 JMeter 的基本調度單位,
 通過對 Thread Group 參數(比如: Number of Threads; Loop Count )的設置來改變 Test 的所產生的壓力。
 * 在 JMeter 中有 3 種 Thread Group, 一個 Test 中可以包含多個同類型的 Thread Group:
@@ -82,16 +118,4 @@ Thread Group 是 JMeter 的基本調度單位,
      "Stop Test" 發生, 則 Teardown Thread Groups 執行條件依賴於 
      Test Plan 的配置 "Run tearDown Thread Groups after shutdown of main threads"。
      如果 Enable 此設置，則 Teardown Thread Groups 會被執行。
-
-= Custom Extension / Plugin =
-可以通過擴展 JMeter 來運行一些特殊的測試，
-比如在 JMeter 的 Script 中運行自己或第三方的 JAR 文件中的程序;
-或者支持測試一些特殊的 Protocol。
-* 通過JMeter 的 BSF / BeanShell Sampler 中使用 Script 加載自己的 .jar 文件。
-  比如: 使用 BenShell Script import 自己的 .jar 文件中的 Java Package。
-  (這個 jar 文件要放在 JMeter classpath 裏，或者也可以放在 `lib` 目錄，
-  這個目錄是默認的 classpath)。<br>
-  具體的細節可以參考手冊中 BSF Sampler 的描述。
-* 通過實現 JMeter component 的方式擴展 JMeter 。比如實現一個 JMeter 的 Sampler 。
-  一個我簡化過的實現: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
 
