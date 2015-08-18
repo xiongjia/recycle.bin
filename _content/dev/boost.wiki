@@ -82,3 +82,14 @@ unit_test_framework 是 boost 自帶的一套 c/c++ unit test framework.
   - 最後只需要執行對應的文件，就可以得到單元測試結果。
   - 詳細的 Boost test framework 參見 boost 文檔: http://www.boost.org/doc/libs/ ("Test" 章節)
 
+== ASIO ==
+asio 是一個 I/O Framework 經常被用於異步的 I/O 操作
+* 一個簡單的,只實現了部分功能的,基於 boost asio 的 socks proxy  
+  - 代碼: https://github.com/xiongjia/scratch/tree/master/zeratul
+  - 主要目的是測試 ASIO 庫，只實現了 socks5 proxy (rfc1928) 的部分功能。
+    ( Socks5 , IPv4, No Author 的 Connection command )
+  - 默認 port 用了 9090；目前把 protocol 實現都堆在了 zeratul.cxx 裏。
+  - 可以用 curl 來測試這個 proxy。比如: `curl --socks5 localhost:9090 http://www.boost.org/`
+  - 對於得 CMakeLists.txt 配置了對於得 Boost ASIO 和 Log， 
+    並且在 Windows 上用了 boost static library。
+
