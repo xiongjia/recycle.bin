@@ -1,6 +1,11 @@
 %title Database
 %toc
 
+我對 database 的掌握基本只停留在使用層面的初級水準。 
+大概只是記錄些日常開發使用工作中用到過的部分知識。
+
+----
+
 = Database Tools =
 == Schema Spy ==
 用來分析 database 的 Schema. 可以導出所有 Schema (表結構,字段,關係圖和各種具體信息).
@@ -27,6 +32,18 @@ java -jar schemaSpy_5.0.0.jar -t pgsql -dp postgresql-9.4-1201.jdbc41.jar
   - `-s` : 表示 database Schema (可選,在不支持 Schema 的 database 中可以用 `-noschema`.
          同時導出多個 Schemas 時可以用 `-schemas "schema1,schema2"` 的形式表示
   - `-o` : 是結果輸出 folder 名,默認會生成 HTML 結果. 
+ 
+==SQL Filddle ==
+這是個 Online Tool，有點像 JS Fiddle 可以在綫測試 JS。
+SQL Filddle: http://sqlfiddle.com/ 可以在綫測試 SQL。好處提供多種 Database 種類( MySQL; PostgreSQL 等)。
+如果是簡單的測試，就不需要在本地搭建環境。
+
+== Database Documentation ==
+* <SQL Cookbook> http://book.douban.com/subject/1840666/ <br>
+  算是零基礎的 SQL 入門書籍，基本都以實際 Sample 為引子。
+  也同時兼顧了數據庫種類 (Oracle; MySQL; PostgreSQL 等)。
+
+----
  
 = PostgreSQL =
 == Documentation ==
