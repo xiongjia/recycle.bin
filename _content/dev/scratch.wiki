@@ -7,34 +7,6 @@
 
 -----
 
-= Python =
-== Fanfou API Test ==
- * 我在寫這個測試時，是為了後一步自己的一個 Fanfou client 做一些試驗/準備的工作。
-   為了減少依賴，沒有用任何 3rd party 庫。只用了 Built-in 的 python package。 Oauth 也是自己實現的。
-   - gist: https://gist.github.com/xiongjia/b8893dc5eb5bbb04cfbc
-   - 目前根據 Fanfaou document 實現了 OAuth ( https://github.com/FanfouAPI/FanFouAPIDoc/wiki ) 
-   - 實現了一個 home timeline status 的 api 。可以列出 TL 最近的更新。
-   - 使用時需要先配置 fanfou.cfg ，格式參考 gist 中的 fanfou.sample.cfg
-     (注意: consumer_key & consumer_secret 請自己申請, 參考文檔: https://github.com/FanfouAPI/FanFouAPIDoc/wiki/Oauth )
-   - gist 裡有一個 +README.md 裏面記錄了一些可參考信息。
-
------
-
-= Java =
-這些 Java Scratch 代碼,都是用 Gradle 做管理。
-== WebSocket Echo server ==
-一個簡單 Echo Server。主要目的是測試/實驗 [[https://github.com/TooTallNate/Java-WebSocket|Java WebSocket]] 
- * 代碼: https://github.com/xiongjia/scratch/tree/master/jwebsocket
- * 使用和 Gradle Tasks 參考 Git 中的 Readme 
-== JMeter Example Sampler ==
-[[https://jmeter.apache.org/|JMeter]] 是 Apache 的一個 Web 壓力測試工具。
-用戶可以通過自己的 .jar 包為 JMeter 寫擴展。
- * 代碼: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
- * 使用和 Gradle Tasks 參考 Git 中的 Readme 
- * 這個代碼總體和 JMeter 的 Example  是類似的。主要是用 Gradle building 更方便點。
- 
------
-
 = Boost =
 Boost 的 sample 都寫了一個 CMakeList.txt, clone 後應該可以直接編譯。
  * Windows 平台需要注意，為了減少依賴, CMake 中指定的都是 static runtime link。(其他 OS 應該沒有這些問題)
@@ -55,12 +27,14 @@ Boost.Serialization 可把 Memory 中的 Class 存放根據需要存入文件中
   - Boost Serialization 支持幾種輸出格式。 
     Gist sample 中用的是 Text 文件，也可以用 Binary, XML  等。
   - Boost 1.55 以及下版本的 Serialization 在 MS VS 2013 編譯時會出現編譯錯誤。建議升級到 1.56+。
+
 == Pool ==
 Boost Memory Pool。用來做內存管理，可以把內存的分配與釋放變得更加方便和高效。也有利於減少 Memory leak。
  * 一個簡單的 Pool 使用。
   - gist: https://gist.github.com/xiongjia/5c222ad60e7a4bb2d0f3
   - TestAllocator 是一個自定義的 Allocator 。這一個 Allocator 是可選的，
     主要是為了 Log 一下 Malloc/Free 的次數才特意加的。普通情況可以用 Boost 自己的 Default Allocator。
+
 == Log ==
 Boost.Log 是 1.54 以後被加入的 Boost Logging library。 
  * 一個簡單的 Log 使用。
@@ -68,6 +42,7 @@ Boost.Log 是 1.54 以後被加入的 Boost Logging library。
   - 主要功能: customize formatter, filter + FS & Console sink + Name scope
   - 可以先從 Boost Document 看一下 Boost.Log 的介紹，了解一下基本的 Sink, formatter 等。
   - Build 時需要檢查 Boost 是否高於 1.54
+
 == property_tree ==
 property_tree 有很多作用，可以解析各種類型的格式的輸入，比如: xml, json, ini 等。
  * 一個簡單的 .ini 讀取, 解析。
@@ -81,6 +56,7 @@ property_tree 有很多作用，可以解析各種類型的格式的輸入，比
       (可能是和 locale/lang 設置有一定關聯)
     - 其他平台需要設置對正確的 locale 才能輸出，比如要輸出中文，則要把 locale 更新到 zh-CN。
       這個 example 會讀取 -l 參數來自動更新語言集。比如: `read-ini -l zh-CN` 表示以中文輸出。
+
 == program_options ==
 program_options 是一個專爲程序读取配置、参数准备的。
  * 一個簡單得從 argv 读取參數的 sample:
@@ -88,6 +64,7 @@ program_options 是一個專爲程序读取配置、参数准备的。
   - 基本的 usage 参考注解。
   - 比较复杂的时 std::vector<std::string> 的数组情况，需要告诉 boost 怎么解析。
     这里用的是 multitoken() 
+
 == unit test framework ==
 unit_test_framework 是 boost 自帶的一套 c/c++ unit test framework.
 * 一個簡單的 cmake 和 boost unit test framework 配合的例子。
@@ -97,6 +74,9 @@ unit_test_framework 是 boost 自帶的一套 c/c++ unit test framework.
   - 對應的單元測試會被 build 成一個可執行文件。
   - 最後只需要執行對應的文件，就可以得到單元測試結果。
   - 詳細的 Boost test framework 參見 boost 文檔: http://www.boost.org/doc/libs/ ("Test" 章節)
+* 一個日常算法之類 (比如 leetcode 等) 的練習
+  - 代碼: https://github.com/xiongjia/scratch/tree/master/gazlowe
+  - 具體可以參考 github 上的 readme 
 
 == ASIO ==
 asio 是一個 I/O Framework 經常被用於異步的 I/O 操作
@@ -119,6 +99,7 @@ Joins (INNER; LEFT; RIGHT; OUTER; LEFT EXCLUDING; RIGHT EXCLUDING; OUTER EXCLUDI
  * 這個測試參考了 http://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins
  * 用 SQLite 做本地測試。
  * SQLite 只實現了部分 Join Clauses , 所以只有部分可以使用。具體參考 gist 中的註釋。
+
 == leetcode DB problems ==
 [[https://leetcode.com|leetcode]] 上的 Database 題目，和我目前的解法。
  * gist: https://gist.github.com/xiongjia/5a1fbd473e7f5966c6ad
@@ -141,10 +122,12 @@ Joins (INNER; LEFT; RIGHT; OUTER; LEFT EXCLUDING; RIGHT EXCLUDING; OUTER EXCLUDI
 通過 node-heapdump 來 dump 當前得 v8 狀態，隨後可以通過 Chrome developer tool 來檢測這個 dump 文件。
  * gist: https://gist.github.com/xiongjia/7688374
  * 需要在用前裝 node-heapdump: `npm install node-heapdump`
+
 == node stream ==
 通過從 require('stream').Transform 繼承得方式實現，stream 式樣得協議解析。
  * gist: https://gist.github.com/xiongjia/6867670
  * protocol 得格式和一些注意事項已經被寫在代碼註解裏了。
+
 == Mock Server ==
 一個 HTTP Server 可以按照指定的要求來返回測試數據。
 主要用來模擬測試環境，比如 HTTP 的 client 代碼的單元測試中使用。
@@ -155,14 +138,17 @@ Joins (INNER; LEFT; RIGHT; OUTER; LEFT EXCLUDING; RIGHT EXCLUDING; OUTER EXCLUDI
    可以使得 Server 有更加高的并發處理能力。
  * "/get-data" 測試，比如: http://localhost:2333/get-data?len=2048&delay=500
    表示 Server 延迟 500 毫秒返回 2048 bytes 的数据。
+
 == Knex sample ==
 Knex 是一個 database query builder 通過 Knex 的封裝，可以使同一份代碼工作與不同種類的數據庫。
  * gist:  https://gist.github.com/xiongjia/85df587ce3535d1c6151
  * 具體參考 gist 中的 readme
+
 == Bookshelfjs sample ==
 Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Knex 的query builder 。
  * gist: https://gist.github.com/xiongjia/eeaf9d0d7571b4d15f3f
  * 具體參考 gist 中的 readme
+
 == NContext ==
 利用 node.js 的 'vm' module 為 script 創建一個獨特的 context
  * gist: https://gist.github.com/xiongjia/b70406b710b3c19573f6
@@ -206,6 +192,7 @@ Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Kne
    fast_prt 每次推進 2 格, slow_ptr 一次推進一格。等 fast_ptr 到頂時，
    slow_ptr 就是中間。( 同樣得方法也可以用於取 1/3 點, 1/4 點等等, 
    也可以用於得到倒數第 N 個節點，比如 fast_ptr 前進 N 格, slow_ptr 前进一格)
+
 == Liquibase sample ==
 一個基本的 liquibase 使用。
  * gist: https://gist.github.com/xiongjia/455c27bb728325542f66
@@ -213,3 +200,30 @@ Bookshelfjs 是一個 JS 實現的 ORM 。風格類似與 Backbone ，基於 Kne
 
 -----
 
+= Python =
+== Fanfou API Test ==
+ * 我在寫這個測試時，是為了後一步自己的一個 Fanfou client 做一些試驗/準備的工作。
+   為了減少依賴，沒有用任何 3rd party 庫。只用了 Built-in 的 python package。 Oauth 也是自己實現的。
+   - gist: https://gist.github.com/xiongjia/b8893dc5eb5bbb04cfbc
+   - 目前根據 Fanfaou document 實現了 OAuth ( https://github.com/FanfouAPI/FanFouAPIDoc/wiki ) 
+   - 實現了一個 home timeline status 的 api 。可以列出 TL 最近的更新。
+   - 使用時需要先配置 fanfou.cfg ，格式參考 gist 中的 fanfou.sample.cfg
+     (注意: consumer_key & consumer_secret 請自己申請, 參考文檔: https://github.com/FanfouAPI/FanFouAPIDoc/wiki/Oauth )
+   - gist 裡有一個 +README.md 裏面記錄了一些可參考信息。
+
+-----
+
+= Java =
+這些 Java Scratch 代碼,都是用 Gradle 做管理。
+== WebSocket Echo server ==
+一個簡單 Echo Server。主要目的是測試/實驗 [[https://github.com/TooTallNate/Java-WebSocket|Java WebSocket]] 
+ * 代碼: https://github.com/xiongjia/scratch/tree/master/jwebsocket
+ * 使用和 Gradle Tasks 參考 Git 中的 Readme 
+
+== JMeter Example Sampler ==
+[[https://jmeter.apache.org/|JMeter]] 是 Apache 的一個 Web 壓力測試工具。
+用戶可以通過自己的 .jar 包為 JMeter 寫擴展。
+ * 代碼: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
+ * 使用和 Gradle Tasks 參考 Git 中的 Readme 
+ * 這個代碼總體和 JMeter 的 Example  是類似的。主要是用 Gradle building 更方便點。
+ 
