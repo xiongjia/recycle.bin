@@ -1,39 +1,22 @@
 %title Minecraft
 %toc
 
-俺作為一個 Minecraft 的新手，記錄一下用到的資料。
+俺作為一個 Minecraft 的鶸雞，記錄一下用到的資料。
 
-= Client Installation =
- * 無論 client 還是 server, Minecraft 都是基於 Java 得，
-   所以先準備好 Java runtime.
- * 從 https://minecraft.net/ 可以下載到 minecraft 的 client。
- * 下載下來的只是 minecraft 的一個 launcher, 啟動後可以選擇需要的版本。
-   如果不 login 就只能 Play DEMO world。
- * 可以通過 https://minecraft.net/ 購買一個帳號，登錄後可獲得所有功能。
-   我買的時候的價格是  19.5 歐元。<br>
-   （我覺得是這個價格還是很良心的,買過一些其他更貴的遊戲，
-   也很少有比 minecraft 更耐玩的了。
-   人家做得這麼好，我覺得付費還是應該的。所以抵制破解。)
- * 在 launcher 裏可以修改過一些保存在對應得 profile 裏.
-  - 根據 Server 需要,選擇對應得 client 版本
-  - 默認是 1G 內存,可以把他改大一點
- * 啓動遊戲後可以進行單機遊戲。不過趣味不如 server 版本。 <br>
-   (一方面是多人，另一方面是 server 上有些好玩得 plugins )
-
------
-
-= Offical server =
-官方的 server 配置很简单，也会和 client 同时更新。
-不过不能装 plugins 趣味性少了很多。
- * 官方 server 是可以免费从 https://minecraft.net/download 找到的
- * Windows 版，下载后直接运行就可以了
- * Unix 版则需要下载 .jar 隨後配置 Java 运行
- * 具体参考: http://minecraft.gamepedia.com/Setting_up_a_server
- * minecraft server 对于机器得要求还是蛮高得，如果聯機人數很多得話,
-   是需要很多內存才能扛住得;
-   帶寬要求應該也不低;遊戲地圖增大後估計也很占用 disk.
-   (所以想遠程維護一個 VPS 做 server 還是很困難得。
-   如果只是局域網幾個小夥伴使用得話應該問題不大。)
+= Tips =
+* proxy
+  Minecraft Launcher 會在 Amazon S3 上更新數據。在 "結界" 内此數據一般無法正常訪問。
+  - 所以需要用 proxy 啓動 Launcher。比如用 socks proxy: <br>
+    `java -DsocksProxyHost=<host> -DsocksProxyPort=<port> -jar ./game/launcher.jar`
+  - 不同版本的 Launcher 的 jar 位置可能不一樣。我目前用的 Windows 版本是在 `game/launcher.jar`
+{{{
+/Minecraft/
+|~game/
+| `-launcher.jar
+|+runtime/
+|+tools/
+`-MinecraftLauncher.exe
+}}}
 
 -----
 
@@ -51,5 +34,5 @@
  * 代碼: https://github.com/sk89q/worldedithttps://github.com/sk89q/worldedit
 
 通過 'WE' 可以在遊戲裏較為方便得操作方塊。
-很多宏偉得大規模 minecraft 建築工程，可能都少不了 'WE' 吧?
+很多宏偉得大規模 minecraft 建築工程，可能都少不了 'WE' 吧(??)
 
