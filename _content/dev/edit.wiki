@@ -25,8 +25,8 @@
 
 == Tips ==
 === options ===
-日常使用中很多用 options 的地方. 算是基本中的基本.
-比如: `set tabstop=4` 這裡 `tabstop` 就是一個 option.
+日常使用中很多用 options 的地方。所以這個大概算是基本中的基本。
+比如: `set tabstop=4` 這裡 `tabstop` 就是一個 option。
 * VIM Option types:
   - Number: 數字類型. 比如: `set tabstop=4` 中的 `tabstop` . 
   - String: 字符串類型. 比如: `set wildignore+=*/tmp/*,*.swp` 中的 `wildignore` .
@@ -129,7 +129,8 @@ vim 中可以通過 `:substitute` 命令來查找替換。
 
 
 == Search ==
-=== File name search ===
+=== Files name search ===
+可以用 VIM 自帶的也可以用一些 Plugins。
  - VIM 自帶的 Filename search  <br>
    有很多 VIM plugins 可以做 File name fuzzy search .
    不過很多生産綫上的 Server 一般都是不裝這些 plugins 的,
@@ -153,3 +154,28 @@ vim 中可以通過 `:substitute` 命令來查找替換。
    自己常用的是 Ctrlp.vim: https://github.com/kien/ctrlp.vim .
    具體用法可以參看 CtrlP.vim 的 readme.
 
+=== Files content search ===
+單個 file/buffer 的 search 直接用 VIM 的 Search command 參考: `:help /`。<br>
+多個 files 的 search。
+ * VIM 自帶的 Files search: <br>
+   - 主要是用 `:vimgrep` , 可以參考: `:help vimgrep` 或 http://vim.wikia.com/wiki/Find_in_files_within_Vima <br>
+   - 基本用法: `:vim[grep][!] /{pattern}/[g][j] {file} ` 之後配合 `:cwindow` 
+   - 比如説 在 "*.txt" 中 search string "123" , 運行 `:cw` 后就會列出找到的 lines<br>
+     - `:vimgrep! /123/ *.txt`
+     - `:cw`
+
+ * 常見 File content Search Plugins <br>
+   比較常見的是 `ack` 和 `ag`。这兩個工具都是適合開發者的，因爲這個兩個工具有很多配置都和開發有關。
+   比如: 可以默認或配置 filter 掉部分常見的開發中的零時 files。
+   - Ack 的文檔: `ack --help` 或 http://beyondgrep.com/documentation/
+   - Ag ( https://github.com/ggreer/the_silver_searcher ) 是 Ack 一個改良，基本兼容于 Ack 的功能。
+     主要區別在於 ack 用 perl 實現。Ag 用 c/c++ 實現。在性能上快出 Ack 數倍。
+   - Windows 安裝 ack 和 ag 的話，推薦使用 Chocolatey ( https://chocolatey.org/ Windows package manager) 
+    來安裝/管理。
+     * ag: https://chocolatey.org/packages/ag
+     * ack: https://chocolatey.org/packages/ack
+   - 在 VIM 中使用 Ack 最好用 Ack plugin: https://github.com/mileszs/ack.vim
+   - 在 VIM 中使用 Ag 可以同樣借助于 ack.vim plugin 只是要增加如下設置，告訴 VIM 使用 Ag 作 search: <br>
+     `let g:ackprg = 'ag --nogroup --nocolor --column'`
+   - 我自己的 `.ackrc`: https://github.com/xiongjia/dotfiles/blob/master/misc/ackrc
+ 

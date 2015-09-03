@@ -18,6 +18,12 @@
  * [[dev/win-uia|Windows UI Automation]] - MS UIA ( MS 提供的 GUI 測試接口) 的備忘或總結
  * [[dev/jmeter|JMeter]] - JMeter 相關得整理匯總
 
+== MISC ==
+此分類用於記錄一些輔助工具的用法和其他一些無法分類的東西:
+ * [[dev/tips|Tips]] - 日常工具的使用方法
+ * [[dev/db|Database]]  - 數據庫操作備忘
+ * [[dev/edit|Editors]]  - 編輯器使用備忘
+
 == Practices ==
 此分類用於記錄自己實現的一些工具(挖過的坑):
  * [[dev/vim-fanfou|vim-fanfou]]  - 一個基於 VIM Plugin 
@@ -26,12 +32,6 @@
  * [[https://www.npmjs.org/package/nspider|nspider]] - 一個 Node.js 實現的  Web Spider 封裝。
    可以通過 `npm install nspider` 從 npm 安裝。
    github repository: [[https://github.com/xiongjia/nspider|github]]  
-
-== MISC ==
-此分類用於記錄一些輔助工具的用法和其他一些無法分類的東西:
- * [[dev/tips|Tips]] - 日常工具的使用方法
- * [[dev/db|Database]]  - 數據庫操作備忘
- * [[dev/edit|Editors]]  - 編輯器使用備忘
 
 -----
 
