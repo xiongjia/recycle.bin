@@ -4,7 +4,7 @@
 俺作為一個 Minecraft 的鶸雞，記錄一下用到的資料。
 
 = Tips =
-* proxy
+* Proxy
   Minecraft Launcher 會在 Amazon S3 上更新數據。在 "結界" 内此數據一般無法正常訪問。
   - 所以需要用 proxy 啓動 Launcher。比如用 socks proxy: <br>
     `java -DsocksProxyHost=<host> -DsocksProxyPort=<port> -jar ./game/launcher.jar`
@@ -17,6 +17,11 @@
 |+tools/
 `-MinecraftLauncher.exe
 }}}
+
+* Joystick  <br>
+ 在 PC 版本上用手柄玩 Minecraft:
+ - 用 antimicro (https://github.com/Ryochan7/antimicro) 来轉換手柄操作。
+ - 基本設置和其他資料: http://xiongjia.github.io/misc/2015/09/04/minecraft-and-joystick/
 
 -----
 
