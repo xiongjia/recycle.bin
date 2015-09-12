@@ -23,6 +23,7 @@
    * [[dev/boost|Boost]] - Boost 資料整理；使用備忘。
    * [[dev/util|Utility]] - 基礎知識，以及日常开发任务的備忘
    * [[dev/node|Node]] - Node.js 日常備忘或總結
+   * [[dev/shell|Shell]] - Shell Script 的備忘或總結 
    * [[dev/ps1|PowerShell]] - MS Windows PowerShell 的備忘或總結 
  - Performance Testing Tools/Frameworks: 
    * [[dev/ab|ab]] - Apache HTTP server benchmarking tool
