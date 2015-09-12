@@ -68,7 +68,7 @@ wait
 src_json_file=/your_json_filename
 
 # In this sample, the JSON content = { "port": 8080 }
-PORT=`node -pe "JSON.parse(process.argv[1]).schedulerIpAddress" "$(cat ${src_json_file})"`
+PORT=`node -pe "JSON.parse(process.argv[1]).port" "$(cat ${src_json_file})"`
 echo "Your port is ${PORT}"
 }}}
 
