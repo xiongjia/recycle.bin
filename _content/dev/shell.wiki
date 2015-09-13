@@ -3,7 +3,7 @@
 
 俺覺得 Shell Script 的主要難點是需要較廣的知識面。
 有時會與不會只是對於某個 command 的了解與否。 <br>
-(比如: 不了解 `tail` , `top`等就不能方便的讀取行。
+(比如: 不了解 `tail` , `head` 等就不能方便的讀取行。
 不了解 `pgrep` 不能方便的查找 process。)
 
 大概也就多參考別人寫的，自己多練才會慢慢進步吧(??)。
@@ -34,7 +34,7 @@ wait
 
 也可以讓 `wait` 只等待某一個任務結束。 <br>
 比如下面這個例子, `$!` 表示第一個 `sleep` 的 process id。加在 `wait` 的參數裏表示只等待
-某個 process。這 shell script 應該在 100 秒后退出而，第二個在 script 退出時還在運行。
+某個 process。這 shell script 應該在 100 秒后退出而，第二個 `sleep` 在 script 退出時還在運行。
 {{{class="brush: shell; gutter: false; toolbar: false;"
 #!/bin/sh
 sleep 100 &
@@ -43,9 +43,9 @@ sleep 1000 &
 wait ${first_sleep}
 }}}
 
-舉一個實際工作中的簡單例子。copy 比較大的 file。如果正常 copy 是一個完成后再另一個。
+舉一個實際工作中的簡單例子。copy 比較大的 files。如果正常 copy 是一個完成后再另一個。
 可以多個文件同時 copy 最大程度的發揮出 disk 的 I/O 吞吐量。 <br>
-比如下面這個例子，從一個列表裏讀出源，執行 copy ，最後在用 wait 等待所有 copy 任務結束:
+比如下面這個例子，從一個列表裏讀出源，執行 `cp`，最後在用 `wait` 等待所有 copy 任務結束:
 {{{class="brush: shell; gutter: false; toolbar: false;"
 #!/bin/sh
 
@@ -59,10 +59,10 @@ wait
 }}}
 
 === Parse Json ===
-很多的 configuration file 多用 JSON。在 Shell script 裏有時也需要讀取這些配置的值。<br>
+有很多的 configuration file 多用 JSON 格式。在 Shell script 裏有時也需要讀取這些配置的值。<br>
 比如下面這個例子，通過 `node` 來的到 .json file 裏面某個字段的值。
-如果 JSON 是 {"port": 8080 } 則 `PORT` 會賦為 "8080"。
-但如果 JSON 内容文件有誤，則 `PORT` 會使 "undefined"。
+如果 JSON 内容是 {"port": 8080 } 則 `PORT` 會賦為 "8080"。
+但如果 JSON 内容文件有誤，則 `PORT` 會是 "undefined"。
 {{{class="brush: shell; gutter: false; toolbar: false;"
 #!/bin/sh
 src_json_file=/your_json_filename
