@@ -58,7 +58,7 @@ done
 wait
 }}}
 
-=== Parse Json ===
+=== json parser ===
 有很多的 configuration file 多用 JSON 格式。在 Shell script 裏有時也需要讀取這些配置的值。<br>
 比如下面這個例子，通過 `node` 來的到 .json file 裏面某個字段的值。
 如果 JSON 内容是 {"port": 8080 } 則 `PORT` 會賦為 "8080"。
@@ -71,4 +71,36 @@ src_json_file=/your_json_filename
 PORT=`node -pe "JSON.parse(process.argv[1]).port" "$(cat ${src_json_file})"`
 echo "Your port is ${PORT}"
 }}}
+
+=== command options ===
+實際的 shell script 有時需要從 command options 裏讀取參數，例如: `./test.sh -c config_file -d` 
+( `-c` 表示配置文件; `-d` 表示調試方式 )
+
+在 shell script 裏可以用 `getopts` 操作來解析這些 options。比如下面這個例子:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+#!/bin/sh
+
+conf_file=/your_default_conf_file
+debug_flag=false
+
+while getopts "c:d" opt; do
+    case "$opt" in
+    c)
+        conf_file=${OPTARG}
+        ;;
+    d)
+        debug_flag=true
+        ;;
+    esac
+done
+
+echo "conf_file  = ${conf_file}"
+echo "debug_flag = ${debug_flag}"
+}}}
+
+`getopts` 的基本用法是 `getopts OPTSTRING VARNAME [ARGS]`。
+- `OPTSTRING` - 這個等同于 GNU getopt 裏的用法, 比如 "c:d" 有 ":" 的表示有參數。
+  "-c config_file" 中的 config_file 就是參數可以從 `OPTARG` 裏讀取。
+- `VARNAME` - 表示 option 的變量名
+- `ARGS` - 代表參數列表，默認是 `$@`  (即 shell script 的 command options )
 
