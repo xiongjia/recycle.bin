@@ -72,6 +72,10 @@ PORT=`node -pe "JSON.parse(process.argv[1]).port" "$(cat ${src_json_file})"`
 echo "Your port is ${PORT}"
 }}}
 
+除了 `node` 外也有些其他的 command line json tools, 只是这些一般也是需要安装的。比如:
+- jq: https://stedolan.github.io/jq/
+- jsawk: https://github.com/micha/jsawk
+
 === command options ===
 實際的 shell script 有時需要從 command options 裏讀取參數，例如: `./test.sh -c config_file -d` 
 ( `-c` 表示配置文件; `-d` 表示調試方式 )
