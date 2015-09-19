@@ -23,6 +23,26 @@
     Grep.vim plugin 依賴 GNU Win32 的 grep; vim diff 是用的 GNU Diff 也需要額外裝;
     另外還有些 Python, nodejs 等的依賴)
 
+== Writing Vim Plugins ==
+VIM Plugins 的開發/編寫可以有多種方式。
+ - 可以用 VIM 本身的 script 去寫，這樣依賴比較少。缺點是開發複雜功能時可能 VIM script 
+   不能完成這些任務，而需要 Fork 一些 process 來完成工作。
+   (比如: 下載數據可能會用 VIM Script 去調用 curl / wget )
+ - 另一種方式是我實踐中使用的，直接在 VIM 中調用自己擅長的語言。
+   比如: VIM 支持 Ruby, Python, Perl 等。 <br>
+   開發會較爲輕鬆。不過缺點也很明顯，這個方式要求 VIM 提供某語言支持。
+   (比如用了 Python, VIM Build 時的參數必須有 Python Module 的支持)
+   可以用 `:version` 察看，如果輸出中有 "+python/dyn" 就是表示有 Python 2 的支持。
+
+如何用 VIM Script 可以多看 VIM 手冊，和別人 Plugins 裏的例子。
+只列一下我用 Python 寫 VIM Plugin 的資料:
+ - Vim 通過輸出一個 Python module 的方式來達到與 Python 交互的目的。
+   主要可以參考 VIM Documentation `:help if_pyth`
+ - 我的 gist 中有個簡單的、基本的 Python 與 VIM 交互的 Sample, 
+   參考: https://gist.github.com/xiongjia/64e1353afb9415e85479
+ - 以前用 Python 2 實現的一個 VIM Plugin。是用 Python 來訪問 Fanfou 的 API，支持 OAuth。
+   Github repository: https://github.com/xiongjia/vim-fanfou
+
 == Tips ==
 === options ===
 日常使用中很多用 options 的地方。所以這個大概算是基本中的基本。
@@ -128,8 +148,8 @@ vim 中可以通過 `:substitute` 命令來查找替換。
    後者是進入 search 的 command。之後和普通 buffer 一樣操作就可以了。
 
 
-== Search ==
-=== Filename search ===
+=== Search ===
+==== Filename search ====
 可以用 VIM 自帶的也可以用一些 Plugins。
  - VIM 自帶的 Filename search  <br>
    有很多 VIM plugins 可以做 File name fuzzy search .
@@ -154,7 +174,7 @@ vim 中可以通過 `:substitute` 命令來查找替換。
    自己常用的是 Ctrlp.vim: https://github.com/kien/ctrlp.vim .
    具體用法可以參看 CtrlP.vim 的 readme.
 
-=== Files content search ===
+==== Files content search ====
 單個 file/buffer 的 search 直接用 VIM 的 Search command 參考: `:help /`。<br>
 多個 files 的 search。
  * VIM 自帶的 Files search: <br>
@@ -179,7 +199,7 @@ vim 中可以通過 `:substitute` 命令來查找替換。
      `let g:ackprg = 'ag --nogroup --nocolor --column'`
    - 我自己的 `.ackrc`: https://github.com/xiongjia/dotfiles/blob/master/misc/ackrc
 
-== Encryption ==
+=== Encryption ===
 Vim (7.4.399 or higher) 自帶有 3 种加密算法: `zip`; `blowfish`; `blowfish2`。 <br>
 Vim 可以保證加密的 file 在 disk 上一定是加密后的 (包括 swap file, undo file ) 只有在内存中 file 才使明文。
  * 可以主要參考 Vim Online Wiki 中這部分的介紹: http://vim.wikia.com/wiki/Encryption
