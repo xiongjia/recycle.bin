@@ -129,7 +129,7 @@ ${var:position:length}
  * 比如下面 2 个例子，分别是从第 2 个字符(字符計數從0開始)到字符结尾; 和从第 2 个字符开始的 3 个字符:
 {{{class="brush: shell; gutter: false; toolbar: false;"
 test_str="123456789"
-echo "Sub string 2 ~ end: ${test_str:2}"
-echo "Sub string 2 ~ 5: ${test_str:2:3}"
+echo "Sub string [3 ~ end]: ${test_str:2}"
+echo "Sub string [3 ~ 5]: ${test_str:2:3}"
 }}}
 
