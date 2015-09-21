@@ -120,7 +120,7 @@ echo "This is test str: ${test_str}"
 - 字符长度计算， `${#var}`
 {{{class="brush: shell; gutter: false; toolbar: false;"
 test_str="abc"
-echo "String lenght is ${#test_str}"
+echo "String length is ${#test_str}"
 }}}
 - 子串引用，基本用法:
 {{{class="brush: shell; gutter: false; toolbar: false;"
