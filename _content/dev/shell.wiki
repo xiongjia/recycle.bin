@@ -15,6 +15,8 @@
 * awesome-shell - github 上別人歸檔的 Shell 資料: https://github.com/alebcay/awesome-shell
 * leetcode 中 Shell 分類的題目: https://leetcode.com/problemset/shell/
   - 我當時的解法: http://xiongjia.github.io/dev/2015/06/23/shell-problems/ 
+* <The Linux Command Line> - 中、英語版: https://github.com/billie66/TLCL
+* <Advanced Bash-Scripting Guide> - http://tldp.org/LDP/abs/html/index.html
 
 == Tips ==
 === 并行执行 ===
@@ -72,7 +74,7 @@ PORT=`node -pe "JSON.parse(process.argv[1]).port" "$(cat ${src_json_file})"`
 echo "Your port is ${PORT}"
 }}}
 
-除了 `node` 外，也有其它的 command line json tools, 只是這些一般情況需要安裝。比如:
+除了 `node` 外，也有其它的 command line json tools, 只是這些一般情況需要安裝(非默認安裝)。比如:
 - jq: https://stedolan.github.io/jq/
 - jsawk: https://github.com/micha/jsawk
 
@@ -107,4 +109,27 @@ echo "debug_flag = ${debug_flag}"
   "-c config_file" 中的 config_file 就是參數可以從 `OPTARG` 裏讀取。
 - `VARNAME` - 表示 option 的變量名
 - `ARGS` - 代表參數列表，默認是 `$@`  (即 shell script 的 command options )
+
+=== strings ===
+一些字符串操作。
+- 字符串的赋值和引用
+{{{class="brush: shell; gutter: false; toolbar: false;"
+test_str="abc"
+echo "This is test str: ${test_str}"
+}}}
+- 字符长度计算， `${#var}`
+{{{class="brush: shell; gutter: false; toolbar: false;"
+test_str="abc"
+echo "String lenght is ${#test_str}"
+}}}
+- 子串引用，基本用法:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+${var:position:length}
+}}}
+ * 比如下面 2 个例子，分别是从第 2 个字符到字符结尾; 和从第 2 个字符开始的 3 个字符:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+test_str="123456789"
+echo "Sub string 2 ~ end: ${test_str:2}"
+echo "Sub string 2 ~ 5: ${test_str:2:3}"
+}}}
 
