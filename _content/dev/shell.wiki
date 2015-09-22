@@ -111,25 +111,65 @@ echo "debug_flag = ${debug_flag}"
 - `ARGS` - 代表參數列表，默認是 `$@`  (即 shell script 的 command options )
 
 === strings ===
-一些字符串操作。
+雖然用 `tr`, `sed` , `awk` 等工具可以完成大量複雜的文本操作，
+不過爲了減少不必的 fork 内部能完成的操作最好也不要借助這些工具了。
+比如下面這些字符串操作:
 - 字符串的赋值和引用
 {{{class="brush: shell; gutter: false; toolbar: false;"
 test_str="abc"
-echo "This is test str: ${test_str}"
+echo "This is test str: ${test_str}" # output => This is test str: abc
 }}}
-- 字符长度计算， `${#var}`
+- 字符长度计算，基本用法:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+${#var}
+}}}
+ * 比如下面這個例子，顯示字符串長度:
 {{{class="brush: shell; gutter: false; toolbar: false;"
 test_str="abc"
-echo "String length is ${#test_str}"
+echo "String length is ${#test_str}"  # output => String length is 3
 }}}
 - 子串引用，基本用法:
 {{{class="brush: shell; gutter: false; toolbar: false;"
-${var:position:length}
+${string:position:length}
 }}}
- * 比如下面 2 个例子，分别是从第 2 个字符(字符計數從0開始)到字符结尾; 和从第 2 个字符开始的 3 个字符:
+ * 比如下面幾個例子，右面註釋是輸出結果,注意:
+   - position 從 0 開始計數
+   - position 可以為負數，表示倒數第幾個開始
 {{{class="brush: shell; gutter: false; toolbar: false;"
-test_str="123456789"
-echo "Sub string [3 ~ end]: ${test_str:2}"
-echo "Sub string [3 ~ 5]: ${test_str:2:3}"
+test_str="0123456789"
+echo "Sub string: ${test_str:2}"      # output=> 23456789
+echo "Sub string: ${test_str:2:5}"    # output=> 23456
+echo "Sub string: ${test_str:(-5)}"   # output=> 56789
+echo "Sub string: ${test_str:(-5):2}" # output=> 56
+}}}
+- 字符串替換,有基本用法:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+${string/substring or pattern/replacement} 
+${string//substring or pattern/replacement} 
+${string/#substring or pattern/replacement} 
+${string/%substring or pattern/replacement} 
+}}}
+ * 這些操作的格式大致是一樣的，變量/被替換的字串 或 被替換字串的表達式/替換成的字符串。
+ * 幾個操作的第一個 '/' 後面相當於一個 flag, 表示替換的方式。
+   - '/' : 表示替換第一個符合條件的
+   - '//': 表示替換所有符合條件的
+   - '/#': 符合條件並且在字符串的開頭
+   - '/%': 符合條件並且在字符串的結尾
+ * 比如下面這些個例子,右面的註釋是輸出結果:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+test_str="123456780abc12345"
+# substring replacement
+echo "Replace first 123 to ---: ${test_str/123/---}"    # output=> ---456780abc12345
+echo "Replace all 123 to ---: ${test_str//123/---}"     # output=> ---456780abc---45
+echo "Replace prefix 123 to ---: ${test_str/#123/---}"  # output=> ---456780abc12345
+echo "Replace prefix 456 to ---: ${test_str/#456/---}"  # output=> 123456780abc12345
+echo "Replace suffix 345 to ---: ${test_str/%345/---}"  # output=> 123456780abc12---
+echo "Replace suffix 123 to ---: ${test_str/%123/---}"  # output=> 123456780abc12345
+
+# pattern replacement
+echo "Replace first number to -: ${test_str/[0-9]/-}"    # output=> -23456780abc12345
+echo "Replace all numbers to -: ${test_str//[0-9]/-}"    # output=> ---------abc-----
+echo "Remove first number: ${test_str/[0-9]/}"           # output=> 23456780abc12345
+echo "Remove all numbers: ${test_str//[0-9]/}"           # output=> abc
 }}}
 
