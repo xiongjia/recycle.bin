@@ -112,13 +112,9 @@ echo "debug_flag = ${debug_flag}"
 
 === strings ===
 雖然用 `tr`, `sed` , `awk` 等工具可以完成大量複雜的文本操作，
-不過爲了減少不必的 fork 内部能完成的操作最好也不要借助這些工具了。
-比如下面這些字符串操作:
-- 字符串的赋值和引用
-{{{class="brush: shell; gutter: false; toolbar: false;"
-test_str="abc"
-echo "This is test str: ${test_str}" # output => This is test str: abc
-}}}
+不過爲了減少不必要的 fork 内部能完成的操作就不要借助這些工具了。
+(尤其是像在一些 `while` loop 裏執行的字符串操作, 減少 fork 一定會獲益良多.)
+比如下面這些基本的字符串操作:
 - 字符长度计算，基本用法:
 {{{class="brush: shell; gutter: false; toolbar: false;"
 ${#var}
@@ -157,19 +153,19 @@ ${string/%substring or pattern/replacement}
    - '/%': 符合條件並且在字符串的結尾
  * 比如下面這些個例子,右面的註釋是輸出結果:
 {{{class="brush: shell; gutter: false; toolbar: false;"
-test_str="123456780abc12345"
+test_str="12345678abc12345"
 # substring replacement
-echo "Replace first 123 to ---: ${test_str/123/---}"    # output=> ---456780abc12345
-echo "Replace all 123 to ---: ${test_str//123/---}"     # output=> ---456780abc---45
-echo "Replace prefix 123 to ---: ${test_str/#123/---}"  # output=> ---456780abc12345
-echo "Replace prefix 456 to ---: ${test_str/#456/---}"  # output=> 123456780abc12345
-echo "Replace suffix 345 to ---: ${test_str/%345/---}"  # output=> 123456780abc12---
-echo "Replace suffix 123 to ---: ${test_str/%123/---}"  # output=> 123456780abc12345
+echo "Replace first 123 to ---: ${test_str/123/---}"   # output=> ---45678abc12345
+echo "Replace all 123 to ---: ${test_str//123/---}"    # output=> ---45678abc---45
+echo "Replace prefix 123 to ---: ${test_str/#123/---}" # output=> ---45678abc12345
+echo "Replace prefix 456 to ---: ${test_str/#456/---}" # output=> 12345678abc12345
+echo "Replace suffix 345 to ---: ${test_str/%345/---}" # output=> 12345678abc12---
+echo "Replace suffix 123 to ---: ${test_str/%123/---}" # output=> 12345678abc12345
 
 # pattern replacement
-echo "Replace first number to -: ${test_str/[0-9]/-}"    # output=> -23456780abc12345
-echo "Replace all numbers to -: ${test_str//[0-9]/-}"    # output=> ---------abc-----
-echo "Remove first number: ${test_str/[0-9]/}"           # output=> 23456780abc12345
-echo "Remove all numbers: ${test_str//[0-9]/}"           # output=> abc
+echo "Replace first number to -: ${test_str/[0-9]/-}"  # output=> -2345678abc12345
+echo "Replace all numbers to -: ${test_str//[0-9]/-}"  # output=> --------abc-----
+echo "Remove first number: ${test_str/[0-9]/}"         # output=> 2345678abc12345
+echo "Remove all numbers: ${test_str//[0-9]/}"         # output=> abc
 }}}
 
