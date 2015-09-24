@@ -112,14 +112,14 @@ echo "debug_flag = ${debug_flag}"
 
 === 減少不必要的 Fork ===
 列幾點平時用的到的減少不必要 fork 的方法:
-* 減少不必要的 command
+* 減少不必要的 command <br>
   盡量挖掘 command 自身的功能，如無必要則不使用多餘的 command。比如:
-  - `cat <file> | grep <pattern>` - 因爲 `cat` 是多餘的
+  - `cat <file> | grep <pattern>` - 不好，因爲 `cat` 是多餘的
   - `grep <pattern> <file>` - 比之前好，因爲減少了不必要的 `cat` 和用 pipe 傳送數據的開銷。
 * 字符串處理<br>
-  字符串處理時盡量多用 shell 自帶的操作。如果只是一兩字符串的操作用處也不大，
-  只是有些循環中的字符串操作用此改進就會有較大的意義了。
-  比如字符串替換: (更多 strings 操作，列在了本頁裏的 strings section 裏了):
+  字符串處理時盡量多用 shell 自帶的操作。只是一兩字符串的操作改善不會明顯，
+  但是如果是在 `while` loop 中的字符串操作，用此法改進就會有較大的意義了。
+  比如字符串替換: 
   - 用了 `tr` 刪除所有數字
 {{{class="brush: shell; gutter: false; toolbar: false;"
 src_str=123abc
@@ -131,11 +131,11 @@ src_str=123abc
 echo "${src_str//[0-9]/}"
 }}}
   - `sed`, `awk`, `tr` 等都是很強的文本操作，如果不是必須，就不要用。
-
+  - 更多 strings 操作的例子，列在了本頁裏的 strings section 裏了
 * `[` vs `[[` <br>
   `[` 和 `[[` 都可以用作 shell script 的表達式判斷。區別在於:
   - `[` 其實是一個 command 會有一次 fork。`[[` 是 shell 内部操作不需要 fork 一個 process。
-  - `[[` 並不是 posix 標準，默認 shell 可能不支持。但是 bash 肯定是支持的。
+  - `[[` 並不是 posix 標準，默認 shell 可能不支持。但是目前的 bash 肯定是支持的。
     所以在用 `[[` 時應該把 `.sh` 的第一行 (hashbang) 改爲 `#!/bin/bash`。
  
 === strings ===
