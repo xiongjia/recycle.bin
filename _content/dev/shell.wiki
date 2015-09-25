@@ -84,6 +84,22 @@ DBG wget -v http://localhost/dbg_file
    - "_DEBUG" 為 "on" 時，就執行 `$@` 即 DBG function 的參數。
    - "_DEBUG" 不為 "on" 時，就執行 `:` 。 `:` 在 shell script 是一種空操作，相當於什麽也不做。
 
+=== 執行時間的計算 ===
+可以用 `time` 來精確測量執行時間，比如, 下面輸出重 "real", "user", "sys", 就是 `time` 計算出來的 `ls` 所佔用的各個時間統計:
+{{{
+$ time ls
+test.txt
+next.txt
+real 0m0.008s
+user 0m0.001s
+sys 0m0.003s
+}}}
+
+可以調整用 `-f` 參數調整 `time` 輸出的格式或内容,比如: `time -f "\t%E real,\t%U user,\t%S sys" ls`。
+除了時間之外，還可以統計 memory 和 I/O 具體可以參考: 
+- http://linux.die.net/man/1/time (手冊)
+- http://www.cyberciti.biz/faq/unix-linux-time-command-examples-usage-syntax/ (samples)
+
 === Archiving with tar ===
 `tar` 是常用的打包工具。以下自己遇到過的些許注意事項:
 * exclude <br>
@@ -223,6 +239,35 @@ echo "${src_str//[0-9]/}"
    * Pattern matching: <br>
      `[[ $name = a* ]] || echo "name does not start with an 'a': $name"`
  - 更多 `[` 與 `[[` 的比較參考: http://mywiki.wooledge.org/BashFAQ/031
+
+=== script & scriptreplay ===
+shell 的 script & scriptreplay 是個有趣的技術,他是用來 record shell 操作的:
+- `script` 可以把當前操作的 command 和 輸入輸出 (stdin, stderr, stdout) 存入文件。
+- `scriptreplay` 可以播放這個文件。
+
+由於只是記錄輸入輸出，所以 record 出來的文件很小。基本的使用方式:
+- record: <br>
+  `type commands;` 表示要錄得動作。`exit` 表示 record 結束。
+{{{
+$ script -t 2> timing.log -a output.session
+type commands;
+...
+exit
+}}}
+- replay: <br>
+  `scriptreplay timing.log output.session` ，shell 就會重新把這些輸入、輸出顯示一邊。
+
+=== mirrors ===
+一些用來做自動部署的腳本，經常是需要平凡訪問網絡資源。比如: `apt-get`, `npm` , `gradle` , `maven` 等。
+調整到正確的 mirrors site 可以大大加快整個 script 的過程。 <br>
+但是一定要用可信任的站點，否則甘願慢一點。比如下面一些用到過的對 China 的 mirrors:
+* ubuntu 
+  - ubuntu china 的 source : http://wiki.ubuntu.com.cn/%E6%BA%90%E5%88%97%E8%A1%A8
+  - 注意選對自己的 ubuntu 版本
+* node
+  - npm 目前 taobao 的還算可信: http://npm.taobao.org/
+  - node-gyp: 如果不做特殊設置 node-gyp 在初次運行時，還是不會去從 mirrors site 下載。
+    可以用 `node-gyp-install` 來指定下載位置,請參考: https://github.com/mafintosh/node-gyp-install
 
 === strings ===
 雖然用 `tr`, `sed` , `awk` 等工具可以完成大量複雜的文本操作，
