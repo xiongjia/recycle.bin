@@ -15,8 +15,11 @@
 * awesome-shell - github 上別人歸檔的 Shell 資料: https://github.com/alebcay/awesome-shell
 * leetcode 中 Shell 分類的題目: https://leetcode.com/problemset/shell/
   - 我當時的解法: http://xiongjia.github.io/dev/2015/06/23/shell-problems/ 
+* Bash FAQ: http://mywiki.wooledge.org/BashFAQ 
 * <The Linux Command Line> - 中、英語版: https://github.com/billie66/TLCL
 * <Advanced Bash-Scripting Guide> - http://tldp.org/LDP/abs/html/index.html
+* <Linux Shell Scripting Cookbook> - http://book.douban.com/subject/5974281/ 
+  (此書以舉例爲主，說得不深，看得也不累)
 
 == Tips ==
 === 并行执行 ===
@@ -59,6 +62,82 @@ do
 done
 wait
 }}}
+
+=== debugging methods ===
+實際腳本中，會加一些臨時的調試方法 (比如輸出些只有調試用的 log 或是生成些調試文件）。
+實踐中較好的習慣是保留這些代碼。而不是每次在需要時臨時添加。比如某 `test.sh` 内容如下:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+#!/bin/bash
+
+function DBG()
+{
+    [[ "$_DEBUG" == "on" ]] && $@ || :
+}
+
+DBG echo "Debug log"
+DBG wget -v http://localhost/dbg_file
+}}}
+ * 正常執行 `test.sh`  是會跳過 "DBG" 開頭的語句的
+ * 需要啓用調試時，只需定義 "_DEBUG" 比如: `_DEBUG=on ./test.sh` 。
+   如此便可保留自己的調試代碼，又不干擾生産環境。
+ * 這裡用到的 `[[ "$_DEBUG" == "on" ]] && $@ || :` 為單行條件語句。
+   - "_DEBUG" 為 "on" 時，就執行 `$@` 即 DBG function 的參數。
+   - "_DEBUG" 不為 "on" 時，就執行 `:` 。 `:` 在 shell script 是一種空操作，相當於什麽也不做。
+
+=== Archiving with tar ===
+`tar` 是常用的打包工具。以下自己遇到過的些許注意事項:
+* exclude <br>
+ - 不需要和不能打包的文件不要打包進去。常見的問題:  
+   * 不小心把機器上的 private key 或 password 打包發佈了造成安全隱患。
+     有時候這件事的發生是很間接的，難以被察覺。比如: 
+     - 把本地 `.git` 目錄打包了，目錄裏的證書雖然被排除了可是 git repository 裏有。
+     - 打包了 log file, 在 log file 裏有些特殊的 debug logging 把口令留在了那裏。
+   * 把自己平台特殊的 modules 打包了(比如: node 的 node_modules )，造成其它系統不能正確運行。
+   * 把 log files 或者臨時數據文件打包了造成，tar 文件的大小增大。
+ - 有幾种常用的 exclude 的方式: 
+   * 添加 `--exclude-vcs-ignores` ，這樣 tar 就回去讀 vcs 的 ignores 文件比如: `.gitignore`
+   * 添加 `--exclude` 參數。比如: 排出 "node_modules" 目錄，
+     可以用 `tar czvf <targert>.tgz  <source folder> --exclude node_modules`
+   * 使用 `--exclude-from` 指定 ignore 配置文件，比如: 
+     `tar czvf <targert>.tgz  <source folder> --exclude-from=ignore.txt` 
+     這裡 ignore.txt 的内容是一個行文本, `tar` 會讀入這個文本，符合表達式的文件會被直接 exclude 。
+     比如下面這個 ignore list 可以排除大部分的通用臨時文件，private key 等: (具體還是要看 project 來作調整)
+{{{
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*.log
+*.pid
+*.out
+*.tar
+*.tgz
+*.tar.gz
+*.pem
+*.srl
+*.fp
+*.ppk
+*.a
+*.lib
+*.pdb
+*.obj
+*.tlog
+*.exp
+}}}
+   * 更多的 exclude 的方式參考 `tar` 手冊: http://www.gnu.org/software/tar/manual/html_section/tar_49.html
+* 一些 tar 的操作
+  - Compress
+    * 默認只要加了 `z` option 就會以 gzip 來壓縮，比如: `tar czvf arch.tar.gz [FILES]`。
+      gzip 是個比較普及的壓縮工具，基本是默認安裝的。
+    * 壓縮效率更高可以選擇 LZMA ，只是一般需要額外安裝。
+      - `tar` 用 LZMA 可以這麽指定: `tar -cvvf --lzma archive.tar.lzma [FILES]`
+      - 參考: wikipedia 上對 LZMA 的註解 "a high compression ratio (generally higher than bzip2)" 
+        普遍情況下 LZMA 壓縮效率高于 bzip2 。https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm
+      - 如果是發佈出去的包就還是用 gzip 因爲客戶不一定裝了 LZMA。如果是内部使用可以考慮用 LZMA。
 
 === json parser ===
 有很多的 configuration file 多用 JSON 格式。在 Shell script 裏有時也需要讀取這些配置的值。<br>
@@ -132,12 +211,19 @@ echo "${src_str//[0-9]/}"
 }}}
   - `sed`, `awk`, `tr` 等都是很強的文本操作，如果不是必須，就不要用。
   - 更多 strings 操作的例子，列在了本頁裏的 strings section 裏了
-* `[` vs `[[` <br>
-  `[` 和 `[[` 都可以用作 shell script 的表達式判斷。區別在於:
-  - `[` 其實是一個 command 會有一次 fork。`[[` 是 shell 内部操作不需要 fork 一個 process。
-  - `[[` 並不是 posix 標準，默認 shell 可能不支持。但是目前的 bash 肯定是支持的。
-    所以在用 `[[` 時應該把 `.sh` 的第一行 (hashbang) 改爲 `#!/bin/bash`。
- 
+
+=== `[` vs `[[` ===
+`[` 和 `[[` 都可以用作 shell script 的表達式判斷。區別在於:
+ - `[` 其實是一個 command 會有一次 fork。`[[` 是 shell 内部操作不需要 fork 一個 process。
+ - `[[` 並不是 posix 標準，默認 shell 應該是不支持的。但目前流行的 bash, zsh 肯定是支持的。
+   所以在用 `[[` 時應該把 `.sh` 的第一行 (hashbang) 改爲 `#!/bin/bash`。
+ - `[[` 支持更多的比較方式，如 RegularExpression & Pattern  matching 只有 `[[` 支持。
+   * RegularExpression matching: <br>
+     `[[ $name = a* ]] || echo "name does not start with an 'a': $name"`
+   * Pattern matching: <br>
+     `[[ $name = a* ]] || echo "name does not start with an 'a': $name"`
+ - 更多 `[` 與 `[[` 的比較參考: http://mywiki.wooledge.org/BashFAQ/031
+
 === strings ===
 雖然用 `tr`, `sed` , `awk` 等工具可以完成大量複雜的文本操作，
 不過爲了減少不必要的 fork 内部能完成的操作就不要借助這些工具了。
