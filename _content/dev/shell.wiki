@@ -240,6 +240,27 @@ echo "${src_str//[0-9]/}"
      `[[ $name = a* ]] || echo "name does not start with an 'a': $name"`
  - 更多 `[` 與 `[[` 的比較參考: http://mywiki.wooledge.org/BashFAQ/031
 
+=== LOOP ===
+* Loop 中如果有文件輸出，可以堆在一起。比如:
+  - Loop 中用 `echo` 輸出到一個文件。不好，因爲每次 `echo` 都需要去打開一次文件。
+{{{class="brush: shell; gutter: false; toolbar: false;"
+#!/bin/bash
+cnt=1
+while [[ $cnt -lt 10 ]]; do
+    echo "Line ${cnt}" >> data_file
+    let cnt=cnt+1
+done
+}}}
+  - 可以用同樣的操作，只要把輸出放在 `done` 後面。
+{{{class="brush: shell; gutter: false; toolbar: false;"
+#!/bin/bash
+cnt=1
+while [[ $cnt -lt 10 ]]; do
+    echo "Line ${cnt}" 
+    let cnt=cnt+1
+done > data_file
+}}}
+
 === script & scriptreplay ===
 shell 的 script & scriptreplay 是個有趣的技術,他是用來 record shell 操作的:
 - `script` 可以把當前操作的 command 和 輸入輸出 (stdin, stderr, stdout) 存入文件。
