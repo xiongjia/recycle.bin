@@ -248,9 +248,9 @@ shebang / hashbang 就是 Shell Script 的第一行。這一行可以決定系�
   * `#!/usr/bin/env sh` 或者 `#!/usr/bin/env bash` 。 
     表示從當前 Environment 中找到合適的 sh 或 bash。
     如果系統裝過多個版本的 sh 或 bash ，這種用法就比較好。
-    就普遍情況，一個系統雖然一般只安裝一個版本的 sh 或 bash ,所以不必強制用這一格式。
+    就普遍情況，系統一般只安裝一個版本的 sh 或 bash ,所以不必強制用這一格式。
     但如果是 Perl, Python, Ruby, Node 之類的 script ，則最好用這個格式。比如: `#!/usr/bin/env python`
-- 察看 file type: <br>
+- 察看 file type <br>
   可以用 `file <source filename>` 來查看 file type，比如:
 {{{
 % file bash_script.sh
