@@ -31,7 +31,7 @@ Shell Script 的主要工作基本都是去調用各個 commands 去完成的。
 `wait` 沒有參數表示等待 2 個 `sleep` 都結束。`sleep` 只是個例子，
 也可以是從網上下載數據或是其他操作。由於並行執行所以應該會快出很多。
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/sh
+#!/usr/bin/env sh
 sleep 100 &
 sleep 200 &
 wait
@@ -41,7 +41,7 @@ wait
 比如下面這個例子, `$!` 表示第一個 `sleep` 的 process id。加在 `wait` 的參數裏表示只等待
 某個 process。這 shell script 應該在 100 秒后退出而，第二個 `sleep` 在 script 退出時還在運行。
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/sh
+#!/usr/bin/env sh
 sleep 100 &
 first_sleep=$!
 sleep 1000 &
@@ -52,7 +52,7 @@ wait ${first_sleep}
 可以多個文件同時 copy 最大程度的發揮出 disk 的 I/O 吞吐量。 <br>
 比如下面這個例子，從一個列表裏讀出源，執行 `cp`，最後在用 `wait` 等待所有 copy 任務結束:
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/sh
+#!/usr/bin/env sh
 
 dest=/your_dest_folder
 
@@ -67,7 +67,7 @@ wait
 實際腳本中，會加一些臨時的調試方法 (比如輸出些只有調試用的 log 或是生成些調試文件）。
 實踐中較好的習慣是保留這些代碼。而不是每次在需要時臨時添加。比如某 `test.sh` 内容如下:
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/bash
+#!/usr/bin/env bash
 
 function DBG()
 {
@@ -161,7 +161,7 @@ Desktop.ini
 如果 JSON 内容是 {"port": 8080 } 則 `PORT` 會賦為 "8080"。
 但如果 JSON 内容文件有誤，則 `PORT` 會是 "undefined"。
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/sh
+#!/usr/bin/env sh
 src_json_file=/your_json_filename
 
 # In this sample, the JSON content = { "port": 8080 }
@@ -179,7 +179,7 @@ echo "Your port is ${PORT}"
 
 在 shell script 裏可以用 `getopts` 操作來解析這些 options。比如下面這個例子:
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/sh
+#!/usr/bin/env sh
 
 conf_file=/your_default_conf_file
 debug_flag=false
@@ -232,7 +232,8 @@ echo "${src_str//[0-9]/}"
 `[` 和 `[[` 都可以用作 shell script 的表達式判斷。區別在於:
  - `[` 其實是一個 command 會有一次 fork。`[[` 是 shell 内部操作不需要 fork 一個 process。
  - `[[` 並不是 posix 標準，默認 shell 應該是不支持的。但目前流行的 bash, zsh 肯定是支持的。
-   所以在用 `[[` 時應該把 `.sh` 的第一行 (hashbang) 改爲 `#!/bin/bash`。
+   所以在用 `[[` 時應該把 `.sh` 的第一行 (shebang / hashbang) 改爲 `#!/usr/bin/env bash` 
+   或者 `#!/bin/bash`。
  - `[[` 支持更多的比較方式，如 RegularExpression & Pattern  matching 只有 `[[` 支持。
    * RegularExpression matching: <br>
      `[[ $name = a* ]] || echo "name does not start with an 'a': $name"`
@@ -240,11 +241,27 @@ echo "${src_str//[0-9]/}"
      `[[ $name = a* ]] || echo "name does not start with an 'a': $name"`
  - 更多 `[` 與 `[[` 的比較參考: http://mywiki.wooledge.org/BashFAQ/031
 
+=== shebang ===
+shebang / hashbang 就是 Shell Script 的第一行。這一行可以決定系統如何執行這個 Script。
+- 通常格式有大概兩類:
+  * `#!/bin/sh` 或者 `#!/bin/bash` 這樣的絕對路徑。
+  * `#!/usr/bin/env sh` 或者 `#!/usr/bin/env bash` 。 
+    表示從當前 Environment 中找到合適的 sh 或 bash。
+    如果系統裝過多個版本的 sh 或 bash ，這種用法就比較好。
+    就普遍情況，一個系統雖然一般只安裝一個版本的 sh 或 bash ,所以不必強制用這一格式。
+    但如果是 Perl, Python, Ruby, Node 之類的 script ，則最好用這個格式。比如: `#!/usr/bin/env python`
+- 察看 file type: <br>
+  可以用 `file <source filename>` 來查看 file type，比如:
+{{{
+% file bash_script.sh
+./bash_script.sh: Bourne-Again shell script, ASCII text executable
+}}}
+
 === LOOP ===
 * Loop 中如果有文件輸出，可以堆在一起。比如:
   - Loop 中用 `echo` 輸出到一個文件。不好，因爲每次 `echo` 都需要去打開一次文件。
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/bash
+#!/usr/bin/env bash
 cnt=1
 while [[ $cnt -lt 10 ]]; do
     echo "Line ${cnt}" >> data_file
@@ -253,7 +270,7 @@ done
 }}}
   - 可以用同樣的操作，只要把輸出放在 `done` 後面。
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/bash
+#!/usr/bin/env bash
 cnt=1
 while [[ $cnt -lt 10 ]]; do
     echo "Line ${cnt}" 
@@ -305,7 +322,7 @@ exit
   * 例子中 `${!var_prefix*}` 表示: 所有 "var_prefix" 開始的 var names 
     ( `${!var_prefix@}` 可以達到同樣效果 )
 {{{class="brush: shell; gutter: false; toolbar: false;"
-#!/bin/sh
+#!/usr/bin/env sh
 
 test_str="123"
 empty_str=""
