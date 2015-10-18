@@ -43,6 +43,14 @@ VIM Plugins 的開發/編寫可以有多種方式。
  - 以前用 Python 2 實現的一個 VIM Plugin。是用 Python 來訪問 Fanfou 的 API，支持 OAuth。
    Github repository: https://github.com/xiongjia/vim-fanfou
 
+== Building VIM/GVIM ==
+Unix 上比較簡單，用標準的 `configure` & `make` 基本就可以了。<br>
+Windows 上比較複雜，需要用裝好依賴的開發工具，並設置對具體的 environments 。 
+可以參考: https://mgiuffrida.github.io/2015/06/27/building-vim-on-windows.html
+* 按照這篇文章的介紹按照開發工具和 SDK
+* 用這篇文章裏的 bat 來就可以編譯、打包。(可能需要修改一些路徑的位置)
+* VIM 的代碼管理已經從 google code 移到了 github，文章裏的倉庫應改爲: https://github.com/vim/vim
+
 == Tips ==
 === options ===
 日常使用中很多用 options 的地方。所以這個大概算是基本中的基本。
