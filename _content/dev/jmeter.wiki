@@ -46,6 +46,8 @@ JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
     一個我簡化過的實現: https://github.com/xiongjia/scratch/tree/master/jmeter-example-sampler
   - JMeter 手冊中關於 Extending 的部分: http://jmeter.apache.org/extending/jmeter_tutorial.pdf
 
+= Tips =
+
 -----
 
 = Internal =
@@ -59,11 +61,13 @@ JMeter 是一個 pure Java application 所以要先準備 Java Runtime。
 在 JMeter 下 "README" 中有對如何 build 的説明。JMeter 的 building 是基于 `ant` 的。
 * 在第一次 Building 時需要把需要的 3rd party .jar 下載過來，需要運行: `ant download_jars` 
 * Build JMeter Core 和其他  Modules 運行 `ant` 
-* 注意: `ant` 需要從網上下載需要的 3rd part .jar 。所以就網絡情況而定可能需要設置 proxy。
-  可以通過修改 `ANT_OPTS` 來較爲方便的達到這個目的，比如在 Windows PowerShell 上:
-{{{class="brush: ps; gutter: false; toolbar: false;"
-$env:ANT_OPTS ="-Dhttp.proxyHost=<host> -Dhttp.proxyPort=<port> "
-$env:ANT_OPTS+="-Dhttps.proxyHost=<host> -Dhttps.proxyPort=<port> "
+* 注意: `ant download_jars` 需要從 Maven repository 下載需要的 3rd part .jar 。 
+  (这些要下载的 .jar 的名字和地址都在记录在 build.properties 中)
+  所以就網絡情況而定可能需要設置 proxy。
+  可以通過修改 `ANT_OPTS` 來較爲方便的達到這個目的，比如,设置 http 和 https 的 proxy:
+{{{class="brush: shell; gutter: false; toolbar: false;"
+export ANT_OPTS="-Dhttp.proxyHost=<host> -Dhttp.proxyPort=<port> "
+export ANT_OPTS="${ANT_OPTS} -Dhttps.proxyHost=<host> -Dhttps.proxyPort=<port> "
 }}}
 
 === Debugging ===
@@ -78,7 +82,35 @@ $env:ANT_OPTS+="-Dhttps.proxyHost=<host> -Dhttps.proxyPort=<port> "
     JMeter 啓動時會把 `JVM_ARGS` 傳給 JVM，進入 suspend 狀態等待調試。
   - 用 Eclipse 設置正確的 Debug address 和 source folders ，隨後就能進入單步調試狀態。
 
+== Directories ==
+* source tree (主要部分)
+{{{
+~<root>/
+ |+bin/ ----------------> ApacheJMeter.jar 輸出位置; 啓動腳本; 默認配置&模板文件等 
+ |+extras/
+ |+lib/ ----------------> 3rd party JAR 和 JMeter & JMeter plugin JAR 
+ |+licenses/
+ |+res/
+ |~src/
+ | |+components/ ------> JMeter 内置組件的實現(如: ForeachController; DebugSampler 等)
+ | |+core/       ------> 其自身最主要的部分,他是 JMeter Engine 也包括各 Test Element 的基類
+ | |+examples/
+ | |+functions/
+ | |+jorphan/   ------->  jorphan 一些 utilities (如: i/o; logging 等)
+ | |+junit/
+ | |+monitor/   -------> 一些用於 monitor 的 Test Element
+ | `+protocol/  -------> 用於具體 sampler 如 http, database, ftp 
+ |                       (注: 也包含了一個 http proxy 用於 recording)
+ |+test/
+ |+xdocs/
+ |-build.properties --> build 設置(如: 3rd party jar 的倉庫,版本等)
+ `-build.xml ---------> ant 的 build.xml
+}}}
+
 == Core ==
+=== NewDriver ===
+TODO: 
+
 === Thread Group ===
 Thread Group 是 JMeter 的基本調度單位,
 通過對 Thread Group 參數(比如: Number of Threads; Loop Count )的設置來改變 Test 的所產生的壓力。
