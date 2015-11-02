@@ -10,9 +10,13 @@
 * [Mon 02 Nov 2015] http2-explained: 一份簡單的 http2 現狀的描述
   - http://daniel.haxx.se/http2/
   - https://github.com/bagder/http2-explained
+* [Mon 02 Nov 2015] KNOW YOUR HTTP * WELL: http specs, status code, methods 等
+  - https://github.com/for-GET/know-your-http-well
+
 == Database ==
 * [Mon 02 Nov 2015] mysql internals : mysql 代碼閲讀指導
   - https://dev.mysql.com/doc/internals/en/guided-tour.html
+
 == Others ==
 * [Mon 02 Nov 2015] Gu Lu's Blog: 一些遊戲開發資料
   - http://zhuanlan.zhihu.com/gu-lu/20289098
