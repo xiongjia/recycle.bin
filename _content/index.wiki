@@ -27,6 +27,7 @@
  * [[dev/tips|Tips]] - 日常工具的使用方法
  * [[dev/db|Database]]  - 數據庫操作備忘
  * [[dev/edit|Editors]]  - 編輯器使用備忘 (目前主要是 VIM)
+ * [[dev/bookmarks|Bookmarks]] - 日常看到的文章、網址等的備忘
 
 ----
 

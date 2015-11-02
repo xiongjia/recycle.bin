@@ -1,0 +1,24 @@
+%title Bookmarks
+%toc
+
+日常看到的文章、網址等的備忘
+
+----
+
+= dev =
+== web tech == 
+* [Mon 02 Nov 2015] http2-explained: 一份簡單的 http2 現狀的描述
+  - http://daniel.haxx.se/http2/
+  - https://github.com/bagder/http2-explained
+== Database ==
+* [Mon 02 Nov 2015] mysql internals : mysql 代碼閲讀指導
+  - https://dev.mysql.com/doc/internals/en/guided-tour.html
+== Others ==
+* [Mon 02 Nov 2015] Gu Lu's Blog: 一些遊戲開發資料
+  - http://zhuanlan.zhihu.com/gu-lu/20289098
+  - http://gulu-dev.com/
+
+= misc =
+
+= tmp =
+
