@@ -6,12 +6,19 @@
 ----
 
 = dev =
+== Utility ==
+* [Tue 03 Nov 2015] Maven:
+  - Maven by Example: http://books.sonatype.com/mvnex-book/reference/
+  - Maven The Complete Reference: http://books.sonatype.com/mvnref-book/reference/
+
 == web tech == 
 * [Mon 02 Nov 2015] http2-explained: 一份簡單的 http2 現狀的描述
   - http://daniel.haxx.se/http2/
   - https://github.com/bagder/http2-explained
 * [Mon 02 Nov 2015] KNOW YOUR HTTP * WELL: http specs, status code, methods 等
   - https://github.com/for-GET/know-your-http-well
+* [Tue 03 Nov 2015] Chrome Developer Tools 
+  - (譯) http://wiki.jikexueyuan.com/project/chrome-devtools/
 
 == Database ==
 * [Mon 02 Nov 2015] mysql internals : mysql 代碼閲讀指導
