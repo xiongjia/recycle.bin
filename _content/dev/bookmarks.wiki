@@ -19,7 +19,9 @@
   - https://github.com/for-GET/know-your-http-well
 * [Tue 03 Nov 2015] Chrome Developer Tools 
   - (譯) http://wiki.jikexueyuan.com/project/chrome-devtools/
-
+* [Wed 04 Nov 2015] WEB开发者应该有哪些必备的技能
+  - http://info.9iphp.com/essential-skills-every-web-developer-should-have/
+ 
 == Database ==
 * [Mon 02 Nov 2015] mysql internals : mysql 代碼閲讀指導
   - https://dev.mysql.com/doc/internals/en/guided-tour.html
@@ -29,7 +31,7 @@
   - http://zhuanlan.zhihu.com/gu-lu/20289098
   - http://gulu-dev.com/
 
-= misc =
-
-= tmp =
+== Resources ==
+* [Wed 04 Nov 2015] 電子書 ( .pdf; .epub; .mobi )
+  - SaltTiger (技術向書籍) http://www.salttiger.com/
 
