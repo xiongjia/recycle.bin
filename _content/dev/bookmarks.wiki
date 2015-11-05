@@ -26,12 +26,31 @@
 * [Mon 02 Nov 2015] mysql internals : mysql 代碼閲讀指導
   - https://dev.mysql.com/doc/internals/en/guided-tour.html
 
+== Stack Overflow ==
+=== shell ===
+* [Thu 05 Nov 2015] How to profile a bash shell script?
+  - http://stackoverflow.com/questions/5014823/how-to-profile-a-bash-shell-script
+=== c/c++ ===
+* [Thu 05 Nov 2015] Resolving LNK4098: defaultlib 'MSVCRT' conflicts with 
+  - http://stackoverflow.com/questions/3007312/resolving-lnk4098-defaultlib-msvcrt-conflicts-with
+=== git ===
+* [Thu 05 Nov 2015] git: check if pull needed
+  - http://stackoverflow.com/questions/3258243/git-check-if-pull-needed
+ 
 == Others ==
 * [Mon 02 Nov 2015] Gu Lu's Blog: 一些遊戲開發資料
   - http://zhuanlan.zhihu.com/gu-lu/20289098
   - http://gulu-dev.com/
 
+== Tools ==
+* [Thu 05 Nov 2015] mitmproxy , python 實現的用與調試的 proxy 類似于 fiddler 
+  - (翻) http://mitmproxy.org/
+
 == Resources ==
 * [Wed 04 Nov 2015] 電子書 ( .pdf; .epub; .mobi )
   - SaltTiger (技術向書籍) http://www.salttiger.com/
 
+= 日常 =
+* [Thu 05 Nov 2015] 電影票購買
+  - 蜘蛛網: http://www.spider.com.cn/
+ 
