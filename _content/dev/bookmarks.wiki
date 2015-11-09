@@ -10,6 +10,8 @@
 * [Tue 03 Nov 2015] Maven:
   - Maven by Example: http://books.sonatype.com/mvnex-book/reference/
   - Maven The Complete Reference: http://books.sonatype.com/mvnref-book/reference/
+* [Mon 09 Nov 2015] Scala:
+  - Scala 初学者指南: https://www.gitbook.com/book/windor/beginners-guide-to-scala/details  
 
 == web tech == 
 * [Mon 02 Nov 2015] http2-explained: 一份簡單的 http2 現狀的描述
