@@ -15,7 +15,7 @@
   - Effective Scala: http://twitter.github.io/effectivescala/
   - Scala 初学者指南: https://www.gitbook.com/book/windor/beginners-guide-to-scala/details
  
-== news subscribe ==
+== news subscription ==
 * [Mon 30 Nov 2015] Node Weekly (node.js weekly news): http://nodeweekly.com/
 * [Mon 30 Nov 2015] LLVM Weekly: http://llvmweekly.org/
 * [Mon 30 Nov 2015] NoSQL Weekly: http://www.nosqlweekly.com/
