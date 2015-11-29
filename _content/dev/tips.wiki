@@ -1,24 +1,6 @@
 %title Tips
 %toc
 
-= Online Tools =
-- Lint
-  * JSON Lint: http://jsonlint.org/ or https://github.com/arc90/jsonlintdotcom
-  * YAML Lint: http://yamllint.com/ or https://github.com/gilltots/yamllint
-  * JS-YAML parser (Lint):  http://nodeca.github.io/js-yaml/ or https://github.com/nodeca/js-yaml
-- JS
-  * JS Fiddle: http://jsfiddle.net/
-  * JS performance playground: http://jsperf.com/
-- Database
-  * SQL Filddle: http://sqlfiddle.com/
-- Editor
-  * Markdown Editor: http://dillinger.io/ or  https://github.com/joemccann/dillinger
-- Misc
-  * Runnable: (Online Vitrual Environment) http://runnable.com/
-  * Source code search engine: https://searchcode.com/
-
-----
-
 = General Tools =
 == scp ==
 secure copy (remote file copy program) 

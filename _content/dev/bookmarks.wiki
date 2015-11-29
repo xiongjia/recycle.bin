@@ -15,6 +15,14 @@
   - Effective Scala: http://twitter.github.io/effectivescala/
   - Scala 初学者指南: https://www.gitbook.com/book/windor/beginners-guide-to-scala/details
  
+== news subscribe ==
+* [Mon 30 Nov 2015] Node Weekly (node.js weekly news): http://nodeweekly.com/
+* [Mon 30 Nov 2015] LLVM Weekly: http://llvmweekly.org/
+* [Mon 30 Nov 2015] NoSQL Weekly: http://www.nosqlweekly.com/
+* [Mon 30 Nov 2015] Weekly MySQL News: http://mysqlnewsletter.com/
+* [Mon 30 Nov 2015] DB Weekly: http://dbweekly.com/
+* [Mon 30 Nov 2015] Postgres Weekly: http://postgresweekly.com/
+
 == web tech == 
 * [Mon 02 Nov 2015] http2-explained: 一份簡單的 http2 現狀的描述
   - http://daniel.haxx.se/http2/
@@ -46,17 +54,48 @@
   - http://zhuanlan.zhihu.com/gu-lu/20289098
   - http://gulu-dev.com/
 
+== Online Tools ==
+* JavaScript: 
+  - [Mon 30 Nov 2015] JS Fiddle:
+    * http://jsfiddle.net/
+  - [Mon 30 Nov 2015] JS performance playground: 
+    * http://jsperf.com/
+  - [Mon 30 Nov 2015] jsnice (反編譯 js) : 
+    * http://www.jsnice.org/
+* Lint: 
+  - [Mon 30 Nov 2015] JSON Lint: 
+    * http://jsonlint.org/ 
+    * https://github.com/arc90/jsonlintdotcom
+  - [Mon 30 Nov 2015] YAML Lint:
+    * http://yamllint.com/ 
+    * https://github.com/gilltots/yamllint
+  - JS-YAML parser (Lint):
+    * http://nodeca.github.io/js-yaml/ 
+    * https://github.com/nodeca/js-yaml
+* Database:
+  - [Mon 30 Nov 2015] SQL Filddle:
+    * http://sqlfiddle.com/
+* Misc:
+  - [Mon 30 Nov 2015] Runnable: (Online Vitrual Environment)
+    * http://runnable.com/
+  - [Mon 30 Nov 2015] Source code search engine:
+    * https://searchcode.com/
+  - [Mon 30 Nov 2015] Markdown Editor:
+    *  http://dillinger.io/ or https://github.com/joemccann/dillinger
+  - 圖片處理:
+    * [Sun 22 Nov 2015] 水反處理 http://www.watereffect.net/
+
 == Tools ==
 * [Thu 05 Nov 2015] mitmproxy , python 實現的用與調試的 proxy 類似于 fiddler 
   - (翻) http://mitmproxy.org/
-* 圖片處理:
-  - [Sun 22 Nov 2015] 水反處理 http://www.watereffect.net/
 
 == Resources ==
-* [Wed 04 Nov 2015] 電子書 ( .pdf; .epub; .mobi )
-  - SaltTiger (技術向書籍) http://www.salttiger.com/
+* 電子書 ( .pdf; .epub; .mobi )
+  - [Mon 30 Nov 2015] SaltTiger (技術向書籍) http://www.salttiger.com/
+  - [Mon 30 Nov 2015] it-ebooks (技術向書籍) http://it-ebooks.info/
 
 = 日常 =
-* [Thu 05 Nov 2015] 電影票購買
-  - 蜘蛛網: http://www.spider.com.cn/
+* 電影
+  - [Thu 05 Nov 2015] 蜘蛛網 (購票) : http://www.spider.com.cn/
+
  
