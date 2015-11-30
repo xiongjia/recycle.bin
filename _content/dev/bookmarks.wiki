@@ -22,6 +22,8 @@
 * [Mon 30 Nov 2015] Weekly MySQL News: http://mysqlnewsletter.com/
 * [Mon 30 Nov 2015] DB Weekly: http://dbweekly.com/
 * [Mon 30 Nov 2015] Postgres Weekly: http://postgresweekly.com/
+* [Mon 30 Nov 2015] 码农周刊: http://weekly.manong.io/
+* [Mon 30 Nov 2015] 开发者头条: http://toutiao.io/
 
 == web tech == 
 * [Mon 02 Nov 2015] http2-explained: 一份簡單的 http2 現狀的描述
@@ -69,7 +71,7 @@
   - [Mon 30 Nov 2015] YAML Lint:
     * http://yamllint.com/ 
     * https://github.com/gilltots/yamllint
-  - JS-YAML parser (Lint):
+  - [Mon 30 Nov 2015] JS-YAML parser (Lint):
     * http://nodeca.github.io/js-yaml/ 
     * https://github.com/nodeca/js-yaml
 * Database:
@@ -93,9 +95,9 @@
 * 電子書 ( .pdf; .epub; .mobi )
   - [Mon 30 Nov 2015] SaltTiger (技術向書籍) http://www.salttiger.com/
   - [Mon 30 Nov 2015] it-ebooks (技術向書籍) http://it-ebooks.info/
+  - [Mon 30 Nov 2015] gitbook (用 gitbook 寫的文檔或書。) https://www.gitbook.com/explore
 
 = 日常 =
 * 電影
   - [Thu 05 Nov 2015] 蜘蛛網 (購票) : http://www.spider.com.cn/
 
- 
