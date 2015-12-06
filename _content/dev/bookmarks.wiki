@@ -24,6 +24,7 @@
 * [Mon 30 Nov 2015] Postgres Weekly: http://postgresweekly.com/
 * [Mon 30 Nov 2015] 码农周刊: http://weekly.manong.io/
 * [Mon 30 Nov 2015] 开发者头条: http://toutiao.io/
+* [Sun 06 Dec 2015] Java Code Geek: http://www.javacodegeeks.com/
 
 == web tech == 
 * [Mon 02 Nov 2015] http2-explained: 一份簡單的 http2 現狀的描述
@@ -50,7 +51,23 @@
 === git ===
 * [Thu 05 Nov 2015] git: check if pull needed
   - http://stackoverflow.com/questions/3258243/git-check-if-pull-needed
- 
+
+== github ==
+* Awesome
+  - [Sun 06 Dec 2015] Awesome Interviews: https://github.com/MaximAbramchuck/awesome-interviews
+  - [Sun 06 Dec 2015] Awesome postgres: https://github.com/dhamaniasad/awesome-postgres
+  - [Sun 06 Dec 2015] Awesome DB: https://github.com/numetriclabz/awesome-db
+  - [Sun 06 Dec 2015] Awesome Java: https://github.com/akullpp/awesome-java
+  - [Sun 06 Dec 2015] Awesome VIM: https://github.com/matteocrippa/awesome-vim
+* Awesome CN 
+  - [Sun 06 Dec 2015] Awesome Java CN: https://github.com/jobbole/awesome-java-cn
+* Java
+  - [Sun 06 Dec 2015] A Guide to Java 8: https://github.com/winterbe/java8-tutorial
+  - [Sun 06 Dec 2015] Design patterns implemented in Java: https://github.com/iluwatar/java-design-patterns
+  - [Sun 06 Dec 2015] Better Java: https://github.com/cxxr/better-java
+* c++
+  - [Sun 06 Dec 2015] C++ Core Guidelines: https://github.com/isocpp/CppCoreGuidelines
+
 == Others ==
 * [Mon 02 Nov 2015] Gu Lu's Blog: 一些遊戲開發資料
   - http://zhuanlan.zhihu.com/gu-lu/20289098
@@ -100,4 +117,7 @@
 = 日常 =
 * 電影
   - [Thu 05 Nov 2015] 蜘蛛網 (購票) : http://www.spider.com.cn/
+* 天氣/空氣
+  - [Sun 06 Dec 2015] PM 2.5 上海: http://aqicn.org/city/shanghai/
+  - [Sun 06 Dec 2015] 天氣預報上海: http://sh.weather.com.cn/
 

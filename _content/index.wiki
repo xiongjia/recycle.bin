@@ -16,6 +16,7 @@
    * [[dev/node|Node]] - Node.js 日常備忘或總結
    * [[dev/shell|Shell]] - Shell Script 的備忘或總結 
    * [[dev/ps1|PowerShell]] - MS Windows PowerShell 的備忘或總結 
+   * [[dev/git|git]] - 記錄些日常工作中的 git 使用
  - Performance Testing Tools/Frameworks: 
    * [[dev/ab|ab]] - Apache HTTP server benchmarking tool
    * [[dev/jmeter|JMeter]] - JMeter 相關得整理匯總
