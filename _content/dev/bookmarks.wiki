@@ -5,6 +5,15 @@
 
 ----
 
+= 日常 =
+* 電影
+  - [Thu 05 Nov 2015] 蜘蛛網 (購票) : http://www.spider.com.cn/
+* 天氣/空氣
+  - [Sun 06 Dec 2015] PM 2.5 上海: http://aqicn.org/city/shanghai/
+  - [Sun 06 Dec 2015] 天氣預報上海: http://sh.weather.com.cn/
+* 食
+  - [Mon 14 Dec 2015] 一瓶鲣鱼汁引发的自家制牛肉饭: http://www.douban.com/note/507577279/
+
 = dev =
 == Utility ==
 * [Tue 03 Nov 2015] Maven:
@@ -58,7 +67,9 @@
   - [Sun 06 Dec 2015] Awesome postgres: https://github.com/dhamaniasad/awesome-postgres
   - [Sun 06 Dec 2015] Awesome DB: https://github.com/numetriclabz/awesome-db
   - [Sun 06 Dec 2015] Awesome Java: https://github.com/akullpp/awesome-java
-  - [Sun 06 Dec 2015] Awesome VIM: https://github.com/matteocrippa/awesome-vim
+  - [Sun 13 Dec 2015] Awesome VIM: 
+    * https://github.com/matteocrippa/awesome-vim
+    * https://github.com/akrawchyk/awesome-vim
 * Awesome CN 
   - [Sun 06 Dec 2015] Awesome Java CN: https://github.com/jobbole/awesome-java-cn
 * Java
@@ -67,6 +78,13 @@
   - [Sun 06 Dec 2015] Better Java: https://github.com/cxxr/better-java
 * c++
   - [Sun 06 Dec 2015] C++ Core Guidelines: https://github.com/isocpp/CppCoreGuidelines
+* database
+  - [Mon 14 Dec 2015] PostgreSQL(数据库)资料: https://github.com/ty4z2008/Qix/blob/master/pg.md
+* Minecraf
+  - [Sun 13 Dec 2015] Hacking Minecraft (showcases) https://github.com/showcases/hacking-minecraft
+  - [Mon 14 Dec 2015] Minecraft Overviewer 
+    * https://github.com/overviewer/Minecraft-Overviewer
+    * http://docs.overviewer.org/en/latest/
 
 == Others ==
 * [Mon 02 Nov 2015] Gu Lu's Blog: 一些遊戲開發資料
@@ -113,11 +131,4 @@
   - [Mon 30 Nov 2015] SaltTiger (技術向書籍) http://www.salttiger.com/
   - [Mon 30 Nov 2015] it-ebooks (技術向書籍) http://it-ebooks.info/
   - [Mon 30 Nov 2015] gitbook (用 gitbook 寫的文檔或書。) https://www.gitbook.com/explore
-
-= 日常 =
-* 電影
-  - [Thu 05 Nov 2015] 蜘蛛網 (購票) : http://www.spider.com.cn/
-* 天氣/空氣
-  - [Sun 06 Dec 2015] PM 2.5 上海: http://aqicn.org/city/shanghai/
-  - [Sun 06 Dec 2015] 天氣預報上海: http://sh.weather.com.cn/
 
