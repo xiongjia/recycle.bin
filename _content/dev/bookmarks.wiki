@@ -1,7 +1,7 @@
 %title Bookmarks
 %toc
 
-日常看到的文章、網址等的備忘
+日常看到的文章、網址等的備忘和分類
 
 ----
 
@@ -67,21 +67,26 @@
   - [Sun 06 Dec 2015] Awesome postgres: https://github.com/dhamaniasad/awesome-postgres
   - [Sun 06 Dec 2015] Awesome DB: https://github.com/numetriclabz/awesome-db
   - [Sun 06 Dec 2015] Awesome Java: https://github.com/akullpp/awesome-java
+  - [Sat 19 Dec 2015] Awesome Scala: https://github.com/lauris/awesome-scala
   - [Sun 13 Dec 2015] Awesome VIM: 
     * https://github.com/matteocrippa/awesome-vim
     * https://github.com/akrawchyk/awesome-vim
+  - [Sat 19 Dec 2015] Awesome test automation: 
+    https://github.com/atinfo/awesome-test-automation
 * Awesome CN 
   - [Sun 06 Dec 2015] Awesome Java CN: https://github.com/jobbole/awesome-java-cn
 * Java
   - [Sun 06 Dec 2015] A Guide to Java 8: https://github.com/winterbe/java8-tutorial
-  - [Sun 06 Dec 2015] Design patterns implemented in Java: https://github.com/iluwatar/java-design-patterns
+  - [Sun 06 Dec 2015] Design patterns implemented in Java:
+    https://github.com/iluwatar/java-design-patterns
   - [Sun 06 Dec 2015] Better Java: https://github.com/cxxr/better-java
 * c++
   - [Sun 06 Dec 2015] C++ Core Guidelines: https://github.com/isocpp/CppCoreGuidelines
 * database
   - [Mon 14 Dec 2015] PostgreSQL(数据库)资料: https://github.com/ty4z2008/Qix/blob/master/pg.md
 * Minecraf
-  - [Sun 13 Dec 2015] Hacking Minecraft (showcases) https://github.com/showcases/hacking-minecraft
+  - [Sun 13 Dec 2015] Hacking Minecraft (showcases) 
+    https://github.com/showcases/hacking-minecraft
   - [Mon 14 Dec 2015] Minecraft Overviewer 
     * https://github.com/overviewer/Minecraft-Overviewer
     * http://docs.overviewer.org/en/latest/
@@ -127,7 +132,7 @@
   - (翻) http://mitmproxy.org/
 
 == Resources ==
-* 電子書 ( .pdf; .epub; .mobi )
+* 電子書 ( .pdf; .epub; .mobi; .azw3 )
   - [Mon 30 Nov 2015] SaltTiger (技術向書籍) http://www.salttiger.com/
   - [Mon 30 Nov 2015] it-ebooks (技術向書籍) http://it-ebooks.info/
   - [Mon 30 Nov 2015] gitbook (用 gitbook 寫的文檔或書。) https://www.gitbook.com/explore

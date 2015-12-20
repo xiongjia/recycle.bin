@@ -2,11 +2,82 @@
 %toc
 
 
-= 日常使用 =
-== branches 的比較 ==
-TODO: 
+= 日常備忘 =
+== clone ==
+* shallow clone <br>
+  通過 `--depth=<depth>` 的 option 來告訴 git 只需要 clone 最近的幾次的 history。<br>
+  在網速比較慢，或者是臨時環境(比如： CI 機器上) 的情況下可以考慮用 shallow clone。
+  如果是一個 history 很悠久的，容量比較大的 repository 可以節約出很多時間和網絡帶寬。 <br>
+  比如只 clone 保留最近的 1 次 history: `git clone --depth=1 <source repository>`
 
-== git stash ==
-TODO:
+== fetch ==
+從 remote repository 更新時，應該用 `fetch` 而不是 `pull`。
+- 一次 `git pull` 相當於 `fetch` + `merge`。
+  但是更新 repository 我希望這個 `merge` 在我控制中完成。
+  而 `git pull` 是自動完成這個 `merge` 的。
+- 用 `git fetch` 更新 repository, 在把 remote 的 change merge 回去前，
+  可以有機會用 `git diff` 仔細比較最新的 changes。比 merge 完再看方便多了。
+  更新 repository 時，花一點時間去了解、閱讀一下同事們的 changes 絕對是值得的。<br>
+  比如可以像下面這樣更新，並比較 master branch 的最新改動:
+{{{
+git checkout master
+git fetch
+git diff --numstat master origin/master
+git merge origin/master master
+}}}
 
+== reset ==
+TODO: 待續 
+
+== stash ==
+TODO: 待續
+
+== merge ==
+TODO: 待續
+
+== rebase ==
+TODO: 待續
+
+=== Comparing ===
+==== Diff tools ====
+- Git difftools 的設置
+ * vimdiff 好處是支持所有 OS, 甚至可以工作在 SSH 的 remote 環境中。
+   壞處是需要熟悉 vim 的操作。用 vimdiff 的 git 設置如下
+   (`prompt = false` 是為了關閉啟動 diff tool 前的確認提示) :
+{{{
+[diff]
+  tool = "vimdiff"
+[difftool]
+  prompt = false
+[difftool "vimdiff"]
+  cmd = gvim -d "$LOCAL" "$REMOTE"
+}}}
+ * 其他圖形化工具還有很多，比如: KDiff3, Beyond Compare 3 等。
+   用 Windows 上的 Beyond Compare 3 為例配置如下:
+{{{
+[diff]
+  tool = "bc3"
+[difftool]
+  prompt = false
+[difftool "bc3"]
+  cmd = bcomp.exe "$LOCAL" "$REMOTE"
+}}}
+
+- Diff tool 的使用 <br>
+  正確設置 git difftool 後用, `git difftool` 就可以開啟 GUI 比較方式。
+  比如:
+  * 比較當前目錄下修改過的 changes: `git difftool .`  
+    (被修改過的文件會依次打開與 HEAD 版本比較)
+  * 比較某一個特殊文件的 changes:  `git difftool <file name>`
+  * 如果不想用 gui 方式比較可以繼續用 `git diff` 的 console 輸出方式查看 changes。
+
+==== Comparing branches ====
+用當前 Branch 和指定的 Branch 比較
+- 列出與指定 Branch 之間的差異列表: <br>
+  `git diff --numstat <branch name>` <br>
+  (`--numstat` 是一種顯示格式，也可以用 `--shortstat`, 
+   `--stat` 等改變格式。 具體可以參看 `git diff --help`)
+- 比較具體的文件的差異 <br>
+  `git diff <branch name> -- <file name>` 
+  或者用 gui 工具比較:  `git difftool <branch name> -- <file name>`
 
