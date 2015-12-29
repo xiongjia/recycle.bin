@@ -1,6 +1,20 @@
 %title git
 %toc
 
+= Resources =
+* Pro GIT (文檔)
+ - 下載的github: https://github.com/progit/progit
+ - online book en: http://git-scm.com/book/en/
+ - online book 中文簡體: http://git-scm.com/book/zh
+* GIT internals (文檔)
+ - 內容比 Pro GIT 簡潔一些
+ - 下載的github: https://github.com/pluralsight/git-internals-pdf
+* Pro GIT 2 (文檔)
+ - Progit 的第二版本 https://github.com/progit/progit2 
+ - Online book en: http://git-scm.com/book/en/v2
+ - Online book 中文簡體: http://git-scm.com/book/zh/v2
+
+----
 
 = 日常備忘 =
 == clone ==

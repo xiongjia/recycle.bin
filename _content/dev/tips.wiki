@@ -72,19 +72,6 @@ Non-Sucking Service Manager - 是一個簡易的 Windows services Manager。
 ----
 
 = Developer Tools =
-== GIT ==
-The stupid content tracker 
-* Pro GIT (文檔)
- - 下載的github: https://github.com/progit/progit
- - online book en: http://git-scm.com/book/en/
- - online book 中文簡體: http://git-scm.com/book/zh
-* GIT internals (文檔)
- - 內容比 Pro GIT 簡潔一些
- - 下載的github: https://github.com/pluralsight/git-internals-pdf
-* Pro GIT 2 (文檔)
- - Progit 的第二版本 https://github.com/progit/progit2 
- - Online book: http://git-scm.com/book/en/v2
-
 == Ack / Ag ==
 * ack is a tool like grep, optimized for programmers. 
   相對於 grep 來說, Ack 更加適合開發者使用。
