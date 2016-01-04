@@ -61,8 +61,10 @@
 * [Thu 05 Nov 2015] Resolving LNK4098: defaultlib 'MSVCRT' conflicts with 
   - http://stackoverflow.com/questions/3007312/resolving-lnk4098-defaultlib-msvcrt-conflicts-with
 === git ===
-* [Thu 05 Nov 2015] git: check if pull needed
+* [Thu 05 Nov 2015] check if pull needed
   - http://stackoverflow.com/questions/3258243/git-check-if-pull-needed
+* [Mon 04 Jan 2016] What's the difference between HEAD^ and HEAD~ in Git?
+  - http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git
 
 == github ==
 * Awesome
@@ -129,7 +131,9 @@
     *  http://dillinger.io/ or https://github.com/joemccann/dillinger
   - 圖片處理:
     * [Sun 22 Nov 2015] 水反處理 http://www.watereffect.net/
-
+  - Douban 年度統計
+    * [Mon 04 Jan 2016] 個人年度統計器 http://readingtaste.com/
+ 
 == Tools ==
 * [Thu 05 Nov 2015] mitmproxy , python 實現的用與調試的 proxy 類似于 fiddler 
   - (翻) http://mitmproxy.org/
@@ -139,4 +143,8 @@
   - [Mon 30 Nov 2015] SaltTiger (技術向書籍) http://www.salttiger.com/
   - [Mon 30 Nov 2015] it-ebooks (技術向書籍) http://it-ebooks.info/
   - [Mon 30 Nov 2015] gitbook (用 gitbook 寫的文檔或書。) https://www.gitbook.com/explore
+* Game
+  - [Mon 04 Jan 2016] 機核網 http://www.g-cores.com
+* Podcasts
+  - [Mon 04 Jan 2016] IPN: http://ipn.li/
 
