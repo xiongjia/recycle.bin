@@ -53,4 +53,5 @@
 == Games ==
 此分類用於記錄 2.5 次元的數據:
  * [[game/minecraft|Minecraft]] - Minecraft 資料收集 
+ * [[game/ingress|Ingress]] - Ingress 資料收集 
 

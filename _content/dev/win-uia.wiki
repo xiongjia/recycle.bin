@@ -24,7 +24,7 @@
 * 時間推移，好幾個 MS 提供的工具都已經被放棄了。<br>
   比如常用的 UISpy 被放棄了(可能是功能上和 Open Source 的 UIA Verify 類似)。http://msdn.microsoft.com/en-us/library/ms727247.aspx 官方說法是: _"The UI Spy tool is obsolete and no longer available. Developers should use other tools such as Inspect.exe that are available in the Windows Software Development Kit (SDK). For more info, see Testing Tools."_
  我自己保留了一份舊版本的 binary 在我的 DropBox 共享目錄裡:  
- [[https://www.dropbox.com/sh/8tpu53m88cskvmp/Zn1gWNfZ1C/dev-tools/ms.uia|ms.uia-tools in my DropBox]] <br>
+ [[https://www.dropbox.com/sh/8tpu53m88cskvmp/AAC99Yy-pb1mlsP5AF9RwTila/dev-tools/ms.uia|ms.uia-tools in my DropBox]] <br>
 | uispy.zip          | UISpy         |
 | inspect.zip        | Inspect       |
 | acc.explorer32.zip | AccExplorer32 |
