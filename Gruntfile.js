@@ -7,147 +7,141 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
-  /* check cli options */
+  /* load cli-options & configuration */
   optNoCompress = grunt.option('no-compress');
-  /* load site configuration */
   cfg = grunt.file.readYAML('_config.yml');
+  console.log('cfg %j', cfg);
 
-  /* init grunt config */
-  grunt.initConfig({
-    /* bower install task */
-    bower: {
-      install: {
-        options: {
-          targetDir: './bower_components'
-        }
-      }
-    },
-    /* JSHint task - check the JS file by .jshintrc. 
-     * (only check our code, skip all 3rd party JS files)
-     */
-    jshint: {
-      options: { jshintrc: '.jshintrc' },
-      reporter: require('jshint-stylish'),
-      gruntfile: { src: 'Gruntfile.js' },
-      config: { src: ['_config/vimwiki.js'] }
-    },
-    /* Concat task - 
-     * 1. Merge all the CSS files and save it to cfg.dest.cssDest
-     * 2. Merge all the JS files and save it to cfg.dest.jsDest
-     */
-    concat: {
-      /* merge all css */
-      css: {
-        src: [
-          cfg.mod.cssBootstrap,
-          '_config/vimwiki.css',
-          cfg.mod.cssSyntax,
-          '_config/recycle.bin.css'
-        ],
-        dest: cfg.dest.cssDest
-      },
-      /* merge all js */
-      js: {
-        src: [
-          cfg.mod.jsJQuery,
-          cfg.mod.jsLodash,
-          cfg.mod.jsBootstrap,
-          cfg.mod.jsSyntax,
-          cfg.mod.jsLazyLoad,
-          cfg.mod.jsQRCode,
-          '_config/vimwiki.js',
-          '_config/ganalytics.js'
-        ],
-        dest: cfg.dest.jsDest
-      }
-    },
-    /* cssmin - compress css files */
-    cssmin: { minify: { src: [ cfg.dest.cssDest ], dest: cfg.dest.cssDest } },
-    /* uglify - compress js files */
-    uglify: { dist: { src: cfg.dest.jsDest, dest: cfg.dest.jsDest } },
-    /* html min - compress html files */
-    htmlmin: {
-      dist: {
-        options: {
-          removeComments: true,
-          collapseWhitespace: true
-        },
-        files: [{ expand: true, cwd: 'dist', src: '**/*.html', dest: 'dist' }]
-      }
-    },
-    /* copy - copy all the files to dist folder */
-    copy: {
-      content: {
-        expand: true,
-        cwd: cfg.dest.output + '/',
-        src: [ '**/*.html' ],
-        dest: cfg.dest.base + '/'
-      },
-      data: {
-        expand: true,
-        cwd: '_content/data',
-        src: [ '**/*.*' ],
-        dest: cfg.dest.base + '/data/'
-      },
-      fonts: {
-        expand: true,
-        cwd: cfg.mod.dirBootstrap,
-        src: [ '**/*.{eot,svg,ttf,woff}' ],
-        dest: cfg.dest.base + '/assets'
-      },
-      conf: {
-        src: [ '_config/_htaccess' ],
-        dest: cfg.dest.base + '/.htaccess'
-      },
-      icon: {
-        src: [ '_config/favicon.ico' ],
-        dest: cfg.dest.base + '/favicon.ico'
-      }
-    },
-    /* connect - start the local test HTTP server */
-    connect: {
-      server: {
-        options: {
-          port: cfg.util.servPort,
-          debug: cfg.util.servDbg,
-          base: cfg.dest.base
-        }
-      }
-    },
-    /* create site map */
-    sitemap: {
-      dist: {
-        pattern: [ cfg.dest.base + '/**/*.html' ],
-        siteRoot: cfg.dest.base,
-        homepage: cfg.util.siteRoot,
-        changefreq: 'weekly'
-      }
-    },
-    /* watch - monitor the content folders and 
-     * automatical update changed content to dist folder
-     */
-    watch: {
-      content: {
-        files: [cfg.dest.output + '/**/*.html'],
-        tasks: [ 'copy:content', 'htmlmin' ],
-        options: { spawn: false }
-      },
-      data: {
-        files: [ '_content/data/**/*.*' ],
-        tasks: [ 'copy:data' ],
-        options: { spawn: false }
-      }
-    },
-    /* rsync - update dist folder to remote */
-    rsync: { src: cfg.util.rsyncSrc, dest: cfg.util.rsyncDest },
-    /* checkSiteLinks - check all the site links are avliable */
-    checkSiteLinks: {
-      cwd: cfg.dest.base,
-      site: cfg.util.siteRoot
-    },
-    /* clean - remove dest files */
-    clean: [ cfg.dest.base ]
+  /* grunt config */
+  grunt.initConfig({});
+  /* bower config */
+  grunt.config('bower', {
+    install: { options: { targetDir: './bower_components' } }
   });
+  /* JSHint config - only check our code, skip 3rd party JS files */
+  grunt.config('jshint', {
+    options: { jshintrc: '.jshintrc' },
+    reporter: require('jshint-stylish'),
+    gruntfile: { src: 'Gruntfile.js' },
+    config: { src: ['_config/vimwiki.js'] }
+  });
+  /* concat config: 
+   * 1. Merge all the CSS files and save it to cfg.dest.cssDest
+   * 2. Merge all the JS files and save it to cfg.dest.jsDest
+   */
+  grunt.config('concat', {
+    /* merge all css */
+    css: {
+      src: [
+        cfg.mod.cssBootstrap,
+        '_config/vimwiki.css',
+        cfg.mod.cssSyntax,
+        '_config/recycle.bin.css'
+      ],
+      dest: cfg.dest.cssDest
+    },
+    /* merge all js */
+    js: {
+      src: [
+        cfg.mod.jsJQuery,
+        cfg.mod.jsLodash,
+        cfg.mod.jsBootstrap,
+        cfg.mod.jsSyntax,
+        cfg.mod.jsLazyLoad,
+        cfg.mod.jsQRCode,
+        '_config/vimwiki.js',
+        '_config/ganalytics.js'
+      ],
+      dest: cfg.dest.jsDest
+    }
+  });
+  /* cssmin - compress css files */
+  grunt.config('cssmin', {
+    minify: { src: [ cfg.dest.cssDest ], dest: cfg.dest.cssDest }
+  });
+  /* uglify - compress js files */
+  grunt.config('uglify', {
+    dist: { src: cfg.dest.jsDest, dest: cfg.dest.jsDest }
+  });
+  /* html min - compress html files */
+  grunt.config('htmlmin', {
+    dist: {
+      options: { removeComments: true, collapseWhitespace: true },
+      files: [{ expand: true, cwd: 'dist', src: '**/*.html', dest: 'dist' }]
+    }
+  });
+  /* copy - copy all the files to dist folder */
+  grunt.config('copy', {
+    content: {
+      expand: true,
+      cwd: cfg.dest.output + '/',
+      src: [ '**/*.html' ],
+      dest: cfg.dest.base + '/'
+    },
+    data: {
+      expand: true,
+      cwd: '_content/data',
+      src: [ '**/*.*' ],
+      dest: cfg.dest.base + '/data/'
+    },
+    fonts: {
+      expand: true,
+      cwd: cfg.mod.dirBootstrap,
+      src: [ '**/*.{eot,svg,ttf,woff}' ],
+      dest: cfg.dest.base + '/assets'
+    },
+    conf: {
+      src: [ '_config/_htaccess' ],
+      dest: cfg.dest.base + '/.htaccess'
+    },
+    icon: {
+      src: [ '_config/favicon.ico' ],
+      dest: cfg.dest.base + '/favicon.ico'
+    }
+  });
+  /* connect - the local HTTP server for test/dev */
+  grunt.config('connect', {
+    server: {
+      options: {
+        port: cfg.util.servPort,
+        debug: cfg.util.servDbg,
+        base: cfg.dest.base
+      }
+    }
+  });
+  /* watch - monitor the content folders and 
+   * automatical update changed content to dist folder
+   */
+  grunt.config('watch', {
+    content: {
+      files: [cfg.dest.output + '/**/*.html'],
+      tasks: [ 'copy:content', 'htmlmin' ],
+      options: { spawn: false }
+    },
+    data: {
+      files: [ '_content/data/**/*.*' ],
+      tasks: [ 'copy:data' ],
+      options: { spawn: false }
+    }
+  });
+  /* sitemap */
+  grunt.config('sitemap', {
+    dist: {
+      pattern: [ cfg.dest.base + '/**/*.html' ],
+      siteRoot: cfg.dest.base,
+      homepage: cfg.util.siteRoot,
+      changefreq: 'weekly'
+    }
+  });
+  /* rsync - update dist folder to remote */
+  grunt.config('rsync', { src: cfg.util.rsyncSrc, dest: cfg.util.rsyncDest });
+  /* checkSiteLinks - check all the site links are avliable */
+  grunt.config('checkSiteLinks', {
+    cwd: cfg.dest.base,
+    site: cfg.util.siteRoot
+  });
+  /* clean - remove dest files */
+  grunt.config('clean', [ cfg.dest.base ]);
 
   /* check sitemap */
   grunt.registerTask('checkSiteLinks', 'check siteamp', function () {
