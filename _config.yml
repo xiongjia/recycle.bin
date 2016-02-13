@@ -3,34 +3,201 @@
 # modules 
 mod:
   # jQuery
-  jsJQuery: 'bower_components/jquery/dist/jquery.js'
+  jsJQuery: &jsJQuery 'bower_components/jquery/dist/jquery.js'
   # lodash
-  jsLodash: 'bower_components/lodash/lodash.js'
+  jsLodash: &jsLodash 'bower_components/lodash/lodash.js'
   # syntaxhighlighter
-  jsSyntax: '_config/syntaxhighlighter.js'
-  cssSyntax: '_config/syntaxhighlighter.css'
+  jsSyntax: &jsSyntax '_config/syntaxhighlighter.js'
+  cssSyntax: &cssSyntax '_config/syntaxhighlighter.css'
   # bootstrap
-  jsBootstrap: 'bower_components/bootstrap/dist/js/bootstrap.js'
-  cssBootstrap: 'bower_components/bootstrap/dist/css/bootstrap.css'
-  dirBootstrap: 'bower_components/bootstrap/dist'
+  jsBootstrap: &jsBootstrap 'bower_components/bootstrap/dist/js/bootstrap.js'
+  cssBootstrap: &cssBootstrap 'bower_components/bootstrap/dist/css/bootstrap.css'
+  dirBootstrap: &dirBootstrap 'bower_components/bootstrap/dist'
   # lazy load
-  jsLazyLoad: 'bower_components/jquery.lazyLoad/jquery.lazyLoad.js'
+  jsLazyLoad: &jsLazyLoad 'bower_components/jquery.lazyLoad/jquery.lazyLoad.js'
   # qrcode.js
-  jsQRCode: 'bower_components/qrcodejs/qrcode.js'
+  jsQRCode: &jsQRCode 'bower_components/qrcodejs/qrcode.js'
 
 # destination
 dest:
-  base: 'dist'
+  base: &destBase 'dist'
+  base: &destBaseFolder 'dist/'
+  data: &destDataFolder 'dist/data/'
+  pagesPattern: &destPagesPattern 'dist/**/*.html'
+  assets: &destAssets 'dist/assets'
+  htaccess: &destHtaccess 'dist/.htaccess'
+  favicon: &destFavicon 'dist/favicon.ico'
   output: 'output'
-  cssDest: 'dist/assets/css/main-v0.1.css'
-  jsDest: 'dist/assets/js/main-v0.1.js'
+  outputFolder: &destOutputFolder 'output/'
+  outputHtml: &destOutputHtml 'output/**/*.html'
+  cssDest: &cssDest 'dist/assets/css/main-v0.1.css'
+  jsDest: &jsDest 'dist/assets/js/main-v0.1.js'
   sitemap: 'dist/sitemap.txt'
 
 # util
 util:
-  servPort: 9000
-  servDbg: true
-  siteRoot: 'http://www.xj-labs.net'
-  rsyncSrc: './dist/'
-  rsyncDest: 'lexj@xj-labs.net:xj-labs.net'
+  servPort: &servPort 9000
+  servDbg: &servDbg true
+  siteRoot: &siteRoot 'http://www.xj-labs.net'
+  rsyncSrc: &rsyncSrc './dist/'
+  rsyncDest: &rsyncDest 'lexj@xj-labs.net:xj-labs.net'
+
+# Sequences 
+seq:
+  jsSrc: &jsSrc
+    - *jsJQuery
+    - *jsLodash
+    - *jsBootstrap
+    - *jsSyntax
+    - *jsLazyLoad
+    - *jsQRCode
+    - '_config/vimwiki.js'
+    - '_config/ganalytics.js'
+  cssSrc: &cssSrc
+    - *cssBootstrap
+    - '_config/vimwiki.css'
+    - *cssSyntax
+    - '_config/recycle.bin.css'
+
+# grunt task config - concat
+gruntConcat: &gruntConcat
+  css:
+    src: *cssSrc
+    dest: *cssDest
+  js:
+    src: *jsSrc
+    dest: *jsDest
+
+# grunt task config - bower
+gruntBower: &gruntBower
+  install:
+    options:
+      targetDir: './bower_components'
+
+# grunt task config - cssmin
+gruntCssmin: &gruntCssmin
+  minify:
+    src:
+      - *cssDest
+    dest: *cssDest
+
+# grunt task config - uglify
+gruntUglify: &gruntUglify
+  dist:
+    src: *jsDest
+    dest: *jsDest
+
+# grunt task config - jshint
+# only check our code, skip 3rd party JS files
+gruntJSHint: &gruntJSHint
+  options:
+    jshintrc: '.jshintrc'
+  gruntfile:
+    src: 'Gruntfile.js'
+  config:
+    src:
+      - '_config/vimwiki.js'
+
+# grunt task config - clean
+gruntClean: &gruntClean
+  - *destBase
+
+# grunt task config - htmlmin
+gruntHtmlmin: &gruntHtmlmin
+  dist:
+    options:
+      removeComments: true
+      collapseWhitespace: true 
+    files:
+      - 
+        expand: true
+        cwd: 'dist'
+        src: '**/*.html'
+        dest: 'dist'
+
+# grunt task config - copy
+gruntCopy: &gruntCopy
+  content:
+    expand: true
+    cwd: *destOutputFolder
+    src:
+      - '**/*.html'
+    dest: *destBaseFolder
+  data:
+    expand: true
+    cwd: '_content/data'
+    src:
+      - '**/*.*' 
+    dest: *destDataFolder
+  fonts:
+    expand: true
+    cwd: *dirBootstrap
+    src:
+      - '**/*.{eot,svg,ttf,woff}'
+    dest: *destAssets
+  conf:
+    src:
+      - '_config/_htaccess'
+    dest: *destHtaccess
+  icon:
+    src:
+      - '_config/favicon.ico'
+    dest: *destFavicon
+
+# grunt config - rsync 
+gruntRsync: &gruntRsync
+  src: *rsyncSrc
+  dest: *rsyncDest
+
+# grunt config - connect
+gruntConnect: &gruntConnect
+  server:
+    options:
+      port: *servPort
+      debug: *servDbg
+      base: *destBase
+
+# grunt config - watch
+# monitor the content folders and 
+# automatical update changed content to dist folder
+gruntWatch: &gruntWatch
+  content:
+    files:
+      - *destOutputHtml
+    tasks:
+      - 'copy:content'
+      - 'htmlmin'
+    options:
+      spawn: false 
+  data:
+    files:
+      - '_content/data/**/*.*'
+    tasks:
+      - 'copy:data'
+    options:
+      spawn: false 
+
+# grunt config - sitemap
+gruntSitemap: &gruntSitemap
+  dist:
+    pattern:
+      - *destPagesPattern
+    siteRoot: *destBase 
+    homepage: *siteRoot
+    changefreq: 'weekly' 
+
+# grunt config root
+gruntConfRoot:
+  bower: *gruntBower
+  concat: *gruntConcat
+  cssmin: *gruntCssmin
+  uglify: *gruntUglify
+  jshint: *gruntJSHint
+  clean: *gruntClean
+  htmlmin: *gruntHtmlmin
+  copy: *gruntCopy
+  rsync: *gruntRsync
+  connect: *gruntConnect
+  watch: *gruntWatch
+  sitemap: *gruntSitemap
 
