@@ -102,6 +102,17 @@
   - http://gulu-dev.com/
 
 == Online Tools ==
+* Mirrors:
+  - [Sun 14 Feb 2016] We - 开源镜像站 (大陸地區比較快比如 Cygwin, Apache, Android SDK 等的鏡像)
+    * http://mirrors.neusoft.edu.cn/
+  - [Sun 14 Feb 2016] RubyGems 镜像 - 淘宝网 (大陸地區 Ruby 用戶可加速)
+    * https://ruby.taobao.org/
+  - [Sun 14 Feb 2016] 淘宝 NPM 镜像 (大陸地區 Node.js 用戶可加速)
+    * http://npm.taobao.org/
+  - [Sun 14 Feb 2016] 网易开源镜像站 (有各個 Linux 發行版本的包管理, 如: Ubuntu, ArchLinux 等)
+    * http://mirrors.163.com/
+  - [Sun 14 Feb 2016] maven 中國
+    * http://maven.oschina.net
 * JavaScript: 
   - [Mon 30 Nov 2015] JS Fiddle:
     * http://jsfiddle.net/
