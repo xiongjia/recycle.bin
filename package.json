@@ -25,11 +25,11 @@
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-uglify": "~0.3.2",
     "grunt-contrib-watch": "~0.5.3",
+    "grunt-rsync": "^1.0.1",
     "grunt-sitemap": "^1.2.1",
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
     "request": "~2.36.0",
-    "rsyncwrapper": "0.0.19",
     "time-grunt": "^1.1.1"
   },
   "dependencies": {}

@@ -68,34 +68,6 @@ module.exports = function (grunt) {
     });
   });
 
-  /* rsync upload task */
-  grunt.registerTask('rsync', 'rsync upload task', function () {
-    var rsync, rsyncOpt, done;
-
-    /* rsync options */
-    grunt.config.requires('rsync', 'rsync.src', 'rsync.dest');
-    rsyncOpt = {
-      src: grunt.config.get('rsync.src'),
-      dest: grunt.config.get('rsync.dest'),
-      recursive: true
-    };
- 
-    /* execute rsync upload */
-    done = this.async();
-    rsync = require("rsyncwrapper").rsync;
-    rsync(rsyncOpt, function (err, stdout, stderr, cmd) {
-      if (err) {
-        grunt.log.writeln('Rsync upload err = %j, opt = %j', err, rsyncOpt);
-      }
-      else {
-        grunt.log.writeln('Rsync upload ok. opt = %j', rsyncOpt);
-      }
-      grunt.log.writeln('cmd = %s', cmd);
-      grunt.log.writeln('stdout: "%s", stderr: "%s"', stdout, stderr);
-      done(err);
-    });
-  });
-
   /* alias */
   grunt.registerTask('dist',
     optNoCompress ?

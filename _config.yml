@@ -144,11 +144,6 @@ gruntCopy: &gruntCopy
       - '_config/favicon.ico'
     dest: *destFavicon
 
-# grunt config - rsync 
-gruntRsync: &gruntRsync
-  src: *rsyncSrc
-  dest: *rsyncDest
-
 # grunt config - connect
 gruntConnect: &gruntConnect
   server:
@@ -185,6 +180,17 @@ gruntSitemap: &gruntSitemap
     siteRoot: *destBase 
     homepage: *siteRoot
     changefreq: 'weekly' 
+
+# grunt config - rsync
+gruntRsync: &gruntRsync
+  options:
+    args:
+      - '--verbose'
+    recursive: true
+  dist:
+    options:
+      src: *rsyncSrc
+      dest: *rsyncDest
 
 # grunt config root
 gruntConfRoot:
