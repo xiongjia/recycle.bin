@@ -192,6 +192,11 @@ gruntRsync: &gruntRsync
       src: *rsyncSrc
       dest: *rsyncDest
 
+# grunt config - shell
+gruntShell: &gruntShell
+  mkOutput:
+    command: 'vim -c "call vimwiki#base#goto_index(2)" -c VimwikiAll2HTML -c qa! '
+
 # grunt config root
 gruntConfRoot:
   bower: *gruntBower
@@ -206,4 +211,5 @@ gruntConfRoot:
   connect: *gruntConnect
   watch: *gruntWatch
   sitemap: *gruntSitemap
+  shell: *gruntShell
 

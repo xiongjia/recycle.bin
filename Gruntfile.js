@@ -14,59 +14,6 @@ module.exports = function (grunt) {
   cfg.gruntConfRoot.jshint.reporter = require('jshint-stylish');
   /* grunt config */
   grunt.initConfig(cfg.gruntConfRoot);
-  /* checkSiteLinks - check all the site links are avliable */
-  grunt.config('checkSiteLinks', {
-    cwd: cfg.dest.base,
-    site: cfg.util.siteRoot
-  });
-  /* check sitemap */
-  grunt.registerTask('checkSiteLinks', 'check siteamp', function () {
-    var pages, links, pgCwd, site, done, request;
-
-    request = require('request');
-    pgCwd = grunt.config.get('checkSiteLinks.cwd');
-    site =  grunt.config.get('checkSiteLinks.site');
-    grunt.log.writeln('check site links. { cwd: %s, site: %s }', pgCwd, site);
-
-    /* site links */
-    pages = grunt.file.expand({cwd: pgCwd}, '**/*.html');
-    links = [];
-    grunt.util._.each(pages, function (pg) {
-      links.push(function (callback) {
-        var req;
-        req = {
-          url: grunt.util._.str.sprintf('%s/%s', site, pg),
-          proxy: process.env.http_proxy
-        };
-        grunt.log.writeln('Check Site link %j', req);
-        request(req, function (err, res) {
-          if (err) {
-            grunt.log.error('Cannot access %s', req.url);
-            grunt.fail.warn(err);
-          }
-          else {
-            if (res.statusCode !== 200) {
-              grunt.log.error('Cannot access %s, status [%s]',
-                req.url, res.statusCode);
-              grunt.fail.warn(new Error('Cannot access site link'));
-            }
-            else {
-              grunt.log.writeln('Site link %s OK, res [%s]',
-                req.url, res.statusCode);
-            }
-          }
-          callback(err);
-        });
-      });
-    });
-
-    /* start check links */
-    done = this.async();
-    require('async').parallel(links, function (err) {
-      grunt.log.writeln('All sit links have been checked');
-      done(err);
-    });
-  });
 
   /* alias */
   grunt.registerTask('dist',
