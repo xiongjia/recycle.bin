@@ -8,14 +8,14 @@ ehthumbs.db
 Desktop.ini
 $RECYLE.BIN/
 
-# nodejs
-/node_modules/
-npm-debug.log
-
-# bower
-/bower_components/
-
-# output files
-/output/
-/dist/
+# hugo
+# /public/
+# /resources/_gen/
+# /assets/jsconfig.json
+# hugo_stats.json
+# /.hugo_build.lock
+# 
+hugo.exe
+hugo.darwin
+hugo.linux
 
