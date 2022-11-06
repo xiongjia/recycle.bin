@@ -1,7 +1,0 @@
-%title Page Not Found
-%template 404
-
-= Page Not Found =
-Sorry, but the page you were trying to view does not exist.<br>
-[[index|Back to Index Please]]
-

@@ -7,15 +7,55 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYLE.BIN/
+*.so
+node_modules/
+*.mo
+.scrapy
+target/
 
-# nodejs
-/node_modules/
-npm-debug.log
+# obsidian
+docs/.obsidian/
 
-# bower
-/bower_components/
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+package*.json
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+.ipynb_checkpoints
+.python-version
+venv/
+ENV/
 
-# output files
-/output/
-/dist/
+# mkdocs 
+site*/
+
 
