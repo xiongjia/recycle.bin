@@ -1,4 +1,4 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'recycle.bin'
-theme = "ananke"
+theme = 'zen'
