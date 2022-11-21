@@ -3,5 +3,6 @@
   "interfaceFontFamily": "Source Code Pro",
   "textFontFamily": "Source Code Pro",
   "monospaceFontFamily": "Source Code Pro",
-  "baseFontSize": 12
+  "baseFontSize": 12,
+  "cssTheme": "Things"
 }
