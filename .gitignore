@@ -7,14 +7,51 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYLE.BIN/
+*.so
+node_modules/
+*.mo
+.scrapy
+target/
 
-# hugo
-/public/
-/resources/_gen/
-/assets/jsconfig.json
-hugo_stats.json
-/.hugo_build.lock
-hugo.exe
-hugo.darwin
-hugo.linux
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+package*.json
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+.ipynb_checkpoints
+.python-version
+venv/
+ENV/
+
+# mkdocs 
+site*/
 
