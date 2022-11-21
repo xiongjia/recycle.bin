@@ -13,6 +13,9 @@ node_modules/
 .scrapy
 target/
 
+# obsidian
+docs/.obsidian/
+
 # python
 __pycache__/
 *.py[cod]
