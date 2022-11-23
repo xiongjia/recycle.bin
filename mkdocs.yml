@@ -1,12 +1,37 @@
 site_name: recycle.bin
 site_author: xiongjia
-site_description: >-
-  垃圾收集
+site_description: 垃圾收集
+
+plugins: [ minify: { minify_html: true }, search: { lang: js } ]
 
 theme:
   name: material
+  include_search_page: false
+  search_index_only: true
+  features:
+    - header.autohide
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: light blue
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: cyan
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
 
 nav:
-  - Home : "home.md"
-
-
+  - home : 'index.md'
+  - tech : 
+    - collection : 'tech/index.md'

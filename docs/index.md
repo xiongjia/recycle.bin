@@ -1,14 +1,10 @@
-垃圾回收，日常知识整理。
+---
+tags: [index]
+---
 
+# ♻️ recycle.bin
 
-# index test
+## 🍚 tech
 
-Test
-
-## Test 2
-
-Test 3
-
-## Test 3
-
-Test 3
+饭碗相关  
+    - [日常收集](tech/index.md)
