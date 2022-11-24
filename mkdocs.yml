@@ -1,4 +1,5 @@
 site_name: recycle.bin
+site_url: https://www.xj-labs.net
 site_author: xiongjia
 site_description: 垃圾收集
 
@@ -34,4 +35,4 @@ theme:
 nav:
   - home : 'index.md'
   - tech : 
-    - collection : 'tech/index.md'
+    - boost : 'tech/dev/boost.md'
