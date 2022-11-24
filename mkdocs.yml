@@ -3,6 +3,9 @@ site_url: https://www.xj-labs.net
 site_author: xiongjia
 site_description: 垃圾收集
 
+markdown_extensions:
+  - attr_list
+
 plugins: [ minify: { minify_html: true }, search: { lang: js } ]
 
 theme:
