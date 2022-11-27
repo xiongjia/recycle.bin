@@ -15,7 +15,8 @@ include_directories("${PROJECT_SOURCE_DIR}"
     "${PROTOBUF_INCLUDE_DIRS}")
 
 add_executable(protobuf-example-cc
-    "${PROJECT_SOURCE_DIR}/protobuf-example.cpp")
+    "${PROJECT_SOURCE_DIR}/protobuf-example.cpp"
+    "${PROJECT_SOURCE_DIR}/addressbook.pb.cc")
 
 target_link_libraries(protobuf-example-cc 
     "${PROTOBUF_LIBRARIES}")
