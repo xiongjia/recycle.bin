@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -55,13 +54,13 @@ func saveToFile(filename string) {
 		fmt.Println("Failed to encode address book:", err)
 	}
 
-	if err := ioutil.WriteFile(filename, out, 0644); err != nil {
+	if err := os.WriteFile(filename, out, 0644); err != nil {
 		fmt.Println("Failed to write address book:", err)
 	}
 }
 
 func loadFromFile(filename string) {
-	in, err := ioutil.ReadFile(filename)
+	in, err := os.ReadFile(filename)
 	if err != nil {
 		log.Fatalln("Error reading file:", err)
 	}
