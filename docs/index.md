@@ -47,7 +47,7 @@ Tools + Frameworks + others
 
 ## 🍎 Serialization Frameworks
 
-- [protobuf](https://github.com/protocolbuffers/protobuf){:target="_blank"} - 速度比较快
+- [protobuf](tech/dev/protobuf.md) - 速度比较快
 - [msgpack](https://msgpack.org/){:target="_blank"} - 和 JSON 差不多。压缩版 JSON
 - [pickle](https://docs.python.org/3/library/pickle.html){:target="_blank"} - Python 自带。二进制序列号格式
 - [cbor](https://cbor.io/){:target="_blank"} - binary object, 能用的库不多

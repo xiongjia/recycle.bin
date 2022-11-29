@@ -39,3 +39,4 @@ nav:
   - home : 'index.md'
   - tech : 
     - boost : 'tech/dev/boost.md'
+    - protobuf: 'tech/dev/protobuf.md'
