@@ -20,9 +20,9 @@ tags: [tech,dev,protobuf]
 
 ## 实践
 
-- C++ 中调用 protobuf
-- golang 中调用 protobuf
-  
+- [C++ 中调用 protobuf](https://github.com/xiongjia/recycle.bin/tree/master/scratch/misc/protobuf){:target="_blank"}
+- [golang 中调用 protobuf](https://github.com/xiongjia/recycle.bin/tree/master/scratch/misc/protobuf-go){:target="_blank"}
+
 ## Others
 
 - [3 party addons](https://github.com/protocolbuffers/protobuf/blob/master/docs/third_party.md){:target="_blank"}
