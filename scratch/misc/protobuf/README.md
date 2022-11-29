@@ -36,3 +36,7 @@
   ```
 
 - CMakeLists.txt - the cmake build script.
+
+## Reference
+
+- [Protocol Buffer Basics: C++](https://developers.google.com/protocol-buffers/docs/cpptutorial)
