@@ -65,12 +65,33 @@ Tools + Frameworks + others
 - [gobs](https://pkg.go.dev/encoding/gob){:target="_blank"} - golang 自带
 - Others: Yaml; Toml; xml; Plist (MacOS 里用的那个)
 
+## 📺 entertainment
+
+### Media System
+
+- [jellyfin](https://jellyfin.org/){:target="_blank"} - .NET 实现的流管理
+- [emby](https://emby.media/){:target="_blank"} - .NET 实现的流管理
+- [plex](https://www.plex.tv/){:target="_blank"}
+- [TMM](https://www.tinymediamanager.org/){:target="_blank"}
+- [kodi](https://kodi.tv/){:target="_blank"}; [kodi-github](https://github.com/xbmc){:target="_blank"}
+
+### trackers / radarr
+
+- [Sonarr](https://github.com/Sonarr/Sonarr){:target="_blank"} - 自动下载找源 (电视剧管理与自动下载)
+- [Radarr](https://github.com/Radarr/Radarr){:target="_blank"} - sonarr 复刻 (电影管理与自动下载)
+- [Jackett](https://github.com/Jackett/Jackett){:target="_blank"} - 找源工具
+
+### Movie DB
+
+- [imdb](https://www.imdb.com/){:target="_blank"} - 缺少开放接口
+- [omdbapi](https://www.omdbapi.com/){:target="_blank"} - 基本不维护
+- [tmdb](https://www.themoviedb.org/){:target="_blank"} - 目前看最开放
+
 ## 📚 Tutorials
 
 - [web.dev/learn](https://web.dev/learn/){:target="_blank"} - 基础 html 教程
 - [TypeScript Challenges](https://github.com/type-challenges/type-challenges){:target="_blank"} - TypeScript 练习
 - [CS DIY](https://csdiy.wiki/){:target="_blank"} - Computer science 自学目录
-
 
 ## 🤖 Tools
 
