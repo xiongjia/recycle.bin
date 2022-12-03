@@ -90,6 +90,6 @@ int main(int argc, char **argv) {
   // Load from file
   loadFromFile(argv[1]);
 
-  google::protobuf::ShutdownProtobufLibrary();
+  pb::ShutdownProtobufLibrary();
   return 0;
 }

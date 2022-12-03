@@ -8,9 +8,10 @@ Tools + Frameworks + others
 
 ## ⌨️ DEV
 
-### Frameworks
+### C / C++
 
 - [boost](tech/dev/boost.md) - boost 日常使用
+- [abseil](https://abseil.io/) - [abseil-github](https://github.com/abseil/abseil-cpp); [abseil-blog](https://abseil.io/blog/)
 
 ## 🐼 DB
 
