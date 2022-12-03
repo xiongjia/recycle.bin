@@ -12,9 +12,7 @@ node_modules/
 *.mo
 .scrapy
 target/
-
-# obsidian
-docs/.obsidian/
+.vscode
 
 # python
 __pycache__/
@@ -57,5 +55,8 @@ ENV/
 
 # mkdocs 
 site*/
+
+# clang
+.cache
 
 
