@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 #include <boost/program_options.hpp>
 
 /* namespace alias */
@@ -60,8 +61,7 @@ int main(int argc, char **argv) {
 
   if (vm.count("files")) {
     std::vector<std::string> files = vm["files"].as< std::vector<std::string> >();
-    for (std::vector<std::string>::iterator itr = files.begin();
-        itr != files.end(); ++itr) {
+    for (std::vector<std::string>::iterator itr = files.begin(); itr != files.end(); ++itr) {
       std::cout << "Filename: " << *itr << std::endl;
     }
   }
