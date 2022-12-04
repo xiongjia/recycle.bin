@@ -31,6 +31,14 @@ Tools + Frameworks + others
 
 - [dbeaver](https://dbeaver.io){:target="_blank"} - 支持各种数据库的管理工具。基于 Java, JDBC 用 Eclipse 改的界面。社区版本免费。
 
+## 🐥 distributed systems
+
+### Services discovery
+
+- [zookeeper](https://github.com/apache/zookeeper){:target="_blank"}
+- [etcd](https://github.com/etcd-io/etcd){:target="_blank"}
+- [nacos](https://github.com/alibaba/nacos){:target="_blank"} - 安全漏洞多，最好只内网用用
+
 ## 🛠️ Dev-Ops
 
 - [ntfy](https://ntfy.sh/){:target="_blank"} - 通知系统
@@ -63,11 +71,12 @@ Tools + Frameworks + others
 - [npy](https://numpy.org/devdocs/reference/generated/numpy.lib.format.html){:target="_blank"} - Python NumPy 自带
 - [Json LD](https://json-ld.org/){:target="_blank"} - 改良版 JSON ，适合重复数据多
 - [gobs](https://pkg.go.dev/encoding/gob){:target="_blank"} - golang 自带
+- Boost.Serialization - Boost 的一个模块，只适合 c++ [Boost.Serialization 1.8](https://www.boost.org/doc/libs/1_80_0/libs/serialization/doc/index.html){:target="_blank"}
 - Others: Yaml; Toml; xml; Plist (MacOS 里用的那个)
 
-## 📺 entertainment
+## 📺 Entertainment
 
-### Media System
+### media system
 
 - [jellyfin](https://jellyfin.org/){:target="_blank"} - .NET 实现的流管理
 - [emby](https://emby.media/){:target="_blank"} - .NET 实现的流管理
