@@ -1,6 +1,6 @@
-# Boost.program_options
+# Boost.property_tree
 
-[program_options docs (boost 1.80)](https://www.boost.org/doc/libs/1_80_0/doc/html/program_options.html)
+[property_tree docs (boost 1.80)](https://www.boost.org/doc/libs/1_80_0/doc/html/property_tree.html)
 
 ## Build
 
@@ -16,14 +16,24 @@
 
 ## Files
 
-- program-options.cpp - the test functions
+- read-ini.cpp - the test functions
 - CMakeLists.txt - CMake build script
+
+
 
 ## notes
 
-- add `multitoken()` to `options_description` if the values have multiple values
+- Handle the unicode problems
+- Test command `read-ini -f <ini-filename>`
+
+```ini
+# The samp ini file
+[app]
+string=test str
+number=101
+```
 
 ## Reference
 
 - [Boost docs](https://www.boost.org/doc/)
-- [program_options docs (boost 1.80)](https://www.boost.org/doc/libs/1_80_0/doc/html/program_options.html)
+- [property_tree docs (boost 1.80)](https://www.boost.org/doc/libs/1_80_0/doc/html/property_tree.html)
