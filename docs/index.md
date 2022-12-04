@@ -13,6 +13,11 @@ Tools + Frameworks + others
 - [boost](tech/dev/boost.md) - boost 日常使用
 - [abseil](https://abseil.io/) - [abseil-github](https://github.com/abseil/abseil-cpp); [abseil-blog](https://abseil.io/blog/)
 
+### Java
+
+- [jodd](https://github.com/oblac/jodd){:target="_blank"} - 各种工具库的独立实现，不一定最好但都比较小巧。
+- [byte-buddy](https://github.com/raphw/byte-buddy){:target="_blank"} - Runtime code generation
+
 ## 🐼 DB
 
 ### Key-Value Database

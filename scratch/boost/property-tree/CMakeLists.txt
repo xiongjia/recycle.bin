@@ -1,7 +1,7 @@
-# CMake build script 
+# CMake build script
 cmake_minimum_required(VERSION 3.25)
 
-project(ProgOpts)
+project(ReadIni)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
@@ -11,18 +11,18 @@ find_package(Boost REQUIRED COMPONENTS program_options)
 
 include_directories("${PROJECT_SOURCE_DIR}" "${Boost_INCLUDE_DIRS}")
 
-set(progopts_boost_dbg_libs 
+set(rdcfg_boost_dbg_libs 
     "${Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG}")
-set(progopts_boost_opt_libs 
+set(rdcfg_boost_opt_libs 
     "${Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE}")
 
 # application
-add_executable(prog-opts
-    "${PROJECT_SOURCE_DIR}/program-options.cpp")
+add_executable(read-ini 
+    "${PROJECT_SOURCE_DIR}/read-ini.cpp")
 
-target_link_libraries(prog-opts
-    debug "${progopts_boost_dbg_libs}"
-    optimized "${progopts_boost_opt_libs}")
+target_link_libraries(read-ini
+    debug "${rdcfg_boost_dbg_libs}"
+    optimized "${rdcfg_boost_opt_libs}")
 
 # install
-install(TARGETS prog-opts DESTINATION bin)
+install(TARGETS read-ini DESTINATION bin)
