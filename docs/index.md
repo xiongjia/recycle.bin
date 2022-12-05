@@ -28,6 +28,13 @@ Tools + Frameworks + others
 
 - [GrepTimeDb](https://github.com/GreptimeTeam/greptimedb){:target="_blank"} -  rust 实现的 TS DB
 
+### SQLite
+
+- [SQLite](https://www.sqlite.org/){:target="_blank"} ; [SQLite Docs](https://www.sqlite.org/docs.html)
+- [SQLite Github mirror](https://github.com/sqlite/sqlite){:target="_blank"}
+- [SQLite 源代码解析](https://huili.github.io/sqlite/sqliteintro.html){:target="_blank"}
+- [rqlite](https://github.com/rqlite/rqlite){:target="_blank"} - Golang 封装 raft + SQLite 实现的分布式数据库
+
 ### [PostgreSQL](https://www.postgresql.org/){:target="_blank"} 系列
 
 - [patroni](https://github.com/zalando/patroni){:target="_blank"} - python 实现 PG 集群配置工具 (依赖 ETCD )

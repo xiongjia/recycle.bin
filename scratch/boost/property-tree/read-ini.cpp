@@ -47,7 +47,7 @@ static void read_ini_file(const char *filename, const char *locale) {
 
 #if defined(__APPLE__)
   /* coodecvt for OSX terminate */
-  std::wstring_convert<std::codecvt_utf8<wchar_t>,wchar_t> convert;
+  std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> convert;
   std::cout << "app.string=" << convert.to_bytes(ret) << std::endl;
 #else
   /* NOTE: must update the correct locale setting 

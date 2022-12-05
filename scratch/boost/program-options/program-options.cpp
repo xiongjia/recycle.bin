@@ -61,8 +61,8 @@ int main(int argc, char **argv) {
 
   if (vm.count("files")) {
     std::vector<std::string> files = vm["files"].as< std::vector<std::string> >();
-    for (std::vector<std::string>::iterator itr = files.begin(); itr != files.end(); ++itr) {
-      std::cout << "Filename: " << *itr << std::endl;
+    for (auto f : files) {
+      std::cout << "Filename: " << f << std::endl;
     }
   }
   return 0;
