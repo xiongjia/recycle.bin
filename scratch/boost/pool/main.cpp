@@ -4,13 +4,13 @@
 
 #include <iostream>
 #include <vector>
+
 #include <boost/pool/pool.hpp>
 #include <boost/pool/object_pool.hpp>
 #include <boost/pool/singleton_pool.hpp>
 #include <boost/pool/pool_alloc.hpp>
 #include <boost/foreach.hpp>
 #include <boost/array.hpp>
-
 
 typedef std::size_t size_type;
 typedef std::ptrdiff_t difference_type;
@@ -23,6 +23,9 @@ typedef std::ptrdiff_t difference_type;
 /* Memory allocator */
 class TestAllocator {
 public:
+  typedef std::size_t size_type;
+  typedef std::ptrdiff_t difference_type;
+
   static char * malloc(const size_type bytes) {
     std::cout << "Alloc (" << bytes << ")" << std::endl;
     return reinterpret_cast<char *>(std::malloc(bytes));
@@ -71,8 +74,7 @@ static void mem_pool_tests(void) {
   mpool.purge_memory();
 }
 
-static void obj_pool_tests(void)
-{
+static void obj_pool_tests(void) {
   /* the test object */
   class TestObj {
   private:
@@ -111,8 +113,7 @@ static void obj_pool_tests(void)
   std::cout << std::endl;
 }
 
-static void singleton_pool(void)
-{
+static void singleton_pool(void) {
   struct MPoolTag {};
   typedef boost::singleton_pool<MPoolTag, sizeof(struct TestData), TestAllocator> mm_pool;
   boost::array<struct TestData*, 128> allData = { NULL };
