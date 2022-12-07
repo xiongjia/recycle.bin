@@ -119,6 +119,16 @@ Tools + Frameworks + others
 - [trickle](https://github.com/mariusae/trickle){:target="_blank"} - 带宽限速
 - [mitmproxy](https://mitmproxy.org/){:target="_blank"} - 解析 http / https 协议用的反向工程工具
 
+## 🐵 github
+
+### github tools
+
+- [Open Source Software Insight](https://ossinsight.io/){:target="_blank"} - github 的一些统计
+
+### ENU
+
+- [awesome english book](https://github.com/hehonghui/awesome-english-ebooks){:target="_blank"}
+
 ## 🎮 Games
 
 - [NS Emulator](https://github.com/Ryujinx/Ryujinx){:target="_blank"} - .NET 实现的 NS 模拟器。（好像已经停止维护了）
