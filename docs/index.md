@@ -119,6 +119,20 @@ Tools + Frameworks + others
 - [trickle](https://github.com/mariusae/trickle){:target="_blank"} - 带宽限速
 - [mitmproxy](https://mitmproxy.org/){:target="_blank"} - 解析 http / https 协议用的反向工程工具
 
+## 👀 Monitoring tool
+
+### Prometheus 系
+
+- [node_exporter](https://github.com/prometheus/node_exporter){:target="_blank"} - Exporter for machine metrics
+- [alertmanager](https://github.com/prometheus/alertmanager){:target="_blank"} - Prometheus Alertmanager
+
+### Misc
+
+- [Server Status Rust](https://github.com/zdz/ServerStatus-Rust){:target="_blank"} - Rust 实现的服务器监测
+- [uptime kuma](https://github.com/louislam/uptime-kuma){:target="_blank"} - A fancy self-hosted monitoring tool
+- [vnStat](https://github.com/vergoh/vnstat){:target="_blank"} - a network traffic monitor for Linux and BSD
+
+
 ## 🐵 github
 
 ### github tools
