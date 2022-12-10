@@ -17,3 +17,4 @@ boost 日常实践
 - [Boost.program_options](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/program-options){:target="_blank"} - 解析 argv 参数
 - [Boost.property_tree](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/property-tree){:target="_blank"} - property_tree 可以用来解析 .ini, xml, json 等
 - [Boost.pool](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/pool){:target="_blank"} - memory pool 批量分配和释放内存。
+- [Boost.log](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/log){:target="_blank"} - log 实现。
