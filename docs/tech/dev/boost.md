@@ -19,3 +19,4 @@ boost 日常实践
 - [Boost.pool](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/pool){:target="_blank"} - memory pool 批量分配和释放内存。
 - [Boost.log](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/log){:target="_blank"} - log 实现。
 - [Boost.serialization](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/serialization){:target="_blank"} - serialization tests。
+- [Boost.test](https://github.com/xiongjia/recycle.bin/tree/master/scratch/boost/test){:target="_blank"} - boost unit test

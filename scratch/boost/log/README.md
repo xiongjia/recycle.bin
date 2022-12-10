@@ -16,7 +16,7 @@
 
 ## Files
 
-- rmain.cpp - the test functions
+- main.cpp - the test functions
 - CMakeLists.txt - CMake build script
 
 ## notes
