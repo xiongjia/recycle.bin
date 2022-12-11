@@ -2,6 +2,9 @@ site_name: recycle.bin
 site_url: https://xj-labs.net
 site_author: xiongjia
 site_description: recycle.bin
+repo_name: recycle.bin
+repo_url: https://github.com/xiongjia/recycle.bin
+copyright: Copyright &copy; 2022 - present <a href="https://github.com/xiongjia/recycle.bin" target="_blank" rel="noopener noreferrer">recycle.bin</a>
 
 markdown_extensions:
   - attr_list
@@ -12,6 +15,7 @@ theme:
   name: material
   include_search_page: false
   search_index_only: true
+  icon: { repo: fontawesome/brands/github }
   features:
     - header.autohide
     - navigation.top
