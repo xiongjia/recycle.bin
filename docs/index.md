@@ -142,6 +142,8 @@ Tools + Frameworks + others
 ### github tools
 
 - [Open Source Software Insight](https://ossinsight.io/){:target="_blank"} - github 的一些统计
+- [giscus](https://giscus.app/){:target="_blank"} - 基于 github discussions 做的 BLOG 留言系统
+- [utteranc](https://utteranc.es/){:target="_blank"} - 基于 github issue 做的 BLOG 留言系统
 
 ### ENU
 
