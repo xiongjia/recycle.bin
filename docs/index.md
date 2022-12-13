@@ -118,6 +118,8 @@ Tools + Frameworks + others
 
 - [trickle](https://github.com/mariusae/trickle){:target="_blank"} - 带宽限速
 - [mitmproxy](https://mitmproxy.org/){:target="_blank"} - 解析 http / https 协议用的反向工程工具
+- [ttar](https://github.com/ideaship/ttar){:target="_blank"} - 文本文件打包工具
+- [flameshot](https://github.com/flameshot-org/flameshot){:target="_blank"} - 截屏工具
 
 ## 👀 Monitoring tool
 
@@ -132,8 +134,6 @@ Tools + Frameworks + others
 
 - [skywalking](https://github.com/apache/skywalking){:target="_blank"}
 - [pinpoint](https://github.com/pinpoint-apm/pinpoint){:target="_blank"}
-- [ttar](https://github.com/ideaship/ttar){:target="_blank"} - 文本文件打包工具
-- [flameshot](https://github.com/flameshot-org/flameshot){:target="_blank"} - 截屏工具
 
 ### Misc
 
