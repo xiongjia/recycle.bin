@@ -125,17 +125,23 @@ Tools + Frameworks + others
 
 - [node_exporter](https://github.com/prometheus/node_exporter){:target="_blank"} - Exporter for machine metrics
 - [alertmanager](https://github.com/prometheus/alertmanager){:target="_blank"} - Prometheus Alertmanager
+- [ethtool golang](github.com/safchain/ethtool){:target="_blank"} - ethtool 的 golang 实现 Prometheus 内部调用
+- [proc fs](https://github.com/prometheus/procfs){:target="_blank"} - golang 实现的 proc fs 解析工具。 Prometheus 内部组件
 
 ### Application Performance Monitoring
 
 - [skywalking](https://github.com/apache/skywalking){:target="_blank"}
 - [pinpoint](https://github.com/pinpoint-apm/pinpoint){:target="_blank"}
+- [ttar](https://github.com/ideaship/ttar){:target="_blank"} - 文本文件打包工具
+- [flameshot](https://github.com/flameshot-org/flameshot){:target="_blank"} - 截屏工具
 
 ### Misc
 
+- [sysstat](https://github.com/sysstat/sysstat){:target="_blank"} - Performance monitoring tools for Linux
 - [Server Status Rust](https://github.com/zdz/ServerStatus-Rust){:target="_blank"} - Rust 实现的服务器监测
 - [uptime kuma](https://github.com/louislam/uptime-kuma){:target="_blank"} - A fancy self-hosted monitoring tool
 - [vnStat](https://github.com/vergoh/vnstat){:target="_blank"} - a network traffic monitor for Linux and BSD
+- [btop](https://github.com/aristocratos/bpytop){:target="_blank"} - 改良版本 top
 
 ## 🐵 github
 
