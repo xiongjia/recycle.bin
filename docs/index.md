@@ -120,6 +120,8 @@ Tools + Frameworks + others
 - [mitmproxy](https://mitmproxy.org/){:target="_blank"} - 解析 http / https 协议用的反向工程工具
 - [ttar](https://github.com/ideaship/ttar){:target="_blank"} - 文本文件打包工具
 - [flameshot](https://github.com/flameshot-org/flameshot){:target="_blank"} - 截屏工具
+- [go-guerrilla](https://github.com/flashmob/go-guerrilla){:target="_blank"} - Mini SMTP server written in golang
+- [coreutils rust](https://github.com/uutils/coreutils){:target="_blank"} - unix core utils 的 rust 实现版本
 
 ## 👀 Monitoring tool
 
