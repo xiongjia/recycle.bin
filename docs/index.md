@@ -122,6 +122,7 @@ Tools + Frameworks + others
 - [flameshot](https://github.com/flameshot-org/flameshot){:target="_blank"} - 截屏工具
 - [go-guerrilla](https://github.com/flashmob/go-guerrilla){:target="_blank"} - Mini SMTP server written in golang
 - [coreutils rust](https://github.com/uutils/coreutils){:target="_blank"} - unix core utils 的 rust 实现版本
+- [podman](https://podman.io/){:target="_blank"} - daemonless container engine
 
 ## 👀 Monitoring tool
 
@@ -160,3 +161,8 @@ Tools + Frameworks + others
 ## 🎮 Games
 
 - [NS Emulator](https://github.com/Ryujinx/Ryujinx){:target="_blank"} - .NET 实现的 NS 模拟器。（好像已经停止维护了）
+
+## OS distribution
+
+- [AlmaLinux](https://almalinux.org/){:target="_blank"} - CentOS 对替代
+- [clear os](https://www.clearos.com/){:target="_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
