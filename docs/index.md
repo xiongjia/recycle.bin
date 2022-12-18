@@ -162,7 +162,7 @@ Tools + Frameworks + others
 
 - [NS Emulator](https://github.com/Ryujinx/Ryujinx){:target="_blank"} - .NET 实现的 NS 模拟器。（好像已经停止维护了）
 
-## OS distribution
+## 🦚 OS distribution
 
 - [AlmaLinux](https://almalinux.org/){:target="_blank"} - CentOS 对替代
 - [clear os](https://www.clearos.com/){:target="_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
