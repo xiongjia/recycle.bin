@@ -143,7 +143,7 @@ Tools + Frameworks + others
 - [sysstat](https://github.com/sysstat/sysstat){:target="_blank"} - Performance monitoring tools for Linux
 - [Server Status Rust](https://github.com/zdz/ServerStatus-Rust){:target="_blank"} - Rust 实现的服务器监测
 - [uptime kuma](https://github.com/louislam/uptime-kuma){:target="_blank"} - A fancy self-hosted monitoring tool
-- [vnStat](https://github.com/vergoh/vnstat){:target="_blank"} - a network traffic monitor for Linux and BSD
+- [vnStat](tech/oss/vnstat.md) - a network traffic monitor for Linux and BSD
 - [btop](https://github.com/aristocratos/bpytop){:target="_blank"} - 改良版本 top
 
 ## 🐵 github
