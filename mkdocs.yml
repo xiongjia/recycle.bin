@@ -11,6 +11,11 @@ markdown_extensions:
 
 plugins: [ minify: { minify_html: true }, search: { lang: js } ]
 
+extra:
+  analytics:
+    provider: google
+    property: UA-7661871-7
+
 theme:
   name: material
   include_search_page: false
