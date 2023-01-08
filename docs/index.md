@@ -166,3 +166,8 @@ Tools + Frameworks + others
 
 - [AlmaLinux](https://almalinux.org/){:target="_blank"} - CentOS 对替代
 - [clear os](https://www.clearos.com/){:target="_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
+
+## 🗞️ DEV News
+
+- [阮一峰的网络日志](https://www.ruanyifeng.com/blog/weekly/){:target="_blank"}
+- [老胡的周刊](https://weekly.howie6879.cn/){:target="_blank"} - [github](https://github.com/howie6879/weekly){:target="_blank"}
