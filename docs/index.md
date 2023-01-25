@@ -18,6 +18,12 @@ Tools + Frameworks + others
 - [jodd](https://github.com/oblac/jodd){:target="_blank"} - 各种工具库的独立实现，不一定最好但都比较小巧。
 - [byte-buddy](https://github.com/raphw/byte-buddy){:target="_blank"} - Runtime code generation
 
+### golang
+
+- [zap](https://github.com/uber-go/zap){:target="_blank"} - log library 特点是速度快，占用内存少
+- [viper](https://github.com/spf13/viper){:target="_blank"} - configuration solution for Go applications
+- [gorm](https://github.com/go-gorm/gorm){:target="_blank"} - ORM library for Golang  
+
 ## 🐼 DB
 
 ### Key-Value Database
