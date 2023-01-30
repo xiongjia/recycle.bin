@@ -23,6 +23,9 @@ Tools + Frameworks + others
 - [zap](https://github.com/uber-go/zap){:target="_blank"} - log library 特点是速度快，占用内存少
 - [viper](https://github.com/spf13/viper){:target="_blank"} - configuration solution for Go applications
 - [gorm](https://github.com/go-gorm/gorm){:target="_blank"} - ORM library for Golang  
+- [gin](https://github.com/gin-gonic/gin){:target="_blank"} - HTTP web framework
+- [httprouter](https://github.com/julienschmidt/httprouter){:target="_blank"} - HTTP request router
+- [Standard Go Project Layout](https://github.com/golang-standards/project-layout/){:target="_blank"} - Standard Go Project Layout
 
 ## 🐼 DB
 
