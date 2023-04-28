@@ -154,6 +154,8 @@ Tools + Frameworks + others
 - [uptime kuma](https://github.com/louislam/uptime-kuma){:target="_blank"} - A fancy self-hosted monitoring tool
 - [vnStat](tech/oss/vnstat.md) - a network traffic monitor for Linux and BSD
 - [btop](https://github.com/aristocratos/bpytop){:target="_blank"} - 改良版本 top
+- [netdata](https://github.com/netdata/netdata){:target="_blank"} - Real-time performance monitoring 是 c / c++ 实现，也支持自己写 Collector 扩展。(比较适合做单机的时时检查用)
+- [nmon](https://nmon.sourceforge.net/pmwiki.php) - 用 cli 也支持 csv 导出后的分析。适合单机检查、分析具体问题。
 
 ## 🐵 github
 
