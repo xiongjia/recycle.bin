@@ -27,6 +27,11 @@ Tools + Frameworks + others
 - [httprouter](https://github.com/julienschmidt/httprouter){:target="_blank"} - HTTP request router
 - [Standard Go Project Layout](https://github.com/golang-standards/project-layout/){:target="_blank"} - Standard Go Project Layout
 
+### DEV Tools
+
+- [playwright](https://github.com/microsoft/playwright){:target="_blank"} - UI Automation testing framework ( MS 维护，文档全面。提供 VS Extension 帮助脚本开发)
+- [ddosify](https://github.com/ddosify/ddosify){:target="_blank"} - Stress / Loading tests framework
+
 ## 🐼 DB
 
 ### Key-Value Database
@@ -171,11 +176,11 @@ Tools + Frameworks + others
 
 ## 🎮 Games
 
-- [NS Emulator](https://github.com/Ryujinx/Ryujinx){:target="_blank"} - .NET 实现的 NS 模拟器。（好像已经停止维护了）
+- [NS Emulator](https://github.com/Ryujinx/Ryujinx){:target="_blank"} - .NET 实现的 NS 模拟器。（已经停止维护了）
 
 ## 🦚 OS distribution
 
-- [AlmaLinux](https://almalinux.org/){:target="_blank"} - CentOS 对替代
+- [AlmaLinux](https://almalinux.org/){:target="_blank"} - CentOS 替代
 - [clear os](https://www.clearos.com/){:target="_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
 
 ## 🗞️ DEV News
