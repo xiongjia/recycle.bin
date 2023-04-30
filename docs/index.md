@@ -127,6 +127,8 @@ Tools + Frameworks + others
 - [web.dev/learn](https://web.dev/learn/){:target="_blank"} - 基础 html 教程
 - [TypeScript Challenges](https://github.com/type-challenges/type-challenges){:target="_blank"} - TypeScript 练习
 - [CS DIY](https://csdiy.wiki/){:target="_blank"} - Computer science 自学目录
+- [µGo语言实现(从头开发一个迷你Go语言编译器)](https://github.com/wa-lang/ugo-compiler-book){:target="_blank"} - go 编译器学习
+- [Go语言定制指南](https://github.com/chai2010/go-ast-book){:target="_blank"} - Go 语法树入门
 
 ## 🤖 Tools
 
