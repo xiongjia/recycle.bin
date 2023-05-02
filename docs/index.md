@@ -122,14 +122,6 @@ Tools + Frameworks + others
 - [omdbapi](https://www.omdbapi.com/){:target="_blank"} - 基本不维护
 - [tmdb](https://www.themoviedb.org/){:target="_blank"} - 目前看最开放
 
-## 📚 Tutorials
-
-- [web.dev/learn](https://web.dev/learn/){:target="_blank"} - 基础 html 教程
-- [TypeScript Challenges](https://github.com/type-challenges/type-challenges){:target="_blank"} - TypeScript 练习
-- [CS DIY](https://csdiy.wiki/){:target="_blank"} - Computer science 自学目录
-- [µGo语言实现(从头开发一个迷你Go语言编译器)](https://github.com/wa-lang/ugo-compiler-book){:target="_blank"} - go 编译器学习
-- [Go语言定制指南](https://github.com/chai2010/go-ast-book){:target="_blank"} - Go 语法树入门
-
 ## 🤖 Tools
 
 - [trickle](https://github.com/mariusae/trickle){:target="_blank"} - 带宽限速
@@ -185,7 +177,16 @@ Tools + Frameworks + others
 - [AlmaLinux](https://almalinux.org/){:target="_blank"} - CentOS 替代
 - [clear os](https://www.clearos.com/){:target="_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
 
-## 🗞️ DEV News
+
+## 📚 Tutorials
+
+- [web.dev/learn](https://web.dev/learn/){:target="_blank"} - 基础 html 教程
+- [TypeScript Challenges](https://github.com/type-challenges/type-challenges){:target="_blank"} - TypeScript 练习
+- [CS DIY](https://csdiy.wiki/){:target="_blank"} - Computer science 自学目录
+- [µGo语言实现(从头开发一个迷你Go语言编译器)](https://github.com/wa-lang/ugo-compiler-book){:target="_blank"} - go 编译器学习
+- [Go语言定制指南](https://github.com/chai2010/go-ast-book){:target="_blank"} - Go 语法树入门
+
+## 🗞️ News
 
 - [阮一峰的网络日志](https://www.ruanyifeng.com/blog/weekly/){:target="_blank"}
 - [老胡的周刊](https://weekly.howie6879.cn/){:target="_blank"} - [github](https://github.com/howie6879/weekly){:target="_blank"}
