@@ -26,6 +26,9 @@ Tools + Frameworks + others
 - [gin](https://github.com/gin-gonic/gin){:target="_blank"} - HTTP web framework
 - [httprouter](https://github.com/julienschmidt/httprouter){:target="_blank"} - HTTP request router
 - [Standard Go Project Layout](https://github.com/golang-standards/project-layout/){:target="_blank"} - Standard Go Project Layout
+- [go-prompt](https://github.com/c-bata/go-prompt){:target="_blank"} -  python-prompt-toolkit 的 golang 平替。tui library
+- [bubbletea](https://github.com/charmbracelet/bubbletea){:target="_blank"} - golang tui library
+- [cobra](https://github.com/spf13/cobra){:target="_blank"} - command 解析库。类似 hugao 的命令行解析就用了这个实现。
 
 ### DEV Tools
 
