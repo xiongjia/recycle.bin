@@ -30,10 +30,11 @@ Tools + Frameworks + others
 - [bubbletea](https://github.com/charmbracelet/bubbletea){:target="_blank"} - golang tui library
 - [cobra](https://github.com/spf13/cobra){:target="_blank"} - command 解析库。类似 hugao 的命令行解析就用了这个实现。
 
-### DEV Tools
+### DEV Tools / Libraries
 
 - [playwright](https://github.com/microsoft/playwright){:target="_blank"} - UI Automation testing framework ( MS 维护，文档全面。提供 VS Extension 帮助脚本开发)
 - [ddosify](https://github.com/ddosify/ddosify){:target="_blank"} - Stress / Loading tests framework
+- [xxHash](https://cyan4973.github.io/xxHash/){:target="_blank"} - 比 MD5 和 SHA1 快出很多的 hash 实现。用于计算内测数据的 hash 比较合适，用来做文件的摘要意义不大，因为瓶颈一般做 disk I/O 上。 [xxHash Github](https://github.com/Cyan4973/xxHash){:target="_blank"}；[xxHash Golang 实现](https://github.com/cespare/xxhash/){:target="_blank"}
 
 ## 🐼 DB
 
