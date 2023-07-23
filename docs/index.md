@@ -202,6 +202,10 @@ Tools + Frameworks + others
 - [AlmaLinux](https://almalinux.org/){:target="\_blank"} - CentOS 替代
 - [clear os](https://www.clearos.com/){:target="\_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
 
+## Windows
+
+- [scoop](https://scoop.sh/){:target="\_blank"} - Windows package management
+
 ## 📚 Tutorials
 
 - [web.dev/learn](https://web.dev/learn/){:target="\_blank"} - 基础 html 教程
