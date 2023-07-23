@@ -45,7 +45,7 @@ Tools + Frameworks + others
 - [awesome preact](https://github.com/preactjs/awesome-preact){:target="\_blank"}
 - [emotion-js](https://github.com/emotion-js/emotion){:target="\_blank"} - 方便在 JS, TS 中添加 components 的 css
 - [React Pro Sidebar](https://github.com/azouaoui-med/react-pro-sidebar){:target="\_blank"} - sidebar component
-- [jotai]{https://github.com/pmndrs/jotai}{:target="\_blank"} - state management
+- [jotai](https://github.com/pmndrs/jotai){:target="\_blank"} - state management
 
 ### sample projects
 
