@@ -156,6 +156,8 @@ Tools + Frameworks + others
 - [go-guerrilla](https://github.com/flashmob/go-guerrilla){:target="\_blank"} - Mini SMTP server written in golang
 - [coreutils rust](https://github.com/uutils/coreutils){:target="\_blank"} - unix core utils 的 rust 实现版本
 - [podman](https://podman.io/){:target="\_blank"} - daemonless container engine
+- [ledger-cli](https://ledger-cli.org/){:target="\_blank"} - 复式记账工具。可以和 Emacs, Obsidian 等工具组合使用
+- [Beancount](https://beancount.github.io/){:target="\_blank"} - 类似 ledger 。使用入门更方便可以结合 [Fava](https://github.com/beancount/fava){:target="\_blank"} 的 web 界面使用。
 
 ## 👀 Monitoring tool
 
