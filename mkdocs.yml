@@ -22,6 +22,7 @@ extra:
 
 theme:
   name: material
+  nav_style: light
   include_search_page: false
   search_index_only: true
   icon: { repo: fontawesome/brands/github }
