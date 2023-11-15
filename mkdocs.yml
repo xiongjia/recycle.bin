@@ -9,7 +9,10 @@ copyright: Copyright &copy; 2022 - present <a href="https://github.com/xiongjia/
 markdown_extensions:
   - attr_list
 
-plugins: [ minify: { minify_html: true }, search: { lang: js } ]
+plugins:
+  - minify: { minify_html: true }
+  - search: { lang: js }
+  - mermaid2
 
 extra:
   analytics:
@@ -45,9 +48,9 @@ theme:
         name: Switch to light mode
 
 nav:
-  - home : 'index.md'
-  - dev : 
-    - boost : 'tech/dev/boost.md'
-    - protobuf: 'tech/dev/protobuf.md'
-  - oss :
-    - vnStat: 'tech/oss/vnstat.md' 
+  - home: "index.md"
+  - dev:
+      - boost: "tech/dev/boost.md"
+      - protobuf: "tech/dev/protobuf.md"
+  - oss:
+      - vnStat: "tech/oss/vnstat.md"
