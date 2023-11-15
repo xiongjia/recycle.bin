@@ -13,6 +13,7 @@ plugins:
   - minify: { minify_html: true }
   - search: { lang: js }
   - mermaid2
+  - drawio_file
 
 extra:
   analytics:
